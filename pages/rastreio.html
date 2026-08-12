@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rastrear pedido — Achadinhos Brasil</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../index.html" class="logo">Achadinhos<span>.</span></a>
+    <div class="header-actions"><a href="../carrinho.html" class="cart-link">🛒<span class="cart-badge">0</span></a></div>
+  </div>
+</header>
+
+<main class="container" style="padding:34px 20px 60px;max-width:520px;">
+  <h1 style="font-size:1.4rem;font-weight:800;margin-bottom:8px;">Rastrear pedido</h1>
+  <p style="font-size:.9rem;color:var(--muted);margin-bottom:20px;">Digite o número do pedido que você recebeu por e-mail/WhatsApp na confirmação da compra.</p>
+
+  <div class="form-field">
+    <label for="pedido">Número do pedido</label>
+    <input type="text" id="pedido" placeholder="Ex: AB-00123">
+  </div>
+  <button class="btn btn-block" onclick="consultarPedido()">Consultar</button>
+
+  <div id="resultado" style="margin-top:20px;font-size:.9rem;"></div>
+
+  <p style="font-size:.8rem;color:var(--muted);margin-top:24px;">
+    Se preferir, fale com a gente direto pelo
+    <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;">WhatsApp</a>.
+  </p>
+</main>
+
+<footer class="site-footer"><div class="footer-bottom">© Achadinhos Brasil — todos os direitos reservados</div></footer>
+
+<script src="../assets/js/cart.js"></script>
+<script>
+  // TODO: integrar com a API de rastreio da Dropi assim que a fase de
+  // fulfillment automático estiver ligada (ver pendências do projeto).
+  function consultarPedido() {
+    const val = document.getElementById("pedido").value.trim();
+    const el = document.getElementById("resultado");
+    if (!val) {
+      el.innerHTML = `<span style="color:var(--brand-dark);">Digite o número do pedido.</span>`;
+      return;
+    }
+    el.innerHTML = `<span style="color:var(--muted);">Rastreio automático ainda não está ativo. Manda o número <b>${val}</b> pra gente pelo WhatsApp que a gente confirma o status na hora.</span>`;
+  }
+</script>
+</body>
+</html>
