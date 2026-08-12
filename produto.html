@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Produto — Achadinhos Brasil</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Achadinhos<span>.</span></a>
+    <div class="header-actions">
+      <a href="carrinho.html" class="cart-link">🛒<span class="cart-badge">0</span></a>
+    </div>
+  </div>
+  <nav class="main-nav">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="categoria.html?cat=casa">Casa e Decoração</a></li>
+      <li><a href="categoria.html?cat=moda">Moda e Vestuário</a></li>
+      <li><a href="categoria.html?cat=pet">Pet Shop</a></li>
+      <li><a href="categoria.html?cat=beleza">Saúde e Beleza</a></li>
+      <li><a href="pages/rastreio.html">Rastrear pedido</a></li>
+      <li><a href="pages/fale-conosco.html">Fale conosco</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="container" id="produto-container">
+  <!-- preenchido via JS -->
+</main>
+
+<a class="wa-float" href="https://wa.me/5500000000000" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div><h4>Achadinhos Brasil</h4><p style="font-size:.85rem;opacity:.85;">Ofertas relâmpago, estoque limitado.</p></div>
+    <div><h4>Categorias</h4><a href="categoria.html?cat=casa">Casa e Decoração</a><a href="categoria.html?cat=moda">Moda e Vestuário</a></div>
+    <div><h4>Atendimento</h4><a href="pages/fale-conosco.html">Fale conosco</a><a href="pages/rastreio.html">Rastrear pedido</a></div>
+  </div>
+  <div class="footer-bottom">© Achadinhos Brasil — todos os direitos reservados</div>
+</footer>
+
+<script src="assets/js/catalog.js"></script>
+<script src="assets/js/cart.js"></script>
+<script>
+  const params = new URLSearchParams(location.search);
+  const id = params.get("id");
+  const p = getProductById(id);
+  const container = document.getElementById("produto-container");
+
+  if (!p) {
+    container.innerHTML = `<div class="empty-state">Produto não encontrado. <a href="index.html" style="color:var(--accent);font-weight:700;">Voltar pra home</a></div>`;
+  } else {
+    document.getElementById("page-title").textContent = p.name + " — Achadinhos Brasil";
+    const disc = discountPercent(p);
+    const stockPct = stockPercent(p);
+    container.innerHTML = `
+      <div class="product-detail">
+        <div class="product-detail-thumb">
+          ${disc ? `<span class="badge-desconto">-${disc}%</span>` : ""}
+          <span>${p.emoji}</span>
+        </div>
+        <div>
+          <span class="product-cat">${p.categoryLabel}</span>
+          <h1 style="font-size:1.5rem;font-weight:800;margin:8px 0;">${p.name}</h1>
+          <div class="price-row" style="margin-bottom:10px;">
+            ${p.oldPrice ? `<span class="price-old">${formatBRL(p.oldPrice)}</span>` : ""}
+            <span class="price-new" style="font-size:1.6rem;">${formatBRL(p.price)}</span>
+          </div>
+          <p style="font-size:.92rem;color:var(--muted);margin-bottom:14px;">${p.description}</p>
+          <div class="stock-wrap" style="margin-bottom:18px;">
+            <div class="stock-label">Só ${p.stock} em estoque — corre!</div>
+            <div class="stock-bar"><div class="stock-bar-fill" style="width:${stockPct}%"></div></div>
+          </div>
+          <div class="qty-row">
+            <div class="qty-control">
+              <button id="qty-minus">−</button>
+              <span id="qty-value">1</span>
+              <button id="qty-plus">+</button>
+            </div>
+          </div>
+          <button class="btn btn-block" id="btn-add">Adicionar ao carrinho</button>
+        </div>
+      </div>
+    `;
+
+    let qty = 1;
+    document.getElementById("qty-minus").onclick = () => {
+      qty = Math.max(1, qty - 1);
+      document.getElementById("qty-value").textContent = qty;
+    };
+    document.getElementById("qty-plus").onclick = () => {
+      qty = Math.min(p.stock, qty + 1);
+      document.getElementById("qty-value").textContent = qty;
+    };
+    document.getElementById("btn-add").onclick = () => {
+      addToCart(p.id, qty);
+      document.getElementById("btn-add").textContent = "Adicionado ✓";
+      setTimeout(() => (document.getElementById("btn-add").textContent = "Adicionar ao carrinho"), 1500);
+    };
+  }
+</script>
+</body>
+</html>
