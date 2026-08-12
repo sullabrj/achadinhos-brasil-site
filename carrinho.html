@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrinho — Achadinhos Brasil</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Achadinhos<span>.</span></a>
+    <div class="header-actions">
+      <a href="carrinho.html" class="cart-link">🛒<span class="cart-badge">0</span></a>
+    </div>
+  </div>
+</header>
+
+<main class="container" style="padding:30px 20px 60px;">
+  <h1 style="font-size:1.4rem;font-weight:800;margin-bottom:20px;">Seu carrinho</h1>
+  <div style="display:grid;grid-template-columns:2fr 1fr;gap:24px;" id="cart-layout">
+    <div id="cart-items"></div>
+    <div>
+      <div class="cart-summary">
+        <div class="cart-summary-row"><span>Subtotal</span><span id="sum-subtotal">R$ 0,00</span></div>
+        <div class="cart-summary-row total"><span>Total</span><span id="sum-total">R$ 0,00</span></div>
+        <button class="btn btn-block btn-accent" id="btn-checkout" onclick="iniciarCheckout()">Finalizar compra</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-bottom">© Achadinhos Brasil — todos os direitos reservados</div>
+</footer>
+
+<script src="assets/js/catalog.js"></script>
+<script src="assets/js/cart.js"></script>
+<script src="assets/js/checkout.js"></script>
+<script>
+  function renderCart() {
+    const cart = getCart();
+    const itemsEl = document.getElementById("cart-items");
+    if (!cart.length) {
+      itemsEl.innerHTML = `<div class="empty-state">Seu carrinho está vazio. <a href="index.html" style="color:var(--accent);font-weight:700;">Ver ofertas</a></div>`;
+      document.getElementById("sum-subtotal").textContent = formatBRL(0);
+      document.getElementById("sum-total").textContent = formatBRL(0);
+      return;
+    }
+    itemsEl.innerHTML = cart.map((i) => {
+      const p = getProductById(i.id);
+      if (!p) return "";
+      return `
+        <div class="cart-item">
+          <div class="cart-item-thumb">${p.emoji}</div>
+          <div>
+            <div style="font-weight:700;font-size:.9rem;">${p.name}</div>
+            <div style="font-size:.85rem;color:var(--muted);">${formatBRL(p.price)} x ${i.qty}</div>
+            <div class="qty-control" style="margin-top:6px;width:fit-content;">
+              <button onclick="updateCartQty('${p.id}', ${i.qty - 1}); renderCart();">−</button>
+              <span>${i.qty}</span>
+              <button onclick="updateCartQty('${p.id}', ${i.qty + 1}); renderCart();">+</button>
+            </div>
+          </div>
+          <button class="btn btn-outline" onclick="removeFromCart('${p.id}'); renderCart();">Remover</button>
+        </div>`;
+    }).join("");
+    const total = cartTotal();
+    document.getElementById("sum-subtotal").textContent = formatBRL(total);
+    document.getElementById("sum-total").textContent = formatBRL(total);
+  }
+  renderCart();
+</script>
+</body>
+</html>
