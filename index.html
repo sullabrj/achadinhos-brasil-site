@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Achadinhos Brasil — Ofertas Relâmpago com estoque limitado</title>
+<meta name="description" content="Achadinhos Brasil: ofertas relâmpago com estoque limitado. Aproveite antes que acabe.">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">Achadinhos<span>.</span></a>
+    <div class="header-actions">
+      <a href="carrinho.html" class="cart-link">🛒<span class="cart-badge">0</span></a>
+    </div>
+  </div>
+  <nav class="main-nav">
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="categoria.html?cat=casa">Casa e Decoração</a></li>
+      <li><a href="categoria.html?cat=moda">Moda e Vestuário</a></li>
+      <li><a href="categoria.html?cat=pet">Pet Shop</a></li>
+      <li><a href="categoria.html?cat=beleza">Saúde e Beleza</a></li>
+      <li><a href="pages/rastreio.html">Rastrear pedido</a></li>
+      <li><a href="pages/fale-conosco.html">Fale conosco</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="urgency-bar">🔥 <strong>Estoque limitado</strong> — essas ofertas somem quando o contador zerar</div>
+
+<section class="flash-hero">
+  <h1>⚡ Oferta Relâmpago</h1>
+  <p>Poucas unidades, preço especial. Corre antes que acabe!</p>
+  <div class="countdown" id="countdown"></div>
+</section>
+
+<main class="container">
+  <div class="section-title">
+    <h2>Ofertas de hoje</h2>
+  </div>
+  <div class="product-grid" id="grid-ofertas"></div>
+</main>
+
+<a class="wa-float" href="https://wa.me/5500000000000" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <h4>Achadinhos Brasil</h4>
+      <p style="font-size:.85rem;opacity:.85;max-width:320px;">Achadinhos com preço de oferta e estoque limitado. Fale com a gente pelo WhatsApp.</p>
+    </div>
+    <div>
+      <h4>Categorias</h4>
+      <a href="categoria.html?cat=casa">Casa e Decoração</a>
+      <a href="categoria.html?cat=moda">Moda e Vestuário</a>
+      <a href="categoria.html?cat=pet">Pet Shop</a>
+      <a href="categoria.html?cat=beleza">Saúde e Beleza</a>
+    </div>
+    <div>
+      <h4>Atendimento</h4>
+      <a href="pages/fale-conosco.html">Fale conosco</a>
+      <a href="pages/rastreio.html">Rastrear pedido</a>
+      <a href="https://wa.me/5500000000000" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+  <div class="footer-bottom">© Achadinhos Brasil — todos os direitos reservados</div>
+</footer>
+
+<script src="assets/js/catalog.js"></script>
+<script src="assets/js/cart.js"></script>
+<script>
+  initCountdown("countdown", 3);
+  renderProductGrid(document.getElementById("grid-ofertas"), PRODUCTS);
+</script>
+</body>
+</html>
