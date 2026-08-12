@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedido confirmado — Achadinhos Brasil</title>
+<link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="../index.html" class="logo">Achadinhos<span>.</span></a>
+  </div>
+</header>
+
+<main class="container" style="padding:60px 20px;text-align:center;max-width:480px;">
+  <div style="font-size:3rem;margin-bottom:12px;">✅</div>
+  <h1 style="font-size:1.4rem;font-weight:800;margin-bottom:10px;">Recebemos seu pedido!</h1>
+  <p style="font-size:.9rem;color:var(--muted);margin-bottom:24px;">
+    Assim que o pagamento for confirmado a gente separa tudo e te avisa pelo WhatsApp com o código de rastreio.
+  </p>
+  <a class="btn" href="../index.html">Voltar pra loja</a>
+</main>
+
+<script>
+  // Carrinho já foi usado nesse pedido — limpa pra não duplicar na próxima visita.
+  try { localStorage.removeItem("achadinhos_cart"); } catch (e) {}
+</script>
+</body>
+</html>
