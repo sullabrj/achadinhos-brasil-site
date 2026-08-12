@@ -61,7 +61,7 @@
       <div class="product-detail">
         <div class="product-detail-thumb">
           ${disc ? `<span class="badge-desconto">-${disc}%</span>` : ""}
-          <span>${p.emoji}</span>
+          ${productThumbInner(p)}
         </div>
         <div>
           <span class="product-cat">${p.categoryLabel}</span>
@@ -72,7 +72,7 @@
           </div>
           <p style="font-size:.92rem;color:var(--muted);margin-bottom:14px;">${p.description}</p>
           <div class="stock-wrap" style="margin-bottom:18px;">
-            <div class="stock-label">Só ${p.stock} em estoque — corre!</div>
+            <div class="stock-label">${isLowStock(p) ? `Só ${p.stock} em estoque — corre!` : `${p.stock} disponíveis`}</div>
             <div class="stock-bar"><div class="stock-bar-fill" style="width:${stockPct}%"></div></div>
           </div>
           <div class="qty-row">
