@@ -4,7 +4,7 @@
 
 // TROCAR pela URL real do Worker depois do deploy na Cloudflare
 // (ex.: https://achadinhos-checkout.SEU-SUBDOMINIO.workers.dev)
-const CHECKOUT_WORKER_URL = "https://achadinhos-checkout.SEU-SUBDOMINIO.workers.dev";
+const CHECKOUT_WORKER_URL = "https://achadinhos-checkout.comercial-0a2.workers.dev";
 
 async function iniciarCheckout() {
   const cart = getCart();
