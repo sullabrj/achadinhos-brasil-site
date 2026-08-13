@@ -8,6 +8,11 @@
  *   wrangler secret put MP_ACCESS_TOKEN
  * (O comando vai pedir o token no terminal na hora — não fica salvo em
  * nenhum arquivo de texto).
+ *
+ * Rota /test-preference (GET): gera uma preferência de TESTE usando o
+ * secret MP_TEST_ACCESS_TOKEN (token de teste, sandbox) — só existe pra
+ * validar a integração no checklist do Mercado Pago. Não mexe em dinheiro
+ * real. Pode ser removida depois que a integração for aprovada.
  */
 
 const ALLOWED_ORIGIN = "https://lojaachadinhosbrasil.com.br";
@@ -25,6 +30,42 @@ export default {
     // (Próximo passo futuro: buscar o pagamento pelo id e atualizar pedido.)
     if (url.pathname === "/mp-webhook") {
       return new Response("ok", { status: 200 });
+    }
+
+    // Rota de teste (sandbox) usada só para validar a integração no painel do Mercado Pago.
+    if (url.pathname === "/test-preference" && request.method === "GET") {
+      if (!env.MP_TEST_ACCESS_TOKEN) {
+        return json({ error: "MP_TEST_ACCESS_TOKEN não configurado" }, 500);
+      }
+
+      const preference = {
+        items: [
+          { title: "Produto de teste", quantity: 1, unit_price: 10, currency_id: "BRL" }
+        ],
+        back_urls: {
+          success: `${ALLOWED_ORIGIN}/pages/pedido-confirmado.html`,
+          failure: `${ALLOWED_ORIGIN}/carrinho.html`,
+          pending: `${ALLOWED_ORIGIN}/pages/pedido-confirmado.html`
+        },
+        notification_url: `${WORKER_URL}/mp-webhook`
+      };
+
+      const mpResp = await fetch("https://api.mercadopago.com/checkout/preferences", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${env.MP_TEST_ACCESS_TOKEN}`
+        },
+        body: JSON.stringify(preference)
+      });
+
+      if (!mpResp.ok) {
+        const errText = await mpResp.text();
+        return json({ error: "Falha ao criar preferência de teste", detail: errText }, 502);
+      }
+
+      const mpData = await mpResp.json();
+      return json({ init_point: mpData.sandbox_init_point || mpData.init_point });
     }
 
     if (request.method !== "POST") {
