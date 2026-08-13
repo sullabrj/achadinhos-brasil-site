@@ -1,28 +1,30 @@
 /**
  * Cloudflare Worker — cria uma preferência de pagamento no Mercado Pago
  * Checkout Pro e devolve o link (init_point) pro front-end redirecionar.
+ * Também recebe as notificações Webhook do Mercado Pago em /mp-webhook.
  *
  * O Access Token de PRODUÇÃO do Mercado Pago fica como SECRET da
  * Cloudflare (nunca neste arquivo). Configurar com:
  *   wrangler secret put MP_ACCESS_TOKEN
- * (o comando vai pedir o token no terminal na hora — não fica salvo em
+ * (O comando vai pedir o token no terminal na hora — não fica salvo em
  * nenhum arquivo de texto).
- *
- * Deploy:
- *   1) npm install -g wrangler   (se ainda não tiver)
- *   2) wrangler login
- *   3) wrangler secret put MP_ACCESS_TOKEN   (cola o token quando pedir)
- *   4) wrangler deploy scripts/checkout-worker.js --name achadinhos-checkout
- *   5) copiar a URL que o wrangler devolver pra CHECKOUT_WORKER_URL em
- *      assets/js/checkout.js
  */
 
 const ALLOWED_ORIGIN = "https://lojaachadinhosbrasil.com.br";
+const WORKER_URL = "https://achadinhos-checkout.comercial-0a2.workers.dev";
 
 export default {
   async fetch(request, env) {
+    const url = new URL(request.url);
+
     if (request.method === "OPTIONS") {
       return new Response(null, { headers: corsHeaders() });
+    }
+
+    // Webhook do Mercado Pago: só precisa responder 200 para confirmar recebimento.
+    // (Próximo passo futuro: buscar o pagamento pelo id e atualizar pedido.)
+    if (url.pathname === "/mp-webhook") {
+      return new Response("ok", { status: 200 });
     }
 
     if (request.method !== "POST") {
@@ -53,7 +55,8 @@ export default {
         failure: `${ALLOWED_ORIGIN}/carrinho.html`,
         pending: `${ALLOWED_ORIGIN}/pages/pedido-confirmado.html`
       },
-      auto_return: "approved"
+      auto_return: "approved",
+      notification_url: `${WORKER_URL}/mp-webhook`
     };
 
     const mpResp = await fetch("https://api.mercadopago.com/checkout/preferences", {
