@@ -17,7 +17,7 @@
  *      assets/js/checkout.js
  */
 
-const ALLOWED_ORIGIN = "https://lojaachadinhos.com.br";
+const ALLOWED_ORIGIN = "https://lojaachadinhosbrasil.com.br";
 
 export default {
   async fetch(request, env) {
