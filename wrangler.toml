@@ -1,0 +1,3 @@
+name = "achadinhos-checkout"
+main = "scripts/checkout-worker.js"
+compatibility_date = "2025-01-01"
