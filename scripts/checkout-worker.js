@@ -24,7 +24,7 @@
 
 const ALLOWED_ORIGIN = "https://lojaachadinhosbrasil.com.br";
 const WORKER_URL = "https://achadinhos-checkout.comercial-0a2.workers.dev";
-const MP_TEST_PUBLIC_KEY = "TEST-551d8921-d756-4b19-bc90-e0f37e4e0cae";
+const MP_TEST_PUBLIC_KEY = "APP_USR-8866706b-db92-40df-9817-442d4d3b37bc";
 
 export default {
   async fetch(request, env) {
