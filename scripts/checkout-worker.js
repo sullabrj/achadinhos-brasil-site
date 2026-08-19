@@ -13,10 +13,18 @@
  * secret MP_TEST_ACCESS_TOKEN (token de teste, sandbox) — só existe pra
  * validar a integração no checklist do Mercado Pago. Não mexe em dinheiro
  * real. Pode ser removida depois que a integração for aprovada.
+ *
+ * Rota /simulate-test-payment (GET): faz um pagamento de teste completo
+ * direto pela API do Mercado Pago (tokeniza um cartão de teste oficial e
+ * chama /v1/payments), sem passar pelo checkout visual. Usa a Public Key
+ * de teste (não é secreta, pode ficar aqui) e o secret MP_TEST_ACCESS_TOKEN.
+ * Só existe pra validar a etapa "Testar a integração" do checklist do
+ * Mercado Pago. Pode ser removida depois que a integração for aprovada.
  */
 
 const ALLOWED_ORIGIN = "https://lojaachadinhosbrasil.com.br";
 const WORKER_URL = "https://achadinhos-checkout.comercial-0a2.workers.dev";
+const MP_TEST_PUBLIC_KEY = "TEST-551d8921-d756-4b19-bc90-e0f37e4e0cae";
 
 export default {
   async fetch(request, env) {
@@ -66,6 +74,64 @@ export default {
 
       const mpData = await mpResp.json();
       return json({ init_point: mpData.sandbox_init_point || mpData.init_point });
+    }
+
+    // Rota de teste: paga direto via API (sem checkout visual, sem login).
+    if (url.pathname === "/simulate-test-payment" && request.method === "GET") {
+      if (!env.MP_TEST_ACCESS_TOKEN) {
+        return json({ error: "MP_TEST_ACCESS_TOKEN não configurado" }, 500);
+      }
+
+      // Cartão de teste oficial do Mercado Pago (Mastercard, aprovação simulada).
+      const tokenResp = await fetch(
+        `https://api.mercadopago.com/v1/card_tokens?public_key=${MP_TEST_PUBLIC_KEY}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            card_number: "5031433215406351",
+            expiration_month: 11,
+            expiration_year: 2030,
+            security_code: "123",
+            cardholder: {
+              name: "APRO",
+              identification: { type: "CPF", number: "12345678909" }
+            }
+          })
+        }
+      );
+
+      if (!tokenResp.ok) {
+        const errText = await tokenResp.text();
+        return json({ error: "Falha ao tokenizar cartão de teste", detail: errText }, 502);
+      }
+
+      const tokenData = await tokenResp.json();
+
+      const paymentResp = await fetch("https://api.mercadopago.com/v1/payments", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${env.MP_TEST_ACCESS_TOKEN}`,
+          "X-Idempotency-Key": crypto.randomUUID()
+        },
+        body: JSON.stringify({
+          transaction_amount: 10,
+          token: tokenData.id,
+          description: "Produto de teste",
+          installments: 1,
+          payment_method_id: "master",
+          payer: { email: "test_user_123456@testuser.com" }
+        })
+      });
+
+      const paymentData = await paymentResp.json();
+      return json({
+        payment_status: paymentData.status,
+        status_detail: paymentData.status_detail,
+        payment_id: paymentData.id,
+        raw: paymentData
+      });
     }
 
     if (request.method !== "POST") {
