@@ -40,6 +40,26 @@ export default {
       return new Response("ok", { status: 200 });
     }
 
+    // Rota de diagnóstico temporária: confirma sem expor o token se os dois
+    // secrets foram colados nos campos certos (compara o sufixo numérico —
+    // que é o ID da conta embutido no token — com o User ID mostrado no
+    // painel do Mercado Pago). Remover depois de resolver o problema.
+    if (url.pathname === "/debug-token-info" && request.method === "GET") {
+      const testTok = env.MP_TEST_ACCESS_TOKEN || "";
+      const liveTok = env.MP_ACCESS_TOKEN || "";
+      return json({
+        test_present: testTok.length > 0,
+        test_len: testTok.length,
+        test_prefix: testTok.slice(0, 8),
+        test_suffix: testTok.split("-").pop(),
+        live_present: liveTok.length > 0,
+        live_len: liveTok.length,
+        live_prefix: liveTok.slice(0, 8),
+        live_suffix: liveTok.split("-").pop(),
+        same_value: testTok !== "" && testTok === liveTok
+      });
+    }
+
     // Rota de teste (sandbox) usada só para validar a integração no painel do Mercado Pago.
     if (url.pathname === "/test-preference" && request.method === "GET") {
       if (!env.MP_TEST_ACCESS_TOKEN) {
