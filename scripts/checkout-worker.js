@@ -141,7 +141,7 @@ export default {
           description: "Produto de teste",
           installments: 1,
           payment_method_id: "master",
-          payer: { email: "test_user_123456@testuser.com" }
+          payer: { email: "test@testuser.com" }
         })
       });
 
