@@ -963,7 +963,7 @@ function initSiteSearch() {
   `;
   // Insere entre a logo e o carrinho (não dentro de .header-actions) pra
   // a caixa de busca ficar centralizada no header via CSS grid.
-  headerInner.insertBefore(wrap, actions);
+  actions.insertBefore(wrap, actions.firstChild);
   wireSearch(document.getElementById("search-input"), document.getElementById("search-results"));
 }
 
