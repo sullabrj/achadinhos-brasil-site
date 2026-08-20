@@ -34,9 +34,15 @@
 <div class="urgency-bar">🔥 <strong>Estoque limitado</strong> — essas ofertas somem quando o contador zerar</div>
 
 <section class="flash-hero">
-  <h1>⚡ Oferta Relâmpago</h1>
-  <p>Poucas unidades, preço especial. Corre antes que acabe!</p>
-  <div class="countdown" id="countdown"></div>
+  <div class="flash-hero-inner">
+    <div class="flash-side" id="flash-side-left"></div>
+    <div class="flash-hero-center">
+      <h1>⚡ Oferta Relâmpago</h1>
+      <p>Poucas unidades, preço especial. Corre antes que acabe!</p>
+      <div class="countdown" id="countdown"></div>
+    </div>
+    <div class="flash-side" id="flash-side-right"></div>
+  </div>
 </section>
 
 <main class="container">
@@ -78,6 +84,7 @@
 <script>
   initCountdown("countdown", 3);
   renderProductGrid(document.getElementById("grid-ofertas"), PRODUCTS);
+  renderFlashSideItems("p33", "p46", document.getElementById("flash-side-left"), document.getElementById("flash-side-right"));
 </script>
 </body>
 </html>
