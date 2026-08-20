@@ -60,6 +60,16 @@ export default {
       });
     }
 
+    // Rota de diagnóstico temporária: mostra o pagamento de teste mais recente.
+    if (url.pathname === "/debug-last-payment" && request.method === "GET") {
+      const searchResp = await fetch(
+        "https://api.mercadopago.com/v1/payments/search?sort=date_created&criteria=desc&limit=3",
+        { headers: { Authorization: `Bearer ${env.MP_TEST_ACCESS_TOKEN}` } }
+      );
+      const searchData = await searchResp.json();
+      return json(searchData);
+    }
+
     // Rota de teste (sandbox) usada só para validar a integração no painel do Mercado Pago.
     if (url.pathname === "/test-preference" && request.method === "GET") {
       if (!env.MP_TEST_ACCESS_TOKEN) {
