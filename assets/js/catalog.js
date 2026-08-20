@@ -657,12 +657,12 @@ const PRODUCTS = [
 ];
 
 const CATEGORIES = [
-  { key: "casa", label: "Casa e Decoração", icon: "🏠" },
-  { key: "moda", label: "Moda e Vestuário", icon: "👗" },
-  { key: "pet", label: "Pet Shop", icon: "🐾" },
-  { key: "beleza", label: "Saúde e Beleza", icon: "💄" },
-  { key: "joias", label: "Joias e Acessórios", icon: "💍" },
-  { key: "infantil", label: "Infantil e Brinquedos", icon: "🧸" }
+  { key: "casa", label: "Casa e Decoração", icon: "🏠", image: "assets/img/categories/casa.png" },
+  { key: "moda", label: "Moda e Vestuário", icon: "👗", image: "assets/img/categories/moda.png" },
+  { key: "pet", label: "Pet Shop", icon: "🐾", image: "assets/img/categories/pet.png" },
+  { key: "beleza", label: "Saúde e Beleza", icon: "💄", image: "assets/img/categories/beleza.png" },
+  { key: "joias", label: "Joias e Acessórios", icon: "💍", image: "assets/img/categories/joias.png" },
+  { key: "infantil", label: "Infantil e Brinquedos", icon: "🧸", image: "assets/img/categories/infantil.png" }
 ];
 
 /* Curadoria manual (não é estatística inventada — é escolha editorial,
@@ -875,7 +875,7 @@ function renderCategoryCards(containerEl) {
     const count = PRODUCTS.filter((p) => p.category === c.key).length;
     return `
     <a class="cat-card" href="categoria.html?cat=${c.key}">
-      <div class="cat-card-icon">${c.icon}</div>
+      <div class="cat-card-icon">${c.image ? `<img src="${c.image}" alt="${c.label}" loading="lazy">` : c.icon}</div>
       <div class="cat-card-label">${c.label}</div>
       <div class="cat-card-count">${count} ${count === 1 ? "produto" : "produtos"}</div>
     </a>`;
