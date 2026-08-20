@@ -34,7 +34,7 @@
   <!-- preenchido via JS -->
 </main>
 
-<a class="wa-float" href="https://wa.me/5500000000000" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+<a class="wa-float" href="https://wa.me/5524988383100" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
 
 <footer class="site-footer">
   <div class="footer-grid">
@@ -72,6 +72,7 @@
             ${p.oldPrice ? `<span class="price-old">${formatBRL(p.oldPrice)}</span>` : ""}
             <span class="price-new" style="font-size:1.6rem;">${formatBRL(p.price)}</span>
           </div>
+          <div class="price-installment" style="font-size:.85rem;color:var(--muted);margin-bottom:12px;">${installmentText(p)}</div>
           <p style="font-size:.92rem;color:var(--muted);margin-bottom:14px;">${p.description}</p>
           <div class="stock-wrap" style="margin-bottom:18px;">
             <div class="stock-label">${isLowStock(p) ? `Só ${p.stock} em estoque — corre!` : stockLabel(p)}</div>
