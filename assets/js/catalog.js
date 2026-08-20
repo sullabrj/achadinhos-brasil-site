@@ -5,13 +5,24 @@
    reforço pontual de Infantil/Joias) e 20/08/2026 (p12 a p48, expansão
    para ~8 produtos por categoria) com produtos reais filtrados no
    painel da Dropi (marketplace nacional, filtro "Mais Vistos Mês"),
-   priorizando diversidade entre os itens de cada categoria. Preço, desconto (quando
-   existe de verdade no fornecedor) e estoque são os valores reais
-   informados pelo fornecedor no momento da curadoria — nunca
-   inventados. Como o estoque de fornecedor de dropshipping não
-   decresce no mesmo ritmo de uma loja com estoque próprio, o rótulo
-   "Só X em estoque!" só aparece quando o número já é baixo por si só
-   (ver isLowStock), evitando gatilho de urgência falso.
+   priorizando diversidade entre os itens de cada categoria. Estoque é
+   valor real informado pelo fornecedor — nunca inventado. Como o
+   estoque de fornecedor de dropshipping não decresce no mesmo ritmo
+   de uma loja com estoque próprio, o rótulo "Só X em estoque!" só
+   aparece quando o número já é baixo por si só (ver isLowStock),
+   evitando gatilho de urgência falso.
+
+   PREÇO reprecificado em 20/08/2026: até essa data, "price" era o
+   valor de custo puxado direto da Dropi (sem markup — o site vendia
+   no prejuízo). Fórmula aplicada agora: Preço = Custo ÷ (1 − (Imposto
+   10,4% + Taxa Checkout MP 2% + custo de financiar 18x sem juros
+   26,17% + Lucro líquido 25%)) = Custo ÷ 0,3643, arredondado pra cima
+   até terminar em ",90". oldPrice foi zerado em todos os itens porque
+   o valor antigo (tabela do próprio fornecedor) deixou de fazer
+   sentido como preço "de" depois do markup — não é uma promoção real,
+   é só o custo puro, então não deve aparecer como desconto ao
+   cliente. Parâmetros completos (tabela de parcelamento MP, fórmula)
+   na planilha Achadinhos_Brasil_Catalogo_Precificacao.xlsx.
    ===================================================================== */
 
 const PRODUCTS = [
@@ -20,7 +31,7 @@ const PRODUCTS = [
     name: "Kit Banheiro Lavabo 4 Peças Resistente e Moderno",
     category: "casa",
     categoryLabel: "Casa e Decoração",
-    price: 87.5,
+    price: 240.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1768713762696c6e22a08f9.jpg",
     emoji: "🧼",
@@ -33,7 +44,7 @@ const PRODUCTS = [
     name: "Cortina de Pia Cozinha 100% PVC Impermeável",
     category: "casa",
     categoryLabel: "Casa e Decoração",
-    price: 12.53,
+    price: 34.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17210832876695a59701832.jpg",
     emoji: "🪟",
@@ -46,8 +57,8 @@ const PRODUCTS = [
     name: "Calça Legging Fitness Poliamida Suplex",
     category: "moda",
     categoryLabel: "Moda e Vestuário",
-    price: 29.9,
-    oldPrice: 69.9,
+    price: 82.9,
+    oldPrice: null,
     image: "https://dropi.xpto.app/dropi/fornecedor/produto-17819637676a369bf7e2729.png",
     emoji: "🏃‍♀️",
     stock: 5026,
@@ -59,8 +70,8 @@ const PRODUCTS = [
     name: "Calça Legging Cintura Alta Cinza Mesclado",
     category: "moda",
     categoryLabel: "Moda e Vestuário",
-    price: 29.9,
-    oldPrice: 59.9,
+    price: 82.9,
+    oldPrice: null,
     image: "https://dropi.xpto.app/dropi/fornecedor/produto-17809326686a26e03c82e13.jpg",
     emoji: "👖",
     stock: 6057,
@@ -72,8 +83,8 @@ const PRODUCTS = [
     name: "Truss Shampoo Equilibrium Scalp 300ml",
     category: "beleza",
     categoryLabel: "Saúde e Beleza",
-    price: 49.6,
-    oldPrice: 79.99,
+    price: 136.9,
+    oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-175440215968920d6f709e8.png",
     emoji: "🧴",
     stock: 50,
@@ -85,8 +96,8 @@ const PRODUCTS = [
     name: "Truss Óleo Nutri Infusion 60ml",
     category: "beleza",
     categoryLabel: "Saúde e Beleza",
-    price: 56.07,
-    oldPrice: 69.99,
+    price: 154.9,
+    oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17526736546877ad767e93e.webp",
     emoji: "💧",
     stock: 20,
@@ -98,7 +109,7 @@ const PRODUCTS = [
     name: "Cama Pet Atacadão Impermeável Média",
     category: "pet",
     categoryLabel: "Pet Shop",
-    price: 31.0,
+    price: 85.9,
     oldPrice: null,
     image: "https://dropi.xpto.app/dropi/fornecedor/produto-17846980936a6054eded393.jpg",
     emoji: "🐾",
@@ -111,7 +122,7 @@ const PRODUCTS = [
     name: "Sapatilha Infantil StarPink Cristal Branco",
     category: "infantil",
     categoryLabel: "Infantil e Brinquedos",
-    price: 65.9,
+    price: 180.9,
     oldPrice: null,
     image: "https://dropi.xpto.app/dropi/fornecedor/produto-17851772456a67a49de41eb.jpg",
     emoji: "🩰",
@@ -124,8 +135,8 @@ const PRODUCTS = [
     name: "Brinco Orgânico Banhado a Ouro 18K",
     category: "joias",
     categoryLabel: "Joias e Acessórios",
-    price: 44.91,
-    oldPrice: 49.9,
+    price: 123.9,
+    oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177335414469b33ca0b0252.jpg",
     emoji: "💎",
     stock: 1,
@@ -137,8 +148,8 @@ const PRODUCTS = [
     name: "Boneca Sparkle Party com Acessórios Surpresa",
     category: "infantil",
     categoryLabel: "Infantil e Brinquedos",
-    price: 84.57,
-    oldPrice: 85.35,
+    price: 232.9,
+    oldPrice: null,
     image: "https://dropi.xpto.app/dropi/fornecedor/produto-17848410606a628364e3d6f.jpg",
     emoji: "🎀",
     stock: 2,
@@ -150,7 +161,7 @@ const PRODUCTS = [
     name: "Trio de Brincos Argola Articulada Cravejada",
     category: "joias",
     categoryLabel: "Joias e Acessórios",
-    price: 73.45,
+    price: 201.9,
     oldPrice: null,
     image: "https://dropi.xpto.app/dropi/fornecedor/produto-17848514566a62ac00a2ef8.jpg",
     emoji: "✨",
@@ -163,7 +174,7 @@ const PRODUCTS = [
     name: "Box Organizador P Color",
     category: "casa",
     categoryLabel: "Casa e Decoração",
-    price: 8.69,
+    price: 23.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17326021416745691db2b6e.jpg",
     emoji: "🗃️",
@@ -176,8 +187,8 @@ const PRODUCTS = [
     name: "Luminária LED Efeito Sorvete Caindo Ice Cream",
     category: "casa",
     categoryLabel: "Casa e Decoração",
-    price: 31.92,
-    oldPrice: 39.9,
+    price: 87.9,
+    oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-172374287566be3a9ba0c45.png",
     emoji: "💡",
     stock: 2,
@@ -189,7 +200,7 @@ const PRODUCTS = [
     name: "Tapete Peluciado 40x60cm",
     category: "casa",
     categoryLabel: "Casa e Decoração",
-    price: 11.99,
+    price: 33.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1770729972698b31f4cfa67.webp",
     emoji: "🛋️",
@@ -202,8 +213,8 @@ const PRODUCTS = [
     name: "Colher Digital LCD Dosador Medidor Balança de Precisão",
     category: "casa",
     categoryLabel: "Casa e Decoração",
-    price: 31.99,
-    oldPrice: 39.99,
+    price: 87.9,
+    oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-172372689066bdfc2a5bfb9.png",
     emoji: "⚖️",
     stock: 1,
@@ -215,8 +226,8 @@ const PRODUCTS = [
     name: "Kit Decoração Criativa Sala e Cozinha + Vasos + Plantas",
     category: "casa",
     categoryLabel: "Casa e Decoração",
-    price: 39.12,
-    oldPrice: 48.9,
+    price: 107.9,
+    oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-172373265066be12aae58b7.jpg",
     emoji: "🪴",
     stock: 4,
@@ -228,7 +239,7 @@ const PRODUCTS = [
     name: "Cesto Organizador em Tecido Floral",
     category: "casa",
     categoryLabel: "Casa e Decoração",
-    price: 31.13,
+    price: 85.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-16699037416388b57dbdac8.jpg",
     emoji: "🧺",
@@ -241,7 +252,7 @@ const PRODUCTS = [
     name: "Casaco de Algodão Feminino Sortido",
     category: "moda",
     categoryLabel: "Moda e Vestuário",
-    price: 88.68,
+    price: 243.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177262436169a819e9f21be.webp",
     emoji: "🧥",
@@ -254,7 +265,7 @@ const PRODUCTS = [
     name: "Camisa Feminina Cores Sortidas",
     category: "moda",
     categoryLabel: "Moda e Vestuário",
-    price: 16.92,
+    price: 46.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177262435569a819e34b6be.webp",
     emoji: "👚",
@@ -267,7 +278,7 @@ const PRODUCTS = [
     name: "Pijama Feminino Cores Sortidas",
     category: "moda",
     categoryLabel: "Moda e Vestuário",
-    price: 22.79,
+    price: 62.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177153493769977a59588ee.png",
     emoji: "🌙",
@@ -280,7 +291,7 @@ const PRODUCTS = [
     name: "Pantufa Feminina com Forro Peluciado",
     category: "moda",
     categoryLabel: "Moda e Vestuário",
-    price: 16.58,
+    price: 45.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177262447769a81a5dc1365.webp",
     emoji: "🥿",
@@ -293,7 +304,7 @@ const PRODUCTS = [
     name: "Conjunto Top e Legging para Academia",
     category: "moda",
     categoryLabel: "Moda e Vestuário",
-    price: 31.27,
+    price: 85.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177365868969b7e241399dc.webp",
     emoji: "🏋️‍♀️",
@@ -306,7 +317,7 @@ const PRODUCTS = [
     name: "Cinto 1,2m Cores Sortidas",
     category: "moda",
     categoryLabel: "Moda e Vestuário",
-    price: 6.35,
+    price: 17.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17700621156981012317d44.jpg",
     emoji: "🧵",
@@ -319,7 +330,7 @@ const PRODUCTS = [
     name: "Areia para Gatos Biodegradável 2kg",
     category: "pet",
     categoryLabel: "Pet Shop",
-    price: 22.47,
+    price: 61.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-176111446568f879613682e.png",
     emoji: "🐱",
@@ -332,7 +343,7 @@ const PRODUCTS = [
     name: "Coleira para Cachorro Mulher Maravilha",
     category: "pet",
     categoryLabel: "Pet Shop",
-    price: 56.83,
+    price: 156.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-176122399168fa2537d0f5c.jpg",
     emoji: "🐕",
@@ -345,7 +356,7 @@ const PRODUCTS = [
     name: "Guia Tradicional Scooby-Doo para Cachorro",
     category: "pet",
     categoryLabel: "Pet Shop",
-    price: 77.33,
+    price: 212.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-175942638668deb752793fb.jpg",
     emoji: "🦮",
@@ -358,7 +369,7 @@ const PRODUCTS = [
     name: "Vasilha Comedouro/Bebedouro de Melamina Batman",
     category: "pet",
     categoryLabel: "Pet Shop",
-    price: 64.11,
+    price: 176.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-175942796268debd7ac20f9.jpg",
     emoji: "🥣",
@@ -371,7 +382,7 @@ const PRODUCTS = [
     name: "Colchonete Arranhador para Gatos Zoe",
     category: "pet",
     categoryLabel: "Pet Shop",
-    price: 29.0,
+    price: 79.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177738450569f0bc391a5c1.jpg",
     emoji: "🐈",
@@ -384,7 +395,7 @@ const PRODUCTS = [
     name: "Coberdrom Pet Dupla Face 3 Peças",
     category: "pet",
     categoryLabel: "Pet Shop",
-    price: 45.0,
+    price: 123.9,
     oldPrice: null,
     image: "https://dropi.xpto.app/dropi/fornecedor/produto-17792781166a0da1245e13f.jpg",
     emoji: "🛌",
@@ -397,7 +408,7 @@ const PRODUCTS = [
     name: "Tapete Higiênico Impermeável Pequeno",
     category: "pet",
     categoryLabel: "Pet Shop",
-    price: 21.0,
+    price: 57.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177738531169f0bf5fdf4db.jpg",
     emoji: "💧",
@@ -410,7 +421,7 @@ const PRODUCTS = [
     name: "Adesivos Antirrugas para o Rosto",
     category: "beleza",
     categoryLabel: "Saúde e Beleza",
-    price: 20.2,
+    price: 55.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1770526661698817c5bcca0.webp",
     emoji: "✨",
@@ -423,7 +434,7 @@ const PRODUCTS = [
     name: "Argila Vermelha Facial e Corporal",
     category: "beleza",
     categoryLabel: "Saúde e Beleza",
-    price: 5.0,
+    price: 13.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-166517092763407defc188f.jpg",
     emoji: "🧖‍♀️",
@@ -436,7 +447,7 @@ const PRODUCTS = [
     name: "Hidratante Corporal Yara 200g",
     category: "beleza",
     categoryLabel: "Saúde e Beleza",
-    price: 139.99,
+    price: 384.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-175629516768aeefff114c1.png",
     emoji: "🧴",
@@ -449,7 +460,7 @@ const PRODUCTS = [
     name: "Base Líquida Bruna Tavares BT Skin",
     category: "beleza",
     categoryLabel: "Saúde e Beleza",
-    price: 85.96,
+    price: 236.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-16651720146340822ea4fc6.jpg",
     emoji: "💄",
@@ -462,7 +473,7 @@ const PRODUCTS = [
     name: "Balm Labial Lip Glow Pitanga",
     category: "beleza",
     categoryLabel: "Saúde e Beleza",
-    price: 79.92,
+    price: 219.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1764699683692f2e2320332.png",
     emoji: "💋",
@@ -475,7 +486,7 @@ const PRODUCTS = [
     name: "Esfoliante Labial Active Repair",
     category: "beleza",
     categoryLabel: "Saúde e Beleza",
-    price: 37.52,
+    price: 103.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1764699811692f2ea3dacb3.jpg",
     emoji: "🌸",
@@ -488,7 +499,7 @@ const PRODUCTS = [
     name: "Anel Solitário Ajustável Verde Esmeralda",
     category: "joias",
     categoryLabel: "Joias e Acessórios",
-    price: 46.45,
+    price: 127.9,
     oldPrice: null,
     image: "https://dropi.xpto.app/dropi/fornecedor/produto-17860646776a752f2597f3d.jpg",
     emoji: "💚",
@@ -501,7 +512,7 @@ const PRODUCTS = [
     name: "Bracelete Quadrado Inspiração X",
     category: "joias",
     categoryLabel: "Joias e Acessórios",
-    price: 82.45,
+    price: 226.9,
     oldPrice: null,
     image: "https://dropi.xpto.app/dropi/fornecedor/produto-17848566126a62c024ab5a0.jpg",
     emoji: "✨",
@@ -514,7 +525,7 @@ const PRODUCTS = [
     name: "Choker Fita Fina 3mm",
     category: "joias",
     categoryLabel: "Joias e Acessórios",
-    price: 57.45,
+    price: 157.9,
     oldPrice: null,
     image: "https://dropi.xpto.app/dropi/fornecedor/produto-17848567006a62c07c2476e.jpg",
     emoji: "⛓️",
@@ -527,7 +538,7 @@ const PRODUCTS = [
     name: "Colar Pingente de Zircônia e Pérola",
     category: "joias",
     categoryLabel: "Joias e Acessórios",
-    price: 44.45,
+    price: 122.9,
     oldPrice: null,
     image: "https://dropi.xpto.app/dropi/fornecedor/produto-17858919806a728c8c54ba8.jpg",
     emoji: "📿",
@@ -540,7 +551,7 @@ const PRODUCTS = [
     name: "Anel Nossa Senhora Zircônia Azul",
     category: "joias",
     categoryLabel: "Joias e Acessórios",
-    price: 37.45,
+    price: 102.9,
     oldPrice: null,
     image: "https://dropi.xpto.app/dropi/fornecedor/produto-17848566676a62c05b76927.jpg",
     emoji: "🙏",
@@ -553,7 +564,7 @@ const PRODUCTS = [
     name: "Argolinha de Click com Ponto de Luz",
     category: "joias",
     categoryLabel: "Joias e Acessórios",
-    price: 12.45,
+    price: 34.9,
     oldPrice: null,
     image: "https://dropi.xpto.app/dropi/fornecedor/produto-17860647246a752f5498dfd.jpg",
     emoji: "⭐",
@@ -566,7 +577,7 @@ const PRODUCTS = [
     name: "Fantasia Princesa Belli Longa Amarela",
     category: "infantil",
     categoryLabel: "Infantil e Brinquedos",
-    price: 74.0,
+    price: 203.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17670937996953b6273db7e.webp",
     emoji: "👑",
@@ -579,7 +590,7 @@ const PRODUCTS = [
     name: "Laço/Faixa para Vestido Verde Menta",
     category: "infantil",
     categoryLabel: "Infantil e Brinquedos",
-    price: 18.0,
+    price: 49.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17532802446880eef42acc9.jpg",
     emoji: "🎀",
@@ -592,7 +603,7 @@ const PRODUCTS = [
     name: "Romper/Vestido Princesa Belli Pequena Pedrita",
     category: "infantil",
     categoryLabel: "Infantil e Brinquedos",
-    price: 58.0,
+    price: 159.9,
     oldPrice: null,
     image: "https://dropi.xpto.app/dropi/fornecedor/produto-17858706236a72391fc5ce0.jpg",
     emoji: "👗",
@@ -605,7 +616,7 @@ const PRODUCTS = [
     name: "Pelúcia de Pendurar Rhino Bright Starts",
     category: "infantil",
     categoryLabel: "Infantil e Brinquedos",
-    price: 129.9,
+    price: 356.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1750044109684f8dcd454f2.jpg",
     emoji: "🦏",
@@ -618,7 +629,7 @@ const PRODUCTS = [
     name: "Mordedor Chocalho Rattle & Teethe Bright Starts",
     category: "infantil",
     categoryLabel: "Infantil e Brinquedos",
-    price: 39.9,
+    price: 109.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17514048526864513419ef5.jpg",
     emoji: "🍼",
@@ -631,7 +642,7 @@ const PRODUCTS = [
     name: "Kit 3 Brinquedos Educativos em Madeira e EVA",
     category: "infantil",
     categoryLabel: "Infantil e Brinquedos",
-    price: 55.0,
+    price: 151.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1770760821698baa7504775.jpg",
     emoji: "🧩",
@@ -657,6 +668,28 @@ function formatBRL(value) {
 function discountPercent(p) {
   if (!p.oldPrice) return null;
   return Math.round((1 - p.price / p.oldPrice) * 100);
+}
+
+function flashSideItemHTML(p) {
+  // Item de destaque nas laterais da Oferta Relâmpago. Curado à mão (não é
+  // "maior desconto %" puro) pra evitar preço unitário baixo de mais que passe
+  // impressão de saldão/loja sem valor — prioriza produto com preço percebido
+  // maior e desconto real ainda assim expressivo.
+  const disc = discountPercent(p);
+  return `
+  <a class="flash-side-item" href="produto.html?id=${p.id}">
+    ${disc ? `<span class="flash-side-badge">-${disc}%</span>` : ""}
+    <div class="flash-side-thumb">${productThumbInner(p)}</div>
+    <span class="flash-side-name">${p.name}</span>
+    <span class="flash-side-price">${formatBRL(p.price)}</span>
+  </a>`;
+}
+
+function renderFlashSideItems(leftId, rightId, leftEl, rightEl) {
+  const left = getProductById(leftId);
+  const right = getProductById(rightId);
+  if (left && leftEl) leftEl.innerHTML = flashSideItemHTML(left);
+  if (right && rightEl) rightEl.innerHTML = flashSideItemHTML(right);
 }
 
 function stockPercent(p) {
