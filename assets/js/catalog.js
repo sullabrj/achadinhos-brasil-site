@@ -24,7 +24,7 @@
    cliente. Parâmetros completos (tabela de parcelamento MP, fórmula)
    na planilha Achadinhos_Brasil_Catalogo_Precificacao.xlsx.
    
-ACRÉSCIMOS 20/08 (mesmo dia, depois da repreficação): (1) instalado destaque de parcelamento — todo produto agora mostra "ou 18x de R$X sem juros" (installmentText, calcula price/18) nos cards de listagem e na página de produto; é só informativo, não muda o preço à vista. (2) escolhidos 2 itens de maior ticket (maior markup em R$) pra estampar a "Oferta Relâmpago" com desconto promocional real de ~10%: Hidratante Corporal Yara 200g (p33, de R$384,90 por R$345,90) e Pelúcia de Pendurar Rhino Bright Starts (p46, de R$356,90 por R$320,90) — únicos dois itens do catálogo com oldPrice preenchido; o resto do catálogo continua sem oldPrice (não é desconto real, é preço cheio já com markup).
+ACRÉSCIMOS 20/08 (mesmo dia, depois da reprecificação): (1) instalado destaque de parcelamento — todo produto agora mostra "ou 18x de R$X sem juros" (installmentText, calcula price/18) nos cards de listagem e na página de produto; é só informativo, não muda o preço à vista. (2) escolhidos 2 itens de maior ticket (maior markup em R$) pra estampar a "Oferta Relâmpago" com desconto promocional real de ~10%: Hidratante Corporal Yara 200g (p33, de R$384,90 por R$345,90) e Pelúcia de Pendurar Rhino Bright Starts (p46, de R$356,90 por R$320,90) — únicos dois itens do catálogo com oldPrice preenchido; o resto do catálogo continua sem oldPrice (não é desconto real, é preço cheio já com markup).
 ===================================================================== */
 
 const PRODUCTS = [
@@ -681,10 +681,6 @@ function discountPercent(p) {
 }
 
 function flashSideItemHTML(p) {
-  // Item de destaque nas laterais da Oferta Relâmpago. Curado à mão (não é
-  // "maior desconto %" puro) pra evitar preço unitário baixo de mais que passe
-  // impressão de saldão/loja sem valor — prioriza produto com preço percebido
-  // maior e desconto real ainda assim expressivo.
   const disc = discountPercent(p);
   return `
   <a class="flash-side-item" href="produto.html?id=${p.id}">
@@ -707,20 +703,16 @@ function stockPercent(p) {
 }
 
 function isLowStock(p) {
-  // Só sinaliza urgência de estoque quando o número real já é baixo —
-  // nunca em cima de uma fração inventada de um estoque de fornecedor grande.
   return p.stock <= 20;
 }
 
 function isBulkStock(p) {
-  // Estoque de fornecedor bem grande (dropshipping) não deve aparecer como
-  // número gigante pro cliente — vira uma mensagem de preço de atacado.
   return p.stock > 100;
 }
 
 function stockLabel(p) {
   if (isLowStock(p)) return `Só ${p.stock} em estoque!`;
-  if (isBulkStock(p)) return "Desconto de atacado — preço especial por quantidade";
+  if (isBulkStock(p)) return "Em estoque";
   return `${p.stock} disponíveis`;
 }
 
@@ -768,10 +760,6 @@ function renderProductGrid(containerEl, products) {
   containerEl.innerHTML = products.map(productCardHTML).join("");
 }
 
-/* ---------- Contador regressivo da Oferta Relâmpago ----------
-   Guarda o horário-alvo no sessionStorage pra não "resetar" o
-   contador toda vez que o cliente troca de página durante a visita.
-   Duração padrão: 3 horas a partir da primeira visita da sessão. */
 function initCountdown(elId, hours = 3) {
   const el = document.getElementById(elId);
   if (!el) return;
@@ -788,7 +776,6 @@ function initCountdown(elId, hours = 3) {
   function tick() {
     const diff = deadline - Date.now();
     if (diff <= 0) {
-      // Oferta "renova" pra manter o gatilho de urgência ativo.
       sessionStorage.removeItem(STORAGE_KEY);
       return initCountdown(elId, hours);
     }
