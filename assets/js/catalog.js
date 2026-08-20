@@ -23,7 +23,9 @@
    é só o custo puro, então não deve aparecer como desconto ao
    cliente. Parâmetros completos (tabela de parcelamento MP, fórmula)
    na planilha Achadinhos_Brasil_Catalogo_Precificacao.xlsx.
-   ===================================================================== */
+   
+ACRÉSCIMOS 20/08 (mesmo dia, depois da repreficação): (1) instalado destaque de parcelamento — todo produto agora mostra "ou 18x de R$X sem juros" (installmentText, calcula price/18) nos cards de listagem e na página de produto; é só informativo, não muda o preço à vista. (2) escolhidos 2 itens de maior ticket (maior markup em R$) pra estampar a "Oferta Relâmpago" com desconto promocional real de ~10%: Hidratante Corporal Yara 200g (p33, de R$384,90 por R$345,90) e Pelúcia de Pendurar Rhino Bright Starts (p46, de R$356,90 por R$320,90) — únicos dois itens do catálogo com oldPrice preenchido; o resto do catálogo continua sem oldPrice (não é desconto real, é preço cheio já com markup).
+===================================================================== */
 
 const PRODUCTS = [
   {
@@ -447,8 +449,8 @@ const PRODUCTS = [
     name: "Hidratante Corporal Yara 200g",
     category: "beleza",
     categoryLabel: "Saúde e Beleza",
-    price: 384.9,
-    oldPrice: null,
+    price: 345.9,
+    oldPrice: 384.9,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-175629516768aeefff114c1.png",
     emoji: "🧴",
     stock: 6,
@@ -616,8 +618,8 @@ const PRODUCTS = [
     name: "Pelúcia de Pendurar Rhino Bright Starts",
     category: "infantil",
     categoryLabel: "Infantil e Brinquedos",
-    price: 356.9,
-    oldPrice: null,
+    price: 320.9,
+    oldPrice: 356.9,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1750044109684f8dcd454f2.jpg",
     emoji: "🦏",
     stock: 2,
@@ -663,6 +665,14 @@ const CATEGORIES = [
 
 function formatBRL(value) {
   return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+}
+
+function installmentValue(p) {
+  return p.price / 18;
+}
+
+function installmentText(p) {
+  return `ou 18x de ${formatBRL(installmentValue(p))} sem juros`;
 }
 
 function discountPercent(p) {
@@ -741,6 +751,7 @@ function productCardHTML(p) {
         ${p.oldPrice ? `<span class="price-old">${formatBRL(p.oldPrice)}</span>` : ""}
         <span class="price-new">${formatBRL(p.price)}</span>
       </div>
+      <div class="price-installment">${installmentText(p)}</div>
       <div class="stock-wrap">
         <div class="stock-label">${stockLabel(p)}</div>
         <div class="stock-bar"><div class="stock-bar-fill" style="width:${stockPct}%"></div></div>
