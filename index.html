@@ -47,6 +47,17 @@
 
 <main class="container">
   <div class="section-title">
+    <h2>Comprar por categoria</h2>
+  </div>
+  <div class="cat-cards" id="cat-cards"></div>
+
+  <div class="trust-bar">
+    <div class="trust-item"><span class="trust-icon">🔒</span> Pagamento seguro via Mercado Pago</div>
+    <div class="trust-item"><span class="trust-icon">🚚</span> Envio para todo o Brasil</div>
+    <div class="trust-item"><span class="trust-icon">💬</span> Atendimento direto no WhatsApp</div>
+  </div>
+
+  <div class="section-title">
     <h2>Ofertas de hoje</h2>
   </div>
   <div class="product-grid" id="grid-ofertas"></div>
@@ -83,6 +94,7 @@
 <script src="assets/js/cart.js"></script>
 <script>
   initCountdown("countdown", 3);
+  renderCategoryCards(document.getElementById("cat-cards"));
   renderProductGrid(document.getElementById("grid-ofertas"), PRODUCTS);
   renderFlashSideItems("p33", "p46", document.getElementById("flash-side-left"), document.getElementById("flash-side-right"));
 </script>
