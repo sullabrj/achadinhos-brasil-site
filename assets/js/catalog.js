@@ -24,7 +24,9 @@
    cliente. Parâmetros completos (tabela de parcelamento MP, fórmula)
    na planilha Achadinhos_Brasil_Catalogo_Precificacao.xlsx.
    
-ACRÉSCIMOS 20/08 (mesmo dia, depois da repreficação): (1) instalado destaque de parcelamento — todo produto agora mostra "ou 18x de R$X sem juros" (installmentText, calcula price/18) nos cards de listagem e na página de produto; é só informativo, não muda o preço à vista. (2) escolhidos 2 itens de maior ticket (maior markup em R$) pra estampar a "Oferta Relâmpago" com desconto promocional real de ~10%: Hidratante Corporal Yara 200g (p33, de R$384,90 por R$345,90) e Pelúcia de Pendurar Rhino Bright Starts (p46, de R$356,90 por R$320,90) — únicos dois itens do catálogo com oldPrice preenchido; o resto do catálogo continua sem oldPrice (não é desconto real, é preço cheio já com markup).
+ACRÉSCIMOS 20/08 (mesmo dia, depois da reprefição): (1) instalado destaque de parcelamento — todo produto agora mostra "ou 18x de R$X sem juros" (installmentText, calcula price/18) nos cards de listagem e na página de produto; é só informativo, não muda o preço à vista. (2) escolhidos 4 itens de maior ticket (maior markup em R$) pra estampar a "Oferta Relâmpago" com desconto promocional real de ~10%: Hidratante Corporal Yara 200g (p33, de R$384,90 por R$345,90), Pelúcia de Pendurar Rhino Bright Starts (p46, de R$356,90 por R$320,90), Casaco de Algodão Feminino Sortido (p18, de R$270,90 por R$243,90) e Base Líquida Bruna Tavares BT Skin (p34, de R$263,90 por R$236,90) — únicos quatro itens do catálogo com oldPrice preenchido; o resto do catálogo continua sem oldPrice (não é desconto real, é preço cheio já com markup).
+
+ACRÉSCIMOS 20/08 parte 2: (3) PRODUCT_SPECS — ficha técnica opcional por produto (tamanho/medida), preenchida só onde o próprio texto do fornecedor já confirma (ex.: "tamanho M único", "1,2m") — não inventamos numeração de roupa que não temos. (4) busca centralizada no header, ícones de categoria maiores em badge circular, carrinho agora abre como card ancorado no canto superior direito (perto do ícone) em vez de painel de tela cheia.
 ===================================================================== */
 
 const PRODUCTS = [
@@ -255,7 +257,7 @@ const PRODUCTS = [
     category: "moda",
     categoryLabel: "Moda e Vestuário",
     price: 243.9,
-    oldPrice: null,
+    oldPrice: 270.9,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177262436169a819e9f21be.webp",
     emoji: "🧥",
     stock: 10,
@@ -361,7 +363,7 @@ const PRODUCTS = [
     price: 212.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-175942638668deb752793fb.jpg",
-    emoji: "🦮",
+    emoji: "🦴",
     stock: 30,
     stockMax: 30,
     description: "Guia tradicional pra cachorro, 1,2m, estampa Scooby-Doo — resistente pros passeios do dia a dia."
@@ -463,7 +465,7 @@ const PRODUCTS = [
     category: "beleza",
     categoryLabel: "Saúde e Beleza",
     price: 236.9,
-    oldPrice: null,
+    oldPrice: 263.9,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-16651720146340822ea4fc6.jpg",
     emoji: "💄",
     stock: 2,
@@ -667,6 +669,19 @@ const CATEGORIES = [
    igual à Oferta Relâmpago). Só 1 item pra não virar "todo mundo é favorito". */
 const FAVORITE_IDS = ["p1"];
 
+/* Tamanho/medida — preenchido só onde o texto original do fornecedor já
+   confirma o dado (ex.: "tamanho M único" na descrição do p19, "1,2m" no
+   p23/p26). Não inventamos numeração de roupa que a gente não tem — o
+   resto do catálogo simplesmente não mostra essa linha na ficha técnica. */
+const PRODUCT_SPECS = {
+  p14: { medida: "40x60cm" },
+  p19: { tamanho: "M único" },
+  p22: { tamanho: "Único" },
+  p23: { medida: "1,2m de comprimento" },
+  p26: { medida: "1,2m de comprimento" },
+  p30: { tamanho: "Pequeno" },
+};
+
 function formatBRL(value) {
   return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
@@ -685,6 +700,10 @@ function discountPercent(p) {
 }
 
 function flashSideItemHTML(p) {
+  // Item de destaque nas laterais da Oferta Relâmpago. Curado à mão (não é
+  // "maior desconto %" puro) pra evitar preço unitário baixo de mais que passe
+  // impressão de saldão/loja sem valor — prioriza produto com preço percebido
+  // maior e desconto real ainda assim expressivo.
   const disc = discountPercent(p);
   return `
   <a class="flash-side-item" href="produto.html?id=${p.id}">
@@ -695,11 +714,46 @@ function flashSideItemHTML(p) {
   </a>`;
 }
 
-function renderFlashSideItems(leftId, rightId, leftEl, rightEl) {
-  const left = getProductById(leftId);
-  const right = getProductById(rightId);
-  if (left && leftEl) leftEl.innerHTML = flashSideItemHTML(left);
-  if (right && rightEl) rightEl.innerHTML = flashSideItemHTML(right);
+function renderFlashItems(ids, containerEl) {
+  if (!containerEl) return;
+  containerEl.innerHTML = ids
+    .map((id) => getProductById(id))
+    .filter(Boolean)
+    .map(flashSideItemHTML)
+    .join("");
+}
+
+/* Ficha técnica + selos de confiança da página de produto. Não inventa
+   avaliação/nota — mostra "ainda sem avaliações" honestamente até a loja
+   ter reviews reais (fake review/nota é prática enganosa e a mesma razão
+   pela qual não inventamos número de estoque/visitantes em outro lugar
+   do site). Política de troca é a garantia legal do CDC (Art. 49, direito
+   de arrependimento em 7 dias pra compra online), válida pra qualquer loja
+   — não é uma promessa inventada. */
+function productSpecsHTML(p) {
+  const specs = PRODUCT_SPECS[p.id] || {};
+  const rows = [];
+  if (specs.tamanho) rows.push(["Tamanho", specs.tamanho]);
+  if (specs.medida) rows.push(["Medida", specs.medida]);
+  rows.push(["Código", p.id.toUpperCase()]);
+  rows.push(["Vendido por", "Achadinhos Brasil"]);
+  return `
+  <div class="product-specs">
+    <div class="product-specs-row product-rating">
+      <span class="product-specs-label">Avaliações</span>
+      <span class="stars">☆☆☆☆☆ <span style="color:var(--text);font-weight:600;">Ainda sem avaliações</span></span>
+    </div>
+    ${rows
+      .map(
+        ([label, value]) => `
+    <div class="product-specs-row">
+      <span class="product-specs-label">${label}</span>
+      <span class="product-specs-value">${value}</span>
+    </div>`
+      )
+      .join("")}
+    <div class="product-trust-note">Troca grátis em até 7 dias após o recebimento, conforme o Art. 49 do Código de Defesa do Consumidor.</div>
+  </div>`;
 }
 
 function stockPercent(p) {
@@ -707,10 +761,14 @@ function stockPercent(p) {
 }
 
 function isLowStock(p) {
+  // Só sinaliza urgência de estoque quando o número real já é baixo —
+  // nunca em cima de uma fração inventada de um estoque de fornecedor grande.
   return p.stock <= 20;
 }
 
 function isBulkStock(p) {
+  // Estoque de fornecedor bem grande (dropshipping) não deve aparecer como
+  // número gigante pro cliente — vira uma mensagem de preço de atacado.
   return p.stock > 100;
 }
 
@@ -767,6 +825,10 @@ function renderProductGrid(containerEl, products) {
   containerEl.innerHTML = products.map(productCardHTML).join("");
 }
 
+/* ---------- Contador regressivo da Oferta Relâmpago ----------
+   Guarda o horário-alvo no sessionStorage pra não "resetar" o
+   contador toda vez que o cliente troca de página durante a visita.
+   Duração padrão: 3 horas a partir da primeira visita da sessão. */
 function initCountdown(elId, hours = 3) {
   const el = document.getElementById(elId);
   if (!el) return;
@@ -783,6 +845,7 @@ function initCountdown(elId, hours = 3) {
   function tick() {
     const diff = deadline - Date.now();
     if (diff <= 0) {
+      // Oferta "renova" pra manter o gatilho de urgência ativo.
       sessionStorage.removeItem(STORAGE_KEY);
       return initCountdown(elId, hours);
     }
@@ -805,6 +868,8 @@ function renderCategoryPills(containerEl, activeKey) {
   ).join("");
 }
 
+/* ---------- Cards de categoria (home) ----------
+   Contagem é real, calculada em cima do array PRODUCTS — nunca chuta número. */
 function renderCategoryCards(containerEl) {
   containerEl.innerHTML = CATEGORIES.map((c) => {
     const count = PRODUCTS.filter((p) => p.category === c.key).length;
@@ -817,6 +882,8 @@ function renderCategoryCards(containerEl) {
   }).join("");
 }
 
+/* ---------- Busca ao vivo ----------
+   Filtro simples client-side, sem acento (NFD), procura em nome e descrição. */
 function normalizeText(str) {
   return str
     .normalize("NFD")
@@ -881,16 +948,22 @@ function wireSearch(inputEl, resultsEl) {
   });
 }
 
+/* Injeta a caixa de busca no header de qualquer página (sem precisar
+   editar o HTML de cada uma — o alvo é a .header-actions, que já existe
+   em todas as páginas). */
 function initSiteSearch() {
+  const headerInner = document.querySelector(".header-inner");
   const actions = document.querySelector(".header-actions");
-  if (!actions || document.getElementById("search-input")) return;
+  if (!headerInner || !actions || document.getElementById("search-input")) return;
   const wrap = document.createElement("div");
   wrap.className = "site-search";
   wrap.innerHTML = `
     <input type="text" id="search-input" placeholder="Buscar produtos..." autocomplete="off">
     <div class="search-results" id="search-results"></div>
   `;
-  actions.insertBefore(wrap, actions.firstChild);
+  // Insere entre a logo e o carrinho (não dentro de .header-actions) pra
+  // a caixa de busca ficar centralizada no header via CSS grid.
+  headerInner.insertBefore(wrap, actions);
   wireSearch(document.getElementById("search-input"), document.getElementById("search-results"));
 }
 
