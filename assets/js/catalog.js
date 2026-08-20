@@ -669,6 +669,18 @@ function isLowStock(p) {
   return p.stock <= 20;
 }
 
+function isBulkStock(p) {
+  // Estoque de fornecedor bem grande (dropshipping) não deve aparecer como
+  // número gigante pro cliente — vira uma mensagem de preço de atacado.
+  return p.stock > 100;
+}
+
+function stockLabel(p) {
+  if (isLowStock(p)) return `Só ${p.stock} em estoque!`;
+  if (isBulkStock(p)) return "Desconto de atacado — preço especial por quantidade";
+  return `${p.stock} disponíveis`;
+}
+
 function getProductById(id) {
   return PRODUCTS.find((p) => p.id === id);
 }
@@ -697,7 +709,7 @@ function productCardHTML(p) {
         <span class="price-new">${formatBRL(p.price)}</span>
       </div>
       <div class="stock-wrap">
-        <div class="stock-label">${lowStock ? `Só ${p.stock} em estoque!` : `${p.stock} disponíveis`}</div>
+        <div class="stock-label">${stockLabel(p)}</div>
         <div class="stock-bar"><div class="stock-bar-fill" style="width:${stockPct}%"></div></div>
       </div>
     </div>
