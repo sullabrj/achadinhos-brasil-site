@@ -1,7 +1,8 @@
-/* =====================================================================
+/* ==================================================================
    ACHADINHOS BRASIL — catálogo (modelo "Oferta Relâmpago")
    -----------------------------------------------------------------
-   Catálogo atualizado em 12/08/2026 com produtos reais filtrados no
+   Catálogo atualizado em 12/08/2026 (base) e 20/08/2026 (p10 e p11,
+   reforço pontual de Infantil/Joias) com produtos reais filtrados no
    painel da Dropi (marketplace nacional, filtro "Mais Vistos Mês"),
    um a dois por categoria principal da loja. Preço, desconto (quando
    existe de verdade no fornecedor) e estoque são os valores reais
@@ -129,6 +130,32 @@ const PRODUCTS = [
     stock: 1,
     stockMax: 1,
     description: "Brinco orgânico banhado a ouro 18K, design minimalista com cristal — última peça em estoque no fornecedor."
+  },
+  {
+    id: "p10",
+    name: "Boneca Sparkle Party com Acessórios Surpresa",
+    category: "infantil",
+    categoryLabel: "Infantil e Brinquedos",
+    price: 84.57,
+    oldPrice: 85.35,
+    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17848410606a628364e3d6f.jpg",
+    emoji: "🎀",
+    stock: 2,
+    stockMax: 2,
+    description: "Boneca Sparkle Party com acessórios surpresa colecionáveis, glitter pra lábios e corpo — só 2 no estoque do fornecedor."
+  },
+  {
+    id: "p11",
+    name: "Trio de Brincos Argola Articulada Cravejada",
+    category: "joias",
+    categoryLabel: "Joias e Acessórios",
+    price: 73.45,
+    oldPrice: null,
+    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17848514566a62ac00a2ef8.jpg",
+    emoji: "✨",
+    stock: 1,
+    stockMax: 1,
+    description: "Trio de brincos argola articulada cravejada, banho de ródio — peça única no fornecedor, estilo statement pra usar em camadas."
   }
 ];
 
