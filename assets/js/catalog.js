@@ -24,7 +24,7 @@
    cliente. Parâmetros completos (tabela de parcelamento MP, fórmula)
    na planilha Achadinhos_Brasil_Catalogo_Precificacao.xlsx.
    
-ACRÉSCIMOS 20/08 (mesmo dia, depois da reprecificação): (1) instalado destaque de parcelamento — todo produto agora mostra "ou 18x de R$X sem juros" (installmentText, calcula price/18) nos cards de listagem e na página de produto; é só informativo, não muda o preço à vista. (2) escolhidos 2 itens de maior ticket (maior markup em R$) pra estampar a "Oferta Relâmpago" com desconto promocional real de ~10%: Hidratante Corporal Yara 200g (p33, de R$384,90 por R$345,90) e Pelúcia de Pendurar Rhino Bright Starts (p46, de R$356,90 por R$320,90) — únicos dois itens do catálogo com oldPrice preenchido; o resto do catálogo continua sem oldPrice (não é desconto real, é preço cheio já com markup).
+ACRÉSCIMOS 20/08 (mesmo dia, depois da repreficação): (1) instalado destaque de parcelamento — todo produto agora mostra "ou 18x de R$X sem juros" (installmentText, calcula price/18) nos cards de listagem e na página de produto; é só informativo, não muda o preço à vista. (2) escolhidos 2 itens de maior ticket (maior markup em R$) pra estampar a "Oferta Relâmpago" com desconto promocional real de ~10%: Hidratante Corporal Yara 200g (p33, de R$384,90 por R$345,90) e Pelúcia de Pendurar Rhino Bright Starts (p46, de R$356,90 por R$320,90) — únicos dois itens do catálogo com oldPrice preenchido; o resto do catálogo continua sem oldPrice (não é desconto real, é preço cheio já com markup).
 ===================================================================== */
 
 const PRODUCTS = [
@@ -655,13 +655,17 @@ const PRODUCTS = [
 ];
 
 const CATEGORIES = [
-  { key: "casa", label: "Casa e Decoração" },
-  { key: "moda", label: "Moda e Vestuário" },
-  { key: "pet", label: "Pet Shop" },
-  { key: "beleza", label: "Saúde e Beleza" },
-  { key: "joias", label: "Joias e Acessórios" },
-  { key: "infantil", label: "Infantil e Brinquedos" }
+  { key: "casa", label: "Casa e Decoração", icon: "🏠" },
+  { key: "moda", label: "Moda e Vestuário", icon: "👗" },
+  { key: "pet", label: "Pet Shop", icon: "🐾" },
+  { key: "beleza", label: "Saúde e Beleza", icon: "💄" },
+  { key: "joias", label: "Joias e Acessórios", icon: "💍" },
+  { key: "infantil", label: "Infantil e Brinquedos", icon: "🧸" }
 ];
+
+/* Curadoria manual (não é estatística inventada — é escolha editorial,
+   igual à Oferta Relâmpago). Só 1 item pra não virar "todo mundo é favorito". */
+const FAVORITE_IDS = ["p1"];
 
 function formatBRL(value) {
   return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
@@ -730,13 +734,15 @@ function productCardHTML(p) {
   const disc = discountPercent(p);
   const stockPct = stockPercent(p);
   const lowStock = isLowStock(p);
+  const isFav = FAVORITE_IDS.includes(p.id);
   return `
-  <a class="product-card" href="produto.html?id=${p.id}">
-    <div class="product-thumb">
+  <div class="product-card">
+    <a class="product-thumb" href="produto.html?id=${p.id}">
       ${disc ? `<span class="badge-desconto">-${disc}%</span>` : ""}
+      ${isFav ? `<span class="badge-favorito">⭐ Favorito da loja</span>` : ""}
       ${productThumbInner(p)}
-    </div>
-    <div class="product-info">
+    </a>
+    <a class="product-info" href="produto.html?id=${p.id}" style="text-decoration:none;color:inherit;">
       <span class="product-cat">${p.categoryLabel}</span>
       <span class="product-name">${p.name}</span>
       <div class="price-row">
@@ -748,8 +754,9 @@ function productCardHTML(p) {
         <div class="stock-label">${stockLabel(p)}</div>
         <div class="stock-bar"><div class="stock-bar-fill" style="width:${stockPct}%"></div></div>
       </div>
-    </div>
-  </a>`;
+    </a>
+    <button type="button" class="quick-add" data-add-id="${p.id}" aria-label="Adicionar ${p.name} ao carrinho" title="Adicionar ao carrinho">+</button>
+  </div>`;
 }
 
 function renderProductGrid(containerEl, products) {
@@ -794,6 +801,97 @@ function initCountdown(elId, hours = 3) {
 
 function renderCategoryPills(containerEl, activeKey) {
   containerEl.innerHTML = CATEGORIES.map(
-    (c) => `<a class="cat-pill ${c.key === activeKey ? "active" : ""}" href="categoria.html?cat=${c.key}">${c.label}</a>`
+    (c) => `<a class="cat-pill ${c.key === activeKey ? "active" : ""}" href="categoria.html?cat=${c.key}"><span class="cat-pill-icon">${c.icon}</span>${c.label}</a>`
   ).join("");
 }
+
+function renderCategoryCards(containerEl) {
+  containerEl.innerHTML = CATEGORIES.map((c) => {
+    const count = PRODUCTS.filter((p) => p.category === c.key).length;
+    return `
+    <a class="cat-card" href="categoria.html?cat=${c.key}">
+      <div class="cat-card-icon">${c.icon}</div>
+      <div class="cat-card-label">${c.label}</div>
+      <div class="cat-card-count">${count} ${count === 1 ? "produto" : "produtos"}</div>
+    </a>`;
+  }).join("");
+}
+
+function normalizeText(str) {
+  return str
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+}
+
+function searchProducts(query, limit = 6) {
+  const q = normalizeText(query);
+  if (!q) return [];
+  return PRODUCTS.filter(
+    (p) => normalizeText(p.name).includes(q) || normalizeText(p.description).includes(q) || normalizeText(p.categoryLabel).includes(q)
+  ).slice(0, limit);
+}
+
+function highlightMatch(text, query) {
+  const q = normalizeText(query);
+  const norm = normalizeText(text);
+  const idx = norm.indexOf(q);
+  if (idx === -1 || !q) return text;
+  return text.slice(0, idx) + "<mark>" + text.slice(idx, idx + q.length) + "</mark>" + text.slice(idx + q.length);
+}
+
+function searchResultItemHTML(p, query) {
+  return `
+  <a class="search-result-item" href="produto.html?id=${p.id}">
+    <div class="search-result-thumb">${productThumbInner(p)}</div>
+    <div class="search-result-info">
+      <span class="search-result-name">${highlightMatch(p.name, query)}</span>
+      <span class="search-result-price">${formatBRL(p.price)}</span>
+    </div>
+  </a>`;
+}
+
+function wireSearch(inputEl, resultsEl) {
+  if (!inputEl || !resultsEl) return;
+
+  function render() {
+    const query = inputEl.value;
+    if (!query.trim()) {
+      resultsEl.classList.remove("open");
+      resultsEl.innerHTML = "";
+      return;
+    }
+    const matches = searchProducts(query);
+    resultsEl.innerHTML = matches.length
+      ? matches.map((p) => searchResultItemHTML(p, query)).join("")
+      : `<div class="search-empty">Nenhum produto encontrado pra "${query}"</div>`;
+    resultsEl.classList.add("open");
+  }
+
+  inputEl.addEventListener("input", render);
+  inputEl.addEventListener("focus", () => { if (inputEl.value.trim()) resultsEl.classList.add("open"); });
+  document.addEventListener("click", (e) => {
+    if (!inputEl.contains(e.target) && !resultsEl.contains(e.target)) {
+      resultsEl.classList.remove("open");
+    }
+  });
+  inputEl.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") { resultsEl.classList.remove("open"); inputEl.blur(); }
+  });
+}
+
+function initSiteSearch() {
+  const actions = document.querySelector(".header-actions");
+  if (!actions || document.getElementById("search-input")) return;
+  const wrap = document.createElement("div");
+  wrap.className = "site-search";
+  wrap.innerHTML = `
+    <input type="text" id="search-input" placeholder="Buscar produtos..." autocomplete="off">
+    <div class="search-results" id="search-results"></div>
+  `;
+  actions.insertBefore(wrap, actions.firstChild);
+  wireSearch(document.getElementById("search-input"), document.getElementById("search-results"));
+}
+
+document.addEventListener("DOMContentLoaded", initSiteSearch);
