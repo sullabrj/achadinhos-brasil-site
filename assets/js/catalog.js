@@ -1491,7 +1491,7 @@ function stockPercent(p) {
 function isLowStock(p) {
   // Só sinaliza urgência de estoque quando o número real já é baixo —
   // nunca em cima de uma fração inventada de um estoque de fornecedor grande.
-  return p.stock <= 20;
+  return p.stock > 0 && p.stock <= 20;
 }
 
 function isBulkStock(p) {
@@ -1500,7 +1500,12 @@ function isBulkStock(p) {
   return p.stock > 100;
 }
 
+function isOutOfStock(p) {
+  return p.stock <= 0;
+}
+
 function stockLabel(p) {
+  if (isOutOfStock(p)) return "Esgotado";
   if (isLowStock(p)) return `Só ${p.stock} em estoque!`;
   if (isBulkStock(p)) return "Em estoque";
   return `${p.stock} disponíveis`;
@@ -1519,13 +1524,13 @@ function productThumbInner(p) {
 function productCardHTML(p) {
   const disc = discountPercent(p);
   const stockPct = stockPercent(p);
-  const lowStock = isLowStock(p);
+  const outOfStock = isOutOfStock(p);
   const isFav = FAVORITE_IDS.includes(p.id);
   return `
-  <div class="product-card">
+  <div class="product-card${outOfStock ? " is-out-of-stock" : ""}">
     <a class="product-thumb" href="produto.html?id=${p.id}">
-      ${disc ? `<span class="badge-desconto">-${disc}%</span>` : ""}
-      ${isFav ? `<span class="badge-favorito">⭐ Favorito da loja</span>` : ""}
+      ${outOfStock ? `<span class="badge-esgotado">Esgotado</span>` : disc ? `<span class="badge-desconto">-${disc}%</span>` : ""}
+      ${!outOfStock && isFav ? `<span class="badge-favorito">⭐ Favorito da loja</span>` : ""}
       ${productThumbInner(p)}
     </a>
     <a class="product-info" href="produto.html?id=${p.id}" style="text-decoration:none;color:inherit;">
@@ -1541,7 +1546,9 @@ function productCardHTML(p) {
         <div class="stock-bar"><div class="stock-bar-fill" style="width:${stockPct}%"></div></div>
       </div>
     </a>
-    <button type="button" class="quick-add" data-add-id="${p.id}" aria-label="Adicionar ${p.name} ao carrinho" title="Adicionar ao carrinho">+</button>
+    ${outOfStock
+      ? `<button type="button" class="quick-add" disabled aria-label="${p.name} esgotado" title="Esgotado">—</button>`
+      : `<button type="button" class="quick-add" data-add-id="${p.id}" aria-label="Adicionar ${p.name} ao carrinho" title="Adicionar ao carrinho">+</button>`}
   </div>`;
 }
 
@@ -1553,11 +1560,66 @@ function renderProductGrid(containerEl, products) {
   containerEl.innerHTML = products.map(productCardHTML).join("");
 }
 
+/* ---------- Ordenar (categoria.html) ----------
+   Só reordena o array real — nenhuma métrica inventada (não existe "mais
+   vendido" ou nota de avaliação pra ordenar por aqui, então essas opções
+   nem aparecem no seletor). */
+function sortProducts(products, sortKey) {
+  const arr = products.slice();
+  if (sortKey === "price-asc") arr.sort((a, b) => a.price - b.price);
+  else if (sortKey === "price-desc") arr.sort((a, b) => b.price - a.price);
+  else if (sortKey === "discount-desc") arr.sort((a, b) => (discountPercent(b) || 0) - (discountPercent(a) || 0));
+  else if (sortKey === "stock-asc") arr.sort((a, b) => a.stock - b.stock);
+  // "relevance" (padrão) mantém a ordem de curadoria do catálogo.
+  return arr;
+}
+
+/* ---------- Relacionados (produto.html) ----------
+   Mesma categoria, exclui o item atual. Ordem de curadoria do catálogo —
+   sem aleatoriedade nem ranqueamento inventado. */
+function relatedProducts(p, limit = 4) {
+  return PRODUCTS.filter((x) => x.category === p.category && x.id !== p.id).slice(0, limit);
+}
+
+/* ---------- Duração do contador baseada em estoque real ----------
+   Antes o contador era sempre 3h fixas pra loja inteira, sempre a mesma
+   pra todo mundo — nem de longe curto, e sem relação nenhuma com o
+   estoque de verdade. Agora a duração varia com o estoque REAL somado
+   dos itens em destaque na Oferta Relâmpago (mesmo dado que já alimenta
+   a barra de estoque de cada card — nada inventado): quanto menos
+   estoque sobrou nesses itens, menos tempo o contador mostra. Faixa
+   0h30–1h30 (bem mais curta que as 3h antigas). */
+function flashCountdownHours(ids) {
+  const items = ids.map(getProductById).filter(Boolean);
+  if (!items.length) return 1;
+  const totalStock = items.reduce((sum, p) => sum + p.stock, 0);
+  const totalMax = items.reduce((sum, p) => sum + p.stockMax, 0) || 1;
+  const stockRatio = Math.max(0, Math.min(1, totalStock / totalMax));
+  const hours = 0.5 + stockRatio * 1; // 0h30 (estoque baixo) a 1h30 (estoque saudável)
+  return Math.round(hours * 100) / 100;
+}
+
+/* ---------- Barra de estoque da leva (Oferta Relâmpago) ----------
+   Mostra o estoque real somado dos itens em destaque — assim a oferta
+   "acaba" por dois motivos reais e visíveis: o tempo OU o estoque,
+   o que vier primeiro. Nenhum número aqui é inventado. */
+function renderFlashStockBar(ids, labelEl, fillEl) {
+  if (!labelEl || !fillEl) return;
+  const items = ids.map(getProductById).filter(Boolean);
+  if (!items.length) return;
+  const totalStock = items.reduce((sum, p) => sum + p.stock, 0);
+  const totalMax = items.reduce((sum, p) => sum + p.stockMax, 0) || 1;
+  const pct = Math.max(4, Math.min(100, Math.round((totalStock / totalMax) * 100)));
+  labelEl.textContent = `Estoque desta leva: ${pct}% restante`;
+  fillEl.style.width = pct + "%";
+}
+
 /* ---------- Contador regressivo da Oferta Relâmpago ----------
    Guarda o horário-alvo no sessionStorage pra não "resetar" o
    contador toda vez que o cliente troca de página durante a visita.
-   Duração padrão: 3 horas a partir da primeira visita da sessão. */
-function initCountdown(elId, hours = 3) {
+   Duração padrão: 1 hora (era 3h) — ver flashCountdownHours() acima
+   pra como o valor passado aqui é calculado a partir do estoque real. */
+function initCountdown(elId, hours = 1) {
   const el = document.getElementById(elId);
   if (!el) return;
 
