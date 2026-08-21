@@ -1005,7 +1005,7 @@ const PRODUCTS = [
   },
   {
     id: "p75",
-    name: "Perfume Cool Girl Black XS 40ml",
+    name: "Perfume Cool Girl Black 40ml (Contratipo)",
     category: "beleza",
     categoryLabel: "Saúde e Beleza",
     price: 124.9,
@@ -1014,7 +1014,7 @@ const PRODUCTS = [
     emoji: "🌸",
     stock: 84,
     stockMax: 84,
-    description: "Perfume Cool Girl Black XS, 40ml — fragrância pra usar no dia a dia."
+    description: "Perfume contratipo (inspirado) Cool Girl Black, 40ml — fragrância pra usar no dia a dia."
   },
   {
     id: "p76",
