@@ -2,10 +2,14 @@
    ACHADINHOS BRASIL — catálogo (modelo "Oferta Relâmpago")
    -----------------------------------------------------------------
    Catálogo atualizado em 12/08/2026 (base), 20/08/2026 (p10 e p11,
-   reforço pontual de Infantil/Joias) e 20/08/2026 (p12 a p48, expansão
-   para ~8 produtos por categoria) com produtos reais filtrados no
-   painel da Dropi (marketplace nacional, filtro "Mais Vistos Mês"),
-   priorizando diversidade entre os itens de cada categoria. Estoque é
+   reforço pontual de Infantil/Joias), 20/08/2026 (p12 a p48, expansão
+   para ~8 produtos por categoria) e 21/08/2026 (p49 a p55, piloto de
+   expansão da categoria Casa e Decoração de 8 para 15 itens — filtro
+   "Decoração" no painel, "Mais Vistos Mês"; demais categorias ficam
+   pra rodadas seguintes caso o piloto seja aprovado) com produtos
+   reais filtrados no painel da Dropi (marketplace nacional, filtro
+   "Mais Vistos Mês"), priorizando diversidade entre os itens de cada
+   categoria. Estoque é
    valor real informado pelo fornecedor — nunca inventado. Como o
    estoque de fornecedor de dropshipping não decresce no mesmo ritmo
    de uma loja com estoque próprio, o rótulo "Só X em estoque!" só
@@ -653,6 +657,97 @@ const PRODUCTS = [
     stock: 1000,
     stockMax: 1000,
     description: "Kit com 3 brinquedos educativos em madeira e EVA, pedagógicos e lúdicos pro desenvolvimento infantil."
+  },
+  {
+    id: "p49",
+    name: "Almofada Decorativa 36x36cm Oxford com Botão Central",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 61.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1768713071696c6b6f23ee4.png",
+    emoji: "🛋️",
+    stock: 22,
+    stockMax: 22,
+    description: "Almofada decorativa 36x36cm em tecido Oxford, com botão central — deixa o sofá ou a cama com um toque mais elegante."
+  },
+  {
+    id: "p50",
+    name: "Prendedor Cinto Cortina Magnética Com Ímã 2 Peças",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 34.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-173031734767228c23c8a28.jpg",
+    emoji: "🧲",
+    stock: 48,
+    stockMax: 48,
+    description: "Prendedor de cortina magnético, kit com 2 peças — prende a cortina discretamente sem furar a parede."
+  },
+  {
+    id: "p51",
+    name: "Calendário Decorativo de Parede com Porta-Chaves",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 85.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1768713131696c6bab7c8be.jpg",
+    emoji: "📅",
+    stock: 9,
+    stockMax: 9,
+    description: "Calendário decorativo de parede com porta-chaves embutido — organiza o dia a dia e ainda guarda as chaves de casa."
+  },
+  {
+    id: "p52",
+    name: "Assento Para Cadeira 40x40cm Tecido Oxford",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 55.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-172344229966b9a47bc9306.png",
+    emoji: "🪑",
+    stock: 7,
+    stockMax: 7,
+    description: "Assento para cadeira 40x40cm em tecido Oxford liso, 100% poliéster — mais conforto pra sentar todo dia."
+  },
+  {
+    id: "p53",
+    name: "Expositor de Joias Acrílico com 8 Cabides",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 54.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177416400069bf982039199.jpg",
+    emoji: "💎",
+    stock: 9980,
+    stockMax: 9980,
+    description: "Expositor de joias em acrílico com 8 cabides — organiza brincos e colares e ainda deixa a penteadeira bonita."
+  },
+  {
+    id: "p54",
+    name: "Capa de Almofada Sofá Decorativa Suede",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 48.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-17210830746695a4c20cf0e.png",
+    emoji: "🧵",
+    stock: 29,
+    stockMax: 29,
+    description: "Capa de almofada para sofá em suede, acabamento decorativo — troca o visual da sala rapidinho."
+  },
+  {
+    id: "p55",
+    name: "Caneca do Brasil - Hexa 2026",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 58.9,
+    oldPrice: null,
+    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17815699116a309977468bf.png",
+    emoji: "☕",
+    stock: 50,
+    stockMax: 50,
+    description: "Caneca do Brasil Hexa 2026 — pra comemorar o hexacampeonato com estilo na hora do café."
   }
 ];
 
