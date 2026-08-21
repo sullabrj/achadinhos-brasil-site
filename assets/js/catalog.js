@@ -11,6 +11,8 @@
    expansão de Saúde e Beleza de 8 para 25 itens — filtro "Beleza e
    Saude" no painel, "Mais Vistos Mês") e 21/08/2026 (p90 a p96,
    expansão de Pet Shop de 8 para 15 itens — filtro "Pet shop" no
+   painel, "Mais Vistos Mês") e 21/08/2026 (p97 a p103, expansão de
+   Infantil e Brinquedos de 8 para 15 itens — filtro "Infantil" no
    painel, "Mais Vistos Mês") com produtos
    reais filtrados no painel da Dropi (marketplace nacional, filtro
    "Mais Vistos Mês"), priorizando diversidade entre os itens de cada
@@ -1286,6 +1288,97 @@ const PRODUCTS = [
     stock: 6951,
     stockMax: 6951,
     description: "Protetor de banco dianteiro impermeável, padrão universal — leva o pet no carro sem sujar o banco."
+  },
+  {
+    id: "p97",
+    name: "Vestido Mini Miss Longo Carol Prata",
+    category: "infantil",
+    categoryLabel: "Infantil e Brinquedos",
+    price: 255.9,
+    oldPrice: null,
+    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17851773976a67a535517e7.jpg",
+    emoji: "👗",
+    stock: 22,
+    stockMax: 22,
+    description: "Vestido Mini Miss longo, modelo Carol, cor prata — pra festa ou ocasião especial."
+  },
+  {
+    id: "p98",
+    name: "Fantasia/Vestido Mini Miss Menina da Justiça",
+    category: "infantil",
+    categoryLabel: "Infantil e Brinquedos",
+    price: 227.9,
+    oldPrice: null,
+    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17860435316a74dc8bcbf24.jpg",
+    emoji: "🦸‍♀️",
+    stock: 72,
+    stockMax: 72,
+    description: "Fantasia/vestido Mini Miss tema Menina da Justiça — pra festa a fantasia."
+  },
+  {
+    id: "p99",
+    name: "Vestido Marie Longo Heloisa Prata",
+    category: "infantil",
+    categoryLabel: "Infantil e Brinquedos",
+    price: 226.9,
+    oldPrice: null,
+    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17858699366a7236701c705.jpg",
+    emoji: "👗",
+    stock: 55,
+    stockMax: 55,
+    description: "Vestido Marie longo, modelo Heloisa, cor prata — elegante pra ocasiões especiais."
+  },
+  {
+    id: "p100",
+    name: "Vestido Menina Bonita Julieta Off White",
+    category: "infantil",
+    categoryLabel: "Infantil e Brinquedos",
+    price: 326.9,
+    oldPrice: null,
+    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17848133126a621700a8802.jpg",
+    emoji: "👗",
+    stock: 27,
+    stockMax: 27,
+    description: "Vestido Menina Bonita, modelo Julieta, cor off white — pra festas e daminhas."
+  },
+  {
+    id: "p101",
+    name: "Vestido Infantil Longo Branco Tule Glitter Festa Daminha",
+    category: "infantil",
+    categoryLabel: "Infantil e Brinquedos",
+    price: 274.9,
+    oldPrice: null,
+    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17859438076a7356ff1df15.jpg",
+    emoji: "👗",
+    stock: 89,
+    stockMax: 89,
+    description: "Vestido infantil longo branco, tule glitter, busto com nervura — modelo festa daminha."
+  },
+  {
+    id: "p102",
+    name: "Fantasia Princesa Belli Doce Realeza Azul",
+    category: "infantil",
+    categoryLabel: "Infantil e Brinquedos",
+    price: 186.9,
+    oldPrice: null,
+    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17839494396a54e87f7bbb7.jpg",
+    emoji: "👑",
+    stock: 33,
+    stockMax: 33,
+    description: "Fantasia Princesa Belli, tema Doce Realeza, cor azul — pra fazer a menina se sentir princesa."
+  },
+  {
+    id: "p103",
+    name: "Vestido Juvenil Vila Lele Regata Flores Amarelo",
+    category: "infantil",
+    categoryLabel: "Infantil e Brinquedos",
+    price: 269.9,
+    oldPrice: null,
+    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17858705156a7238b3116a5.jpg",
+    emoji: "🌼",
+    stock: 79,
+    stockMax: 79,
+    description: "Vestido juvenil Vila Lele, modelo regata com estampa floral, cor amarelo — leve pro dia a dia."
   }
 
 
