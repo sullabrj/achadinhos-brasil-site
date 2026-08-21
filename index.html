@@ -31,14 +31,20 @@
   </nav>
 </header>
 
-<div class="urgency-bar">🔥 <strong>Estoque limitado</strong> — essas ofertas somem quando o contador zerar</div>
+<div class="urgency-bar">🔥 <strong>Estoque limitado</strong> — a oferta acaba no tempo ou quando o estoque zerar, o que vier primeiro</div>
 
 <section class="flash-hero">
   <div class="flash-hero-inner">
     <h1>⚡ Oferta Relâmpago</h1>
-    <p>Poucas unidades, preço especial. Corre antes que acabe!</p>
+    <p>Poucas unidades, preço especial. Corre antes que o tempo ou o estoque acabem!</p>
     <div class="flash-hero-row">
-      <div class="countdown" id="countdown"></div>
+      <div>
+        <div class="countdown" id="countdown"></div>
+        <div class="flash-stock-wrap">
+          <div class="flash-stock-label" id="flash-stock-label"></div>
+          <div class="stock-bar"><div class="stock-bar-fill" id="flash-stock-fill"></div></div>
+        </div>
+      </div>
       <div class="flash-items" id="flash-items"></div>
     </div>
   </div>
@@ -97,10 +103,12 @@
 <script src="assets/js/catalog.js"></script>
 <script src="assets/js/cart.js"></script>
 <script>
-  initCountdown("countdown", 3);
+  const flashIds = ["p33", "p46", "p18", "p34"];
+  initCountdown("countdown", flashCountdownHours(flashIds));
+  renderFlashStockBar(flashIds, document.getElementById("flash-stock-label"), document.getElementById("flash-stock-fill"));
   renderCategoryCards(document.getElementById("cat-cards"));
   renderProductGrid(document.getElementById("grid-ofertas"), PRODUCTS);
-  renderFlashItems(["p33", "p46", "p18", "p34"], document.getElementById("flash-items"));
+  renderFlashItems(flashIds, document.getElementById("flash-items"));
 </script>
 </body>
 </html>
