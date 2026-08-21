@@ -332,3 +332,32 @@ footer.site-footer{background:var(--text);color:#fff;margin-top:50px;padding:36p
 .product-rating{display:flex;align-items:center;gap:6px;}
 .product-rating .stars{color:var(--muted);letter-spacing:1px;font-size:.95rem;}
 .product-trust-note{font-size:.78rem;color:var(--muted);margin-top:10px;line-height:1.4;}
+
+/* ============ Breadcrumb ============ */
+.breadcrumb{font-size:.78rem;color:var(--muted);margin:0 0 6px;}
+.breadcrumb a{color:var(--accent);font-weight:600;}
+.breadcrumb a:hover{text-decoration:underline;}
+
+/* ============ Ordenar (página de categoria) ============ */
+.sort-bar{
+  display:flex;align-items:center;gap:10px;justify-content:flex-end;
+  margin:0 0 16px;font-size:.85rem;color:var(--muted);
+}
+.sort-bar select{
+  background:var(--card);border:1px solid rgba(58,46,57,.15);border-radius:8px;
+  padding:7px 10px;font-size:.85rem;color:var(--text);font-weight:600;cursor:pointer;
+}
+
+/* ============ Esgotado ============ */
+.badge-esgotado{
+  position:absolute;top:10px;left:10px;background:var(--text);color:#fff;
+  font-size:.72rem;font-weight:800;padding:4px 9px;border-radius:20px;z-index:2;
+}
+.product-card.is-out-of-stock .product-thumb{opacity:.55;}
+.product-card.is-out-of-stock .quick-add{background:#c9c0c5;cursor:not-allowed;}
+
+/* ============ Estoque da leva (Oferta Relâmpago) ============ */
+.flash-stock-wrap{max-width:220px;margin:10px auto 0;}
+.flash-stock-label{font-size:.7rem;font-weight:700;opacity:.9;margin-bottom:4px;}
+.flash-stock-wrap .stock-bar{background:rgba(255,255,255,.3);}
+.flash-stock-wrap .stock-bar-fill{background:#fff;}
