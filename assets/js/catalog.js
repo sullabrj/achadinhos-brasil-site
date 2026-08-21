@@ -7,7 +7,9 @@
    expansão da categoria Casa e Decoração de 8 para 15 itens — filtro
    "Decoração" no painel, "Mais Vistos Mês") e 21/08/2026 (p56 a p72,
    expansão de Moda e Vestuário de 8 para 25 itens — filtro "Moda
-   feminina" no painel, "Mais Vistos Mês") com produtos
+   feminina" no painel, "Mais Vistos Mês") e 21/08/2026 (p73 a p89,
+   expansão de Saúde e Beleza de 8 para 25 itens — filtro "Beleza e
+   Saude" no painel, "Mais Vistos Mês") com produtos
    reais filtrados no painel da Dropi (marketplace nacional, filtro
    "Mais Vistos Mês"), priorizando diversidade entre os itens de cada
    categoria. Estoque é
@@ -970,7 +972,229 @@ const PRODUCTS = [
     stock: 10,
     stockMax: 10,
     description: "Pantufa feminina modelo beijinho, cores sortidas — aconchego pra dentro de casa."
+  },
+  {
+    id: "p73",
+    name: "Gel de Limpeza Clean Repair",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 131.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764699858692f2ed2a5a88.jpg",
+    emoji: "🧴",
+    stock: 92,
+    stockMax: 92,
+    description: "Gel de limpeza facial Clean Repair — remove impurezas e prepara a pele pra hidratação."
+  },
+  {
+    id: "p74",
+    name: "Esfoliante Facial Renovador com Aloe Vera e Microesferas 50g",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 175.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764699804692f2e9cea109.png",
+    emoji: "🧖‍♀️",
+    stock: 97,
+    stockMax: 97,
+    description: "Esfoliante facial renovador com aloe vera e microesferas, 50g — remove células mortas e deixa a pele mais lisa."
+  },
+  {
+    id: "p75",
+    name: "Perfume Cool Girl Black XS 40ml",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 124.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-166517475163408cdf6b1ee.jpg",
+    emoji: "🌸",
+    stock: 84,
+    stockMax: 84,
+    description: "Perfume Cool Girl Black XS, 40ml — fragrância pra usar no dia a dia."
+  },
+  {
+    id: "p76",
+    name: "Creme Clareador Facial Cystea Skin com Cisteamina e Retinol Nano 15g",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 285.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764699759692f2e6f0a77d.png",
+    emoji: "🧴",
+    stock: 99,
+    stockMax: 99,
+    description: "Creme clareador facial Cystea Skin com cisteamina e retinol nano, 15g — auxilia na uniformização do tom da pele."
+  },
+  {
+    id: "p77",
+    name: "Argila Preta Facial e Corporal 100g",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 13.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-16651764786340939eb6599.jpg",
+    emoji: "🧖‍♀️",
+    stock: 32,
+    stockMax: 32,
+    description: "Argila preta facial e corporal, 100g — limpeza profunda e efeito detox pra pele."
+  },
+  {
+    id: "p78",
+    name: "Creme Nutry Repair Hidratação e Fixação do Pigmento 15g",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 153.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764699785692f2e89879c0.jpg",
+    emoji: "🧴",
+    stock: 82,
+    stockMax: 82,
+    description: "Creme Nutry Repair, hidratação e fixação do pigmento na pele, 15g — cuidado pós-procedimento."
+  },
+  {
+    id: "p79",
+    name: "Água Dermatológica Calmante e Hidratante 60ml",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 219.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764699667692f2e132b51b.jpg",
+    emoji: "💧",
+    stock: 76,
+    stockMax: 76,
+    description: "Água dermatológica calmante e hidratante, 60ml — refresca e acalma a pele."
+  },
+  {
+    id: "p80",
+    name: "Creme Reparador Derma Repair com Ativos Calmantes 5g",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 109.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764699788692f2e8cefea4.jpg",
+    emoji: "🧴",
+    stock: 28,
+    stockMax: 28,
+    description: "Creme reparador Derma Repair com ativos calmantes, 5g — auxilia na recuperação da pele."
+  },
+  {
+    id: "p81",
+    name: "Espuma de Limpeza Facial Anti Acne e Oleosidade 50g",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 219.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764699814692f2ea63003e.png",
+    emoji: "🧼",
+    stock: 100,
+    stockMax: 100,
+    description: "Espuma de limpeza facial anti acne e oleosidade, com ácido salicílico nano e niacinamida, 50g."
+  },
+  {
+    id: "p82",
+    name: "Seda Lifting BTX Like Ácido Hialurônico 3D 5g",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 197.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764700124692f2fdc3aeec.png",
+    emoji: "🧴",
+    stock: 86,
+    stockMax: 86,
+    description: "Seda lifting BTX Like, ácido hialurônico 3D com efeito botulínico suave, 5g."
+  },
+  {
+    id: "p83",
+    name: "Sérum Suavizante Hydracalm 10g",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 197.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764700214692f303658084.png",
+    emoji: "🧴",
+    stock: 37,
+    stockMax: 37,
+    description: "Sérum suavizante Hydracalm, hidratação e proteção pós-laser, 10g."
+  },
+  {
+    id: "p84",
+    name: "Base Líquida Bruna Tavares BT Skin T60",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 236.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-16651720146340822e2b70c.jpg",
+    emoji: "💄",
+    stock: 3,
+    stockMax: 3,
+    description: "Base líquida Bruna Tavares BT Skin, tom T60. Só 3 no estoque do fornecedor."
+  },
+  {
+    id: "p85",
+    name: "Balm Labial Lip Glow Cereja Ácido Hialurônico 5,5g",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 219.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764699678692f2e1eab99c.png",
+    emoji: "💋",
+    stock: 100,
+    stockMax: 100,
+    description: "Balm labial Lip Glow sabor cereja, com ácido hialurônico, 5,5g."
+  },
+  {
+    id: "p86",
+    name: "Kit PMU Lip Preparatório (Active + Balm)",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 197.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764699881692f2ee9083cc.jpg",
+    emoji: "💋",
+    stock: 117,
+    stockMax: 117,
+    description: "Kit PMU Lip Preparatório (Active + Balm) — preparo labial pra procedimentos de pigmentação."
+  },
+  {
+    id: "p87",
+    name: "Seda Labial Hyalufill Ultra Hidratante para Contorno 6g",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 351.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764700120692f2fd8a87b3.jpg",
+    emoji: "💋",
+    stock: 100,
+    stockMax: 100,
+    description: "Seda labial Hyalufill ultra hidratante para contorno dos lábios, 6g."
+  },
+  {
+    id: "p88",
+    name: "Nano Repair Growth Factor Anti Queda Crescimento Capilar",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 823.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764700228692f304404890.png",
+    emoji: "💇‍♀️",
+    stock: 10,
+    stockMax: 10,
+    description: "Nano Repair Growth Factor, tratamento anti queda e crescimento capilar."
+  },
+  {
+    id: "p89",
+    name: "Purify Gel de Limpeza sem Sabão 55g",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 109.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764700116692f2fd478ff6.png",
+    emoji: "🧼",
+    stock: 15,
+    stockMax: 15,
+    description: "Purify, gel de limpeza facial sem sabão, 55g — limpa sem ressecar a pele."
   }
+
 
 ];
 
