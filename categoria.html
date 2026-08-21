@@ -31,10 +31,23 @@
 </header>
 
 <main class="container">
-  <div class="section-title" style="margin-top:26px;">
+  <div class="breadcrumb" style="margin-top:20px;">
+    <a href="index.html">Início</a> › <span id="breadcrumb-cat">Categoria</span>
+  </div>
+  <div class="section-title" style="margin-top:8px;">
     <h2 id="cat-heading">Categoria</h2>
   </div>
   <div class="cat-pills" id="cat-pills"></div>
+  <div class="sort-bar">
+    <label for="sort-select">Ordenar por</label>
+    <select id="sort-select">
+      <option value="relevance">Relevância</option>
+      <option value="price-asc">Menor preço</option>
+      <option value="price-desc">Maior preço</option>
+      <option value="discount-desc">Maior desconto</option>
+      <option value="stock-asc">Estoque mais baixo</option>
+    </select>
+  </div>
   <div class="product-grid" id="grid-categoria"></div>
 </main>
 
@@ -74,8 +87,16 @@
 
   document.getElementById("page-title").textContent = label + " — Achadinhos Brasil";
   document.getElementById("cat-heading").textContent = label;
+  document.getElementById("breadcrumb-cat").textContent = label;
   renderCategoryPills(document.getElementById("cat-pills"), catKey);
-  renderProductGrid(document.getElementById("grid-categoria"), PRODUCTS.filter((p) => p.category === catKey));
+
+  const catProducts = PRODUCTS.filter((p) => p.category === catKey);
+  const sortSelect = document.getElementById("sort-select");
+  function renderSorted() {
+    renderProductGrid(document.getElementById("grid-categoria"), sortProducts(catProducts, sortSelect.value));
+  }
+  sortSelect.addEventListener("change", renderSorted);
+  renderSorted();
 </script>
 </body>
 </html>
