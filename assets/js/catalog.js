@@ -9,7 +9,9 @@
    expansão de Moda e Vestuário de 8 para 25 itens — filtro "Moda
    feminina" no painel, "Mais Vistos Mês") e 21/08/2026 (p73 a p89,
    expansão de Saúde e Beleza de 8 para 25 itens — filtro "Beleza e
-   Saude" no painel, "Mais Vistos Mês") com produtos
+   Saude" no painel, "Mais Vistos Mês") e 21/08/2026 (p90 a p96,
+   expansão de Pet Shop de 8 para 15 itens — filtro "Pet shop" no
+   painel, "Mais Vistos Mês") com produtos
    reais filtrados no painel da Dropi (marketplace nacional, filtro
    "Mais Vistos Mês"), priorizando diversidade entre os itens de cada
    categoria. Estoque é
@@ -1193,6 +1195,97 @@ const PRODUCTS = [
     stock: 15,
     stockMax: 15,
     description: "Purify, gel de limpeza facial sem sabão, 55g — limpa sem ressecar a pele."
+  },
+  {
+    id: "p90",
+    name: "Toalha Splash Pet",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 54.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177738520069f0bef06fa02.jpg",
+    emoji: "🐾",
+    stock: 2979,
+    stockMax: 2979,
+    description: "Toalha Splash Pet — seca o pet rapidinho depois do banho ou da chuva."
+  },
+  {
+    id: "p91",
+    name: "Peitoral para Gato com Guia Hello Kitty FreeFaro",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 345.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-176079899268f3a9100ad99.jpg",
+    emoji: "🐱",
+    stock: 30,
+    stockMax: 30,
+    description: "Peitoral para gato com guia, estampa Hello Kitty preto e rosa, FreeFaro — passeio seguro pro gatinho."
+  },
+  {
+    id: "p92",
+    name: "Rede de Cadeira Impermeável para Gatos Chiara",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 54.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177738528769f0bf472de8a.png",
+    emoji: "🐈",
+    stock: 1986,
+    stockMax: 1986,
+    description: "Rede de cadeira impermeável pra gatos, modelo Chiara — cantinho quentinho pro gato descansar."
+  },
+  {
+    id: "p93",
+    name: "Mantinha Pet",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 46.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177738491769f0bdd52adce.jpg",
+    emoji: "🐾",
+    stock: 5958,
+    stockMax: 5958,
+    description: "Mantinha pet — aconchego extra pro pet nos dias mais frios."
+  },
+  {
+    id: "p94",
+    name: "Bandana FreeFaro Hello Kitty para Cachorros",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 89.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-175942566568deb481edc52.jpg",
+    emoji: "🐶",
+    stock: 30,
+    stockMax: 30,
+    description: "Bandana FreeFaro estampa Hello Kitty para cachorros, tamanho G — acessório fofo pro passeio."
+  },
+  {
+    id: "p95",
+    name: "Protetor de Sofá Pet Meg Impermeável Grande",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 134.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177738503869f0be4e9201c.jpg",
+    emoji: "🛋️",
+    stock: 6951,
+    stockMax: 6951,
+    description: "Protetor de sofá pet Meg, impermeável, tamanho grande — protege o estofado do pelo e da sujeira."
+  },
+  {
+    id: "p96",
+    name: "Protetor Banco Dianteiro Padrão Impermeável",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 68.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177738496069f0be00ea3f6.jpg",
+    emoji: "🚗",
+    stock: 6951,
+    stockMax: 6951,
+    description: "Protetor de banco dianteiro impermeável, padrão universal — leva o pet no carro sem sujar o banco."
   }
 
 
