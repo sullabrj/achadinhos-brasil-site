@@ -59,10 +59,16 @@
     document.getElementById("page-title").textContent = p.name + " — Achadinhos Brasil";
     const disc = discountPercent(p);
     const stockPct = stockPercent(p);
+    const outOfStock = isOutOfStock(p);
     container.innerHTML = `
+      <div class="breadcrumb">
+        <a href="index.html">Início</a> ›
+        <a href="categoria.html?cat=${p.category}">${p.categoryLabel}</a> ›
+        <span>${p.name}</span>
+      </div>
       <div class="product-detail">
         <div class="product-detail-thumb">
-          ${disc ? `<span class="badge-desconto">-${disc}%</span>` : ""}
+          ${outOfStock ? `<span class="badge-esgotado">Esgotado</span>` : disc ? `<span class="badge-desconto">-${disc}%</span>` : ""}
           ${productThumbInner(p)}
         </div>
         <div>
@@ -75,36 +81,43 @@
           <div class="price-installment" style="font-size:.85rem;color:var(--muted);margin-bottom:12px;">${installmentText(p)}</div>
           <p style="font-size:.92rem;color:var(--muted);margin-bottom:14px;">${p.description}</p>
           <div class="stock-wrap" style="margin-bottom:18px;">
-            <div class="stock-label">${isLowStock(p) ? `Só ${p.stock} em estoque — corre!` : stockLabel(p)}</div>
+            <div class="stock-label">${outOfStock ? "Esgotado" : isLowStock(p) ? `Só ${p.stock} em estoque — corre!` : stockLabel(p)}</div>
             <div class="stock-bar"><div class="stock-bar-fill" style="width:${stockPct}%"></div></div>
           </div>
+          ${outOfStock ? "" : `
           <div class="qty-row">
             <div class="qty-control">
               <button id="qty-minus">−</button>
               <span id="qty-value">1</span>
               <button id="qty-plus">+</button>
             </div>
-          </div>
-          <button class="btn btn-block" id="btn-add">Adicionar ao carrinho</button>
+          </div>`}
+          <button class="btn btn-block" id="btn-add" ${outOfStock ? "disabled" : ""}>${outOfStock ? "Produto esgotado" : "Adicionar ao carrinho"}</button>
           ${productSpecsHTML(p)}
         </div>
       </div>
+      <div class="section-title"><h2>Você também pode gostar</h2></div>
+      <div class="product-grid" id="grid-relacionados"></div>
     `;
 
-    let qty = 1;
-    document.getElementById("qty-minus").onclick = () => {
-      qty = Math.max(1, qty - 1);
-      document.getElementById("qty-value").textContent = qty;
-    };
-    document.getElementById("qty-plus").onclick = () => {
-      qty = Math.min(p.stock, qty + 1);
-      document.getElementById("qty-value").textContent = qty;
-    };
-    document.getElementById("btn-add").onclick = () => {
-      addToCart(p.id, qty);
-      document.getElementById("btn-add").textContent = "Adicionado ✓";
-      setTimeout(() => (document.getElementById("btn-add").textContent = "Adicionar ao carrinho"), 1500);
-    };
+    renderProductGrid(document.getElementById("grid-relacionados"), relatedProducts(p));
+
+    if (!outOfStock) {
+      let qty = 1;
+      document.getElementById("qty-minus").onclick = () => {
+        qty = Math.max(1, qty - 1);
+        document.getElementById("qty-value").textContent = qty;
+      };
+      document.getElementById("qty-plus").onclick = () => {
+        qty = Math.min(p.stock, qty + 1);
+        document.getElementById("qty-value").textContent = qty;
+      };
+      document.getElementById("btn-add").onclick = () => {
+        addToCart(p.id, qty);
+        document.getElementById("btn-add").textContent = "Adicionado ✓";
+        setTimeout(() => (document.getElementById("btn-add").textContent = "Adicionar ao carrinho"), 1500);
+      };
+    }
   }
 </script>
 </body>
