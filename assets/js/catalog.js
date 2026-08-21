@@ -5,8 +5,9 @@
    reforço pontual de Infantil/Joias), 20/08/2026 (p12 a p48, expansão
    para ~8 produtos por categoria) e 21/08/2026 (p49 a p55, piloto de
    expansão da categoria Casa e Decoração de 8 para 15 itens — filtro
-   "Decoração" no painel, "Mais Vistos Mês"; demais categorias ficam
-   pra rodadas seguintes caso o piloto seja aprovado) com produtos
+   "Decoração" no painel, "Mais Vistos Mês") e 21/08/2026 (p56 a p72,
+   expansão de Moda e Vestuário de 8 para 25 itens — filtro "Moda
+   feminina" no painel, "Mais Vistos Mês") com produtos
    reais filtrados no painel da Dropi (marketplace nacional, filtro
    "Mais Vistos Mês"), priorizando diversidade entre os itens de cada
    categoria. Estoque é
@@ -748,7 +749,229 @@ const PRODUCTS = [
     stock: 50,
     stockMax: 50,
     description: "Caneca do Brasil Hexa 2026 — pra comemorar o hexacampeonato com estilo na hora do café."
+  },
+  {
+    id: "p56",
+    name: "Roupas p/ Academia 2pçs Tamanho Único Cores Sortidas",
+    category: "moda",
+    categoryLabel: "Moda e Vestuário",
+    price: 77.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177365869969b7e24b76f72.webp",
+    emoji: "🏋️‍♀️",
+    stock: 10,
+    stockMax: 10,
+    description: "Conjunto de roupas para academia, 2 peças, tamanho único, cores sortidas — prático para o treino do dia a dia."
+  },
+  {
+    id: "p57",
+    name: "Kit Regata e Shorts Esportivo Cores Sortidas",
+    category: "moda",
+    categoryLabel: "Moda e Vestuário",
+    price: 65.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177365869369b7e2453cdbd.webp",
+    emoji: "🎽",
+    stock: 10,
+    stockMax: 10,
+    description: "Kit regata e shorts esportivo, cores sortidas — conjunto leve pra treinar ou usar no dia a dia."
+  },
+  {
+    id: "p58",
+    name: "Meias Masculinas Kit 3 Pares Cores Sortidas",
+    category: "moda",
+    categoryLabel: "Moda e Vestuário",
+    price: 17.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1770149824698257c0bd4ec.webp",
+    emoji: "🧦",
+    stock: 10,
+    stockMax: 10,
+    description: "Kit com 3 pares de meias masculinas, cores sortidas — reforço prático pro dia a dia."
+  },
+  {
+    id: "p59",
+    name: "Pijama Feminino Coração Cores Sortidas",
+    category: "moda",
+    categoryLabel: "Moda e Vestuário",
+    price: 62.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177153493969977a5b77522.png",
+    emoji: "👚",
+    stock: 9,
+    stockMax: 9,
+    description: "Pijama feminino com estampa de coração, cores sortidas — conforto pra dormir com estilo."
+  },
+  {
+    id: "p60",
+    name: "Calça Legging com Estampa Lateral Cores Sortidas",
+    category: "moda",
+    categoryLabel: "Moda e Vestuário",
+    price: 58.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177365863669b7e20cdeef5.webp",
+    emoji: "🩱",
+    stock: 10,
+    stockMax: 10,
+    description: "Calça legging com estampa lateral, tamanho único, cores sortidas — conforto e estilo pro dia a dia."
+  },
+  {
+    id: "p61",
+    name: "Conjunto Camisa e Calça Cores Sortidas",
+    category: "moda",
+    categoryLabel: "Moda e Vestuário",
+    price: 77.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177262452769a81a8f55242.webp",
+    emoji: "👕",
+    stock: 10,
+    stockMax: 10,
+    description: "Conjunto camisa e calça, cores sortidas — combo pronto pra vestir."
+  },
+  {
+    id: "p62",
+    name: "Blusa Esportiva Cores Sortidas",
+    category: "moda",
+    categoryLabel: "Moda e Vestuário",
+    price: 42.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177365863069b7e2067eb85.webp",
+    emoji: "👚",
+    stock: 10,
+    stockMax: 10,
+    description: "Blusa esportiva, tamanho único, cores sortidas — ideal pro treino."
+  },
+  {
+    id: "p63",
+    name: "Top Esportivo Cores Sortidas",
+    category: "moda",
+    categoryLabel: "Moda e Vestuário",
+    price: 49.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177365881269b7e2bcebf49.webp",
+    emoji: "🎽",
+    stock: 10,
+    stockMax: 10,
+    description: "Top esportivo, tamanho único, cores sortidas — pra treinar com conforto."
+  },
+  {
+    id: "p64",
+    name: "Top de Poliéster Cores Sortidas",
+    category: "moda",
+    categoryLabel: "Moda e Vestuário",
+    price: 33.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177262458669a81aca1685a.webp",
+    emoji: "🎽",
+    stock: 10,
+    stockMax: 10,
+    description: "Top de poliéster, tamanho e cor sortidos — básico versátil pro dia a dia."
+  },
+  {
+    id: "p65",
+    name: "Blusa + Legging Cores Sortidas",
+    category: "moda",
+    categoryLabel: "Moda e Vestuário",
+    price: 81.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177365862869b7e2045350d.webp",
+    emoji: "👚",
+    stock: 10,
+    stockMax: 10,
+    description: "Conjunto blusa e legging, tamanho único, cores sortidas — combo confortável pro dia a dia."
+  },
+  {
+    id: "p66",
+    name: "Top Cores Sortidas",
+    category: "moda",
+    categoryLabel: "Moda e Vestuário",
+    price: 53.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177365881869b7e2c207f6f.webp",
+    emoji: "🎽",
+    stock: 10,
+    stockMax: 10,
+    description: "Top em várias cores, tamanho único — peça coringa pro guarda-roupa."
+  },
+  {
+    id: "p67",
+    name: "Necessaire 18x10x8cm Cores Sortidas",
+    category: "moda",
+    categoryLabel: "Moda e Vestuário",
+    price: 23.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1770149828698257c4cca5e.webp",
+    emoji: "👜",
+    stock: 9,
+    stockMax: 9,
+    description: "Necessaire 18x10x8cm, cores sortidas — organiza os itens de higiene e maquiagem na bolsa ou mala."
+  },
+  {
+    id: "p68",
+    name: "Shorts Esportivo Cores Sortidas",
+    category: "moda",
+    categoryLabel: "Moda e Vestuário",
+    price: 35.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177365881069b7e2ba1cf5d.webp",
+    emoji: "🩳",
+    stock: 10,
+    stockMax: 10,
+    description: "Shorts esportivo, tamanho único, cores sortidas — leve e confortável pro treino."
+  },
+  {
+    id: "p69",
+    name: "Casaco Masculino com Bolso e Zíper",
+    category: "moda",
+    categoryLabel: "Moda e Vestuário",
+    price: 292.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177262452569a81a8d33f38.webp",
+    emoji: "🧥",
+    stock: 10,
+    stockMax: 10,
+    description: "Casaco masculino com bolso e zíper — esquenta nos dias mais frios com praticidade."
+  },
+  {
+    id: "p70",
+    name: "Casaco de Algodão Masculino Cores Sortidas",
+    category: "moda",
+    categoryLabel: "Moda e Vestuário",
+    price: 263.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177262436469a819ec1d2c0.webp",
+    emoji: "🧥",
+    stock: 10,
+    stockMax: 10,
+    description: "Casaco de algodão masculino, cores sortidas — conforto e proteção contra o frio."
+  },
+  {
+    id: "p71",
+    name: "Calças no Tamanho Único Cores Sortidas",
+    category: "moda",
+    categoryLabel: "Moda e Vestuário",
+    price: 55.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177262435169a819dfb010d.webp",
+    emoji: "👖",
+    stock: 10,
+    stockMax: 10,
+    description: "Calça em tamanho único, cores sortidas — versátil pro dia a dia."
+  },
+  {
+    id: "p72",
+    name: "Pantufa Beijinho Feminina Cores Sortidas",
+    category: "moda",
+    categoryLabel: "Moda e Vestuário",
+    price: 26.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177262447469a81a5a5af5a.webp",
+    emoji: "🥿",
+    stock: 10,
+    stockMax: 10,
+    description: "Pantufa feminina modelo beijinho, cores sortidas — aconchego pra dentro de casa."
   }
+
 ];
 
 const CATEGORIES = [
