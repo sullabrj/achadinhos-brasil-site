@@ -1709,6 +1709,12 @@ function searchResultItemHTML(p, query) {
   </a>`;
 }
 
+function escapeHtml(str) {
+  const div = document.createElement("div");
+  div.textContent = str;
+  return div.innerHTML;
+}
+
 function wireSearch(inputEl, resultsEl) {
   if (!inputEl || !resultsEl) return;
 
@@ -1722,7 +1728,7 @@ function wireSearch(inputEl, resultsEl) {
     const matches = searchProducts(query);
     resultsEl.innerHTML = matches.length
       ? matches.map((p) => searchResultItemHTML(p, query)).join("")
-      : `<div class="search-empty">Nenhum produto encontrado pra "${query}"</div>`;
+      : `<div class="search-empty">Nenhum produto encontrado pra "${escapeHtml(query)}"</div>`;
     resultsEl.classList.add("open");
   }
 
