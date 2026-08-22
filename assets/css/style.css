@@ -158,6 +158,11 @@ nav.main-nav a:hover{opacity:1;color:var(--accent);}
 /* Página de produto */
 .product-detail{display:grid;grid-template-columns:1fr 1fr;gap:36px;padding:34px 0;}
 @media(max-width:760px){.product-detail{grid-template-columns:1fr;}}
+
+/* Página de carrinho — o layout (2fr 1fr) vem inline no carrinho.html;
+   sem essa regra ele fica espremido em telas de celular, já que não existe
+   nenhum outro jeito de sobrescrever grid-template-columns inline sem !important. */
+@media(max-width:760px){#cart-layout{grid-template-columns:1fr!important;}}
 .product-detail-thumb{
   background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);
   aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:6rem;
