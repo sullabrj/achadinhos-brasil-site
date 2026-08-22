@@ -47,7 +47,7 @@
       el.innerHTML = `<span style="color:var(--brand-dark);">Digite o número do pedido.</span>`;
       return;
     }
-    el.innerHTML = `<span style="color:var(--muted);">Rastreio automático ainda não está ativo. Manda o número <b>${val}</b> pra gente pelo WhatsApp que a gente confirma o status na hora.</span>`;
+    el.innerHTML = `<span style="color:var(--muted);">Rastreio automático ainda não está ativo. Manda o número <b>${escapeHtml(val)}</b> pra gente pelo WhatsApp que a gente confirma o status na hora.</span>`;
   }
 </script>
 </body>
