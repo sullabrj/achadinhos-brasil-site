@@ -14,14 +14,19 @@
  * validar a integração no checklist do Mercado Pago. Não mexe em dinheiro
  * real. Pode ser removida depois que a integração for aprovada.
  *
- * CORS: aceita os dois endereços onde o site pode estar no ar — o
- * domínio próprio (quando a migração acontecer) e o GitHub Pages atual.
- * Corrigido em 20/08 — antes só aceitava o domínio próprio, então o
- * checkout falhava com "Failed to fetch" enquanto o site estivesse no
- * GitHub Pages (endereço usado hoje).
+ * CORS: aceita os endereços onde o site pode estar no ar — domínio
+ * próprio com www (produção atual), domínio próprio sem www (apex,
+ * caso o redirect do GitHub Pages não tenha acontecido ainda) e o
+ * GitHub Pages antigo (fallback/teste).
+ * Corrigido em 20/08 (GitHub Pages) e em 22/08 (adicionado o "www."
+ * depois que o domínio migrou de vez — o CNAME do repo aponta pra
+ * www.lojaachadinhosbrasil.com.br, mas o Worker só aceitava a versão
+ * sem www, então todo checkout no domínio novo falhava com "Failed to
+ * fetch" por bloqueio de CORS).
  */
 
 const ALLOWED_ORIGINS = [
+  "https://www.lojaachadinhosbrasil.com.br",
   "https://lojaachadinhosbrasil.com.br",
   "https://sullabrj.github.io"
 ];
