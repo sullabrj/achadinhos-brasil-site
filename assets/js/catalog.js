@@ -1758,3 +1758,21 @@ function initSiteSearch() {
 }
 
 document.addEventListener("DOMContentLoaded", initSiteSearch);
+
+
+/* ---------- Ícones no menu principal (preview de melhorias aplicado) ----------
+   Não reescreve a nav — só insere o emoji da categoria antes do texto de
+   cada link já existente, pra ficar mais fácil de escanear visualmente. */
+function iconizeMainNav() {
+  document.querySelectorAll("nav.main-nav a[href*='cat=']").forEach((a) => {
+    if (a.querySelector(".nav-icon")) return;
+    const match = a.getAttribute("href").match(/cat=([a-z]+)/);
+    const cat = match && CATEGORIES.find((c) => c.key === match[1]);
+    if (!cat) return;
+    const icon = document.createElement("span");
+    icon.className = "nav-icon";
+    icon.textContent = cat.icon;
+    a.prepend(icon, " ");
+  });
+}
+document.addEventListener("DOMContentLoaded", iconizeMainNav);
