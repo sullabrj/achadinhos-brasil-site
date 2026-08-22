@@ -361,3 +361,13 @@ footer.site-footer{background:var(--text);color:#fff;margin-top:50px;padding:36p
 .flash-stock-label{font-size:.7rem;font-weight:700;opacity:.9;margin-bottom:4px;}
 .flash-stock-wrap .stock-bar{background:rgba(255,255,255,.3);}
 .flash-stock-wrap .stock-bar-fill{background:#fff;}
+
+
+/* ============ Menu principal com icone (aplicado do preview de melhorias) ============ */
+nav.main-nav ul{gap:10px;}
+nav.main-nav a{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.08);padding:7px 14px;border-radius:20px;
+}
+nav.main-nav a:hover{background:var(--accent);}
+nav.main-nav .nav-icon{font-size:1rem;}
