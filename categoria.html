@@ -3,6 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" id="canonical-link" href="https://www.lojaachadinhosbrasil.com.br/categoria.html">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-69ZP5SYLYC"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-69ZP5SYLYC');
+</script>
 <title id="page-title">Categoria — Achadinhos Brasil</title>
 <meta name="description" id="meta-description" content="Achadinhos Brasil: ofertas com estoque limitado por categoria — casa, moda, beleza, pet, joias e infantil.">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -83,6 +92,12 @@
       <a href="pages/fale-conosco.html">Fale conosco</a>
       <a href="pages/rastreio.html">Rastrear pedido</a>
     </div>
+    <div>
+      <h4>Institucional</h4>
+      <a href="pages/privacidade.html">Política de Privacidade</a>
+      <a href="pages/termos.html">Termos de Uso</a>
+      <a href="pages/troca-devolucao.html">Trocas e Devoluções</a>
+    </div>
   </div>
   <div class="footer-bottom">© Achadinhos Brasil — todos os direitos reservados</div>
 </footer>
@@ -101,6 +116,7 @@
   document.getElementById("og-description").setAttribute("content", `Ofertas de ${label} com estoque limitado, direto no WhatsApp.`);
   document.getElementById("cat-heading").textContent = label;
   document.getElementById("breadcrumb-cat").textContent = label;
+  document.getElementById("canonical-link").setAttribute("href", `https://www.lojaachadinhosbrasil.com.br/categoria.html?cat=${catKey}`);
   renderCategoryPills(document.getElementById("cat-pills"), catKey);
 
   const catProducts = PRODUCTS.filter((p) => p.category === catKey);
