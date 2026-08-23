@@ -79,6 +79,29 @@
     document.getElementById("og-title").setAttribute("content", p.name + " — Achadinhos Brasil");
     document.getElementById("og-description").setAttribute("content", p.description.slice(0, 160));
     if (p.image) document.getElementById("og-image").setAttribute("content", p.image);
+
+    // Dados estruturados (Schema.org Product) pro Google — só campos reais do
+    // catálogo, nada inventado (preço, disponibilidade e imagem batem com o
+    // que já aparece na tela).
+    const ldJson = document.createElement("script");
+    ldJson.type = "application/ld+json";
+    ldJson.textContent = JSON.stringify({
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      name: p.name,
+      description: p.description,
+      image: p.image || undefined,
+      sku: p.id,
+      offers: {
+        "@type": "Offer",
+        url: location.href,
+        priceCurrency: "BRL",
+        price: p.price,
+        availability: isOutOfStock(p) ? "https://schema.org/OutOfStock" : "https://schema.org/InStock"
+      }
+    });
+    document.head.appendChild(ldJson);
+
     const disc = discountPercent(p);
     const stockPct = stockPercent(p);
     const outOfStock = isOutOfStock(p);
