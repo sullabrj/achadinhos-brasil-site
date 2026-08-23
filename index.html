@@ -81,6 +81,10 @@
     <h2>Ofertas de hoje</h2>
   </div>
   <div class="product-grid" id="grid-ofertas"></div>
+  <div style="text-align:center;margin:24px 0 8px;">
+    <div id="ofertas-count" style="font-size:.82rem;color:var(--muted);margin-bottom:12px;"></div>
+    <button type="button" class="btn btn-outline" id="btn-load-more">Ver mais ofertas</button>
+  </div>
 </main>
 
 <a class="wa-float" href="https://wa.me/5524988383100" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
@@ -117,8 +121,31 @@
   initCountdown("countdown", flashCountdownHours(flashIds));
   renderFlashStockBar(flashIds, document.getElementById("flash-stock-label"), document.getElementById("flash-stock-fill"));
   renderCategoryCards(document.getElementById("cat-cards"));
-  renderProductGrid(document.getElementById("grid-ofertas"), PRODUCTS);
   renderFlashItems(flashIds, document.getElementById("flash-items"));
+
+  // "Ver mais ofertas" — carrega os produtos aos poucos em vez de jogar as
+  // 103 ofertas de uma vez na home (mais rápido pra carregar no celular).
+  const OFERTAS_PAGE_SIZE = 24;
+  let ofertasShown = 0;
+  const gridOfertasEl = document.getElementById("grid-ofertas");
+  const ofertasCountEl = document.getElementById("ofertas-count");
+  const btnLoadMore = document.getElementById("btn-load-more");
+
+  function showMoreOfertas() {
+    const next = PRODUCTS.slice(ofertasShown, ofertasShown + OFERTAS_PAGE_SIZE);
+    if (!ofertasShown && !next.length) {
+      gridOfertasEl.innerHTML = `<div class="empty-state">Nenhuma oferta no momento.</div>`;
+    } else {
+      gridOfertasEl.insertAdjacentHTML("beforeend", next.map(productCardHTML).join(""));
+    }
+    ofertasShown += next.length;
+    ofertasCountEl.textContent = `Mostrando ${ofertasShown} de ${PRODUCTS.length} ofertas`;
+    if (ofertasShown >= PRODUCTS.length && btnLoadMore) {
+      btnLoadMore.style.display = "none";
+    }
+  }
+  showMoreOfertas();
+  if (btnLoadMore) btnLoadMore.addEventListener("click", showMoreOfertas);
 </script>
 </body>
 </html>
