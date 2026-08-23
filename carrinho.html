@@ -6,6 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Carrinho — Achadinhos Brasil</title>
 <meta name="robots" content="noindex">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-69ZP5SYLYC"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-69ZP5SYLYC');
+</script>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/img/icon-16.png">
@@ -95,6 +103,14 @@
     <div>
       <div class="cart-summary">
         <div class="cart-summary-row"><span>Subtotal</span><span id="sum-subtotal">R$ 0,00</span></div>
+        <div style="margin:12px 0;">
+          <div style="display:flex;gap:8px;">
+            <input id="cupom-input" type="text" placeholder="Cupom de desconto" autocomplete="off" style="flex:1;padding:9px 10px;border:1px solid #ddd;border-radius:8px;font-size:.85rem;text-transform:uppercase;">
+            <button type="button" class="btn btn-outline" id="btn-aplicar-cupom" style="white-space:nowrap;padding:9px 14px;">Aplicar</button>
+          </div>
+          <div id="cupom-msg" style="font-size:.78rem;margin-top:6px;"></div>
+        </div>
+        <div class="cart-summary-row" id="row-desconto" style="display:none;color:#3DBE8B;"><span>Desconto</span><span id="sum-desconto">-R$ 0,00</span></div>
         <div class="cart-summary-row total"><span>Total</span><span id="sum-total">R$ 0,00</span></div>
         <button class="btn btn-block btn-accent" id="btn-checkout" onclick="iniciarCheckout()">Finalizar compra</button>
         <div style="text-align:center;font-size:.78rem;color:var(--muted);margin-top:10px;">
@@ -106,6 +122,9 @@
 </main>
 
 <footer class="site-footer">
+  <div style="text-align:center;font-size:.78rem;margin-bottom:10px;">
+    <a href="pages/privacidade.html">Privacidade</a> · <a href="pages/termos.html">Termos de uso</a> · <a href="pages/troca-devolucao.html">Trocas e devoluções</a>
+  </div>
   <div class="footer-bottom">© Achadinhos Brasil — todos os direitos reservados</div>
 </footer>
 
@@ -117,10 +136,12 @@
     const cart = getCart();
     const itemsEl = document.getElementById("cart-items");
     const deliveryForm = document.getElementById("delivery-form");
+    const rowDesconto = document.getElementById("row-desconto");
     if (!cart.length) {
       itemsEl.innerHTML = `<div class="empty-state">Seu carrinho está vazio. <a href="index.html" style="color:var(--accent);font-weight:700;">Ver ofertas</a></div>`;
       document.getElementById("sum-subtotal").textContent = formatBRL(0);
       document.getElementById("sum-total").textContent = formatBRL(0);
+      if (rowDesconto) rowDesconto.style.display = "none";
       if (deliveryForm) deliveryForm.style.display = "none";
       return;
     }
@@ -143,11 +164,56 @@
           <button class="btn btn-outline" onclick="removeFromCart('${p.id}'); renderCart();">Remover</button>
         </div>`;
     }).join("");
-    const total = cartTotal();
-    document.getElementById("sum-subtotal").textContent = formatBRL(total);
+
+    const subtotal = cartTotal();
+    const cupom = typeof getCupomAplicado === "function" ? getCupomAplicado() : null;
+    const descontoValor = cupom ? Math.round(subtotal * cupom.pct * 100) / 100 : 0;
+    const total = subtotal - descontoValor;
+
+    document.getElementById("sum-subtotal").textContent = formatBRL(subtotal);
+    if (cupom && descontoValor > 0) {
+      if (rowDesconto) rowDesconto.style.display = "";
+      document.getElementById("sum-desconto").textContent = "-" + formatBRL(descontoValor);
+    } else if (rowDesconto) {
+      rowDesconto.style.display = "none";
+    }
     document.getElementById("sum-total").textContent = formatBRL(total);
+
+    const cupomInput = document.getElementById("cupom-input");
+    const cupomMsg = document.getElementById("cupom-msg");
+    if (cupom && cupomInput && !cupomInput.value) {
+      cupomInput.value = cupom.code;
+      if (cupomMsg) {
+        cupomMsg.style.color = "#3DBE8B";
+        cupomMsg.textContent = `Cupom ${cupom.code} aplicado: -${Math.round(cupom.pct * 100)}%`;
+      }
+    }
   }
   renderCart();
+
+  // Cupom de boas-vindas — ver aplicarCupom()/getCupomAplicado() em checkout.js.
+  const btnCupom = document.getElementById("btn-aplicar-cupom");
+  if (btnCupom) {
+    btnCupom.addEventListener("click", () => {
+      const input = document.getElementById("cupom-input");
+      const msg = document.getElementById("cupom-msg");
+      const r = aplicarCupom(input.value);
+      if (r.ok) {
+        msg.style.color = "#3DBE8B";
+        msg.textContent = `Cupom aplicado: -${Math.round(r.pct * 100)}%`;
+      } else {
+        msg.style.color = "#c0392b";
+        msg.textContent = r.msg;
+      }
+      renderCart();
+    });
+    document.getElementById("cupom-input").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        btnCupom.click();
+      }
+    });
+  }
 
   // Autopreenchimento de endereço pelo CEP (API pública ViaCEP, sem chave,
   // só preenche com dado real — se o CEP não existir, não preenche nada).
