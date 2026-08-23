@@ -188,7 +188,7 @@ nav.main-nav a:hover{opacity:1;color:var(--accent);}
 
 /* Footer */
 footer.site-footer{background:var(--text);color:#fff;margin-top:50px;padding:36px 20px 20px;}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px;max-width:1180px;margin:0 auto;}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:24px;max-width:1180px;margin:0 auto;}
 @media(max-width:700px){.footer-grid{grid-template-columns:1fr;}}
 .footer-grid h4{font-size:.85rem;margin-bottom:10px;color:var(--accent);}
 .footer-grid a{display:block;font-size:.85rem;opacity:.85;margin-bottom:6px;}
@@ -242,7 +242,7 @@ footer.site-footer{background:var(--text);color:#fff;margin-top:50px;padding:36p
   display:flex;align-items:center;justify-content:center;font-size:1.2rem;overflow:hidden;flex-shrink:0;}
 .search-result-thumb img{width:100%;height:100%;object-fit:cover;}
 .search-result-info{flex:1;min-width:0;}
-.search-result-name{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.search-result-name{display:block:overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .search-result-name mark{background:rgba(61,190,139,.28);color:inherit;border-radius:3px;}
 .search-result-price{font-size:.78rem;color:var(--accent);font-weight:700;}
 .search-empty{padding:14px 12px;font-size:.82rem;color:var(--muted);text-align:center;}
