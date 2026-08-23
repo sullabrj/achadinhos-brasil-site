@@ -9,6 +9,29 @@
  * (O comando vai pedir o token no terminal na hora — não fica salvo em
  * nenhum arquivo de texto).
  *
+ * AVISO AUTOMÁTICO DE PEDIDO PAGO (23/08): como a Dropi não tem API
+ * pública pra criar pedido automaticamente (confirmado por engenharia
+ * reversa — o pagamento ao fornecedor é sempre um PIX manual, não dá
+ * pra automatizar), o Worker agora manda um e-mail pra
+ * comercial@sullabrj.com.br assim que um pagamento é aprovado, com
+ * todos os dados (cliente + endereço + itens) pra montar o pedido
+ * manual na Dropi rapidinho. Usa a Resend (https://resend.com) — sem
+ * verificar domínio, porque só manda pro próprio e-mail da conta.
+ * Secret necessário:
+ *   wrangler secret put RESEND_API_KEY
+ *
+ * Como o site não tem banco de dados, os dados do cliente (nome,
+ * telefone, CPF, endereço) e um resumo dos itens viajam dentro do
+ * campo "external_reference" da preferência do Mercado Pago — esse
+ * campo é sempre devolvido junto com o pagamento na API deles, então
+ * dá pra recuperar tudo sem precisar guardar nada em lugar nenhum.
+ *
+ * LIMITAÇÃO CONHECIDA: o Mercado Pago pode reenviar o mesmo webhook
+ * mais de uma vez (retry) — sem banco de dados não dá pra deduplicar
+ * de forma 100% confiável, então em casos raros pode chegar o mesmo
+ * aviso de e-mail duplicado. Não é grave (só reenvia o mesmo pedido),
+ * mas fica registrado aqui caso vire problema de verdade no futuro.
+ *
  * Rota /test-preference (GET): gera uma preferência de TESTE usando o
  * secret MP_TEST_ACCESS_TOKEN (token de teste, sandbox) — só existe pra
  * validar a integração no checklist do Mercado Pago. Não mexe em dinheiro
@@ -18,11 +41,6 @@
  * próprio com www (produção atual), domínio próprio sem www (apex,
  * caso o redirect do GitHub Pages não tenha acontecido ainda) e o
  * GitHub Pages antigo (fallback/teste).
- * Corrigido em 20/08 (GitHub Pages) e em 22/08 (adicionado o "www."
- * depois que o domínio migrou de vez — o CNAME do repo aponta pra
- * www.lojaachadinhosbrasil.com.br, mas o Worker só aceitava a versão
- * sem www, então todo checkout no domínio novo falhava com "Failed to
- * fetch" por bloqueio de CORS).
  */
 
 const ALLOWED_ORIGINS = [
@@ -60,6 +78,87 @@ function json(obj, status = 200, origin = ALLOWED_ORIGINS[0]) {
   });
 }
 
+function formatBRLServer(n) {
+  return (Number(n) || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+}
+
+// Empacota os dados do cliente + resumo dos itens de forma compacta pra
+// caber no external_reference da preferência do Mercado Pago.
+function buildOrderRef(customer, items) {
+  const ref = {
+    n: String(customer.nome || "").slice(0, 80),
+    t: String(customer.telefone || "").slice(0, 20),
+    c: String(customer.cpf || "").replace(/\D/g, "").slice(0, 11),
+    cep: String(customer.cep || "").replace(/\D/g, "").slice(0, 8),
+    e: String(customer.endereco || "").slice(0, 100),
+    num: String(customer.numero || "").slice(0, 15),
+    cpl: String(customer.complemento || "").slice(0, 60),
+    b: String(customer.bairro || "").slice(0, 60),
+    ci: String(customer.cidade || "").slice(0, 60),
+    uf: String(customer.estado || "").slice(0, 2),
+    it: items.slice(0, 20).map((i) => ({
+      t: String(i.title).slice(0, 60),
+      q: i.quantity,
+      p: i.unit_price
+    }))
+  };
+  return JSON.stringify(ref);
+}
+
+async function notificarPedidoAprovado(payment, env) {
+  if (!env.RESEND_API_KEY) return;
+
+  let pedido = {};
+  try {
+    pedido = JSON.parse(payment.external_reference || "{}");
+  } catch (e) {
+    pedido = {};
+  }
+
+  const itens = Array.isArray(pedido.it) ? pedido.it : [];
+  const itensHtml =
+    itens.map((i) => `<li>${i.q}x ${i.t} — ${formatBRLServer(i.p)}</li>`).join("") ||
+    "<li>(itens não identificados — confira o pagamento no painel do Mercado Pago)</li>";
+
+  const dataAprovado = payment.date_approved
+    ? new Date(payment.date_approved).toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" })
+    : "";
+
+  const html = `
+    <h2>Novo pedido pago — Achadinhos Brasil</h2>
+    <p><b>Pagamento Mercado Pago:</b> #${payment.id} — ${formatBRLServer(payment.transaction_amount)} ${dataAprovado ? "— aprovado em " + dataAprovado : ""}</p>
+    <h3>Itens</h3>
+    <ul>${itensHtml}</ul>
+    <h3>Cliente</h3>
+    <p>
+      ${pedido.n || "(nome não informado)"}<br>
+      Tel/WhatsApp: ${pedido.t || "-"}<br>
+      CPF: ${pedido.c || "-"}
+    </p>
+    <h3>Endereço de entrega</h3>
+    <p>
+      ${pedido.e || "-"}, ${pedido.num || "-"}${pedido.cpl ? " — " + pedido.cpl : ""}<br>
+      ${pedido.b || "-"} — ${pedido.ci || "-"}/${pedido.uf || "-"}<br>
+      CEP: ${pedido.cep || "-"}
+    </p>
+    <p style="color:#888;font-size:.85rem;">Lembrete: monte o pedido manual na Dropi com esses dados pra despachar.</p>
+  `;
+
+  await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${env.RESEND_API_KEY}`
+    },
+    body: JSON.stringify({
+      from: "Achadinhos Brasil <onboarding@resend.dev>",
+      to: "comercial@sullabrj.com.br",
+      subject: `Novo pedido pago — #${payment.id}`,
+      html
+    })
+  });
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -70,9 +169,40 @@ export default {
       return new Response(null, { headers: corsHeaders(origin) });
     }
 
-    // Webhook do Mercado Pago: só precisa responder 200 para confirmar recebimento.
-    // (Próximo passo futuro: buscar o pagamento pelo id e atualizar pedido.)
+    // Webhook do Mercado Pago: identifica o pagamento (JSON body no formato
+    // novo, ou query params no formato IPN antigo), busca os detalhes na API
+    // deles e, se estiver aprovado, manda o e-mail de aviso com os dados do
+    // pedido. Sempre responde 200 rápido — mesmo se o aviso falhar — pra não
+    // entrar num loop de reenvio do Mercado Pago.
     if (url.pathname === "/mp-webhook") {
+      let paymentId = url.searchParams.get("data.id") || url.searchParams.get("id");
+
+      if (!paymentId && request.method === "POST") {
+        try {
+          const body = await request.json();
+          if (body?.data?.id) paymentId = body.data.id;
+          else if (body?.id && (body.type === "payment" || body.topic === "payment")) paymentId = body.id;
+        } catch (e) {
+          // corpo vazio ou não-JSON: sem problema, só não dá pra identificar agora.
+        }
+      }
+
+      if (paymentId && env.MP_ACCESS_TOKEN) {
+        try {
+          const payResp = await fetch(`https://api.mercadopago.com/v1/payments/${paymentId}`, {
+            headers: { Authorization: `Bearer ${env.MP_ACCESS_TOKEN}` }
+          });
+          if (payResp.ok) {
+            const payment = await payResp.json();
+            if (payment.status === "approved") {
+              await notificarPedidoAprovado(payment, env);
+            }
+          }
+        } catch (e) {
+          // nunca deixa o webhook falhar por causa do e-mail — só não avisa dessa vez.
+        }
+      }
+
       return new Response("ok", { status: 200 });
     }
 
@@ -128,6 +258,21 @@ export default {
       return json({ error: "Carrinho vazio" }, 400, origin);
     }
 
+    const customer = body.customer && typeof body.customer === "object" ? body.customer : {};
+    const camposFaltando = [];
+    if (!customer.nome) camposFaltando.push("nome");
+    if (!customer.telefone) camposFaltando.push("telefone");
+    if (!customer.cpf) camposFaltando.push("CPF");
+    if (!customer.cep) camposFaltando.push("CEP");
+    if (!customer.endereco) camposFaltando.push("endereço");
+    if (!customer.numero) camposFaltando.push("número");
+    if (!customer.bairro) camposFaltando.push("bairro");
+    if (!customer.cidade) camposFaltando.push("cidade");
+    if (!customer.estado) camposFaltando.push("estado");
+    if (camposFaltando.length) {
+      return json({ error: `Dados de entrega incompletos: ${camposFaltando.join(", ")}` }, 400, origin);
+    }
+
     const preference = {
       items: items.map((i) => ({
         title: String(i.title).slice(0, 256),
@@ -141,7 +286,8 @@ export default {
         pending: `${siteBase}/pages/pedido-confirmado.html`
       },
       auto_return: "approved",
-      notification_url: `${WORKER_URL}/mp-webhook`
+      notification_url: `${WORKER_URL}/mp-webhook`,
+      external_reference: buildOrderRef(customer, items)
     };
 
     const mpResp = await fetch("https://api.mercadopago.com/checkout/preferences", {
@@ -162,3 +308,4 @@ export default {
     return json({ init_point: mpData.init_point }, 200, origin);
   }
 };
+
