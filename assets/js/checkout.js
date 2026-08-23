@@ -11,6 +11,33 @@
 // (ex.: https://achadinhos-checkout.SEU-SUBDOMINIO.workers.dev)
 const CHECKOUT_WORKER_URL = "https://achadinhos-checkout.comercial-0a2.workers.dev";
 
+/* ---------- Cupom de boas-vindas ----------
+   Desconto simples aplicado no carrinho, sem backend — por isso não dá
+   pra garantir de verdade "só na 1ª compra" (qualquer um pode usar mais
+   de uma vez). Por honestidade, o cupom é chamado só de "boas-vindas" no
+   site, nunca de "exclusivo pra quem nunca comprou". */
+const COUPONS = { BEMVINDO10: 0.1 };
+const CUPOM_KEY = "achadinhos_cupom";
+
+function getCupomAplicado() {
+  try {
+    const c = JSON.parse(sessionStorage.getItem(CUPOM_KEY));
+    if (c && COUPONS[c.code] === c.pct) return c;
+  } catch (e) {
+    // sessionStorage indisponível ou dado corrompido: segue sem cupom.
+  }
+  return null;
+}
+
+function aplicarCupom(codigoRaw) {
+  const codigo = String(codigoRaw || "").trim().toUpperCase();
+  if (!codigo) return { ok: false, msg: "Digite um código de cupom." };
+  const pct = COUPONS[codigo];
+  if (!pct) return { ok: false, msg: "Cupom inválido ou expirado." };
+  sessionStorage.setItem(CUPOM_KEY, JSON.stringify({ code: codigo, pct }));
+  return { ok: true, pct };
+}
+
 function validarCPF(cpfRaw) {
   const cpf = String(cpfRaw || "").replace(/\D/g, "");
   if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
@@ -71,15 +98,18 @@ async function iniciarCheckout() {
   }
   if (errorEl) errorEl.style.display = "none";
 
+  const cupom = getCupomAplicado();
+  const desconto = cupom ? cupom.pct : 0;
   const items = cart
     .map((i) => {
       const p = getProductById(i.id);
       if (!p) return null;
+      const precoComDesconto = desconto ? Math.round(p.price * (1 - desconto) * 100) / 100 : p.price;
       return {
         id: p.id,
         title: p.name,
         quantity: i.qty,
-        unit_price: p.price
+        unit_price: precoComDesconto
       };
     })
     .filter(Boolean);
