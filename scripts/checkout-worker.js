@@ -10,33 +10,24 @@
  * nenhum arquivo de texto).
  *
  * AVISO AUTOMÁTICO DE PEDIDO PAGO (23/08, trocado de e-mail pra
- * WhatsApp no mesmo dia por decisão do usuário): como a Dropi não tem
- * API pública pra criar pedido automaticamente (confirmado por
- * engenharia reversa — o pagamento ao fornecedor é sempre um PIX
- * manual, não dá pra automatizar), o Worker manda uma mensagem de
- * WhatsApp assim que um pagamento é aprovado, com todos os dados
- * (cliente + endereço + itens) pra montar o pedido manual na Dropi
- * rapidinho. Usa a WhatsApp Cloud API oficial da Meta (grátis).
- * Como toda mensagem enviada pela empresa (não em resposta a uma
- * mensagem do cliente) exige um "message template" pré-aprovado pela
- * Meta, foi criado o template abaixo (categoria Utilidade, idioma
- * Português BR) no WhatsApp Manager:
- *   Nome: pedido_pago
- *   Corpo: "🛒 Novo pedido pago - Achadinhos Brasil
- *
- *     Pagamento {{1}}
- *
- *     Cliente: {{2}}
- *     Tel/WhatsApp: {{3}}
- *     CPF: {{4}}
- *
- *     Endereço: {{5}}
- *
- *     Itens: {{6}}"
+ * WhatsApp no mesmo dia por decisão do usuário, e da WhatsApp Cloud
+ * API oficial da Meta pro CallMeBot logo em seguida — a API oficial
+ * exigia app no Meta Business + template aprovado, trabalho demais
+ * pra esse caso): como a Dropi não tem API pública pra criar pedido
+ * automaticamente (confirmado por engenharia reversa — o pagamento ao
+ * fornecedor é sempre um PIX manual, não dá pra automatizar), o
+ * Worker manda uma mensagem de WhatsApp assim que um pagamento é
+ * aprovado, com todos os dados (cliente + endereço + itens) pra
+ * montar o pedido manual na Dropi rapidinho. Usa o CallMeBot
+ * (https://callmebot.com) — serviço gratuito e não-oficial, mensagem
+ * de texto livre (sem template pré-aprovado), só manda pro número que
+ * ativou o bot. Configuração pelo celular do usuário (feita fora
+ * daqui): salvar o contato do CallMeBot (+34 644 51 95 23), mandar
+ * "I allow callmebot to send me messages" pra ele no WhatsApp, e
+ * esperar a resposta com a API key.
  * Secrets necessários:
- *   wrangler secret put WHATSAPP_TOKEN     (token permanente do WhatsApp Cloud API)
- *   wrangler secret put WHATSAPP_PHONE_ID  (Phone Number ID do app na Meta)
- *   wrangler secret put WHATSAPP_TO        (número que recebe o aviso, formato 55DDDNÚMERO)
+ *   wrangler secret put CALLMEBOT_PHONE   (número que ativou o bot, formato 55DDDNÚMERO)
+ *   wrangler secret put CALLMEBOT_APIKEY  (chave que o bot manda de volta)
  *
  * Como o site não tem banco de dados, os dados do cliente (nome,
  * telefone, CPF, endereço) e um resumo dos itens viajam dentro do
@@ -125,7 +116,7 @@ function buildOrderRef(customer, items) {
 }
 
 async function notificarPedidoAprovado(payment, env) {
-  if (!env.WHATSAPP_TOKEN || !env.WHATSAPP_PHONE_ID || !env.WHATSAPP_TO) return;
+  if (!env.CALLMEBOT_PHONE || !env.CALLMEBOT_APIKEY) return;
 
   let pedido = {};
   try {
@@ -145,37 +136,18 @@ async function notificarPedidoAprovado(payment, env) {
 
   const enderecoTexto = `${pedido.e || "-"}, ${pedido.num || "-"}${pedido.cpl ? " - " + pedido.cpl : ""}, ${pedido.b || "-"}, ${pedido.ci || "-"}/${pedido.uf || "-"}, CEP ${pedido.cep || "-"}`;
 
-  const params = [
-    `#${payment.id} - ${formatBRLServer(payment.transaction_amount)}${dataAprovado ? " (aprovado em " + dataAprovado + ")" : ""}`,
-    pedido.n || "(nome não informado)",
-    pedido.t || "-",
-    pedido.c || "-",
-    enderecoTexto,
-    itensTexto
-  ];
+  const texto = [
+    `🛒 Novo pedido pago - Achadinhos Brasil`,
+    `Pagamento #${payment.id} - ${formatBRLServer(payment.transaction_amount)}${dataAprovado ? " (aprovado em " + dataAprovado + ")" : ""}`,
+    `Cliente: ${pedido.n || "(nome não informado)"}`,
+    `Tel/WhatsApp: ${pedido.t || "-"}`,
+    `CPF: ${pedido.c || "-"}`,
+    `Endereço: ${enderecoTexto}`,
+    `Itens: ${itensTexto}`
+  ].join("\n");
 
-  await fetch(`https://graph.facebook.com/v20.0/${env.WHATSAPP_PHONE_ID}/messages`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${env.WHATSAPP_TOKEN}`
-    },
-    body: JSON.stringify({
-      messaging_product: "whatsapp",
-      to: env.WHATSAPP_TO,
-      type: "template",
-      template: {
-        name: "pedido_pago",
-        language: { code: "pt_BR" },
-        components: [
-          {
-            type: "body",
-            parameters: params.map((text) => ({ type: "text", text }))
-          }
-        ]
-      }
-    })
-  });
+  const url = `https://api.callmebot.com/whatsapp.php?phone=${encodeURIComponent(env.CALLMEBOT_PHONE)}&text=${encodeURIComponent(texto)}&apikey=${encodeURIComponent(env.CALLMEBOT_APIKEY)}`;
+  await fetch(url);
 }
 
 export default {
@@ -218,7 +190,7 @@ export default {
             }
           }
         } catch (e) {
-          // nunca deixa o webhook falhar por causa do e-mail — só não avisa dessa vez.
+          // nunca deixa o webhook falhar por causa do aviso — só não avisa dessa vez.
         }
       }
 
