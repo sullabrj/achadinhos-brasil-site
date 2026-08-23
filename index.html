@@ -77,6 +77,11 @@
     <div class="trust-item"><span class="trust-icon">💬</span> Atendimento direto no WhatsApp</div>
   </div>
 
+  <div class="section-title" id="recent-section-title" style="display:none;">
+    <h2>Vistos recentemente</h2>
+  </div>
+  <div class="product-grid" id="grid-recentes" style="display:none;"></div>
+
   <div class="section-title">
     <h2>Ofertas de hoje</h2>
   </div>
@@ -122,6 +127,15 @@
   renderFlashStockBar(flashIds, document.getElementById("flash-stock-label"), document.getElementById("flash-stock-fill"));
   renderCategoryCards(document.getElementById("cat-cards"));
   renderFlashItems(flashIds, document.getElementById("flash-items"));
+
+  // "Vistos recentemente" — só aparece pra quem já navegou no site antes
+  // (histórico real no localStorage do próprio visitante).
+  const recentItemsHome = getRecentlyViewed();
+  if (recentItemsHome.length) {
+    renderProductGrid(document.getElementById("grid-recentes"), recentItemsHome);
+    document.getElementById("recent-section-title").style.display = "";
+    document.getElementById("grid-recentes").style.display = "";
+  }
 
   // "Ver mais ofertas" — carrega os produtos aos poucos em vez de jogar as
   // 103 ofertas de uma vez na home (mais rápido pra carregar no celular).
