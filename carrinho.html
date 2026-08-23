@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -25,7 +26,72 @@
 <main class="container" style="padding:30px 20px 60px;">
   <h1 style="font-size:1.4rem;font-weight:800;margin-bottom:20px;">Seu carrinho</h1>
   <div style="display:grid;grid-template-columns:2fr 1fr;gap:24px;" id="cart-layout">
-    <div id="cart-items"></div>
+    <div>
+      <div id="cart-items"></div>
+
+      <div class="cart-summary" id="delivery-form" style="margin-top:20px;">
+        <h2 style="font-size:1rem;font-weight:800;margin-bottom:4px;">Dados para entrega</h2>
+        <div style="font-size:.78rem;color:var(--muted);margin-bottom:14px;">
+          Precisamos desses dados pra despachar seu pedido pro fornecedor certinho.
+        </div>
+
+        <div class="form-field">
+          <label for="cli-nome">Nome completo</label>
+          <input id="cli-nome" type="text" autocomplete="name">
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+          <div class="form-field">
+            <label for="cli-telefone">Telefone / WhatsApp</label>
+            <input id="cli-telefone" type="tel" autocomplete="tel" placeholder="(24) 90000-0000">
+          </div>
+          <div class="form-field">
+            <label for="cli-cpf">CPF</label>
+            <input id="cli-cpf" type="text" autocomplete="off" placeholder="000.000.000-00" maxlength="14">
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 2fr;gap:12px;">
+          <div class="form-field">
+            <label for="cli-cep">CEP</label>
+            <input id="cli-cep" type="text" autocomplete="postal-code" placeholder="00000-000" maxlength="9">
+          </div>
+          <div class="form-field">
+            <label for="cli-endereco">Endereço</label>
+            <input id="cli-endereco" type="text" autocomplete="address-line1">
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 2fr 1fr;gap:12px;">
+          <div class="form-field">
+            <label for="cli-numero">Número</label>
+            <input id="cli-numero" type="text" autocomplete="off">
+          </div>
+          <div class="form-field">
+            <label for="cli-complemento">Complemento (opcional)</label>
+            <input id="cli-complemento" type="text" autocomplete="address-line2">
+          </div>
+          <div class="form-field">
+            <label for="cli-bairro">Bairro</label>
+            <input id="cli-bairro" type="text" autocomplete="off">
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:2fr 1fr;gap:12px;">
+          <div class="form-field">
+            <label for="cli-cidade">Cidade</label>
+            <input id="cli-cidade" type="text" autocomplete="address-level2">
+          </div>
+          <div class="form-field">
+            <label for="cli-estado">Estado (UF)</label>
+            <input id="cli-estado" type="text" maxlength="2" placeholder="RJ" autocomplete="address-level1" style="text-transform:uppercase;">
+          </div>
+        </div>
+
+        <div id="delivery-form-error" style="display:none;color:#c0392b;font-size:.82rem;margin-top:4px;"></div>
+      </div>
+    </div>
+
     <div>
       <div class="cart-summary">
         <div class="cart-summary-row"><span>Subtotal</span><span id="sum-subtotal">R$ 0,00</span></div>
@@ -50,12 +116,15 @@
   function renderCart() {
     const cart = getCart();
     const itemsEl = document.getElementById("cart-items");
+    const deliveryForm = document.getElementById("delivery-form");
     if (!cart.length) {
       itemsEl.innerHTML = `<div class="empty-state">Seu carrinho está vazio. <a href="index.html" style="color:var(--accent);font-weight:700;">Ver ofertas</a></div>`;
       document.getElementById("sum-subtotal").textContent = formatBRL(0);
       document.getElementById("sum-total").textContent = formatBRL(0);
+      if (deliveryForm) deliveryForm.style.display = "none";
       return;
     }
+    if (deliveryForm) deliveryForm.style.display = "";
     itemsEl.innerHTML = cart.map((i) => {
       const p = getProductById(i.id);
       if (!p) return "";
@@ -79,6 +148,27 @@
     document.getElementById("sum-total").textContent = formatBRL(total);
   }
   renderCart();
+
+  // Autopreenchimento de endereço pelo CEP (API pública ViaCEP, sem chave,
+  // só preenche com dado real — se o CEP não existir, não preenche nada).
+  const cepInput = document.getElementById("cli-cep");
+  if (cepInput) {
+    cepInput.addEventListener("blur", async () => {
+      const cep = cepInput.value.replace(/\D/g, "");
+      if (cep.length !== 8) return;
+      try {
+        const resp = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+        const data = await resp.json();
+        if (data.erro) return;
+        if (data.logradouro) document.getElementById("cli-endereco").value = data.logradouro;
+        if (data.bairro) document.getElementById("cli-bairro").value = data.bairro;
+        if (data.localidade) document.getElementById("cli-cidade").value = data.localidade;
+        if (data.uf) document.getElementById("cli-estado").value = data.uf;
+      } catch (e) {
+        // sem internet ou API fora do ar: usuário preenche manualmente, sem travar o fluxo.
+      }
+    });
+  }
 </script>
 </body>
 </html>
