@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title id="page-title">Produto — Achadinhos Brasil</title>
+<meta name="description" id="meta-description" content="Achadinhos Brasil: ofertas com estoque limitado. Aproveite antes que acabe.">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/icon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/icon-180.png">
+<meta property="og:type" content="product">
+<meta property="og:title" id="og-title" content="Achadinhos Brasil">
+<meta property="og:description" id="og-description" content="Achadinhos Brasil: ofertas com estoque limitado.">
+<meta property="og:image" id="og-image" content="https://www.lojaachadinhosbrasil.com.br/assets/img/icon-512.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -57,6 +67,10 @@
     container.innerHTML = `<div class="empty-state">Produto não encontrado. <a href="index.html" style="color:var(--accent);font-weight:700;">Voltar pra home</a></div>`;
   } else {
     document.getElementById("page-title").textContent = p.name + " — Achadinhos Brasil";
+    document.getElementById("meta-description").setAttribute("content", p.description.slice(0, 160));
+    document.getElementById("og-title").setAttribute("content", p.name + " — Achadinhos Brasil");
+    document.getElementById("og-description").setAttribute("content", p.description.slice(0, 160));
+    if (p.image) document.getElementById("og-image").setAttribute("content", p.image);
     const disc = discountPercent(p);
     const stockPct = stockPercent(p);
     const outOfStock = isOutOfStock(p);

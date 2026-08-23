@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title id="page-title">Categoria — Achadinhos Brasil</title>
+<meta name="description" id="meta-description" content="Achadinhos Brasil: ofertas com estoque limitado por categoria — casa, moda, beleza, pet, joias e infantil.">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/icon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/icon-180.png">
+<meta property="og:type" content="website">
+<meta property="og:title" id="og-title" content="Achadinhos Brasil — Ofertas por categoria">
+<meta property="og:description" id="og-description" content="Achadinhos Brasil: ofertas com estoque limitado por categoria.">
+<meta property="og:image" content="https://www.lojaachadinhosbrasil.com.br/assets/img/icon-512.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -86,6 +96,9 @@
   const label = catObj ? catObj.label : "Categoria";
 
   document.getElementById("page-title").textContent = label + " — Achadinhos Brasil";
+  document.getElementById("meta-description").setAttribute("content", `Achadinhos Brasil: ofertas de ${label} com estoque limitado. Aproveite antes que acabe.`);
+  document.getElementById("og-title").setAttribute("content", label + " — Achadinhos Brasil");
+  document.getElementById("og-description").setAttribute("content", `Ofertas de ${label} com estoque limitado, direto no WhatsApp.`);
   document.getElementById("cat-heading").textContent = label;
   document.getElementById("breadcrumb-cat").textContent = label;
   renderCategoryPills(document.getElementById("cat-pills"), catKey);
