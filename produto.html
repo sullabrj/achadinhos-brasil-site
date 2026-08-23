@@ -46,6 +46,14 @@
 
 <a class="wa-float" href="https://wa.me/5524988383100" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
 
+<div class="sticky-add-bar" id="sticky-add-bar">
+  <div class="sticky-add-info">
+    <span class="sticky-add-name" id="sticky-add-name"></span>
+    <span class="sticky-add-price" id="sticky-add-price"></span>
+  </div>
+  <button type="button" class="btn btn-accent" id="sticky-add-btn">Adicionar</button>
+</div>
+
 <footer class="site-footer">
   <div class="footer-grid">
     <div><h4>Achadinhos Brasil</h4><p style="font-size:.85rem;opacity:.85;">Ofertas relâmpago, estoque limitado.</p></div>
@@ -112,9 +120,19 @@
       </div>
       <div class="section-title"><h2>Você também pode gostar</h2></div>
       <div class="product-grid" id="grid-relacionados"></div>
+      <div class="section-title" id="recent-section-title" style="display:none;"><h2>Vistos recentemente</h2></div>
+      <div class="product-grid" id="grid-recentes" style="display:none;"></div>
     `;
 
     renderProductGrid(document.getElementById("grid-relacionados"), relatedProducts(p));
+
+    trackProductView(p.id);
+    const recentItems = getRecentlyViewed(p.id);
+    if (recentItems.length) {
+      renderProductGrid(document.getElementById("grid-recentes"), recentItems);
+      document.getElementById("recent-section-title").style.display = "";
+      document.getElementById("grid-recentes").style.display = "";
+    }
 
     if (!outOfStock) {
       let qty = 1;
@@ -131,6 +149,25 @@
         document.getElementById("btn-add").textContent = "Adicionado ✓";
         setTimeout(() => (document.getElementById("btn-add").textContent = "Adicionar ao carrinho"), 1500);
       };
+
+      // Barra fixa de "Adicionar" pro celular — só aparece depois que o
+      // botão principal sai da tela de rolar (evita CTA duplicado o tempo todo).
+      const stickyBar = document.getElementById("sticky-add-bar");
+      if (stickyBar) {
+        document.getElementById("sticky-add-name").textContent = p.name;
+        document.getElementById("sticky-add-price").textContent = formatBRL(p.price);
+        const observer = new IntersectionObserver(
+          (entries) => stickyBar.classList.toggle("show", !entries[0].isIntersecting),
+          { threshold: 0 }
+        );
+        observer.observe(document.getElementById("btn-add"));
+        document.getElementById("sticky-add-btn").onclick = () => {
+          addToCart(p.id, qty);
+          const btn = document.getElementById("sticky-add-btn");
+          btn.textContent = "Adicionado ✓";
+          setTimeout(() => (btn.textContent = "Adicionar"), 1200);
+        };
+      }
     }
   }
 </script>
