@@ -12,13 +12,16 @@
  * AVISO AUTOMÁTICO DE PEDIDO PAGO (23/08): como a Dropi não tem API
  * pública pra criar pedido automaticamente (confirmado por engenharia
  * reversa — o pagamento ao fornecedor é sempre um PIX manual, não dá
- * pra automatizar), o Worker agora manda um e-mail pra
- * comercial@sullabrj.com.br assim que um pagamento é aprovado, com
- * todos os dados (cliente + endereço + itens) pra montar o pedido
- * manual na Dropi rapidinho. Usa a Resend (https://resend.com) — sem
- * verificar domínio, porque só manda pro próprio e-mail da conta.
- * Secret necessário:
+ * pra automatizar), o Worker agora manda um e-mail assim que um
+ * pagamento é aprovado, com todos os dados (cliente + endereço +
+ * itens) pra montar o pedido manual na Dropi rapidinho. Usa a Resend
+ * (https://resend.com) — sem verificar domínio, porque só manda pro
+ * próprio e-mail da conta Resend (por isso o e-mail de destino tem
+ * que ser o MESMO usado pra criar a conta Resend).
+ * Propositalmente NÃO é comercial@sullabrj.com.br — separado por
+ * pedido do usuário (23/08). Secrets necessários:
  *   wrangler secret put RESEND_API_KEY
+ *   wrangler secret put NOTIFY_EMAIL
  *
  * Como o site não tem banco de dados, os dados do cliente (nome,
  * telefone, CPF, endereço) e um resumo dos itens viajam dentro do
@@ -106,7 +109,7 @@ function buildOrderRef(customer, items) {
 }
 
 async function notificarPedidoAprovado(payment, env) {
-  if (!env.RESEND_API_KEY) return;
+  if (!env.RESEND_API_KEY || !env.NOTIFY_EMAIL) return;
 
   let pedido = {};
   try {
@@ -152,7 +155,7 @@ async function notificarPedidoAprovado(payment, env) {
     },
     body: JSON.stringify({
       from: "Achadinhos Brasil <onboarding@resend.dev>",
-      to: "comercial@sullabrj.com.br",
+      to: env.NOTIFY_EMAIL,
       subject: `Novo pedido pago — #${payment.id}`,
       html
     })
@@ -161,7 +164,7 @@ async function notificarPedidoAprovado(payment, env) {
 
 export default {
   async fetch(request, env) {
-    const url = new URL(request.url);
+  const url = new URL(request.url);
     const origin = resolveOrigin(request);
     const siteBase = siteBaseFor(origin);
 
