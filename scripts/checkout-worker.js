@@ -9,19 +9,34 @@
  * (O comando vai pedir o token no terminal na hora — não fica salvo em
  * nenhum arquivo de texto).
  *
- * AVISO AUTOMÁTICO DE PEDIDO PAGO (23/08): como a Dropi não tem API
- * pública pra criar pedido automaticamente (confirmado por engenharia
- * reversa — o pagamento ao fornecedor é sempre um PIX manual, não dá
- * pra automatizar), o Worker agora manda um e-mail assim que um
- * pagamento é aprovado, com todos os dados (cliente + endereço +
- * itens) pra montar o pedido manual na Dropi rapidinho. Usa a Resend
- * (https://resend.com) — sem verificar domínio, porque só manda pro
- * próprio e-mail da conta Resend (por isso o e-mail de destino tem
- * que ser o MESMO usado pra criar a conta Resend).
- * Propositalmente NÃO é comercial@sullabrj.com.br — separado por
- * pedido do usuário (23/08). Secrets necessários:
- *   wrangler secret put RESEND_API_KEY
- *   wrangler secret put NOTIFY_EMAIL
+ * AVISO AUTOMÁTICO DE PEDIDO PAGO (23/08, trocado de e-mail pra
+ * WhatsApp no mesmo dia por decisão do usuário): como a Dropi não tem
+ * API pública pra criar pedido automaticamente (confirmado por
+ * engenharia reversa — o pagamento ao fornecedor é sempre um PIX
+ * manual, não dá pra automatizar), o Worker manda uma mensagem de
+ * WhatsApp assim que um pagamento é aprovado, com todos os dados
+ * (cliente + endereço + itens) pra montar o pedido manual na Dropi
+ * rapidinho. Usa a WhatsApp Cloud API oficial da Meta (grátis).
+ * Como toda mensagem enviada pela empresa (não em resposta a uma
+ * mensagem do cliente) exige um "message template" pré-aprovado pela
+ * Meta, foi criado o template abaixo (categoria Utilidade, idioma
+ * Português BR) no WhatsApp Manager:
+ *   Nome: pedido_pago
+ *   Corpo: "🛒 Novo pedido pago - Achadinhos Brasil
+ *
+ *     Pagamento {{1}}
+ *
+ *     Cliente: {{2}}
+ *     Tel/WhatsApp: {{3}}
+ *     CPF: {{4}}
+ *
+ *     Endereço: {{5}}
+ *
+ *     Itens: {{6}}"
+ * Secrets necessários:
+ *   wrangler secret put WHATSAPP_TOKEN     (token permanente do WhatsApp Cloud API)
+ *   wrangler secret put WHATSAPP_PHONE_ID  (Phone Number ID do app na Meta)
+ *   wrangler secret put WHATSAPP_TO        (número que recebe o aviso, formato 55DDDNÚMERO)
  *
  * Como o site não tem banco de dados, os dados do cliente (nome,
  * telefone, CPF, endereço) e um resumo dos itens viajam dentro do
@@ -32,8 +47,9 @@
  * LIMITAÇÃO CONHECIDA: o Mercado Pago pode reenviar o mesmo webhook
  * mais de uma vez (retry) — sem banco de dados não dá pra deduplicar
  * de forma 100% confiável, então em casos raros pode chegar o mesmo
- * aviso de e-mail duplicado. Não é grave (só reenvia o mesmo pedido),
- * mas fica registrado aqui caso vire problema de verdade no futuro.
+ * aviso de WhatsApp duplicado. Não é grave (só reenvia o mesmo
+ * pedido), mas fica registrado aqui caso vire problema de verdade no
+ * futuro.
  *
  * Rota /test-preference (GET): gera uma preferência de TESTE usando o
  * secret MP_TEST_ACCESS_TOKEN (token de teste, sandbox) — só existe pra
@@ -109,7 +125,7 @@ function buildOrderRef(customer, items) {
 }
 
 async function notificarPedidoAprovado(payment, env) {
-  if (!env.RESEND_API_KEY || !env.NOTIFY_EMAIL) return;
+  if (!env.WHATSAPP_TOKEN || !env.WHATSAPP_PHONE_ID || !env.WHATSAPP_TO) return;
 
   let pedido = {};
   try {
@@ -119,52 +135,52 @@ async function notificarPedidoAprovado(payment, env) {
   }
 
   const itens = Array.isArray(pedido.it) ? pedido.it : [];
-  const itensHtml =
-    itens.map((i) => `<li>${i.q}x ${i.t} — ${formatBRLServer(i.p)}</li>`).join("") ||
-    "<li>(itens não identificados — confira o pagamento no painel do Mercado Pago)</li>";
+  const itensTexto =
+    itens.map((i) => `${i.q}x ${i.t} (${formatBRLServer(i.p)})`).join(", ").slice(0, 300) ||
+    "itens não identificados — confira no painel do Mercado Pago";
 
   const dataAprovado = payment.date_approved
     ? new Date(payment.date_approved).toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" })
     : "";
 
-  const html = `
-    <h2>Novo pedido pago — Achadinhos Brasil</h2>
-    <p><b>Pagamento Mercado Pago:</b> #${payment.id} — ${formatBRLServer(payment.transaction_amount)} ${dataAprovado ? "— aprovado em " + dataAprovado : ""}</p>
-    <h3>Itens</h3>
-    <ul>${itensHtml}</ul>
-    <h3>Cliente</h3>
-    <p>
-      ${pedido.n || "(nome não informado)"}<br>
-      Tel/WhatsApp: ${pedido.t || "-"}<br>
-      CPF: ${pedido.c || "-"}
-    </p>
-    <h3>Endereço de entrega</h3>
-    <p>
-      ${pedido.e || "-"}, ${pedido.num || "-"}${pedido.cpl ? " — " + pedido.cpl : ""}<br>
-      ${pedido.b || "-"} — ${pedido.ci || "-"}/${pedido.uf || "-"}<br>
-      CEP: ${pedido.cep || "-"}
-    </p>
-    <p style="color:#888;font-size:.85rem;">Lembrete: monte o pedido manual na Dropi com esses dados pra despachar.</p>
-  `;
+  const enderecoTexto = `${pedido.e || "-"}, ${pedido.num || "-"}${pedido.cpl ? " - " + pedido.cpl : ""}, ${pedido.b || "-"}, ${pedido.ci || "-"}/${pedido.uf || "-"}, CEP ${pedido.cep || "-"}`;
 
-  await fetch("https://api.resend.com/emails", {
+  const params = [
+    `#${payment.id} - ${formatBRLServer(payment.transaction_amount)}${dataAprovado ? " (aprovado em " + dataAprovado + ")" : ""}`,
+    pedido.n || "(nome não informado)",
+    pedido.t || "-",
+    pedido.c || "-",
+    enderecoTexto,
+    itensTexto
+  ];
+
+  await fetch(`https://graph.facebook.com/v20.0/${env.WHATSAPP_PHONE_ID}/messages`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${env.RESEND_API_KEY}`
+      Authorization: `Bearer ${env.WHATSAPP_TOKEN}`
     },
     body: JSON.stringify({
-      from: "Achadinhos Brasil <onboarding@resend.dev>",
-      to: env.NOTIFY_EMAIL,
-      subject: `Novo pedido pago — #${payment.id}`,
-      html
+      messaging_product: "whatsapp",
+      to: env.WHATSAPP_TO,
+      type: "template",
+      template: {
+        name: "pedido_pago",
+        language: { code: "pt_BR" },
+        components: [
+          {
+            type: "body",
+            parameters: params.map((text) => ({ type: "text", text }))
+          }
+        ]
+      }
     })
   });
 }
 
 export default {
   async fetch(request, env) {
-  const url = new URL(request.url);
+    const url = new URL(request.url);
     const origin = resolveOrigin(request);
     const siteBase = siteBaseFor(origin);
 
@@ -174,7 +190,7 @@ export default {
 
     // Webhook do Mercado Pago: identifica o pagamento (JSON body no formato
     // novo, ou query params no formato IPN antigo), busca os detalhes na API
-    // deles e, se estiver aprovado, manda o e-mail de aviso com os dados do
+    // deles e, se estiver aprovado, manda o WhatsApp de aviso com os dados do
     // pedido. Sempre responde 200 rápido — mesmo se o aviso falhar — pra não
     // entrar num loop de reenvio do Mercado Pago.
     if (url.pathname === "/mp-webhook") {
