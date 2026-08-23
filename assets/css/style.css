@@ -201,6 +201,19 @@ footer.site-footer{background:var(--text);color:#fff;margin-top:50px;padding:36p
   font-size:1.6rem;box-shadow:0 4px 14px rgba(0,0,0,.25);z-index:100;
 }
 
+/* Barra fixa de "Adicionar" no celular (página de produto) */
+.sticky-add-bar{
+  position:fixed;left:0;right:0;bottom:0;z-index:120;
+  background:var(--card);box-shadow:0 -4px 16px rgba(58,46,57,.15);
+  padding:10px 16px;display:none;align-items:center;justify-content:space-between;gap:12px;
+}
+.sticky-add-bar.show{display:flex;}
+.sticky-add-info{display:flex;flex-direction:column;min-width:0;}
+.sticky-add-name{font-size:.8rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px;}
+.sticky-add-price{font-size:.9rem;font-weight:800;color:var(--accent);}
+.sticky-add-bar button{flex-shrink:0;width:auto;padding:10px 20px;}
+@media(min-width:761px){.sticky-add-bar{display:none !important;}}
+
 .form-field{margin-bottom:14px;}
 .form-field label{display:block;font-size:.82rem;font-weight:700;margin-bottom:5px;}
 .form-field input,.form-field textarea,.form-field select{
