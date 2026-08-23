@@ -1581,6 +1581,32 @@ function relatedProducts(p, limit = 4) {
   return PRODUCTS.filter((x) => x.category === p.category && x.id !== p.id).slice(0, limit);
 }
 
+/* ---------- Vistos recentemente ----------
+   Histórico real de navegação do PRÓPRIO visitante, guardado no
+   localStorage do navegador dele — não é contador de visitas nem
+   estatística inventada, some se ele limpar os dados do navegador. */
+const RECENT_KEY = "achadinhos_recent";
+const RECENT_MAX = 8;
+
+function trackProductView(id) {
+  try {
+    let ids = JSON.parse(localStorage.getItem(RECENT_KEY)) || [];
+    ids = ids.filter((x) => x !== id);
+    ids.unshift(id);
+    localStorage.setItem(RECENT_KEY, JSON.stringify(ids.slice(0, RECENT_MAX)));
+  } catch (e) {}
+}
+
+function getRecentlyViewed(excludeId, limit = 4) {
+  try {
+    let ids = JSON.parse(localStorage.getItem(RECENT_KEY)) || [];
+    if (excludeId) ids = ids.filter((x) => x !== excludeId);
+    return ids.map(getProductById).filter(Boolean).slice(0, limit);
+  } catch (e) {
+    return [];
+  }
+}
+
 /* ---------- Duração do contador baseada em estoque real ----------
    Antes o contador era sempre 3h fixas pra loja inteira, sempre a mesma
    pra todo mundo — nem de longe curto, e sem relação nenhuma com o
