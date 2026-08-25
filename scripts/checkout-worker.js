@@ -345,6 +345,13 @@ export default {
       },
       auto_return: "approved",
       notification_url: `${WORKER_URL}/mp-webhook`,
+      // Nome que aparece na FATURA do cartão do comprador (máx. 13 caracteres,
+      // limite da própria API do Mercado Pago). Sem isso, a fatura mostra a
+      // razão social da conta (SULLAB...), que o cliente não reconhece — causa
+      // clássica de contestação/estorno. Não muda o nome do vendedor exibido
+      // na tela de pagamento; esse vem do "Nome do negócio" cadastrado na
+      // conta Mercado Pago e só pode ser trocado lá no painel.
+      statement_descriptor: "ACHADINHOS",
       external_reference: buildOrderRef(customer, items)
     };
 
