@@ -29,6 +29,19 @@
  *   wrangler secret put CALLMEBOT_PHONE   (número que ativou o bot, formato 55DDDNÚMERO)
  *   wrangler secret put CALLMEBOT_APIKEY  (chave que o bot manda de volta)
  *
+ * AVISO POR E-MAIL (reativado 25/08, 2º canal além do WhatsApp — agora
+ * com um Gmail dedicado da marca, achadinhosbrasilloja@gmail.com, em
+ * vez do e-mail comercial da SULLAB): usa a API da Resend
+ * (https://resend.com), plano grátis, remetente padrão sem precisar
+ * verificar domínio próprio (onboarding@resend.dev só consegue mandar
+ * pro e-mail dono da própria conta Resend — por isso a conta Resend
+ * deve ser criada com o mesmo Gmail que vai receber o aviso).
+ * Secrets necessários:
+ *   wrangler secret put RESEND_API_KEY  (gerada em resend.com/api-keys)
+ *   wrangler secret put NOTIFY_EMAIL    (achadinhosbrasilloja@gmail.com)
+ * Sem esses 2 secrets configurados, o envio de e-mail é ignorado
+ * silenciosamente (não quebra o checkout nem o aviso por WhatsApp).
+ *
  * Como o site não tem banco de dados, os dados do cliente (nome,
  * telefone, CPF, endereço) e um resumo dos itens viajam dentro do
  * campo "external_reference" da preferência do Mercado Pago — esse
@@ -150,6 +163,57 @@ async function notificarPedidoAprovado(payment, env) {
   await fetch(url);
 }
 
+async function notificarPorEmail(payment, env) {
+  if (!env.RESEND_API_KEY || !env.NOTIFY_EMAIL) return;
+
+  let pedido = {};
+  try {
+    pedido = JSON.parse(payment.external_reference || "{}");
+  } catch (e) {
+    pedido = {};
+  }
+
+  const itens = Array.isArray(pedido.it) ? pedido.it : [];
+  const itensHtml =
+    itens.map((i) => `<li>${i.q}x ${i.t} — ${formatBRLServer(i.p)}</li>`).join("") ||
+    "<li>itens não identificados — confira no painel do Mercado Pago</li>";
+
+  const dataAprovado = payment.date_approved
+    ? new Date(payment.date_approved).toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" })
+    : "";
+
+  const enderecoTexto = `${pedido.e || "-"}, ${pedido.num || "-"}${pedido.cpl ? " - " + pedido.cpl : ""}, ${pedido.b || "-"}, ${pedido.ci || "-"}/${pedido.uf || "-"}, CEP ${pedido.cep || "-"}`;
+
+  const html = `
+    <h2>🛒 Novo pedido pago — Achadinhos Brasil</h2>
+    <p><b>Pagamento #${payment.id}</b> — ${formatBRLServer(payment.transaction_amount)}${dataAprovado ? " (aprovado em " + dataAprovado + ")" : ""}</p>
+    <p><b>Cliente:</b> ${pedido.n || "(nome não informado)"}<br>
+    <b>Tel/WhatsApp:</b> ${pedido.t || "-"}<br>
+    <b>CPF:</b> ${pedido.c || "-"}</p>
+    <p><b>Endereço:</b> ${enderecoTexto}</p>
+    <p><b>Itens:</b></p>
+    <ul>${itensHtml}</ul>
+  `;
+
+  try {
+    await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${env.RESEND_API_KEY}`
+      },
+      body: JSON.stringify({
+        from: "Achadinhos Brasil <onboarding@resend.dev>",
+        to: [env.NOTIFY_EMAIL],
+        subject: `Novo pedido pago — ${formatBRLServer(payment.transaction_amount)}`,
+        html
+      })
+    });
+  } catch (e) {
+    // nunca deixa o webhook falhar por causa do aviso — só não avisa dessa vez.
+  }
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -186,7 +250,10 @@ export default {
           if (payResp.ok) {
             const payment = await payResp.json();
             if (payment.status === "approved") {
-              await notificarPedidoAprovado(payment, env);
+              await Promise.all([
+                notificarPedidoAprovado(payment, env),
+                notificarPorEmail(payment, env)
+              ]);
             }
           }
         } catch (e) {
