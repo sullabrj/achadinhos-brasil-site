@@ -107,7 +107,7 @@ function formatBRLServer(n) {
 
 // Empacota os dados do cliente + resumo dos itens de forma compacta pra
 // caber no external_reference da preferência do Mercado Pago.
-function buildOrderRef(customer, items) {
+function buildOrderRef(customer, items, frete) {
   const ref = {
     n: String(customer.nome || "").slice(0, 80),
     t: String(customer.telefone || "").slice(0, 20),
@@ -125,6 +125,9 @@ function buildOrderRef(customer, items) {
       p: i.unit_price
     }))
   };
+  if (frete) {
+    ref.fr = { n: String(frete.nome || "").slice(0, 40), p: Number(frete.preco) || 0 };
+  }
   return JSON.stringify(ref);
 }
 
@@ -156,7 +159,8 @@ async function notificarPedidoAprovado(payment, env) {
     `Tel/WhatsApp: ${pedido.t || "-"}`,
     `CPF: ${pedido.c || "-"}`,
     `Endereço: ${enderecoTexto}`,
-    `Itens: ${itensTexto}`
+    `Itens: ${itensTexto}`,
+    `Frete cobrado do cliente: ${pedido.fr ? pedido.fr.n + " - " + formatBRLServer(pedido.fr.p) : "não informado"}`
   ].join("\n");
 
   const url = `https://api.callmebot.com/whatsapp.php?phone=${encodeURIComponent(env.CALLMEBOT_PHONE)}&text=${encodeURIComponent(texto)}&apikey=${encodeURIComponent(env.CALLMEBOT_APIKEY)}`;
@@ -300,6 +304,91 @@ export default {
       return json({ init_point: mpData.sandbox_init_point || mpData.init_point }, 200, origin);
     }
 
+
+    /* ------------------------------------------------------------------
+       COTAÇÃO DE FRETE — Melhor Envio (rota POST /frete)
+       Decisão do usuário em 27/08/2026: "tem que ser o cliente pagar o
+       frete, nao pagamos frete". Até então o carrinho não tinha linha de
+       frete nenhuma e a loja absorvia o que a Dropi cobra no Pix do
+       fornecedor (R$ 25,00 no pedido de teste).
+       O token do Melhor Envio é SECRET da Cloudflare, nunca fica aqui:
+         wrangler secret put MELHOR_ENVIO_TOKEN
+         wrangler secret put CEP_ORIGEM        (CEP de onde sai a mercadoria)
+       Ambiente de produção da API: melhorenvio.com.br/api/v2.
+       Body esperado: { cep, pacote:{peso,comprimento,largura,altura}, valor }
+       Resposta: { opcoes: [{ id, nome, empresa, preco, prazo }] }
+       ------------------------------------------------------------------ */
+    if (url.pathname === "/frete" && request.method === "POST") {
+      if (!env.MELHOR_ENVIO_TOKEN || !env.CEP_ORIGEM) {
+        return json({ error: "Cotação de frete ainda não configurada" }, 503, origin);
+      }
+      let fb;
+      try {
+        fb = await request.json();
+      } catch (e) {
+        return json({ error: "JSON inválido" }, 400, origin);
+      }
+      const cepDestino = String(fb.cep || "").replace(/\D/g, "");
+      if (cepDestino.length !== 8) {
+        return json({ error: "CEP inválido" }, 400, origin);
+      }
+      const pk = fb.pacote || {};
+      const pacote = {
+        // Mínimos dos Correios: 16 x 11 x 2 cm. O Melhor Envio recusa a
+        // cotação se vier abaixo disso, então o piso é aplicado aqui também
+        // e não só no front-end.
+        height: Math.max(2, Number(pk.altura) || 2),
+        width: Math.max(11, Number(pk.largura) || 11),
+        length: Math.max(16, Number(pk.comprimento) || 16),
+        weight: Math.max(0.05, Number(pk.peso) || 0.3)
+      };
+      const valorSegurado = Math.max(1, Number(fb.valor) || 1);
+
+      let meResp, meData;
+      try {
+        meResp = await fetch("https://melhorenvio.com.br/api/v2/me/shipment/calculate", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            Authorization: `Bearer ${env.MELHOR_ENVIO_TOKEN}`,
+            "User-Agent": "Achadinhos Brasil (achadinhosbrasilloja@gmail.com)"
+          },
+          body: JSON.stringify({
+            from: { postal_code: String(env.CEP_ORIGEM).replace(/\D/g, "") },
+            to: { postal_code: cepDestino },
+            package: pacote,
+            options: { insurance_value: valorSegurado, receipt: false, own_hand: false },
+            services: ""
+          })
+        });
+        meData = await meResp.json();
+      } catch (e) {
+        return json({ error: "Não foi possível cotar o frete agora" }, 502, origin);
+      }
+      if (!Array.isArray(meData)) {
+        return json({ error: "Resposta inesperada da transportadora" }, 502, origin);
+      }
+
+      const opcoes = meData
+        .filter((o) => o && !o.error && o.price)
+        .map((o) => ({
+          id: String(o.id),
+          nome: String(o.name || ""),
+          empresa: String((o.company && o.company.name) || ""),
+          preco: Number(o.price),
+          // O Melhor Envio devolve o prazo em dias ÚTEIS, já somado o tempo
+          // de postagem quando a conta tem esse ajuste configurado.
+          prazo: Number(o.delivery_time) || null
+        }))
+        .sort((a, b) => a.preco - b.preco);
+
+      if (!opcoes.length) {
+        return json({ error: "Nenhuma transportadora atende esse CEP" }, 404, origin);
+      }
+      return json({ opcoes }, 200, origin);
+    }
+
     if (request.method !== "POST") {
       return json({ error: "Método não permitido" }, 405, origin);
     }
@@ -314,6 +403,11 @@ export default {
     const items = Array.isArray(body.items) ? body.items : [];
     if (!items.length) {
       return json({ error: "Carrinho vazio" }, 400, origin);
+    }
+
+    const frete = body.frete && typeof body.frete === "object" ? body.frete : null;
+    if (!frete || !(Number(frete.preco) > 0)) {
+      return json({ error: "Escolha uma opção de frete antes de finalizar" }, 400, origin);
     }
 
     const customer = body.customer && typeof body.customer === "object" ? body.customer : {};
@@ -352,8 +446,18 @@ export default {
       // na tela de pagamento; esse vem do "Nome do negócio" cadastrado na
       // conta Mercado Pago e só pode ser trocado lá no painel.
       statement_descriptor: "ACHADINHOS",
-      external_reference: buildOrderRef(customer, items)
+      external_reference: buildOrderRef(customer, items, frete)
     };
+
+    // O frete vai como "shipments.cost" e não como item da lista: assim ele
+    // aparece separado na tela do Mercado Pago e no comprovante do cliente,
+    // do jeito que ele espera ver.
+    if (frete && Number(frete.preco) > 0) {
+      preference.shipments = {
+        mode: "not_specified",
+        cost: Number(frete.preco)
+      };
+    }
 
     const mpResp = await fetch("https://api.mercadopago.com/checkout/preferences", {
       method: "POST",
