@@ -111,6 +111,18 @@ gtag('config', 'G-69ZP5SYLYC');
           <div id="cupom-msg" style="font-size:.78rem;margin-top:6px;"></div>
         </div>
         <div class="cart-summary-row" id="row-desconto" style="display:none;color:#3DBE8B;"><span>Desconto</span><span id="sum-desconto">-R$ 0,00</span></div>
+
+        <div id="bloco-frete" style="margin:14px 0;padding-top:12px;border-top:1px solid #eee;">
+          <div style="font-weight:800;font-size:.88rem;margin-bottom:6px;">Frete</div>
+          <div style="display:flex;gap:8px;">
+            <input id="frete-cep" type="text" inputmode="numeric" maxlength="9" placeholder="CEP de entrega" autocomplete="postal-code" style="flex:1;padding:9px 10px;border:1px solid #ddd;border-radius:8px;font-size:.85rem;">
+            <button type="button" class="btn btn-outline" id="btn-calcular-frete" style="white-space:nowrap;padding:9px 14px;">Calcular</button>
+          </div>
+          <div id="frete-msg" style="font-size:.78rem;margin-top:6px;color:var(--muted);"></div>
+          <div id="frete-opcoes" style="margin-top:8px;display:grid;gap:6px;"></div>
+        </div>
+
+        <div class="cart-summary-row" id="row-frete" style="display:none;"><span>Frete</span><span id="sum-frete">R$ 0,00</span></div>
         <div class="cart-summary-row total"><span>Total</span><span id="sum-total">R$ 0,00</span></div>
         <button class="btn btn-block btn-accent" id="btn-checkout" onclick="iniciarCheckout()">Finalizar compra</button>
         <div style="text-align:center;font-size:.78rem;color:var(--muted);margin-top:10px;">
@@ -168,7 +180,15 @@ gtag('config', 'G-69ZP5SYLYC');
     const subtotal = cartTotal();
     const cupom = typeof getCupomAplicado === "function" ? getCupomAplicado() : null;
     const descontoValor = cupom ? Math.round(subtotal * cupom.pct * 100) / 100 : 0;
-    const total = subtotal - descontoValor;
+    const escolhido = typeof freteEscolhido === "function" ? freteEscolhido() : null;
+    const freteValor = escolhido ? Number(escolhido.preco) : 0;
+    const total = subtotal - descontoValor + freteValor;
+
+    const rowFrete = document.getElementById("row-frete");
+    if (rowFrete) {
+      rowFrete.style.display = escolhido ? "" : "none";
+      document.getElementById("sum-frete").textContent = formatBRL(freteValor);
+    }
 
     document.getElementById("sum-subtotal").textContent = formatBRL(subtotal);
     if (cupom && descontoValor > 0) {
@@ -190,6 +210,57 @@ gtag('config', 'G-69ZP5SYLYC');
     }
   }
   renderCart();
+
+  /* Frete: cotação real no Melhor Envio pelo CEP do cliente. A loja não paga
+     frete — sem opção escolhida, iniciarCheckout() barra a finalização. */
+  const inputCep = document.getElementById("frete-cep");
+  const btnFrete = document.getElementById("btn-calcular-frete");
+  const msgFrete = document.getElementById("frete-msg");
+  const listaFrete = document.getElementById("frete-opcoes");
+
+  function pintaOpcoes(opcoes) {
+    listaFrete.innerHTML = opcoes.map((o) => `
+      <label style="display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px solid #ddd;border-radius:8px;cursor:pointer;font-size:.83rem;">
+        <input type="radio" name="frete-opt" value="${o.id}">
+        <span style="flex:1;">
+          <strong>${o.empresa} ${o.nome}</strong>
+          ${o.prazo ? `<span style="color:var(--muted);"> · ${o.prazo} dia${o.prazo > 1 ? "s" : ""} útil${o.prazo > 1 ? "eis" : ""}</span>` : ""}
+        </span>
+        <strong>${formatBRL(o.preco)}</strong>
+      </label>`).join("");
+    listaFrete.querySelectorAll("input[name=frete-opt]").forEach((r) => {
+      r.addEventListener("change", () => { escolherFrete(r.value); renderCart(); });
+    });
+  }
+
+  if (inputCep) {
+    inputCep.addEventListener("input", () => {
+      const v = inputCep.value.replace(/\D/g, "").slice(0, 8);
+      inputCep.value = v.length > 5 ? `${v.slice(0, 5)}-${v.slice(5)}` : v;
+      if (typeof limparFrete === "function") { limparFrete(); listaFrete.innerHTML = ""; renderCart(); }
+    });
+  }
+
+  if (btnFrete) {
+    btnFrete.addEventListener("click", async () => {
+      btnFrete.disabled = true;
+      msgFrete.style.color = "var(--muted)";
+      msgFrete.textContent = "Consultando as transportadoras...";
+      listaFrete.innerHTML = "";
+      const r = await cotarFrete(inputCep.value);
+      btnFrete.disabled = false;
+      if (r.erro) {
+        msgFrete.style.color = "#c0392b";
+        msgFrete.textContent = r.erro;
+        renderCart();
+        return;
+      }
+      msgFrete.style.color = "var(--muted)";
+      msgFrete.textContent = "Escolha a forma de entrega:";
+      pintaOpcoes(r.opcoes);
+      renderCart();
+    });
+  }
 
   // Cupom de boas-vindas — ver aplicarCupom()/getCupomAplicado() em checkout.js.
   const btnCupom = document.getElementById("btn-aplicar-cupom");
