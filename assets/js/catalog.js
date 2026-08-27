@@ -38,6 +38,17 @@
 ACRÉSCIMOS 20/08 (mesmo dia, depois da reprefição): (1) instalado destaque de parcelamento — todo produto agora mostra "ou 18x de R$X sem juros" (installmentText, calcula price/18) nos cards de listagem e na página de produto; é só informativo, não muda o preço à vista. (2) escolhidos 4 itens de maior ticket (maior markup em R$) pra estampar a "Oferta Relâmpago" com desconto promocional real de ~10%: Hidratante Corporal Yara 200g (p33, de R$384,90 por R$345,90), Pelúcia de Pendurar Rhino Bright Starts (p46, de R$356,90 por R$320,90), Casaco de Algodão Feminino Sortido (p18, de R$270,90 por R$243,90) e Base Líquida Bruna Tavares BT Skin (p34, de R$263,90 por R$236,90) — únicos quatro itens do catálogo com oldPrice preenchido; o resto do catálogo continua sem oldPrice (não é desconto real, é preço cheio já com markup).
 
 ACRÉSCIMOS 20/08 parte 2: (3) PRODUCT_SPECS — ficha técnica opcional por produto (tamanho/medida), preenchida só onde o próprio texto do fornecedor já confirma (ex.: "tamanho M único", "1,2m") — não inventamos numeração de roupa que não temos. (4) busca centralizada no header, ícones de categoria maiores em badge circular, carrinho agora abre como card ancorado no canto superior direito (perto do ícone) em vez de painel de tela cheia.
+ALTERACAO 25/08 — CATALOGO SEM ROUPA: removidos 34 itens (toda a categoria
+"Moda e Vestuario", 25 itens, mais 9 roupas/fantasias/sapatilha que estavam
+dentro de Infantil). Motivo dado pelo usuario: a loja nao tem ponto fisico e
+os clientes estavam entrando em contato pedindo pra experimentar a peca antes
+de comprar — demanda que esse modelo nao atende, e que gera troca/devolucao
+por numeracao. A categoria "moda" saiu tambem do menu, do rodape, da 404 e do
+sitemap. A Necessaire 18x10x8cm (p67) foi mantida e migrada pra "Joias e
+Acessorios", por ser acessorio sem numeracao. Na Oferta Relampago, o Casaco de
+Algodao Feminino (p18) foi substituido pelo Protetor de Sofa Pet Meg (p95),
+com desconto real de R$134,90 por R$121,90. Catalogo passou de 103 pra 69
+itens: casa 15, beleza 25, pet 15, joias 9, infantil 5.
 ===================================================================== */
 
 const PRODUCTS = [
@@ -66,32 +77,6 @@ const PRODUCTS = [
     stock: 1978,
     stockMax: 1978,
     description: "Cortina para pia de cozinha 100% PVC, impermeável — protege o gabinete embaixo da pia contra umidade, respingos e mofo."
-  },
-  {
-    id: "p3",
-    name: "Calça Legging Fitness Poliamida Suplex",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 82.9,
-    oldPrice: null,
-    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17819637676a369bf7e2729.png",
-    emoji: "🏃‍♀️",
-    stock: 5026,
-    stockMax: 5026,
-    description: "Calça legging fitness em poliamida suplex, tecido colorido de alta compressão, sem transparência — ideal pro treino."
-  },
-  {
-    id: "p4",
-    name: "Calça Legging Cintura Alta Cinza Mesclado",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 82.9,
-    oldPrice: null,
-    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17809326686a26e03c82e13.jpg",
-    emoji: "👖",
-    stock: 6057,
-    stockMax: 6057,
-    description: "Calça legging cintura alta, cinza mesclado, sem transparência — conforto pro dia a dia ou pra malhar."
   },
   {
     id: "p5",
@@ -131,19 +116,6 @@ const PRODUCTS = [
     stock: 993,
     stockMax: 993,
     description: "Cama pet impermeável tamanho médio, forro removível e lavável — conforto pro seu cão ou gato descansar."
-  },
-  {
-    id: "p8",
-    name: "Sapatilha Infantil StarPink Cristal Branco",
-    category: "infantil",
-    categoryLabel: "Infantil e Brinquedos",
-    price: 180.9,
-    oldPrice: null,
-    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17851772456a67a49de41eb.jpg",
-    emoji: "🩰",
-    stock: 62,
-    stockMax: 62,
-    description: "Sapatilha infantil StarPink com aplique de cristal, cabedal branco — ideal pro dia a dia ou ocasiões especiais."
   },
   {
     id: "p9",
@@ -261,84 +233,6 @@ const PRODUCTS = [
     stock: 12,
     stockMax: 12,
     description: "Cesto organizador em tecido floral, ótimo pra guardar roupas, brinquedos ou acessórios com estilo."
-  },
-  {
-    id: "p18",
-    name: "Casaco de Algodão Feminino Sortido",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 243.9,
-    oldPrice: 270.9,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177262436169a819e9f21be.webp",
-    emoji: "🧥",
-    stock: 10,
-    stockMax: 10,
-    description: "Casaco de algodão feminino, cores sortidas, quentinho e confortável pros dias mais frios."
-  },
-  {
-    id: "p19",
-    name: "Camisa Feminina Cores Sortidas",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 46.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177262435569a819e34b6be.webp",
-    emoji: "👚",
-    stock: 10,
-    stockMax: 10,
-    description: "Camisa feminina em tecido leve, cores sortidas, tamanho M único — coringa pro dia a dia."
-  },
-  {
-    id: "p20",
-    name: "Pijama Feminino Cores Sortidas",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 62.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177153493769977a59588ee.png",
-    emoji: "🌙",
-    stock: 10,
-    stockMax: 10,
-    description: "Pijama feminino confortável, cores sortidas, ideal pra noites de sono tranquilas."
-  },
-  {
-    id: "p21",
-    name: "Pantufa Feminina com Forro Peluciado",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 45.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177262447769a81a5dc1365.webp",
-    emoji: "🥿",
-    stock: 10,
-    stockMax: 10,
-    description: "Pantufa feminina com forro peluciado e solado antiderrapante — conforto garantido em casa."
-  },
-  {
-    id: "p22",
-    name: "Conjunto Top e Legging para Academia",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 85.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177365868969b7e241399dc.webp",
-    emoji: "🏋️‍♀️",
-    stock: 10,
-    stockMax: 10,
-    description: "Conjunto top e legging pra academia, tamanho único, cores sortidas — pronto pra treinar com estilo."
-  },
-  {
-    id: "p23",
-    name: "Cinto 1,2m Cores Sortidas",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 17.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17700621156981012317d44.jpg",
-    emoji: "🧵",
-    stock: 10,
-    stockMax: 10,
-    description: "Cinto 1,2m em cores sortidas, acessório versátil pra fechar o look."
   },
   {
     id: "p24",
@@ -588,19 +482,6 @@ const PRODUCTS = [
     description: "Argolinha de click com ponto de luz em aço inoxidável — última peça no estoque do fornecedor."
   },
   {
-    id: "p43",
-    name: "Fantasia Princesa Belli Longa Amarela",
-    category: "infantil",
-    categoryLabel: "Infantil e Brinquedos",
-    price: 203.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17670937996953b6273db7e.webp",
-    emoji: "👑",
-    stock: 116,
-    stockMax: 116,
-    description: "Fantasia longa Princesa Belli amarela, capricho nos detalhes pra festa a fantasia ou aniversário."
-  },
-  {
     id: "p44",
     name: "Laço/Faixa para Vestido Verde Menta",
     category: "infantil",
@@ -612,19 +493,6 @@ const PRODUCTS = [
     stock: 37,
     stockMax: 37,
     description: "Laço/faixa opcional pra vestido, verde menta — acessório fofo pra compor o visual infantil."
-  },
-  {
-    id: "p45",
-    name: "Romper/Vestido Princesa Belli Pequena Pedrita",
-    category: "infantil",
-    categoryLabel: "Infantil e Brinquedos",
-    price: 159.9,
-    oldPrice: null,
-    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17858706236a72391fc5ce0.jpg",
-    emoji: "👗",
-    stock: 27,
-    stockMax: 27,
-    description: "Romper/vestido Princesa Belli Pequena Pedrita, conforto e charme pro dia a dia ou ocasiões especiais."
   },
   {
     id: "p46",
@@ -757,153 +625,10 @@ const PRODUCTS = [
     description: "Caneca do Brasil Hexa 2026 — pra comemorar o hexacampeonato com estilo na hora do café."
   },
   {
-    id: "p56",
-    name: "Roupas p/ Academia 2pçs Tamanho Único Cores Sortidas",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 77.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177365869969b7e24b76f72.webp",
-    emoji: "🏋️‍♀️",
-    stock: 10,
-    stockMax: 10,
-    description: "Conjunto de roupas para academia, 2 peças, tamanho único, cores sortidas — prático para o treino do dia a dia."
-  },
-  {
-    id: "p57",
-    name: "Kit Regata e Shorts Esportivo Cores Sortidas",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 65.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177365869369b7e2453cdbd.webp",
-    emoji: "🎽",
-    stock: 10,
-    stockMax: 10,
-    description: "Kit regata e shorts esportivo, cores sortidas — conjunto leve pra treinar ou usar no dia a dia."
-  },
-  {
-    id: "p58",
-    name: "Meias Masculinas Kit 3 Pares Cores Sortidas",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 17.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1770149824698257c0bd4ec.webp",
-    emoji: "🧦",
-    stock: 10,
-    stockMax: 10,
-    description: "Kit com 3 pares de meias masculinas, cores sortidas — reforço prático pro dia a dia."
-  },
-  {
-    id: "p59",
-    name: "Pijama Feminino Coração Cores Sortidas",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 62.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177153493969977a5b77522.png",
-    emoji: "👚",
-    stock: 9,
-    stockMax: 9,
-    description: "Pijama feminino com estampa de coração, cores sortidas — conforto pra dormir com estilo."
-  },
-  {
-    id: "p60",
-    name: "Calça Legging com Estampa Lateral Cores Sortidas",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 58.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177365863669b7e20cdeef5.webp",
-    emoji: "🩱",
-    stock: 10,
-    stockMax: 10,
-    description: "Calça legging com estampa lateral, tamanho único, cores sortidas — conforto e estilo pro dia a dia."
-  },
-  {
-    id: "p61",
-    name: "Conjunto Camisa e Calça Cores Sortidas",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 77.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177262452769a81a8f55242.webp",
-    emoji: "👕",
-    stock: 10,
-    stockMax: 10,
-    description: "Conjunto camisa e calça, cores sortidas — combo pronto pra vestir."
-  },
-  {
-    id: "p62",
-    name: "Blusa Esportiva Cores Sortidas",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 42.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177365863069b7e2067eb85.webp",
-    emoji: "👚",
-    stock: 10,
-    stockMax: 10,
-    description: "Blusa esportiva, tamanho único, cores sortidas — ideal pro treino."
-  },
-  {
-    id: "p63",
-    name: "Top Esportivo Cores Sortidas",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 49.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177365881269b7e2bcebf49.webp",
-    emoji: "🎽",
-    stock: 10,
-    stockMax: 10,
-    description: "Top esportivo, tamanho único, cores sortidas — pra treinar com conforto."
-  },
-  {
-    id: "p64",
-    name: "Top de Poliéster Cores Sortidas",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 33.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177262458669a81aca1685a.webp",
-    emoji: "🎽",
-    stock: 10,
-    stockMax: 10,
-    description: "Top de poliéster, tamanho e cor sortidos — básico versátil pro dia a dia."
-  },
-  {
-    id: "p65",
-    name: "Blusa + Legging Cores Sortidas",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 81.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177365862869b7e2045350d.webp",
-    emoji: "👚",
-    stock: 10,
-    stockMax: 10,
-    description: "Conjunto blusa e legging, tamanho único, cores sortidas — combo confortável pro dia a dia."
-  },
-  {
-    id: "p66",
-    name: "Top Cores Sortidas",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 53.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177365881869b7e2c207f6f.webp",
-    emoji: "🎽",
-    stock: 10,
-    stockMax: 10,
-    description: "Top em várias cores, tamanho único — peça coringa pro guarda-roupa."
-  },
-  {
     id: "p67",
     name: "Necessaire 18x10x8cm Cores Sortidas",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
+    category: "joias",
+    categoryLabel: "Joias e Acessórios",
     price: 23.9,
     oldPrice: null,
     image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1770149828698257c4cca5e.webp",
@@ -911,71 +636,6 @@ const PRODUCTS = [
     stock: 9,
     stockMax: 9,
     description: "Necessaire 18x10x8cm, cores sortidas — organiza os itens de higiene e maquiagem na bolsa ou mala."
-  },
-  {
-    id: "p68",
-    name: "Shorts Esportivo Cores Sortidas",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 35.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177365881069b7e2ba1cf5d.webp",
-    emoji: "🩳",
-    stock: 10,
-    stockMax: 10,
-    description: "Shorts esportivo, tamanho único, cores sortidas — leve e confortável pro treino."
-  },
-  {
-    id: "p69",
-    name: "Casaco Masculino com Bolso e Zíper",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 292.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177262452569a81a8d33f38.webp",
-    emoji: "🧥",
-    stock: 10,
-    stockMax: 10,
-    description: "Casaco masculino com bolso e zíper — esquenta nos dias mais frios com praticidade."
-  },
-  {
-    id: "p70",
-    name: "Casaco de Algodão Masculino Cores Sortidas",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 263.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177262436469a819ec1d2c0.webp",
-    emoji: "🧥",
-    stock: 10,
-    stockMax: 10,
-    description: "Casaco de algodão masculino, cores sortidas — conforto e proteção contra o frio."
-  },
-  {
-    id: "p71",
-    name: "Calças no Tamanho Único Cores Sortidas",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 55.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177262435169a819dfb010d.webp",
-    emoji: "👖",
-    stock: 10,
-    stockMax: 10,
-    description: "Calça em tamanho único, cores sortidas — versátil pro dia a dia."
-  },
-  {
-    id: "p72",
-    name: "Pantufa Beijinho Feminina Cores Sortidas",
-    category: "moda",
-    categoryLabel: "Moda e Vestuário",
-    price: 26.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177262447469a81a5a5af5a.webp",
-    emoji: "🥿",
-    stock: 10,
-    stockMax: 10,
-    description: "Pantufa feminina modelo beijinho, cores sortidas — aconchego pra dentro de casa."
   },
   {
     id: "p73",
@@ -1268,8 +928,8 @@ const PRODUCTS = [
     name: "Protetor de Sofá Pet Meg Impermeável Grande",
     category: "pet",
     categoryLabel: "Pet Shop",
-    price: 134.9,
-    oldPrice: null,
+    price: 121.9,
+    oldPrice: 134.9,
     image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177738503869f0be4e9201c.jpg",
     emoji: "🛋️",
     stock: 6951,
@@ -1288,105 +948,11 @@ const PRODUCTS = [
     stock: 6951,
     stockMax: 6951,
     description: "Protetor de banco dianteiro impermeável, padrão universal — leva o pet no carro sem sujar o banco."
-  },
-  {
-    id: "p97",
-    name: "Vestido Mini Miss Longo Carol Prata",
-    category: "infantil",
-    categoryLabel: "Infantil e Brinquedos",
-    price: 255.9,
-    oldPrice: null,
-    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17851773976a67a535517e7.jpg",
-    emoji: "👗",
-    stock: 22,
-    stockMax: 22,
-    description: "Vestido Mini Miss longo, modelo Carol, cor prata — pra festa ou ocasião especial."
-  },
-  {
-    id: "p98",
-    name: "Fantasia/Vestido Mini Miss Menina da Justiça",
-    category: "infantil",
-    categoryLabel: "Infantil e Brinquedos",
-    price: 227.9,
-    oldPrice: null,
-    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17860435316a74dc8bcbf24.jpg",
-    emoji: "🦸‍♀️",
-    stock: 72,
-    stockMax: 72,
-    description: "Fantasia/vestido Mini Miss tema Menina da Justiça — pra festa a fantasia."
-  },
-  {
-    id: "p99",
-    name: "Vestido Marie Longo Heloisa Prata",
-    category: "infantil",
-    categoryLabel: "Infantil e Brinquedos",
-    price: 226.9,
-    oldPrice: null,
-    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17858699366a7236701c705.jpg",
-    emoji: "👗",
-    stock: 55,
-    stockMax: 55,
-    description: "Vestido Marie longo, modelo Heloisa, cor prata — elegante pra ocasiões especiais."
-  },
-  {
-    id: "p100",
-    name: "Vestido Menina Bonita Julieta Off White",
-    category: "infantil",
-    categoryLabel: "Infantil e Brinquedos",
-    price: 326.9,
-    oldPrice: null,
-    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17848133126a621700a8802.jpg",
-    emoji: "👗",
-    stock: 27,
-    stockMax: 27,
-    description: "Vestido Menina Bonita, modelo Julieta, cor off white — pra festas e daminhas."
-  },
-  {
-    id: "p101",
-    name: "Vestido Infantil Longo Branco Tule Glitter Festa Daminha",
-    category: "infantil",
-    categoryLabel: "Infantil e Brinquedos",
-    price: 274.9,
-    oldPrice: null,
-    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17859438076a7356ff1df15.jpg",
-    emoji: "👗",
-    stock: 89,
-    stockMax: 89,
-    description: "Vestido infantil longo branco, tule glitter, busto com nervura — modelo festa daminha."
-  },
-  {
-    id: "p102",
-    name: "Fantasia Princesa Belli Doce Realeza Azul",
-    category: "infantil",
-    categoryLabel: "Infantil e Brinquedos",
-    price: 186.9,
-    oldPrice: null,
-    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17839494396a54e87f7bbb7.jpg",
-    emoji: "👑",
-    stock: 33,
-    stockMax: 33,
-    description: "Fantasia Princesa Belli, tema Doce Realeza, cor azul — pra fazer a menina se sentir princesa."
-  },
-  {
-    id: "p103",
-    name: "Vestido Juvenil Vila Lele Regata Flores Amarelo",
-    category: "infantil",
-    categoryLabel: "Infantil e Brinquedos",
-    price: 269.9,
-    oldPrice: null,
-    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17858705156a7238b3116a5.jpg",
-    emoji: "🌼",
-    stock: 79,
-    stockMax: 79,
-    description: "Vestido juvenil Vila Lele, modelo regata com estampa floral, cor amarelo — leve pro dia a dia."
   }
-
-
 ];
 
 const CATEGORIES = [
   { key: "casa", label: "Casa e Decoração", icon: "🏠", image: "assets/img/categories/casa.png" },
-  { key: "moda", label: "Moda e Vestuário", icon: "👗", image: "assets/img/categories/moda.png" },
   { key: "pet", label: "Pet Shop", icon: "🐾", image: "assets/img/categories/pet.png" },
   { key: "beleza", label: "Saúde e Beleza", icon: "💄", image: "assets/img/categories/beleza.png" },
   { key: "joias", label: "Joias e Acessórios", icon: "💍", image: "assets/img/categories/joias.png" },
