@@ -82,6 +82,78 @@ function coletarDadosEntrega() {
   return { dados, erros };
 }
 
+/* =====================================================================
+   FRETE — cotação no Melhor Envio (27/08/2026)
+   Regra da casa: o frete é do cliente, a loja não paga frete. O carrinho
+   cota de verdade pelo CEP antes de deixar finalizar a compra; sem opção
+   escolhida o botão de pagamento não libera.
+   A conta e o token do Melhor Envio ficam no Worker (secret da
+   Cloudflare) — o navegador nunca vê token nenhum, só chama /frete.
+   ===================================================================== */
+
+const FRETE_STATE = { opcoes: [], escolhido: null, cepCotado: "" };
+
+/* Monta UMA caixa pro pedido inteiro a partir das medidas de cada item
+   (SHIPPING, em catalog.js): soma os pesos, usa o maior comprimento e a
+   maior largura do conjunto e empilha as alturas. É a aproximação que a
+   maioria das lojas usa — não é a caixa ótima, mas nunca cota a menos,
+   que é o erro que custaria dinheiro. */
+function montarPacote(cart) {
+  let peso = 0, comprimento = 16, largura = 11, altura = 0;
+  cart.forEach((i) => {
+    const pk = typeof pacoteDoProduto === "function"
+      ? pacoteDoProduto(i.id)
+      : { peso: 0.3, comprimento: 16, largura: 11, altura: 2 };
+    const q = Math.max(1, parseInt(i.qty, 10) || 1);
+    peso += pk.peso * q;
+    comprimento = Math.max(comprimento, pk.comprimento);
+    largura = Math.max(largura, pk.largura);
+    altura += pk.altura * q;
+  });
+  return {
+    peso: Math.round(peso * 1000) / 1000,
+    comprimento: Math.max(16, Math.round(comprimento)),
+    largura: Math.max(11, Math.round(largura)),
+    altura: Math.max(2, Math.round(altura))
+  };
+}
+
+async function cotarFrete(cepBruto) {
+  const cep = String(cepBruto || "").replace(/\D/g, "");
+  const cart = getCart();
+  if (cep.length !== 8) return { erro: "Digite um CEP com 8 números." };
+  if (!cart.length) return { erro: "Seu carrinho está vazio." };
+
+  const resp = await fetch(`${CHECKOUT_WORKER_URL}/frete`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ cep, pacote: montarPacote(cart), valor: cartTotal() })
+  });
+  let data = {};
+  try { data = await resp.json(); } catch (e) { data = {}; }
+  if (!resp.ok) return { erro: data.error || "Não foi possível calcular o frete agora." };
+
+  FRETE_STATE.opcoes = Array.isArray(data.opcoes) ? data.opcoes : [];
+  FRETE_STATE.escolhido = null;
+  FRETE_STATE.cepCotado = cep;
+  return { opcoes: FRETE_STATE.opcoes };
+}
+
+function escolherFrete(id) {
+  FRETE_STATE.escolhido = FRETE_STATE.opcoes.find((o) => String(o.id) === String(id)) || null;
+  return FRETE_STATE.escolhido;
+}
+
+function freteEscolhido() {
+  return FRETE_STATE.escolhido;
+}
+
+function limparFrete() {
+  FRETE_STATE.opcoes = [];
+  FRETE_STATE.escolhido = null;
+  FRETE_STATE.cepCotado = "";
+}
+
 async function iniciarCheckout() {
   const cart = getCart();
   if (!cart.length) return;
@@ -97,6 +169,16 @@ async function iniciarCheckout() {
     return;
   }
   if (errorEl) errorEl.style.display = "none";
+
+  const frete = freteEscolhido();
+  if (!frete) {
+    if (errorEl) {
+      errorEl.style.display = "block";
+      errorEl.textContent = "Calcule o frete pelo seu CEP e escolha uma opção de entrega antes de finalizar.";
+      errorEl.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    return;
+  }
 
   const cupom = getCupomAplicado();
   const desconto = cupom ? cupom.pct : 0;
@@ -124,7 +206,7 @@ async function iniciarCheckout() {
     const resp = await fetch(CHECKOUT_WORKER_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items, customer })
+      body: JSON.stringify({ items, customer, frete: { nome: `${frete.empresa} ${frete.nome}`.trim(), preco: frete.preco } })
     });
     if (!resp.ok) throw new Error("Falha ao criar preferência de pagamento");
     const data = await resp.json();

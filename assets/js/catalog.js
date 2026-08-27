@@ -1249,6 +1249,110 @@ const PRODUCT_SPECS = {
   p30: { tamanho: "Pequeno" },
 };
 
+/* =====================================================================
+   MEDIDAS DE ENVIO — peso (kg) e dimensões da EMBALAGEM (cm), usadas pra
+   cotar o frete real na API do Melhor Envio. Levantadas em 27/08/2026 por
+   pesquisa de ficha técnica em Mercado Livre, Amazon BR, Shopee, Magalu e
+   sites de fabricante, item a item. A maioria é ESTIMATIVA a partir de um
+   produto equivalente — a Dropi não informa peso nem dimensão em lugar
+   nenhum do painel nem da API, então não há dado de fornecedor pra usar.
+   Toda medida respeita o mínimo dos Correios (16 x 11 x 2 cm).
+   Quando um pedido tem mais de um item, o carrinho soma os pesos e monta
+   uma caixa que comporta o conjunto (ver montarPacote em carrinho.html).
+   ===================================================================== */
+const SHIPPING = {
+  p1: { peso: 0.8, comprimento: 30, largura: 20, altura: 10 },
+  p2: { peso: 0.25, comprimento: 30, largura: 25, altura: 3 },
+  p5: { peso: 0.4, comprimento: 20, largura: 11, altura: 9 },
+  p6: { peso: 0.15, comprimento: 16, largura: 11, altura: 4 },
+  p7: { peso: 1, comprimento: 40, largura: 30, altura: 10 },
+  p9: { peso: 0.03, comprimento: 16, largura: 11, altura: 2 },
+  p10: { peso: 0.35, comprimento: 24, largura: 18, altura: 8 },
+  p11: { peso: 0.05, comprimento: 16, largura: 11, altura: 2 },
+  p12: { peso: 0.45, comprimento: 28, largura: 19, altura: 12 },
+  p13: { peso: 0.5, comprimento: 30, largura: 12, altura: 10 },
+  p14: { peso: 0.6, comprimento: 42, largura: 32, altura: 6 },
+  p15: { peso: 0.15, comprimento: 20, largura: 11, altura: 4 },
+  p17: { peso: 0.35, comprimento: 30, largura: 30, altura: 8 },
+  p24: { peso: 2.02, comprimento: 37, largura: 23, altura: 6 },
+  p29: { peso: 0.5, comprimento: 32, largura: 26, altura: 8 },
+  p30: { peso: 0.3, comprimento: 35, largura: 25, altura: 4 },
+  p31: { peso: 0.05, comprimento: 16, largura: 11, altura: 2 },
+  p32: { peso: 0.15, comprimento: 16, largura: 11, altura: 8 },
+  p36: { peso: 0.03, comprimento: 16, largura: 11, altura: 2 },
+  p37: { peso: 0.05, comprimento: 16, largura: 11, altura: 2 },
+  p39: { peso: 0.02, comprimento: 16, largura: 11, altura: 2 },
+  p40: { peso: 0.08, comprimento: 16, largura: 11, altura: 2 },
+  p41: { peso: 0.03, comprimento: 16, largura: 11, altura: 2 },
+  p42: { peso: 0.02, comprimento: 16, largura: 11, altura: 2 },
+  p44: { peso: 0.03, comprimento: 16, largura: 11, altura: 2 },
+  p47: { peso: 0.08, comprimento: 16, largura: 12, altura: 5 },
+  p48: { peso: 0.4, comprimento: 25, largura: 20, altura: 8 },
+  p49: { peso: 0.45, comprimento: 40, largura: 30, altura: 10 },
+  p50: { peso: 0.08, comprimento: 16, largura: 11, altura: 4 },
+  p53: { peso: 0.5, comprimento: 25, largura: 20, altura: 8 },
+  p54: { peso: 0.15, comprimento: 30, largura: 25, altura: 3 },
+  p55: { peso: 0.4, comprimento: 16, largura: 11, altura: 10 },
+  p67: { peso: 0.18, comprimento: 20, largura: 12, altura: 9 },
+  p73: { peso: 0.1, comprimento: 16, largura: 11, altura: 4 },
+  p74: { peso: 0.1, comprimento: 16, largura: 11, altura: 2 },
+  p75: { peso: 0.2, comprimento: 16, largura: 11, altura: 5 },
+  p76: { peso: 0.05, comprimento: 16, largura: 11, altura: 2 },
+  p77: { peso: 0.15, comprimento: 16, largura: 11, altura: 8 },
+  p80: { peso: 0.02, comprimento: 16, largura: 11, altura: 2 },
+  p90: { peso: 0.35, comprimento: 25, largura: 20, altura: 4 },
+  p92: { peso: 0.25, comprimento: 30, largura: 25, altura: 4 },
+  p93: { peso: 0.3, comprimento: 30, largura: 25, altura: 5 },
+  p95: { peso: 0.9, comprimento: 45, largura: 35, altura: 8 },
+  p96: { peso: 0.4, comprimento: 35, largura: 30, altura: 5 },
+  p200: { peso: 0.5, comprimento: 32, largura: 26, altura: 8 },
+  p201: { peso: 1, comprimento: 40, largura: 30, altura: 8 },
+  p202: { peso: 0.6, comprimento: 35, largura: 30, altura: 8 },
+  p203: { peso: 0.8, comprimento: 35, largura: 30, altura: 10 },
+  p204: { peso: 0.03, comprimento: 16, largura: 11, altura: 2 },
+  p205: { peso: 0.4, comprimento: 30, largura: 25, altura: 4 },
+  p206: { peso: 0.4, comprimento: 40, largura: 25, altura: 8 },
+  p207: { peso: 0.7, comprimento: 35, largura: 20, altura: 15 },
+  p208: { peso: 0.25, comprimento: 35, largura: 25, altura: 3 },
+  p209: { peso: 1, comprimento: 50, largura: 35, altura: 10 },
+  p210: { peso: 0.8, comprimento: 35, largura: 30, altura: 5 },
+  p211: { peso: 0.5, comprimento: 45, largura: 35, altura: 8 },
+  p212: { peso: 0.5, comprimento: 35, largura: 25, altura: 6 },
+  p213: { peso: 0.2, comprimento: 16, largura: 11, altura: 8 },
+  p214: { peso: 0.25, comprimento: 16, largura: 11, altura: 10 },
+  p215: { peso: 0.15, comprimento: 20, largura: 11, altura: 6 },
+  p216: { peso: 0.25, comprimento: 22, largura: 16, altura: 6 },
+  p217: { peso: 0.15, comprimento: 20, largura: 20, altura: 5 },
+  p218: { peso: 0.1, comprimento: 37, largura: 11, altura: 2 },
+  p219: { peso: 0.06, comprimento: 28, largura: 11, altura: 2 },
+  p220: { peso: 0.08, comprimento: 27, largura: 11, altura: 2 },
+  p221: { peso: 0.2, comprimento: 25, largura: 12, altura: 3 },
+  p222: { peso: 0.22, comprimento: 25, largura: 15, altura: 8 },
+  p223: { peso: 0.05, comprimento: 16, largura: 11, altura: 4 },
+  p224: { peso: 0.45, comprimento: 31, largura: 31, altura: 5 },
+  p225: { peso: 0.8, comprimento: 29, largura: 29, altura: 7 },
+  p226: { peso: 0.3, comprimento: 28, largura: 28, altura: 6 },
+  p227: { peso: 0.35, comprimento: 20, largura: 12, altura: 10 },
+  p228: { peso: 0.55, comprimento: 46, largura: 11, altura: 9 },
+  p229: { peso: 0.15, comprimento: 16, largura: 11, altura: 4 },
+  p230: { peso: 0.4, comprimento: 30, largura: 25, altura: 3 },
+  p231: { peso: 0.45, comprimento: 42, largura: 32, altura: 6 },
+  p232: { peso: 0.12, comprimento: 25, largura: 20, altura: 2 },
+  p233: { peso: 0.25, comprimento: 18, largura: 11, altura: 5 },
+  p234: { peso: 0.12, comprimento: 16, largura: 11, altura: 2 },
+  p235: { peso: 0.15, comprimento: 19, largura: 11.5, altura: 8.5 },
+  p236: { peso: 0.15, comprimento: 16, largura: 11, altura: 5 },
+  p237: { peso: 0.15, comprimento: 16, largura: 11, altura: 5 },
+  p238: { peso: 0.15, comprimento: 16, largura: 11, altura: 4 },
+  p239: { peso: 0.3, comprimento: 20, largura: 12, altura: 6 },
+  p240: { peso: 1, comprimento: 46, largura: 18, altura: 6 },
+  p241: { peso: 0.3, comprimento: 18, largura: 12, altura: 6 },
+};
+
+function pacoteDoProduto(id) {
+  return SHIPPING[id] || { peso: 0.3, comprimento: 16, largura: 11, altura: 2 };
+}
+
 function formatBRL(value) {
   return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
 }
