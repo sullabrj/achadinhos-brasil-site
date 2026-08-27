@@ -79,6 +79,27 @@ alguns produtos e embutir.
    arredondado pra cima terminando em ",90". Média do catálogo:
    R$ 93,23 -> R$ 103,33 (+10,8%). Os 4 itens de Oferta Relâmpago
    mantiveram o mesmo percentual de desconto real.
+   REFORMA DE CATÁLOGO 27/08/2026 — CHECKUP DE PREÇO CONTRA O MERCADO:
+   pesquisamos o preço de varejo real (Mercado Livre, Amazon, site das
+   próprias fabricantes) dos 69 itens e recalculamos quanto sobraria de
+   lucro vendendo no preço de mercado. RESULTADO: 25 itens dariam
+   PREJUÍZO em qualquer preço que o mercado aceita — o custo da Dropi
+   neles nasce igual ou acima do varejo. Esses 25 foram REMOVIDOS
+   (linha de cosmético profissional quase inteira, bases BT Skin,
+   Nano Repair, Peitoral e Bandana Hello Kitty, Pelúcia Bright Starts,
+   Guia Scooby-Doo, Coleira Mulher Maravilha, entre outros). Outros 4
+   sobreviveram magros e foram reprecificados PRA BAIXO até o preço de
+   mercado (p1, p15, p54, p76), e 7 que estavam baratos demais subiram
+   até 90% da menor referência de mercado (p32, p37, p40, p41, p77,
+   p90, p92). Entraram 42 produtos novos da Dropi (Pet, Utensílios,
+   Casa e Eletrônicos), já no divisor de 30%; outros 15 da curadoria
+   foram descartados por duplicidade com o catálogo ou por também
+   nascerem caros (Kit Teclado Multilaser TC251, potes herméticos,
+   cortina blackout, fone gatinho). Catálogo: 69 -> 86 itens, preço
+   médio R$ 103,33 -> R$ 59,70. Categorias novas: Utensílios e
+   Eletrônicos (sem PNG próprio ainda — usam o emoji como ícone).
+   Oferta Relâmpago remontada: p95, p40, p37 e p239, todos com
+   desconto real de ~10% sobre o preço cheio.
    ===================================================================== */
 
 const PRODUCTS = [
@@ -87,7 +108,7 @@ const PRODUCTS = [
     name: "Kit Banheiro Lavabo 4 Peças Resistente e Moderno",
     category: "casa",
     categoryLabel: "Casa e Decoração",
-    price: 171.9,
+    price: 113.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1768713762696c6e22a08f9.jpg",
     emoji: "🧼",
@@ -230,26 +251,13 @@ const PRODUCTS = [
     name: "Colher Digital LCD Dosador Medidor Balança de Precisão",
     category: "casa",
     categoryLabel: "Casa e Decoração",
-    price: 62.9,
+    price: 48.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-172372689066bdfc2a5bfb9.png",
     emoji: "⚖️",
     stock: 1,
     stockMax: 1,
     description: "Colher digital com balança de precisão embutida e visor LCD — mede ingredientes direto na receita. Última unidade no fornecedor."
-  },
-  {
-    id: "p16",
-    name: "Kit Decoração Criativa Sala e Cozinha + Vasos + Plantas",
-    category: "casa",
-    categoryLabel: "Casa e Decoração",
-    price: 76.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-172373265066be12aae58b7.jpg",
-    emoji: "🪴",
-    stock: 4,
-    stockMax: 4,
-    description: "Kit de decoração com vasos, plantas artificiais e detalhes 'amor' pra dar um toque especial à sala ou cozinha. Só 4 no estoque do fornecedor."
   },
   {
     id: "p17",
@@ -276,58 +284,6 @@ const PRODUCTS = [
     stock: 30,
     stockMax: 30,
     description: "Areia biodegradável pra gatos, grãos grossos, 2kg — controla odor e é mais sustentável."
-  },
-  {
-    id: "p25",
-    name: "Coleira para Cachorro Mulher Maravilha",
-    category: "pet",
-    categoryLabel: "Pet Shop",
-    price: 111.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-176122399168fa2537d0f5c.jpg",
-    emoji: "🐕",
-    stock: 30,
-    stockMax: 30,
-    description: "Coleira pra cachorro Mulher Maravilha, com capa e plaquinha personalizável, tamanho G."
-  },
-  {
-    id: "p26",
-    name: "Guia Tradicional Scooby-Doo para Cachorro",
-    category: "pet",
-    categoryLabel: "Pet Shop",
-    price: 151.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-175942638668deb752793fb.jpg",
-    emoji: "🦴",
-    stock: 30,
-    stockMax: 30,
-    description: "Guia tradicional pra cachorro, 1,2m, estampa Scooby-Doo — resistente pros passeios do dia a dia."
-  },
-  {
-    id: "p27",
-    name: "Vasilha Comedouro/Bebedouro de Melamina Batman",
-    category: "pet",
-    categoryLabel: "Pet Shop",
-    price: 125.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-175942796268debd7ac20f9.jpg",
-    emoji: "🥣",
-    stock: 30,
-    stockMax: 30,
-    description: "Vasilha comedouro/bebedouro de melamina estampa Batman — resistente e fácil de limpar."
-  },
-  {
-    id: "p28",
-    name: "Colchonete Arranhador para Gatos Zoe",
-    category: "pet",
-    categoryLabel: "Pet Shop",
-    price: 56.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177738450569f0bc391a5c1.jpg",
-    emoji: "🐈",
-    stock: 993,
-    stockMax: 993,
-    description: "Colchonete arranhador pra gatos, protege os móveis e ainda serve de caminha."
   },
   {
     id: "p29",
@@ -373,52 +329,13 @@ const PRODUCTS = [
     name: "Argila Vermelha Facial e Corporal",
     category: "beleza",
     categoryLabel: "Saúde e Beleza",
-    price: 9.9,
+    price: 10.9,
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-166517092763407defc188f.jpg",
     emoji: "🧖‍♀️",
     stock: 199,
     stockMax: 199,
     description: "Argila vermelha facial e corporal, limpeza profunda e efeito revitalizante."
-  },
-  {
-    id: "p33",
-    name: "Hidratante Corporal Yara 200g",
-    category: "beleza",
-    categoryLabel: "Saúde e Beleza",
-    price: 274.9,
-    oldPrice: 305.9,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-175629516768aeefff114c1.png",
-    emoji: "🧴",
-    stock: 6,
-    stockMax: 6,
-    description: "Hidratante corporal Yara 200g, textura em pote — hidratação intensa pra pele. Só 6 no estoque do fornecedor."
-  },
-  {
-    id: "p34",
-    name: "Base Líquida Bruna Tavares BT Skin",
-    category: "beleza",
-    categoryLabel: "Saúde e Beleza",
-    price: 168.9,
-    oldPrice: 187.9,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-16651720146340822ea4fc6.jpg",
-    emoji: "💄",
-    stock: 2,
-    stockMax: 2,
-    description: "Base líquida Bruna Tavares BT Skin, cobertura natural — acabamento pele perfeita. Só 2 no estoque do fornecedor."
-  },
-  {
-    id: "p35",
-    name: "Balm Labial Lip Glow Pitanga",
-    category: "beleza",
-    categoryLabel: "Saúde e Beleza",
-    price: 156.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1764699683692f2e2320332.png",
-    emoji: "💋",
-    stock: 98,
-    stockMax: 98,
-    description: "Balm labial com ácido hialurônico e sabor pitanga — hidrata e dá brilho aos lábios."
   },
   {
     id: "p36",
@@ -438,26 +355,13 @@ const PRODUCTS = [
     name: "Anel Solitário Ajustável Verde Esmeralda",
     category: "joias",
     categoryLabel: "Joias e Acessórios",
-    price: 91.9,
-    oldPrice: null,
+    price: 101.9,
+    oldPrice: 112.9,
     image: "https://dropi.xpto.app/dropi/fornecedor/produto-17860646776a752f2597f3d.jpg",
     emoji: "💚",
     stock: 3,
     stockMax: 3,
     description: "Anel solitário ajustável verde esmeralda, semijoia delicada pra usar todo dia — só 3 no estoque do fornecedor."
-  },
-  {
-    id: "p38",
-    name: "Bracelete Quadrado Inspiração X",
-    category: "joias",
-    categoryLabel: "Joias e Acessórios",
-    price: 161.9,
-    oldPrice: null,
-    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17848566126a62c024ab5a0.jpg",
-    emoji: "✨",
-    stock: 2,
-    stockMax: 2,
-    description: "Bracelete quadrado inspiração X com micro zircônias, peça statement — só 2 no estoque do fornecedor."
   },
   {
     id: "p39",
@@ -477,8 +381,8 @@ const PRODUCTS = [
     name: "Colar Pingente de Zircônia e Pérola",
     category: "joias",
     categoryLabel: "Joias e Acessórios",
-    price: 87.9,
-    oldPrice: null,
+    price: 118.9,
+    oldPrice: 131.9,
     image: "https://dropi.xpto.app/dropi/fornecedor/produto-17858919806a728c8c54ba8.jpg",
     emoji: "📿",
     stock: 8,
@@ -490,7 +394,7 @@ const PRODUCTS = [
     name: "Anel Nossa Senhora Zircônia Azul",
     category: "joias",
     categoryLabel: "Joias e Acessórios",
-    price: 73.9,
+    price: 109.9,
     oldPrice: null,
     image: "https://dropi.xpto.app/dropi/fornecedor/produto-17848566676a62c05b76927.jpg",
     emoji: "🙏",
@@ -523,19 +427,6 @@ const PRODUCTS = [
     stock: 37,
     stockMax: 37,
     description: "Laço/faixa opcional pra vestido, verde menta — acessório fofo pra compor o visual infantil."
-  },
-  {
-    id: "p46",
-    name: "Pelúcia de Pendurar Rhino Bright Starts",
-    category: "infantil",
-    categoryLabel: "Infantil e Brinquedos",
-    price: 254.9,
-    oldPrice: 282.9,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1750044109684f8dcd454f2.jpg",
-    emoji: "🦏",
-    stock: 2,
-    stockMax: 2,
-    description: "Pelúcia de pendurar Rhino da Bright Starts, 0m+ — estimula os sentidos do bebê no berço ou carrinho. Só 2 no estoque do fornecedor."
   },
   {
     id: "p47",
@@ -590,32 +481,6 @@ const PRODUCTS = [
     description: "Prendedor de cortina magnético, kit com 2 peças — prende a cortina discretamente sem furar a parede."
   },
   {
-    id: "p51",
-    name: "Calendário Decorativo de Parede com Porta-Chaves",
-    category: "casa",
-    categoryLabel: "Casa e Decoração",
-    price: 61.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1768713131696c6bab7c8be.jpg",
-    emoji: "📅",
-    stock: 9,
-    stockMax: 9,
-    description: "Calendário decorativo de parede com porta-chaves embutido — organiza o dia a dia e ainda guarda as chaves de casa."
-  },
-  {
-    id: "p52",
-    name: "Assento Para Cadeira 40x40cm Tecido Oxford",
-    category: "casa",
-    categoryLabel: "Casa e Decoração",
-    price: 40.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-172344229966b9a47bc9306.png",
-    emoji: "🪑",
-    stock: 7,
-    stockMax: 7,
-    description: "Assento para cadeira 40x40cm em tecido Oxford liso, 100% poliéster — mais conforto pra sentar todo dia."
-  },
-  {
     id: "p53",
     name: "Expositor de Joias Acrílico com 8 Cabides",
     category: "casa",
@@ -633,7 +498,7 @@ const PRODUCTS = [
     name: "Capa de Almofada Sofá Decorativa Suede",
     category: "casa",
     categoryLabel: "Casa e Decoração",
-    price: 35.9,
+    price: 24.9,
     oldPrice: null,
     image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-17210830746695a4c20cf0e.png",
     emoji: "🧵",
@@ -711,7 +576,7 @@ const PRODUCTS = [
     name: "Creme Clareador Facial Cystea Skin com Cisteamina e Retinol Nano 15g",
     category: "beleza",
     categoryLabel: "Saúde e Beleza",
-    price: 204.9,
+    price: 155.9,
     oldPrice: null,
     image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764699759692f2e6f0a77d.png",
     emoji: "🧴",
@@ -724,39 +589,13 @@ const PRODUCTS = [
     name: "Argila Preta Facial e Corporal 100g",
     category: "beleza",
     categoryLabel: "Saúde e Beleza",
-    price: 10.9,
+    price: 12.9,
     oldPrice: null,
     image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-16651764786340939eb6599.jpg",
     emoji: "🧖‍♀️",
     stock: 32,
     stockMax: 32,
     description: "Argila preta facial e corporal, 100g — limpeza profunda e efeito detox pra pele."
-  },
-  {
-    id: "p78",
-    name: "Creme Nutry Repair Hidratação e Fixação do Pigmento 15g",
-    category: "beleza",
-    categoryLabel: "Saúde e Beleza",
-    price: 110.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764699785692f2e89879c0.jpg",
-    emoji: "🧴",
-    stock: 82,
-    stockMax: 82,
-    description: "Creme Nutry Repair, hidratação e fixação do pigmento na pele, 15g — cuidado pós-procedimento."
-  },
-  {
-    id: "p79",
-    name: "Água Dermatológica Calmante e Hidratante 60ml",
-    category: "beleza",
-    categoryLabel: "Saúde e Beleza",
-    price: 157.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764699667692f2e132b51b.jpg",
-    emoji: "💧",
-    stock: 76,
-    stockMax: 76,
-    description: "Água dermatológica calmante e hidratante, 60ml — refresca e acalma a pele."
   },
   {
     id: "p80",
@@ -772,128 +611,11 @@ const PRODUCTS = [
     description: "Creme reparador Derma Repair com ativos calmantes, 5g — auxilia na recuperação da pele."
   },
   {
-    id: "p81",
-    name: "Espuma de Limpeza Facial Anti Acne e Oleosidade 50g",
-    category: "beleza",
-    categoryLabel: "Saúde e Beleza",
-    price: 157.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764699814692f2ea63003e.png",
-    emoji: "🧼",
-    stock: 100,
-    stockMax: 100,
-    description: "Espuma de limpeza facial anti acne e oleosidade, com ácido salicílico nano e niacinamida, 50g."
-  },
-  {
-    id: "p82",
-    name: "Seda Lifting BTX Like Ácido Hialurônico 3D 5g",
-    category: "beleza",
-    categoryLabel: "Saúde e Beleza",
-    price: 141.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764700124692f2fdc3aeec.png",
-    emoji: "🧴",
-    stock: 86,
-    stockMax: 86,
-    description: "Seda lifting BTX Like, ácido hialurônico 3D com efeito botulínico suave, 5g."
-  },
-  {
-    id: "p83",
-    name: "Sérum Suavizante Hydracalm 10g",
-    category: "beleza",
-    categoryLabel: "Saúde e Beleza",
-    price: 141.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764700214692f303658084.png",
-    emoji: "🧴",
-    stock: 37,
-    stockMax: 37,
-    description: "Sérum suavizante Hydracalm, hidratação e proteção pós-laser, 10g."
-  },
-  {
-    id: "p84",
-    name: "Base Líquida Bruna Tavares BT Skin T60",
-    category: "beleza",
-    categoryLabel: "Saúde e Beleza",
-    price: 169.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-16651720146340822e2b70c.jpg",
-    emoji: "💄",
-    stock: 3,
-    stockMax: 3,
-    description: "Base líquida Bruna Tavares BT Skin, tom T60. Só 3 no estoque do fornecedor."
-  },
-  {
-    id: "p85",
-    name: "Balm Labial Lip Glow Cereja Ácido Hialurônico 5,5g",
-    category: "beleza",
-    categoryLabel: "Saúde e Beleza",
-    price: 157.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764699678692f2e1eab99c.png",
-    emoji: "💋",
-    stock: 100,
-    stockMax: 100,
-    description: "Balm labial Lip Glow sabor cereja, com ácido hialurônico, 5,5g."
-  },
-  {
-    id: "p86",
-    name: "Kit PMU Lip Preparatório (Active + Balm)",
-    category: "beleza",
-    categoryLabel: "Saúde e Beleza",
-    price: 141.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764699881692f2ee9083cc.jpg",
-    emoji: "💋",
-    stock: 117,
-    stockMax: 117,
-    description: "Kit PMU Lip Preparatório (Active + Balm) — preparo labial pra procedimentos de pigmentação."
-  },
-  {
-    id: "p87",
-    name: "Seda Labial Hyalufill Ultra Hidratante para Contorno 6g",
-    category: "beleza",
-    categoryLabel: "Saúde e Beleza",
-    price: 251.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764700120692f2fd8a87b3.jpg",
-    emoji: "💋",
-    stock: 100,
-    stockMax: 100,
-    description: "Seda labial Hyalufill ultra hidratante para contorno dos lábios, 6g."
-  },
-  {
-    id: "p88",
-    name: "Nano Repair Growth Factor Anti Queda Crescimento Capilar",
-    category: "beleza",
-    categoryLabel: "Saúde e Beleza",
-    price: 588.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764700228692f304404890.png",
-    emoji: "💇‍♀️",
-    stock: 10,
-    stockMax: 10,
-    description: "Nano Repair Growth Factor, tratamento anti queda e crescimento capilar."
-  },
-  {
-    id: "p89",
-    name: "Purify Gel de Limpeza sem Sabão 55g",
-    category: "beleza",
-    categoryLabel: "Saúde e Beleza",
-    price: 78.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1764700116692f2fd478ff6.png",
-    emoji: "🧼",
-    stock: 15,
-    stockMax: 15,
-    description: "Purify, gel de limpeza facial sem sabão, 55g — limpa sem ressecar a pele."
-  },
-  {
     id: "p90",
     name: "Toalha Splash Pet",
     category: "pet",
     categoryLabel: "Pet Shop",
-    price: 39.9,
+    price: 41.9,
     oldPrice: null,
     image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177738520069f0bef06fa02.jpg",
     emoji: "🐾",
@@ -902,24 +624,11 @@ const PRODUCTS = [
     description: "Toalha Splash Pet — seca o pet rapidinho depois do banho ou da chuva."
   },
   {
-    id: "p91",
-    name: "Peitoral para Gato com Guia Hello Kitty FreeFaro",
-    category: "pet",
-    categoryLabel: "Pet Shop",
-    price: 247.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-176079899268f3a9100ad99.jpg",
-    emoji: "🐱",
-    stock: 30,
-    stockMax: 30,
-    description: "Peitoral para gato com guia, estampa Hello Kitty preto e rosa, FreeFaro — passeio seguro pro gatinho."
-  },
-  {
     id: "p92",
     name: "Rede de Cadeira Impermeável para Gatos Chiara",
     category: "pet",
     categoryLabel: "Pet Shop",
-    price: 39.9,
+    price: 44.9,
     oldPrice: null,
     image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177738528769f0bf472de8a.png",
     emoji: "🐈",
@@ -939,19 +648,6 @@ const PRODUCTS = [
     stock: 5958,
     stockMax: 5958,
     description: "Mantinha pet — aconchego extra pro pet nos dias mais frios."
-  },
-  {
-    id: "p94",
-    name: "Bandana FreeFaro Hello Kitty para Cachorros",
-    category: "pet",
-    categoryLabel: "Pet Shop",
-    price: 64.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-175942566568deb481edc52.jpg",
-    emoji: "🐶",
-    stock: 30,
-    stockMax: 30,
-    description: "Bandana FreeFaro estampa Hello Kitty para cachorros, tamanho G — acessório fofo pro passeio."
   },
   {
     id: "p95",
@@ -978,6 +674,552 @@ const PRODUCTS = [
     stock: 6951,
     stockMax: 6951,
     description: "Protetor de banco dianteiro impermeável, padrão universal — leva o pet no carro sem sujar o banco."
+  },
+  {
+    id: "p200",
+    name: "Coberdrom Pet Mark Dupla Face 03 pçs",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 88.9,
+    oldPrice: null,
+    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17792781206a0da12827643.jpg",
+    emoji: "🐾",
+    stock: 7944,
+    stockMax: 7944,
+    description: "Coberdrom Pet Mark Dupla Face 03 pçs. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
+  },
+  {
+    id: "p201",
+    name: "Protetor de Sofá Pet Snoopy",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 70.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177738520969f0bef9664e6.jpg",
+    emoji: "🐾",
+    stock: 27804,
+    stockMax: 27804,
+    description: "Protetor de Sofá Pet Snoopy. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
+  },
+  {
+    id: "p202",
+    name: "Peseira Pet Impermeável Para Cama Casal Padrão Avulsa",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 82.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177738486269f0bd9e41c03.jpg",
+    emoji: "🐾",
+    stock: 12909,
+    stockMax: 12909,
+    description: "Peseira Pet Impermeável Para Cama Casal Padrão Avulsa. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
+  },
+  {
+    id: "p203",
+    name: "Cama Pet Onix Impermeável",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 54.9,
+    oldPrice: null,
+    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17875948446a8c885c8fba0.jpg",
+    emoji: "🐾",
+    stock: 224418,
+    stockMax: 224418,
+    description: "Cama Pet Onix Impermeável. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
+  },
+  {
+    id: "p204",
+    name: "Bandana Pet Dereck",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 5.9,
+    oldPrice: null,
+    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17875842686a8c5f0cb2d36.jpg",
+    emoji: "🐾",
+    stock: 65538,
+    stockMax: 65538,
+    description: "Bandana Pet Dereck. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
+  },
+  {
+    id: "p205",
+    name: "Tapete Higiênico Impermeável Clean",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 35.9,
+    oldPrice: null,
+    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17875843556a8c5f63b5bba.jpg",
+    emoji: "🐾",
+    stock: 41706,
+    stockMax: 41706,
+    description: "Tapete Higiênico Impermeável Clean. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
+  },
+  {
+    id: "p206",
+    name: "Colchonete Pet Simples",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 58.9,
+    oldPrice: null,
+    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17875843536a8c5f61b030a.jpg",
+    emoji: "🐾",
+    stock: 41706,
+    stockMax: 41706,
+    description: "Colchonete Pet Simples. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
+  },
+  {
+    id: "p207",
+    name: "Colchonete Pet Quality Impermeável",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 70.9,
+    oldPrice: null,
+    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17875948636a8c886f3e7de.jpg",
+    emoji: "🐾",
+    stock: 92349,
+    stockMax: 92349,
+    description: "Colchonete Pet Quality Impermeável. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
+  },
+  {
+    id: "p208",
+    name: "Tapete Higiênico Impermeável",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 41.9,
+    oldPrice: null,
+    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17875949666a8c88d610385.jpg",
+    emoji: "🐾",
+    stock: 99300,
+    stockMax: 99300,
+    description: "Tapete Higiênico Impermeável. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
+  },
+  {
+    id: "p209",
+    name: "Cama Pet Gorgopet Impermeável",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 72.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177738435669f0bba434c4d.jpg",
+    emoji: "🐾",
+    stock: 67524,
+    stockMax: 67524,
+    description: "Cama Pet Gorgopet Impermeável. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
+  },
+  {
+    id: "p210",
+    name: "Protetor Banco Traseiro Plus Impermeável",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 78.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177738481069f0bd6a1f452.jpg",
+    emoji: "🐾",
+    stock: 22839,
+    stockMax: 22839,
+    description: "Protetor Banco Traseiro Plus Impermeável. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
+  },
+  {
+    id: "p211",
+    name: "Colchonete Pet Toddy Impermeável",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 47.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177738491069f0bdcebb646.jpg",
+    emoji: "🐾",
+    stock: 48657,
+    stockMax: 48657,
+    description: "Colchonete Pet Toddy Impermeável. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
+  },
+  {
+    id: "p212",
+    name: "Kit 02 pçs Protetor Banco Dianteiro Impermeável",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 86.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177738493969f0bdebd24e1.jpg",
+    emoji: "🐾",
+    stock: 31776,
+    stockMax: 31776,
+    description: "Kit 02 pçs Protetor Banco Dianteiro Impermeável. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
+  },
+  {
+    id: "p213",
+    name: "Triturador de Alho Manual Processador Picador Fatiador Legumes Moedor",
+    category: "utensilios",
+    categoryLabel: "Utensílios",
+    price: 29.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1769797765697cf885b80da.jpg",
+    emoji: "🍳",
+    stock: 10,
+    stockMax: 10,
+    description: "Triturador de Alho Manual Processador Picador Fatiador Legumes Moedor."
+  },
+  {
+    id: "p214",
+    name: "Mini Processador Manual de Alimentos 2 laminas",
+    category: "utensilios",
+    categoryLabel: "Utensílios",
+    price: 16.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1769797763697cf8839c140.jpg",
+    emoji: "🍳",
+    stock: 9,
+    stockMax: 9,
+    description: "Mini Processador Manual de Alimentos 2 laminas."
+  },
+  {
+    id: "p215",
+    name: "Batedor Elétrico á Pilha Cores Sortidas",
+    category: "utensilios",
+    categoryLabel: "Utensílios",
+    price: 13.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177153492569977a4de6d05.webp",
+    emoji: "🍳",
+    stock: 9,
+    stockMax: 9,
+    description: "Batedor Elétrico á Pilha Cores Sortidas."
+  },
+  {
+    id: "p216",
+    name: "Bomba de agua",
+    category: "utensilios",
+    categoryLabel: "Utensílios",
+    price: 17.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1769797749697cf875eb8f0.jpg",
+    emoji: "🍳",
+    stock: 10,
+    stockMax: 10,
+    description: "Bomba de agua."
+  },
+  {
+    id: "p217",
+    name: "Forma Descartável para Air Fryer 20cm",
+    category: "utensilios",
+    categoryLabel: "Utensílios",
+    price: 23.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1769695513697b6919b91ec.jpg",
+    emoji: "🍳",
+    stock: 9,
+    stockMax: 9,
+    description: "Forma Descartável para Air Fryer 20cm."
+  },
+  {
+    id: "p218",
+    name: "Espátula de Silicone e Ferro 37X5,3cm Cores Sortidas",
+    category: "utensilios",
+    categoryLabel: "Utensílios",
+    price: 17.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177153493369977a551b35c.webp",
+    emoji: "🍳",
+    stock: 9,
+    stockMax: 9,
+    description: "Espátula de Silicone e Ferro 37X5,3cm Cores Sortidas."
+  },
+  {
+    id: "p219",
+    name: "Espátula de Silicone e Ferro 27,5x6cm Cores Sortidas",
+    category: "utensilios",
+    categoryLabel: "Utensílios",
+    price: 17.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177153493169977a53495f5.webp",
+    emoji: "🍳",
+    stock: 9,
+    stockMax: 9,
+    description: "Espátula de Silicone e Ferro 27,5x6cm Cores Sortidas."
+  },
+  {
+    id: "p220",
+    name: "Pincel Confeiteiro de Silicone e Ferro 25,5x4,1cm Cores Sortidas",
+    category: "utensilios",
+    categoryLabel: "Utensílios",
+    price: 17.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177153494169977a5d789d8.webp",
+    emoji: "🍳",
+    stock: 10,
+    stockMax: 10,
+    description: "Pincel Confeiteiro de Silicone e Ferro 25,5x4,1cm Cores Sortidas."
+  },
+  {
+    id: "p221",
+    name: "Ralador + Faca de Fruta Cores Sortidas",
+    category: "utensilios",
+    categoryLabel: "Utensílios",
+    price: 11.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177153494369977a5fb5c78.jpg",
+    emoji: "🍳",
+    stock: 10,
+    stockMax: 10,
+    description: "Ralador + Faca de Fruta Cores Sortidas."
+  },
+  {
+    id: "p222",
+    name: "Forma Para Pão E Bolo Alumínio Fortaleza",
+    category: "utensilios",
+    categoryLabel: "Utensílios",
+    price: 15.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1769695519697b691faec04.jpg",
+    emoji: "🍳",
+    stock: 19,
+    stockMax: 19,
+    description: "Forma Para Pão E Bolo Alumínio Fortaleza. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
+  },
+  {
+    id: "p223",
+    name: "Esponja 11x7x3cm kit 2pçs",
+    category: "utensilios",
+    categoryLabel: "Utensílios",
+    price: 6.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177153493469977a56ea7de.webp",
+    emoji: "🍳",
+    stock: 9,
+    stockMax: 9,
+    description: "Esponja 11x7x3cm kit 2pçs."
+  },
+  {
+    id: "p224",
+    name: "Forma de bolo de ferro 30cm",
+    category: "utensilios",
+    categoryLabel: "Utensílios",
+    price: 23.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1769797754697cf87a51096.jpg",
+    emoji: "🍳",
+    stock: 10,
+    stockMax: 10,
+    description: "Forma de bolo de ferro 30cm."
+  },
+  {
+    id: "p225",
+    name: "Kit 3 Forma De Bolo Redonda Fundo Removível",
+    category: "utensilios",
+    categoryLabel: "Utensílios",
+    price: 51.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1769797761697cf88145203.png",
+    emoji: "🍳",
+    stock: 10,
+    stockMax: 10,
+    description: "Kit 3 Forma De Bolo Redonda Fundo Removível."
+  },
+  {
+    id: "p226",
+    name: "Forma de bolo redonda 26 cm",
+    category: "utensilios",
+    categoryLabel: "Utensílios",
+    price: 19.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1769797756697cf87c5134f.jpg",
+    emoji: "🍳",
+    stock: 9,
+    stockMax: 9,
+    description: "Forma de bolo redonda 26 cm."
+  },
+  {
+    id: "p227",
+    name: "Bomba de Agua elétrica",
+    category: "utensilios",
+    categoryLabel: "Utensílios",
+    price: 35.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1769797752697cf87841875.jpg",
+    emoji: "🍳",
+    stock: 10,
+    stockMax: 10,
+    description: "Bomba de Agua elétrica."
+  },
+  {
+    id: "p228",
+    name: "Papel de Parede Infantil Adesivo",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 20.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1770731885698b396d9268e.webp",
+    emoji: "🏠",
+    stock: 40,
+    stockMax: 40,
+    description: "Papel de Parede Infantil Adesivo. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
+  },
+  {
+    id: "p229",
+    name: "Conjunto Com 20 Pregadores de Roupas em Bambu Prendedor Madeira",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 10.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-173872884467a2e58c63926.png",
+    emoji: "🏠",
+    stock: 193,
+    stockMax: 193,
+    description: "Conjunto Com 20 Pregadores de Roupas em Bambu Prendedor Madeira."
+  },
+  {
+    id: "p230",
+    name: "Cortina Box de Tecido Poliéster com Gancho",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 72.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-173872885867a2e59ac0cbf.jpg",
+    emoji: "🏠",
+    stock: 2466,
+    stockMax: 2466,
+    description: "Cortina Box de Tecido Poliéster com Gancho."
+  },
+  {
+    id: "p231",
+    name: "Tapete Dot Bathmat Cores Sortidas 40cm x 60cm",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 27.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177262453269a81a94a533c.webp",
+    emoji: "🏠",
+    stock: 10,
+    stockMax: 10,
+    description: "Tapete Dot Bathmat Cores Sortidas 40cm x 60cm."
+  },
+  {
+    id: "p232",
+    name: "Capa para Almofada 40x40cm Cores Sortidas",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 23.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177262435769a819e527204.webp",
+    emoji: "🏠",
+    stock: 10,
+    stockMax: 10,
+    description: "Capa para Almofada 40x40cm Cores Sortidas."
+  },
+  {
+    id: "p233",
+    name: "Mouse Gamer Evolut Eg-103rb Predator Rgb 2400 Dpi 06 Botoes",
+    category: "eletronicos",
+    categoryLabel: "Eletrônicos",
+    price: 42.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-172355839566bb69fb53e93.jpg",
+    emoji: "🔌",
+    stock: 17,
+    stockMax: 17,
+    description: "Mouse Gamer Evolut Eg-103rb Predator Rgb 2400 Dpi 06 Botoes."
+  },
+  {
+    id: "p234",
+    name: "Suporte p/ celular 11.5x10cm",
+    category: "eletronicos",
+    categoryLabel: "Eletrônicos",
+    price: 16.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1770729965698b31ed326f2.webp",
+    emoji: "🔌",
+    stock: 10,
+    stockMax: 10,
+    description: "Suporte p/ celular 11.5x10cm."
+  },
+  {
+    id: "p235",
+    name: "Mouse Sem Fio Fantech W189 1200DPI",
+    category: "eletronicos",
+    categoryLabel: "Eletrônicos",
+    price: 104.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-172373532666be1d1e57b3a.jpg",
+    emoji: "🔌",
+    stock: 162,
+    stockMax: 162,
+    description: "Mouse Sem Fio Fantech W189 1200DPI."
+  },
+  {
+    id: "p236",
+    name: "Mouse Sem Fio Fantech Forma Confortável W188 1200DPI",
+    category: "eletronicos",
+    categoryLabel: "Eletrônicos",
+    price: 104.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-172355737166bb65fbc1fda.jpg",
+    emoji: "🔌",
+    stock: 88,
+    stockMax: 88,
+    description: "Mouse Sem Fio Fantech Forma Confortável W188 1200DPI."
+  },
+  {
+    id: "p237",
+    name: "Fone de Ouvido Bluetooth Cores Sortidas",
+    category: "eletronicos",
+    categoryLabel: "Eletrônicos",
+    price: 48.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1770729908698b31b4653bf.webp",
+    emoji: "🔌",
+    stock: 9,
+    stockMax: 9,
+    description: "Fone de Ouvido Bluetooth Cores Sortidas."
+  },
+  {
+    id: "p238",
+    name: "Mouse sem Fio Logitech M220 Silent Silencioso 1000 DPI",
+    category: "eletronicos",
+    categoryLabel: "Eletrônicos",
+    price: 129.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177248616669a5fe16befd6.jpg",
+    emoji: "🔌",
+    stock: 285,
+    stockMax: 285,
+    description: "Mouse sem Fio Logitech M220 Silent Silencioso 1000 DPI."
+  },
+  {
+    id: "p239",
+    name: "Mouse Para Jogos Profissional Fantech G13 Rhasta Ii 2400Dpi",
+    category: "eletronicos",
+    categoryLabel: "Eletrônicos",
+    price: 85.9,
+    oldPrice: 94.9,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1734331695675fcd2f0461a.jpg",
+    emoji: "🔌",
+    stock: 196,
+    stockMax: 196,
+    description: "Mouse Para Jogos Profissional Fantech G13 Rhasta Ii 2400Dpi."
+  },
+  {
+    id: "p240",
+    name: "Kit Teclado e Mouse Teclas Silenciosas Fantech KM-100",
+    category: "eletronicos",
+    categoryLabel: "Eletrônicos",
+    price: 131.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-172355694466bb6450b5141.jpg",
+    emoji: "🔌",
+    stock: 165,
+    stockMax: 165,
+    description: "Kit Teclado e Mouse Teclas Silenciosas Fantech KM-100."
+  },
+  {
+    id: "p241",
+    name: "Mouse Gamer Jogo Macro Crypto VX7 Fantech 8000DPI 6 Botões",
+    category: "eletronicos",
+    categoryLabel: "Eletrônicos",
+    price: 129.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-172355695066bb6456b0705.jpg",
+    emoji: "🔌",
+    stock: 33,
+    stockMax: 33,
+    description: "Mouse Gamer Jogo Macro Crypto VX7 Fantech 8000DPI 6 Botões."
   }
 ];
 
@@ -986,7 +1228,9 @@ const CATEGORIES = [
   { key: "pet", label: "Pet Shop", icon: "🐾", image: "assets/img/categories/pet.png" },
   { key: "beleza", label: "Saúde e Beleza", icon: "💄", image: "assets/img/categories/beleza.png" },
   { key: "joias", label: "Joias e Acessórios", icon: "💍", image: "assets/img/categories/joias.png" },
-  { key: "infantil", label: "Infantil e Brinquedos", icon: "🧸", image: "assets/img/categories/infantil.png" }
+  { key: "infantil", label: "Infantil e Brinquedos", icon: "🧸", image: "assets/img/categories/infantil.png" },
+  { key: "utensilios", label: "Utensílios", icon: "🍳", image: "assets/img/categories/utensilios.png" },
+  { key: "eletronicos", label: "Eletrônicos", icon: "🔌", image: "assets/img/categories/eletronicos.png" }
 ];
 
 /* Curadoria manual (não é estatística inventada — é escolha editorial,
@@ -1002,7 +1246,6 @@ const PRODUCT_SPECS = {
   p19: { tamanho: "M único" },
   p22: { tamanho: "Único" },
   p23: { medida: "1,2m de comprimento" },
-  p26: { medida: "1,2m de comprimento" },
   p30: { tamanho: "Pequeno" },
 };
 
@@ -1014,7 +1257,15 @@ function installmentValue(p) {
   return p.price / 3;
 }
 
+/* O Mercado Pago exige parcela mínima de R$ 15,00 no parcelamento sem juros.
+   Abaixo de R$ 45,00 o 3x simplesmente não é oferecido no checkout, então o
+   site não pode prometer o que a bandeira não vai deixar parcelar. */
+const PARCELA_MINIMA = 15;
+function podeParcelar(p) {
+  return p.price / 3 >= PARCELA_MINIMA;
+}
 function installmentText(p) {
+  if (!podeParcelar(p)) return "à vista no Pix ou no cartão";
   return `ou 3x de ${formatBRL(installmentValue(p))} sem juros`;
 }
 
