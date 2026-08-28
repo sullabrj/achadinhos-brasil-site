@@ -218,6 +218,94 @@ async function notificarPorEmail(payment, env) {
   }
 }
 
+
+/* =====================================================================
+   MELHOR ENVIO — OAuth2 e token de acesso (28/08/2026)
+   O Melhor Envio não entrega token fixo: o app cadastrado na Área Dev
+   (Client ID + Secret) autoriza uma vez pelo navegador e devolve um
+   access_token de ~30 dias mais um refresh_token. Guardar isso exige
+   um lugar que sobreviva ao reinício do Worker — por isso o binding
+   KV `ME_TOKENS`. Sem KV, cai no secret MELHOR_ENVIO_TOKEN, que é o
+   modo manual (vence em 30 dias e precisa ser trocado na mão).
+
+   Secrets/variáveis esperados na Cloudflare:
+     MELHOR_ENVIO_CLIENT_ID      (25713 — não é segredo, mas fica junto)
+     MELHOR_ENVIO_CLIENT_SECRET  (secret)
+     CEP_ORIGEM                  (CEP de onde sai a mercadoria)
+     MELHOR_ENVIO_TOKEN          (opcional, só no modo manual sem KV)
+   Binding opcional: KV namespace ME_TOKENS.
+
+   Autorização (uma vez só): abrir /melhor-envio/auth no navegador,
+   logar no Melhor Envio, autorizar. O /melhor-envio/callback grava o
+   token no KV e a partir daí o Worker se vira sozinho.
+   ===================================================================== */
+
+const ME_BASE = "https://melhorenvio.com.br";
+const ME_SCOPES = "shipping-calculate";
+const ME_KEY = "melhor-envio-token";
+
+function meRedirectUri(env) {
+  return `${WORKER_URL}/melhor-envio/callback`;
+}
+
+async function meSalvarToken(env, data) {
+  if (!env.ME_TOKENS) return;
+  const registro = {
+    access_token: data.access_token,
+    refresh_token: data.refresh_token,
+    // Renova com 2 dias de folga pra nunca falhar uma cotação no limite.
+    expires_at: Date.now() + (Number(data.expires_in) || 2592000) * 1000 - 172800000
+  };
+  await env.ME_TOKENS.put(ME_KEY, JSON.stringify(registro));
+  return registro;
+}
+
+async function meTrocarCodigo(env, params) {
+  const resp = await fetch(`${ME_BASE}/oauth/token`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({
+      client_id: env.MELHOR_ENVIO_CLIENT_ID,
+      client_secret: env.MELHOR_ENVIO_CLIENT_SECRET,
+      ...params
+    })
+  });
+  const data = await resp.json();
+  if (!resp.ok || !data.access_token) {
+    throw new Error(`Melhor Envio recusou o token: ${JSON.stringify(data).slice(0, 200)}`);
+  }
+  return data;
+}
+
+async function meAccessToken(env) {
+  // Modo manual: sem KV, usa o token colado à mão no secret.
+  if (!env.ME_TOKENS) return env.MELHOR_ENVIO_TOKEN || null;
+
+  const bruto = await env.ME_TOKENS.get(ME_KEY);
+  if (!bruto) return env.MELHOR_ENVIO_TOKEN || null;
+
+  let reg;
+  try {
+    reg = JSON.parse(bruto);
+  } catch (e) {
+    return env.MELHOR_ENVIO_TOKEN || null;
+  }
+  if (reg.access_token && Date.now() < Number(reg.expires_at || 0)) return reg.access_token;
+
+  // Venceu (ou está perto): renova com o refresh_token e regrava.
+  if (!reg.refresh_token) return null;
+  try {
+    const novo = await meTrocarCodigo(env, {
+      grant_type: "refresh_token",
+      refresh_token: reg.refresh_token
+    });
+    const salvo = await meSalvarToken(env, novo);
+    return salvo ? salvo.access_token : novo.access_token;
+  } catch (e) {
+    return null;
+  }
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -305,6 +393,48 @@ export default {
     }
 
 
+
+    /* Passo 1 da autorização: manda o navegador pro Melhor Envio. Abrir
+       uma vez só, logado na conta da loja. */
+    if (url.pathname === "/melhor-envio/auth") {
+      if (!env.MELHOR_ENVIO_CLIENT_ID) {
+        return new Response("Falta MELHOR_ENVIO_CLIENT_ID no Worker.", { status: 503 });
+      }
+      const destino = new URL(`${ME_BASE}/oauth/authorize`);
+      destino.searchParams.set("client_id", env.MELHOR_ENVIO_CLIENT_ID);
+      destino.searchParams.set("redirect_uri", meRedirectUri(env));
+      destino.searchParams.set("response_type", "code");
+      destino.searchParams.set("state", "achadinhos");
+      destino.searchParams.set("scope", ME_SCOPES);
+      return Response.redirect(destino.toString(), 302);
+    }
+
+    /* Passo 2: o Melhor Envio devolve o código aqui; trocamos por
+       access_token + refresh_token e gravamos no KV. */
+    if (url.pathname === "/melhor-envio/callback") {
+      const code = url.searchParams.get("code");
+      if (!code) {
+        return new Response("Autorização não veio com código. Tente de novo em /melhor-envio/auth", { status: 400 });
+      }
+      try {
+        const data = await meTrocarCodigo(env, {
+          grant_type: "authorization_code",
+          redirect_uri: meRedirectUri(env),
+          code
+        });
+        await meSalvarToken(env, data);
+        const guardou = !!env.ME_TOKENS;
+        return new Response(
+          guardou
+            ? "Pronto! O Melhor Envio foi autorizado e o token ficou guardado. Pode fechar esta aba."
+            : "Autorizado, mas o Worker está sem o KV ME_TOKENS, então o token NÃO foi guardado. Crie o namespace e repita.",
+          { status: 200, headers: { "Content-Type": "text/plain; charset=utf-8" } }
+        );
+      } catch (e) {
+        return new Response(`Falha ao autorizar: ${e.message}`, { status: 502 });
+      }
+    }
+
     /* ------------------------------------------------------------------
        COTAÇÃO DE FRETE — Melhor Envio (rota POST /frete)
        Decisão do usuário em 27/08/2026: "tem que ser o cliente pagar o
@@ -319,7 +449,8 @@ export default {
        Resposta: { opcoes: [{ id, nome, empresa, preco, prazo }] }
        ------------------------------------------------------------------ */
     if (url.pathname === "/frete" && request.method === "POST") {
-      if (!env.MELHOR_ENVIO_TOKEN || !env.CEP_ORIGEM) {
+      const meToken = await meAccessToken(env);
+      if (!meToken || !env.CEP_ORIGEM) {
         return json({ error: "Cotação de frete ainda não configurada" }, 503, origin);
       }
       let fb;
@@ -351,7 +482,7 @@ export default {
           headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
-            Authorization: `Bearer ${env.MELHOR_ENVIO_TOKEN}`,
+            Authorization: `Bearer ${meToken}`,
             "User-Agent": "Achadinhos Brasil (achadinhosbrasilloja@gmail.com)"
           },
           body: JSON.stringify({
