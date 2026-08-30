@@ -1,3 +1,4 @@
+// LIMPEZA 30/08/2026 (2a etapa): removidos 24 produtos sem fornecedor ativo na Dropi. Catalogo: 190 -> 166, todos vendaveis.
 // LIMPEZA 30/08/2026: removidos p29 e p208 (anuncios duplicados); p212 marcado esgotado (sem fornecedor); imagem do p30 atualizada
 // ACRESCIMOS 30/08/2026 (parte 6): +20 produtos Pet Shop (p328-p347) - reforco da categoria Pet
 /* =====================================================================
@@ -116,32 +117,6 @@ alguns produtos e embutir.
 
 const PRODUCTS = [
   {
-    id: "p1",
-    name: "Kit Banheiro Lavabo 4 Peças Resistente e Moderno",
-    category: "casa",
-    categoryLabel: "Casa e Decoração",
-    price: 113.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1768713762696c6e22a08f9.jpg",
-    emoji: "🧼",
-    stock: 0,
-    stockMax: 14,
-    description: "Kit lavabo com 4 peças resistentes: saboneteira líquida, potes organizadores e lixeira, acabamento moderno pra combinar com qualquer banheiro."
-  },
-  {
-    id: "p2",
-    name: "Cortina de Pia Cozinha 100% PVC Impermeável",
-    category: "casa",
-    categoryLabel: "Casa e Decoração",
-    price: 24.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17210832876695a59701832.jpg",
-    emoji: "🪟",
-    stock: 0,
-    stockMax: 1978,
-    description: "Cortina para pia de cozinha 100% PVC, impermeável — protege o gabinete embaixo da pia contra umidade, respingos e mofo."
-  },
-  {
     id: "p5",
     name: "Truss Shampoo Equilibrium Scalp 300ml",
     category: "beleza",
@@ -194,32 +169,6 @@ const PRODUCTS = [
     description: "Brinco orgânico banhado a ouro 18K, design minimalista com cristal — última peça em estoque no fornecedor."
   },
   {
-    id: "p10",
-    name: "Boneca Sparkle Party com Acessórios Surpresa",
-    category: "infantil",
-    categoryLabel: "Infantil e Brinquedos",
-    price: 165.9,
-    oldPrice: null,
-    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17848410606a628364e3d6f.jpg",
-    emoji: "🎀",
-    stock: 0,
-    stockMax: 2,
-    description: "Boneca Sparkle Party com acessórios surpresa colecionáveis, glitter pra lábios e corpo — só 2 no estoque do fornecedor."
-  },
-  {
-    id: "p11",
-    name: "Trio de Brincos Argola Articulada Cravejada",
-    category: "joias",
-    categoryLabel: "Joias e Acessórios",
-    price: 144.9,
-    oldPrice: null,
-    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17848514566a62ac00a2ef8.jpg",
-    emoji: "✨",
-    stock: 0,
-    stockMax: 1,
-    description: "Trio de brincos argola articulada cravejada, banho de ródio — peça única no fornecedor, estilo statement pra usar em camadas."
-  },
-  {
     id: "p12",
     name: "Box Organizador P Color",
     category: "casa",
@@ -231,19 +180,6 @@ const PRODUCTS = [
     stock: 100,
     stockMax: 100,
     description: "Box organizador colorido em plástico resistente, ideal pra guardar miudezas em qualquer cômodo da casa."
-  },
-  {
-    id: "p13",
-    name: "Luminária LED Efeito Sorvete Caindo Ice Cream",
-    category: "casa",
-    categoryLabel: "Casa e Decoração",
-    price: 62.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-172374287566be3a9ba0c45.png",
-    emoji: "💡",
-    stock: 0,
-    stockMax: 2,
-    description: "Luminária LED com efeito 'sorvete caindo', abajur decorativo — charme extra pro quarto ou sala. Só 2 no estoque do fornecedor."
   },
   {
     id: "p14",
@@ -272,19 +208,6 @@ const PRODUCTS = [
     description: "Colher digital com balança de precisão embutida e visor LCD — mede ingredientes direto na receita. Última unidade no fornecedor."
   },
   {
-    id: "p17",
-    name: "Cesto Organizador em Tecido Floral",
-    category: "casa",
-    categoryLabel: "Casa e Decoração",
-    price: 61.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-16699037416388b57dbdac8.jpg",
-    emoji: "🧺",
-    stock: 0,
-    stockMax: 12,
-    description: "Cesto organizador em tecido floral, ótimo pra guardar roupas, brinquedos ou acessórios com estilo."
-  },
-  {
     id: "p24",
     name: "Areia para Gatos Biodegradável 2kg",
     category: "pet",
@@ -311,19 +234,6 @@ const PRODUCTS = [
     description: "Tapete higiênico impermeável, tamanho pequeno — praticidade pro dia a dia do pet."
   },
   {
-    id: "p31",
-    name: "Adesivos Antirrugas para o Rosto",
-    category: "beleza",
-    categoryLabel: "Saúde e Beleza",
-    price: 39.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1770526661698817c5bcca0.webp",
-    emoji: "✨",
-    stock: 0,
-    stockMax: 10769,
-    description: "Adesivos antirrugas pro rosto, uso noturno — ajudam a suavizar linhas de expressão."
-  },
-  {
     id: "p32",
     name: "Argila Vermelha Facial e Corporal",
     category: "beleza",
@@ -348,19 +258,6 @@ const PRODUCTS = [
     stock: 117,
     stockMax: 117,
     description: "Esfoliante labial pré-procedimento, remove peles mortas e prepara os lábios pra hidratação."
-  },
-  {
-    id: "p37",
-    name: "Anel Solitário Ajustável Verde Esmeralda",
-    category: "joias",
-    categoryLabel: "Joias e Acessórios",
-    price: 101.9,
-    oldPrice: 112.9,
-    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17860646776a752f2597f3d.jpg",
-    emoji: "💚",
-    stock: 0,
-    stockMax: 3,
-    description: "Anel solitário ajustável verde esmeralda, semijoia delicada pra usar todo dia — só 3 no estoque do fornecedor."
   },
   {
     id: "p39",
@@ -402,45 +299,6 @@ const PRODUCTS = [
     description: "Anel Nossa Senhora com zircônia azul, semijoia delicada com apelo religioso — só 3 no estoque do fornecedor."
   },
   {
-    id: "p42",
-    name: "Argolinha de Click com Ponto de Luz",
-    category: "joias",
-    categoryLabel: "Joias e Acessórios",
-    price: 24.9,
-    oldPrice: null,
-    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17860647246a752f5498dfd.jpg",
-    emoji: "⭐",
-    stock: 0,
-    stockMax: 1,
-    description: "Argolinha de click com ponto de luz em aço inoxidável — última peça no estoque do fornecedor."
-  },
-  {
-    id: "p44",
-    name: "Laço/Faixa para Vestido Verde Menta",
-    category: "infantil",
-    categoryLabel: "Infantil e Brinquedos",
-    price: 35.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17532802446880eef42acc9.jpg",
-    emoji: "🎀",
-    stock: 0,
-    stockMax: 37,
-    description: "Laço/faixa opcional pra vestido, verde menta — acessório fofo pra compor o visual infantil."
-  },
-  {
-    id: "p47",
-    name: "Mordedor Chocalho Rattle & Teethe Bright Starts",
-    category: "infantil",
-    categoryLabel: "Infantil e Brinquedos",
-    price: 78.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17514048526864513419ef5.jpg",
-    emoji: "🍼",
-    stock: 0,
-    stockMax: 2,
-    description: "Mordedor chocalho Rattle & Teethe da Bright Starts, rosa e roxo — alivia o desconforto da dentição. Só 2 no estoque do fornecedor."
-  },
-  {
     id: "p48",
     name: "Kit 3 Brinquedos Educativos em Madeira e EVA",
     category: "infantil",
@@ -452,32 +310,6 @@ const PRODUCTS = [
     stock: 1000,
     stockMax: 1000,
     description: "Kit com 3 brinquedos educativos em madeira e EVA, pedagógicos e lúdicos pro desenvolvimento infantil."
-  },
-  {
-    id: "p49",
-    name: "Almofada Decorativa 36x36cm Oxford com Botão Central",
-    category: "casa",
-    categoryLabel: "Casa e Decoração",
-    price: 44.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1768713071696c6b6f23ee4.png",
-    emoji: "🛋️",
-    stock: 22,
-    stockMax: 22,
-    description: "Almofada decorativa 36x36cm em tecido Oxford, com botão central — deixa o sofá ou a cama com um toque mais elegante."
-  },
-  {
-    id: "p50",
-    name: "Prendedor Cinto Cortina Magnética Com Ímã 2 Peças",
-    category: "casa",
-    categoryLabel: "Casa e Decoração",
-    price: 25.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-173031734767228c23c8a28.jpg",
-    emoji: "🧲",
-    stock: 0,
-    stockMax: 48,
-    description: "Prendedor de cortina magnético, kit com 2 peças — prende a cortina discretamente sem furar a parede."
   },
   {
     id: "p53",
@@ -493,19 +325,6 @@ const PRODUCTS = [
     description: "Expositor de joias em acrílico com 8 cabides — organiza brincos e colares e ainda deixa a penteadeira bonita."
   },
   {
-    id: "p54",
-    name: "Capa de Almofada Sofá Decorativa Suede",
-    category: "casa",
-    categoryLabel: "Casa e Decoração",
-    price: 24.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-17210830746695a4c20cf0e.png",
-    emoji: "🧵",
-    stock: 29,
-    stockMax: 29,
-    description: "Capa de almofada para sofá em suede, acabamento decorativo — troca o visual da sala rapidinho."
-  },
-  {
     id: "p55",
     name: "Caneca do Brasil - Hexa 2026",
     category: "casa",
@@ -517,19 +336,6 @@ const PRODUCTS = [
     stock: 50,
     stockMax: 50,
     description: "Caneca do Brasil Hexa 2026 — pra comemorar o hexacampeonato com estilo na hora do café."
-  },
-  {
-    id: "p67",
-    name: "Necessaire 18x10x8cm Cores Sortidas",
-    category: "joias",
-    categoryLabel: "Joias e Acessórios",
-    price: 17.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-1770149828698257c4cca5e.webp",
-    emoji: "👜",
-    stock: 0,
-    stockMax: 9,
-    description: "Necessaire 18x10x8cm, cores sortidas — organiza os itens de higiene e maquiagem na bolsa ou mala."
   },
   {
     id: "p73",
@@ -556,19 +362,6 @@ const PRODUCTS = [
     stock: 97,
     stockMax: 97,
     description: "Esfoliante facial renovador com aloe vera e microesferas, 50g — remove células mortas e deixa a pele mais lisa."
-  },
-  {
-    id: "p75",
-    name: "Perfume Cool Girl Black 40ml (Contratipo)",
-    category: "beleza",
-    categoryLabel: "Saúde e Beleza",
-    price: 89.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-166517475163408cdf6b1ee.jpg",
-    emoji: "🌸",
-    stock: 0,
-    stockMax: 84,
-    description: "Perfume contratipo (inspirado) Cool Girl Black, 40ml — fragrância pra usar no dia a dia."
   },
   {
     id: "p76",
@@ -621,19 +414,6 @@ const PRODUCTS = [
     stock: 2979,
     stockMax: 2979,
     description: "Toalha Splash Pet — seca o pet rapidinho depois do banho ou da chuva."
-  },
-  {
-    id: "p92",
-    name: "Rede de Cadeira Impermeável para Gatos Chiara",
-    category: "pet",
-    categoryLabel: "Pet Shop",
-    price: 44.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.cdn.digitaloceanspaces.com/dropi/fornecedor/produto-177738528769f0bf472de8a.png",
-    emoji: "🐈",
-    stock: 0,
-    stockMax: 1986,
-    description: "Rede de cadeira impermeável pra gatos, modelo Chiara — cantinho quentinho pro gato descansar."
   },
   {
     id: "p93",
@@ -818,19 +598,6 @@ const PRODUCTS = [
     description: "Colchonete Pet Toddy Impermeável. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
   },
   {
-    id: "p212",
-    name: "Kit 02 pçs Protetor Banco Dianteiro Impermeável",
-    category: "pet",
-    categoryLabel: "Pet Shop",
-    price: 86.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177738493969f0bdebd24e1.jpg",
-    emoji: "🐾",
-    stock: 0,
-    stockMax: 31776,
-    description: "Kit 02 pçs Protetor Banco Dianteiro Impermeável. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
-  },
-  {
     id: "p213",
     name: "Triturador de Alho Manual Processador Picador Fatiador Legumes Moedor",
     category: "utensilios",
@@ -883,19 +650,6 @@ const PRODUCTS = [
     description: "Bomba de agua."
   },
   {
-    id: "p217",
-    name: "Forma Descartável para Air Fryer 20cm",
-    category: "utensilios",
-    categoryLabel: "Utensílios",
-    price: 23.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1769695513697b6919b91ec.jpg",
-    emoji: "🍳",
-    stock: 0,
-    stockMax: 9,
-    description: "Forma Descartável para Air Fryer 20cm."
-  },
-  {
     id: "p218",
     name: "Espátula de Silicone e Ferro 37X5,3cm Cores Sortidas",
     category: "utensilios",
@@ -946,19 +700,6 @@ const PRODUCTS = [
     stock: 10,
     stockMax: 10,
     description: "Ralador + Faca de Fruta Cores Sortidas."
-  },
-  {
-    id: "p222",
-    name: "Forma Para Pão E Bolo Alumínio Fortaleza",
-    category: "utensilios",
-    categoryLabel: "Utensílios",
-    price: 15.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1769695519697b691faec04.jpg",
-    emoji: "🍳",
-    stock: 0,
-    stockMax: 19,
-    description: "Forma Para Pão E Bolo Alumínio Fortaleza. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
   },
   {
     id: "p223",
@@ -1024,58 +765,6 @@ const PRODUCTS = [
     stock: 10,
     stockMax: 10,
     description: "Bomba de Agua elétrica."
-  },
-  {
-    id: "p228",
-    name: "Papel de Parede Infantil Adesivo",
-    category: "casa",
-    categoryLabel: "Casa e Decoração",
-    price: 20.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1770731885698b396d9268e.webp",
-    emoji: "🏠",
-    stock: 0,
-    stockMax: 40,
-    description: "Papel de Parede Infantil Adesivo. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
-  },
-  {
-    id: "p229",
-    name: "Conjunto Com 20 Pregadores de Roupas em Bambu Prendedor Madeira",
-    category: "casa",
-    categoryLabel: "Casa e Decoração",
-    price: 10.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-173872884467a2e58c63926.png",
-    emoji: "🏠",
-    stock: 0,
-    stockMax: 193,
-    description: "Conjunto Com 20 Pregadores de Roupas em Bambu Prendedor Madeira."
-  },
-  {
-    id: "p230",
-    name: "Cortina Box de Tecido Poliéster com Gancho",
-    category: "casa",
-    categoryLabel: "Casa e Decoração",
-    price: 72.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-173872885867a2e59ac0cbf.jpg",
-    emoji: "🏠",
-    stock: 0,
-    stockMax: 2466,
-    description: "Cortina Box de Tecido Poliéster com Gancho."
-  },
-  {
-    id: "p231",
-    name: "Tapete Dot Bathmat Cores Sortidas 40cm x 60cm",
-    category: "casa",
-    categoryLabel: "Casa e Decoração",
-    price: 27.9,
-    oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177262453269a81a94a533c.webp",
-    emoji: "🏠",
-    stock: 0,
-    stockMax: 10,
-    description: "Tapete Dot Bathmat Cores Sortidas 40cm x 60cm."
   },
   {
     id: "p232",
