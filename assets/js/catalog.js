@@ -37,6 +37,8 @@
    
 ACRÉSCIMOS 20/08 (mesmo dia, depois da reprefição): (1) instalado destaque de parcelamento — todo produto agora mostra "ou 18x de R$X sem juros" (installmentText, calcula price/18) nos cards de listagem e na página de produto; é só informativo, não muda o preço à vista. (2) escolhidos 4 itens de maior ticket (maior markup em R$) pra estampar a "Oferta Relâmpago" com desconto promocional real de ~10%: Hidratante Corporal Yara 200g (p33, de R$384,90 por R$345,90), Pelúcia de Pendurar Rhino Bright Starts (p46, de R$356,90 por R$320,90), Casaco de Algodão Feminino Sortido (p18, de R$270,90 por R$243,90) e Base Líquida Bruna Tavares BT Skin (p34, de R$263,90 por R$236,90) — únicos quatro itens do catálogo com oldPrice preenchido; o resto do catálogo continua sem oldPrice (não é desconto real, é preço cheio já com markup).
 
+ACRÉSCIMOS 30/08/2026 (parte 4): mais 15 produtos (p294 a p308) — 7 em Casa e Decoração (cama, mesa e banho: lençol, capas de sofá e cadeira, cobreleitos e colcha), 3 em Eletrônicos (acessórios de celular) e 5 em Saúde e Beleza (linha masculina Don Armany, nicho novo pra loja). Nenhum produto do fornecedor DROP DE CASA foi incluído — ele exige aceite de termo extra que a SULLAB optou por não assinar.
+
 ACRÉSCIMOS 30/08/2026 (parte 3): mais 14 produtos (p280 a p293) em Pet Shop (coleiras e guias licenciadas, protetor de banco), Eletrônicos (headsets e mouses gamer Fantech) e Casa/Utensílios (organizadores e luva de microfibra). Na mesma data, 21 produtos que sumiram de vez do marketplace da Dropi passaram a stock: 0 (Esgotado) — stockMax foi preservado, então o sync diário restaura sozinho se o fornecedor voltar a listar.
 
 ACRÉSCIMOS 30/08/2026 (parte 2): mais 11 produtos (p269 a p279) — 7 em Pet Shop (transporte, conforto e acessórios de carro), 3 em Utensílios e 1 em Casa e Decoração. Na mesma rodada, 40+ produtos do catálogo que tinham sumido do painel da Dropi foram reimportados, então a loja voltou a ter fornecedor pra quase tudo que anuncia. Mesma fórmula de preço e estoque real do fornecedor.
@@ -1902,6 +1904,201 @@ const PRODUCTS = [
     stock: 35,
     stockMax: 35,
     description: "Luva de microfibra Vonder para limpeza automotiva e doméstica: tira poeira sem riscar."
+  },
+  {
+    id: "p294",
+    name: "Lençol Avulso Microfibra Casal Branco",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 27.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17515492446866853c25a99.jpg",
+    emoji: "🛏️",
+    stock: 100,
+    stockMax: 100,
+    description: "Lençol avulso de microfibra casal na cor branca: toque macio, seca rápido e quase não amassa."
+  },
+  {
+    id: "p295",
+    name: "Capa de Sofá Floral Preto 2 e 3 Lugares",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 156.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1681846678643ef19627622.jpg",
+    emoji: "🛋️",
+    stock: 100,
+    stockMax: 100,
+    description: "Capa de sofá estampa floral preta que serve em sofás de 2 e 3 lugares — renova a sala sem trocar o móvel."
+  },
+  {
+    id: "p296",
+    name: "Capa de Sofá Lisa Avelã 2 e 3 Lugares",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 282.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1681846033643eef11f0d8b.jpg",
+    emoji: "🛋️",
+    stock: 100,
+    stockMax: 100,
+    description: "Capa de sofá lisa na cor avelã para sofás de 2 e 3 lugares, tecido elástico que veste justo."
+  },
+  {
+    id: "p297",
+    name: "Capas de Cadeira Floral Preto — 4 Lugares",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 58.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1681846665643ef189b2e84.jpg",
+    emoji: "🪑",
+    stock: 100,
+    stockMax: 100,
+    description: "Jogo com 4 capas de cadeira estampa floral preta: protege o estofado e uniformiza a mesa de jantar."
+  },
+  {
+    id: "p298",
+    name: "Kit Cobreleito Magnífico Dupla Face Queen",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 127.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-175154949668668638de6be.jpg",
+    emoji: "🌙",
+    stock: 100,
+    stockMax: 100,
+    description: "Cobreleito queen dupla face: um lado estampado, outro liso — troca o visual da cama virando a peça."
+  },
+  {
+    id: "p299",
+    name: "Colcha Bel Queen 3 Peças Amapola",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 125.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-175154903168668467a8931.jpg",
+    emoji: "🌺",
+    stock: 100,
+    stockMax: 100,
+    description: "Colcha queen com 3 peças (colcha + 2 porta-travesseiros) na estampa Amapola."
+  },
+  {
+    id: "p300",
+    name: "Kit Cobreleito Classic Queen 3 Peças Azul",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 156.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1751549479686686275b7d5.jpg",
+    emoji: "💙",
+    stock: 100,
+    stockMax: 100,
+    description: "Kit cobreleito queen azul com 3 peças, acabamento clássico que combina com qualquer quarto."
+  },
+  {
+    id: "p301",
+    name: "Película de Privacidade para iPhone",
+    category: "eletronicos",
+    categoryLabel: "Eletrônicos",
+    price: 28.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17374946826790109a3a637.jpg",
+    emoji: "📱",
+    stock: 15,
+    stockMax: 15,
+    description: "Película de privacidade tela infinita para iPhone: só quem está de frente enxerga a tela."
+  },
+  {
+    id: "p302",
+    name: "Película Hidrogel para iPhone",
+    category: "eletronicos",
+    categoryLabel: "Eletrônicos",
+    price: 28.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-173749438767900f73d563d.jpg",
+    emoji: "📱",
+    stock: 3,
+    stockMax: 3,
+    description: "Película de hidrogel para display de iPhone — acompanha a curvatura da tela e se auto-regenera de micro-riscos."
+  },
+  {
+    id: "p303",
+    name: "Capa com Alça Ajustável para Samsung Galaxy S",
+    category: "eletronicos",
+    categoryLabel: "Eletrônicos",
+    price: 72.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-173749398567900de18e60d.jpg",
+    emoji: "🤳",
+    stock: 6,
+    stockMax: 6,
+    description: "Capa preta para linha Galaxy S com alça ajustável — dá pra pendurar no pescoço e liberar as mãos."
+  },
+  {
+    id: "p304",
+    name: "Cera Matte Plus Efeito Seco Don Armany 70g",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 39.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177448261769c474b9455bb.jpg",
+    emoji: "💈",
+    stock: 260,
+    stockMax: 260,
+    description: "Cera modeladora matte de 70g com efeito seco: fixa sem deixar o cabelo oleoso ou pesado."
+  },
+  {
+    id: "p305",
+    name: "Pomada Modeladora Masculina Efeito Seco Don Armany",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 47.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177448340669c477cec6be5.jpg",
+    emoji: "💇",
+    stock: 903,
+    stockMax: 903,
+    description: "Pomada modeladora masculina de efeito seco, fixação forte e acabamento sem brilho."
+  },
+  {
+    id: "p306",
+    name: "Kit Matte Cabelo — Pasta 80g + Pó Modelador",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 117.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17874332486a8a1120df18e.jpg",
+    emoji: "🧴",
+    stock: 789,
+    stockMax: 789,
+    description: "Kit com pasta matte de 80g e pó modelador: volume na raiz e fixação matte no mesmo combo."
+  },
+  {
+    id: "p307",
+    name: "Kit Don Armany Cabelo, Barba e Corpo",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 162.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17874349456a8a17c1b068a.jpg",
+    emoji: "🧔",
+    stock: 760,
+    stockMax: 760,
+    description: "Kit completo Don Armany com shampoo, produtos de barba e corpo — presente masculino que resolve tudo."
+  },
+  {
+    id: "p308",
+    name: "Kit Barba Don Armany — Shampoo 200ml + Balm 110g",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 151.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17874349526a8a17c8effae.jpg",
+    emoji: "🪒",
+    stock: 800,
+    stockMax: 800,
+    description: "Kit de barba com shampoo de 200ml e balm de 110g: limpa, hidrata e dá forma."
   }
 ];
 
