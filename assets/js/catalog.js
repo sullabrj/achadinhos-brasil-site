@@ -1,3 +1,4 @@
+// LIMPEZA 30/08/2026: removidos p29 e p208 (anuncios duplicados); p212 marcado esgotado (sem fornecedor); imagem do p30 atualizada
 // ACRESCIMOS 30/08/2026 (parte 6): +20 produtos Pet Shop (p328-p347) - reforco da categoria Pet
 /* =====================================================================
    ACHADINHOS BRASIL — catálogo (modelo "Oferta Relâmpago")
@@ -297,26 +298,13 @@ const PRODUCTS = [
     description: "Areia biodegradável pra gatos, grãos grossos, 2kg — controla odor e é mais sustentável."
   },
   {
-    id: "p29",
-    name: "Coberdrom Pet Dupla Face 3 Peças",
-    category: "pet",
-    categoryLabel: "Pet Shop",
-    price: 88.9,
-    oldPrice: null,
-    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17792781166a0da1245e13f.jpg",
-    emoji: "🛌",
-    stock: 3972,
-    stockMax: 3972,
-    description: "Coberdrom pet dupla face, 3 peças — conforto extra pra hora do descanso do seu bichinho."
-  },
-  {
     id: "p30",
     name: "Tapete Higiênico Impermeável Pequeno",
     category: "pet",
     categoryLabel: "Pet Shop",
     price: 41.9,
     oldPrice: null,
-    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177738531169f0bf5fdf4db.jpg",
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177738532569f0bf6d385cc.jpg",
     emoji: "💧",
     stock: 10923,
     stockMax: 10923,
@@ -791,19 +779,6 @@ const PRODUCTS = [
     description: "Colchonete Pet Quality Impermeável. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
   },
   {
-    id: "p208",
-    name: "Tapete Higiênico Impermeável",
-    category: "pet",
-    categoryLabel: "Pet Shop",
-    price: 41.9,
-    oldPrice: null,
-    image: "https://dropi.xpto.app/dropi/fornecedor/produto-17875949666a8c88d610385.jpg",
-    emoji: "🐾",
-    stock: 99300,
-    stockMax: 99300,
-    description: "Tapete Higiênico Impermeável. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
-  },
-  {
     id: "p209",
     name: "Cama Pet Gorgopet Impermeável",
     category: "pet",
@@ -851,7 +826,7 @@ const PRODUCTS = [
     oldPrice: null,
     image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177738493969f0bdebd24e1.jpg",
     emoji: "🐾",
-    stock: 31776,
+    stock: 0,
     stockMax: 31776,
     description: "Kit 02 pçs Protetor Banco Dianteiro Impermeável. Disponível em várias opções de cor/modelo — a gente confirma a sua com você pelo WhatsApp assim que o pedido entra."
   },
