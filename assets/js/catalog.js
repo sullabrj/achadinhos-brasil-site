@@ -37,6 +37,8 @@
    
 ACRÉSCIMOS 20/08 (mesmo dia, depois da reprefição): (1) instalado destaque de parcelamento — todo produto agora mostra "ou 18x de R$X sem juros" (installmentText, calcula price/18) nos cards de listagem e na página de produto; é só informativo, não muda o preço à vista. (2) escolhidos 4 itens de maior ticket (maior markup em R$) pra estampar a "Oferta Relâmpago" com desconto promocional real de ~10%: Hidratante Corporal Yara 200g (p33, de R$384,90 por R$345,90), Pelúcia de Pendurar Rhino Bright Starts (p46, de R$356,90 por R$320,90), Casaco de Algodão Feminino Sortido (p18, de R$270,90 por R$243,90) e Base Líquida Bruna Tavares BT Skin (p34, de R$263,90 por R$236,90) — únicos quatro itens do catálogo com oldPrice preenchido; o resto do catálogo continua sem oldPrice (não é desconto real, é preço cheio já com markup).
 
+ACRÉSCIMOS 30/08/2026 (parte 2): mais 11 produtos (p269 a p279) — 7 em Pet Shop (transporte, conforto e acessórios de carro), 3 em Utensílios e 1 em Casa e Decoração. Na mesma rodada, 40+ produtos do catálogo que tinham sumido do painel da Dropi foram reimportados, então a loja voltou a ter fornecedor pra quase tudo que anuncia. Mesma fórmula de preço e estoque real do fornecedor.
+
 ACRÉSCIMOS 30/08/2026: adicionados 27 produtos novos (p242 a p268) importados na Dropi hoje — 12 em Infantil e Brinquedos (linha de pedagógicos em madeira/EVA da ArteToys), 7 em Joias e Acessórios (semijoias banhadas a ouro 18K), 5 em Eletrônicos (periféricos Fantech/Multilaser e áudio), 2 em Saúde e Beleza (linha Truss) e 1 em Utensílios. Todos com preço pela fórmula vigente (Custo ÷ 0,5099 arredondado pra cima até terminar em ",90") e estoque real lido da ficha do fornecedor na Dropi — nada inventado. Categorias mais fracas foram priorizadas: Infantil saiu de 4 para 16 itens e Joias de 8 para 15.
 
 ACRÉSCIMOS 20/08 parte 2: (3) PRODUCT_SPECS — ficha técnica opcional por produto (tamanho/medida), preenchida só onde o próprio texto do fornecedor já confirma (ex.: "tamanho M único", "1,2m") — não inventamos numeração de roupa que não temos. (4) busca centralizada no header, ícones de categoria maiores em badge circular, carrinho agora abre como card ancorado no canto superior direito (perto do ícone) em vez de painel de tela cheia.
@@ -1573,6 +1575,149 @@ const PRODUCTS = [
     stock: 4,
     stockMax: 4,
     description: "Kit Truss Ultra Hydration com shampoo e condicionador — linha profissional de hidratação para uso em casa."
+  },
+  {
+    id: "p269",
+    name: "Colher de Silicone e Ferro 28x5,5cm",
+    category: "utensilios",
+    categoryLabel: "Utensílios",
+    price: 17.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177153492969977a5139ec8.webp",
+    emoji: "🥄",
+    stock: 10,
+    stockMax: 10,
+    description: "Colher de silicone com cabo de ferro, 28x5,5cm, em cores sortidas — não risca panela antiaderente."
+  },
+  {
+    id: "p270",
+    name: "Forma de Papel para Air Fryer Redonda 16cm",
+    category: "utensilios",
+    categoryLabel: "Utensílios",
+    price: 14.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1769695517697b691dd388d.jpg",
+    emoji: "🧻",
+    stock: 10,
+    stockMax: 10,
+    description: "Formas descartáveis antiaderentes de 16cm para air fryer: assa e joga fora, sem esfregar a cesta."
+  },
+  {
+    id: "p271",
+    name: "Porta-Pão Grande de Madeira Basculante",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 196.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-175587436768a8843fcc60b.jpg",
+    emoji: "🍞",
+    stock: 765,
+    stockMax: 765,
+    description: "Porta-pão grande em madeira com porta basculante estilo baú — guarda o pão fresco e decora a bancada."
+  },
+  {
+    id: "p272",
+    name: "Tábua de Vidro para Cozinha",
+    category: "utensilios",
+    categoryLabel: "Utensílios",
+    price: 23.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1769695564697b694cf3b7c.png",
+    emoji: "🔪",
+    stock: 10,
+    stockMax: 10,
+    description: "Tábua de vidro temperado com estampa sortida: não absorve cheiro, não mancha e vai na pia sem medo."
+  },
+  {
+    id: "p273",
+    name: "Protetor de Porta Veicular Impermeável",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 35.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177738510769f0be930ca79.jpg",
+    emoji: "🚗",
+    stock: 6951,
+    stockMax: 6951,
+    description: "Protege a lateral interna da porta do carro contra pelos, arranhões e barro do pet."
+  },
+  {
+    id: "p274",
+    name: "Bolsa de Transporte Pet Amora 2 em 1 Impermeável",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 109.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177738430069f0bb6cb8536.jpg",
+    emoji: "👜",
+    stock: 2979,
+    stockMax: 2979,
+    description: "Bolsa de transporte impermeável que vira caminha: leva o pet e serve de descanso na chegada."
+  },
+  {
+    id: "p275",
+    name: "Colchonete de Transporte Pet Hanna 2 em 1",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 66.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177738460469f0bc9cc4861.jpg",
+    emoji: "🛏️",
+    stock: 3972,
+    stockMax: 3972,
+    description: "Colchonete impermeável 2 em 1 para transporte e descanso, fácil de limpar e de dobrar."
+  },
+  {
+    id: "p276",
+    name: "Cinto de Segurança Pet Simples",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 31.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17875843426a8c5f5624c3c.jpg",
+    emoji: "🦺",
+    stock: 2979,
+    stockMax: 2979,
+    description: "Cinto de segurança que prende a coleira ao cinto do carro — o pet viaja preso e sem se machucar."
+  },
+  {
+    id: "p277",
+    name: "Comedouro e Bebedouro de Melamina Batman",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 125.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-175942796368debd7b06e64.jpg",
+    emoji: "🦇",
+    stock: 30,
+    stockMax: 30,
+    description: "Vasilha de melamina estampa Batman, resistente e fácil de lavar, serve como comedouro ou bebedouro."
+  },
+  {
+    id: "p278",
+    name: "Almofada Decorativa Pet",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 53.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177738426869f0bb4c26a5f.jpg",
+    emoji: "🛋️",
+    stock: 6951,
+    stockMax: 6951,
+    description: "Almofada decorativa para o cantinho do pet — combina com a decoração e dá um lugar macio pra ele."
+  },
+  {
+    id: "p279",
+    name: "Edredom Pet Lexie Dupla Face 3 Peças",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 88.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17875844906a8c5feae1db4.jpg",
+    emoji: "🧣",
+    stock: 3972,
+    stockMax: 3972,
+    description: "Kit edredom pet dupla face estampado com 3 peças: um lado quentinho, outro fresquinho."
   }
 ];
 
