@@ -37,6 +37,8 @@
    
 ACRÉSCIMOS 20/08 (mesmo dia, depois da reprefição): (1) instalado destaque de parcelamento — todo produto agora mostra "ou 18x de R$X sem juros" (installmentText, calcula price/18) nos cards de listagem e na página de produto; é só informativo, não muda o preço à vista. (2) escolhidos 4 itens de maior ticket (maior markup em R$) pra estampar a "Oferta Relâmpago" com desconto promocional real de ~10%: Hidratante Corporal Yara 200g (p33, de R$384,90 por R$345,90), Pelúcia de Pendurar Rhino Bright Starts (p46, de R$356,90 por R$320,90), Casaco de Algodão Feminino Sortido (p18, de R$270,90 por R$243,90) e Base Líquida Bruna Tavares BT Skin (p34, de R$263,90 por R$236,90) — únicos quatro itens do catálogo com oldPrice preenchido; o resto do catálogo continua sem oldPrice (não é desconto real, é preço cheio já com markup).
 
+ACRÉSCIMOS 30/08/2026 (parte 3): mais 14 produtos (p280 a p293) em Pet Shop (coleiras e guias licenciadas, protetor de banco), Eletrônicos (headsets e mouses gamer Fantech) e Casa/Utensílios (organizadores e luva de microfibra). Na mesma data, 21 produtos que sumiram de vez do marketplace da Dropi passaram a stock: 0 (Esgotado) — stockMax foi preservado, então o sync diário restaura sozinho se o fornecedor voltar a listar.
+
 ACRÉSCIMOS 30/08/2026 (parte 2): mais 11 produtos (p269 a p279) — 7 em Pet Shop (transporte, conforto e acessórios de carro), 3 em Utensílios e 1 em Casa e Decoração. Na mesma rodada, 40+ produtos do catálogo que tinham sumido do painel da Dropi foram reimportados, então a loja voltou a ter fornecedor pra quase tudo que anuncia. Mesma fórmula de preço e estoque real do fornecedor.
 
 ACRÉSCIMOS 30/08/2026: adicionados 27 produtos novos (p242 a p268) importados na Dropi hoje — 12 em Infantil e Brinquedos (linha de pedagógicos em madeira/EVA da ArteToys), 7 em Joias e Acessórios (semijoias banhadas a ouro 18K), 5 em Eletrônicos (periféricos Fantech/Multilaser e áudio), 2 em Saúde e Beleza (linha Truss) e 1 em Utensílios. Todos com preço pela fórmula vigente (Custo ÷ 0,5099 arredondado pra cima até terminar em ",90") e estoque real lido da ficha do fornecedor na Dropi — nada inventado. Categorias mais fracas foram priorizadas: Infantil saiu de 4 para 16 itens e Joias de 8 para 15.
@@ -1718,6 +1720,188 @@ const PRODUCTS = [
     stock: 3972,
     stockMax: 3972,
     description: "Kit edredom pet dupla face estampado com 3 peças: um lado quentinho, outro fresquinho."
+  },
+  {
+    id: "p280",
+    name: "Coleira Mulher Maravilha com Capa e Pingente",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 111.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-176122399168fa2537d0f5c.jpg",
+    emoji: "🦸",
+    stock: 30,
+    stockMax: 30,
+    description: "Coleira licenciada Mulher Maravilha com capa e pingente — para o pet que sai pra passear com estilo."
+  },
+  {
+    id: "p281",
+    name: "Conjunto Cinto de Segurança + Coleira Pet",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 49.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17875844836a8c5fe39da4d.jpg",
+    emoji: "🚙",
+    stock: 993,
+    stockMax: 993,
+    description: "Kit com cinto de segurança veicular e coleira: o pet viaja preso e você não precisa comprar as duas peças separadas."
+  },
+  {
+    id: "p282",
+    name: "Coleira Batman Forever Preto e Amarelo",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 81.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-175942590668deb572c699d.png",
+    emoji: "🦇",
+    stock: 30,
+    stockMax: 30,
+    description: "Coleira licenciada Batman em preto e amarelo, com acabamento reforçado."
+  },
+  {
+    id: "p283",
+    name: "Coleira Krypto com Capa e Pingente — M",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 93.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-175942597968deb5bb8357e.png",
+    emoji: "🐕",
+    stock: 30,
+    stockMax: 30,
+    description: "Coleira tamanho M do Krypto (Superpets) com capa removível e pingente de identificação."
+  },
+  {
+    id: "p284",
+    name: "Guia para Cachorro Scooby-Doo",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 151.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-175942638668deb752bb5f3.jpg",
+    emoji: "🐾",
+    stock: 30,
+    stockMax: 30,
+    description: "Guia tradicional licenciada Scooby-Doo, alça reforçada e mosquetão resistente."
+  },
+  {
+    id: "p285",
+    name: "Protetor de Banco Traseiro Impermeável",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 78.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177738522769f0bf0be6d00.jpg",
+    emoji: "🚗",
+    stock: 6951,
+    stockMax: 6951,
+    description: "Capa impermeável para o banco traseiro: segura pelo, barro e água, e sai fácil pra lavar."
+  },
+  {
+    id: "p286",
+    name: "Headset Gamer Fantech Captain 7.1 Space Edition",
+    category: "eletronicos",
+    categoryLabel: "Eletrônicos",
+    price: 501.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-172355692666bb643e0a3a6.jpg",
+    emoji: "🎧",
+    stock: 2,
+    stockMax: 2,
+    description: "Headset Fantech Captain com som surround 7.1 via USB, edição Space, microfone destacável."
+  },
+  {
+    id: "p287",
+    name: "Headset Gamer Fantech Captain 7.1 RGB Virtual",
+    category: "eletronicos",
+    categoryLabel: "Eletrônicos",
+    price: 375.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-172355691966bb643742b0e.jpg",
+    emoji: "🎧",
+    stock: 21,
+    stockMax: 21,
+    description: "Headset Fantech Captain 7.1 virtual com iluminação RGB e microfone — para jogar e fazer call."
+  },
+  {
+    id: "p288",
+    name: "Mouse Gamer Fantech Phantom X15 — 7 Botões",
+    category: "eletronicos",
+    categoryLabel: "Eletrônicos",
+    price: 170.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-172373496866be1bb879a67.jpg",
+    emoji: "🖱️",
+    stock: 26,
+    stockMax: 26,
+    description: "Mouse gamer Fantech Phantom X15 com macro programável, RGB e 7 botões."
+  },
+  {
+    id: "p289",
+    name: "Mouse Pad Gamer Extra Largo 80x30cm",
+    category: "eletronicos",
+    categoryLabel: "Eletrônicos",
+    price: 115.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-172363207466bc89cab8a9c.jpg",
+    emoji: "🖱️",
+    stock: 1,
+    stockMax: 1,
+    description: "Mouse pad Fantech Sven de 80x30cm: cabe teclado e mouse com folga, base antiderrapante."
+  },
+  {
+    id: "p290",
+    name: "Mouse Gamer Fantech Thor X9 — 7 Botões",
+    category: "eletronicos",
+    categoryLabel: "Eletrônicos",
+    price: 168.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-172355875366bb6b614cf30.jpg",
+    emoji: "🎮",
+    stock: 1,
+    stockMax: 1,
+    description: "Mouse gamer Fantech Thor X9 com macro, RGB e 7 botões programáveis."
+  },
+  {
+    id: "p291",
+    name: "Box Organizador G Transparente",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 43.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1731093492672e63f48a2eb.jpg",
+    emoji: "📦",
+    stock: 12,
+    stockMax: 12,
+    description: "Caixa organizadora grande e transparente — enxerga o que tem dentro sem abrir, empilha fácil."
+  },
+  {
+    id: "p292",
+    name: "Box Multiuso com Divisória P",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 62.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1731093489672e63f173ce3.jpg",
+    emoji: "🗄️",
+    stock: 6,
+    stockMax: 6,
+    description: "Organizador multiuso pequeno com divisória interna, para separar miudezas em gaveta ou armário."
+  },
+  {
+    id: "p293",
+    name: "Luva de Microfibra Vonder para Limpeza",
+    category: "utensilios",
+    categoryLabel: "Utensílios",
+    price: 84.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17867686656a7fed1975240.jpg",
+    emoji: "🧤",
+    stock: 35,
+    stockMax: 35,
+    description: "Luva de microfibra Vonder para limpeza automotiva e doméstica: tira poeira sem riscar."
   }
 ];
 
