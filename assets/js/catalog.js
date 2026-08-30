@@ -37,6 +37,8 @@
    
 ACRÉSCIMOS 20/08 (mesmo dia, depois da reprefição): (1) instalado destaque de parcelamento — todo produto agora mostra "ou 18x de R$X sem juros" (installmentText, calcula price/18) nos cards de listagem e na página de produto; é só informativo, não muda o preço à vista. (2) escolhidos 4 itens de maior ticket (maior markup em R$) pra estampar a "Oferta Relâmpago" com desconto promocional real de ~10%: Hidratante Corporal Yara 200g (p33, de R$384,90 por R$345,90), Pelúcia de Pendurar Rhino Bright Starts (p46, de R$356,90 por R$320,90), Casaco de Algodão Feminino Sortido (p18, de R$270,90 por R$243,90) e Base Líquida Bruna Tavares BT Skin (p34, de R$263,90 por R$236,90) — únicos quatro itens do catálogo com oldPrice preenchido; o resto do catálogo continua sem oldPrice (não é desconto real, é preço cheio já com markup).
 
+ACRÉSCIMOS 30/08/2026 (parte 5): mais 19 produtos (p309 a p327) nas duas categorias que ainda estavam magras — 11 em Joias e Acessórios (semijoias banhadas a ouro 18K, carteira, bolsa e chapéus) e 8 em Infantil e Brinquedos (mochilas escolares licenciadas Barbie/Homem-Aranha/Pequena Sereia e mais pedagógicos de madeira). Todos de fornecedores sem termo extra.
+
 ACRÉSCIMOS 30/08/2026 (parte 4): mais 15 produtos (p294 a p308) — 7 em Casa e Decoração (cama, mesa e banho: lençol, capas de sofá e cadeira, cobreleitos e colcha), 3 em Eletrônicos (acessórios de celular) e 5 em Saúde e Beleza (linha masculina Don Armany, nicho novo pra loja). Nenhum produto do fornecedor DROP DE CASA foi incluído — ele exige aceite de termo extra que a SULLAB optou por não assinar.
 
 ACRÉSCIMOS 30/08/2026 (parte 3): mais 14 produtos (p280 a p293) em Pet Shop (coleiras e guias licenciadas, protetor de banco), Eletrônicos (headsets e mouses gamer Fantech) e Casa/Utensílios (organizadores e luva de microfibra). Na mesma data, 21 produtos que sumiram de vez do marketplace da Dropi passaram a stock: 0 (Esgotado) — stockMax foi preservado, então o sync diário restaura sozinho se o fornecedor voltar a listar.
@@ -2099,6 +2101,253 @@ const PRODUCTS = [
     stock: 800,
     stockMax: 800,
     description: "Kit de barba com shampoo de 200ml e balm de 110g: limpa, hidrata e dá forma."
+  },
+  {
+    id: "p309",
+    name: "Colar com Laço Banhado a Ouro 18K",
+    category: "joias",
+    categoryLabel: "Joias e Acessórios",
+    price: 89.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-176116264868f935982916d.png",
+    emoji: "🎀",
+    stock: 2,
+    stockMax: 2,
+    description: "Colar com pingente de laço banhado a ouro 18K — delicado, combina com look casual e social."
+  },
+  {
+    id: "p310",
+    name: "Choker com Bolinha Banhado a Ouro 18K",
+    category: "joias",
+    categoryLabel: "Joias e Acessórios",
+    price: 56.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-176116265868f935a27e33e.png",
+    emoji: "⭕",
+    stock: 3,
+    stockMax: 3,
+    description: "Choker rente ao pescoço com detalhe de bolinha, banhado a ouro 18K."
+  },
+  {
+    id: "p311",
+    name: "Conjunto Rabo de Rato — Colar e Pulseira Ouro 18K",
+    category: "joias",
+    categoryLabel: "Joias e Acessórios",
+    price: 282.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-176116266668f935aabcc88.png",
+    emoji: "✨",
+    stock: 1,
+    stockMax: 1,
+    description: "Conjunto de colar e pulseira em corrente rabo de rato banhada a ouro 18K — peça de presente."
+  },
+  {
+    id: "p312",
+    name: "Colar Menino Cravejado Banhado a Ouro 18K",
+    category: "joias",
+    categoryLabel: "Joias e Acessórios",
+    price: 62.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-176116269268f935c4dc0b9.png",
+    emoji: "👦",
+    stock: 3,
+    stockMax: 3,
+    description: "Colar com pingente de menino cravejado, banhado a ouro 18K — o par do modelo menina."
+  },
+  {
+    id: "p313",
+    name: "Dupla de Brincos Coração Paixão M/P Ouro 18K",
+    category: "joias",
+    categoryLabel: "Joias e Acessórios",
+    price: 185.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1752068844686e72ec020e4.jpg",
+    emoji: "💞",
+    stock: 1,
+    stockMax: 1,
+    description: "Dupla de brincos de coração nos tamanhos M e P, banhados a ouro 18K — para usar juntos ou separados."
+  },
+  {
+    id: "p314",
+    name: "Trio de Brincos de Estrela Banhado a Ouro 18K",
+    category: "joias",
+    categoryLabel: "Joias e Acessórios",
+    price: 52.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177335406169b33c4d73c3d.jpg",
+    emoji: "⭐",
+    stock: 1,
+    stockMax: 1,
+    description: "Trio de brincos de estrela em tamanhos diferentes, banhados a ouro 18K — ótimo para orelha com furos múltiplos."
+  },
+  {
+    id: "p315",
+    name: "Brinco Folha com Cristal Banhado a Ouro 18K",
+    category: "joias",
+    categoryLabel: "Joias e Acessórios",
+    price: 49.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177335416369b33cb31a472.jpg",
+    emoji: "🍃",
+    stock: 1,
+    stockMax: 1,
+    description: "Brinco em formato de folha com cristal central, banhado a ouro 18K."
+  },
+  {
+    id: "p316",
+    name: "Carteira Feminina 2 Zíperes 20x10cm",
+    category: "joias",
+    categoryLabel: "Joias e Acessórios",
+    price: 26.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1770324132698500a40f577.webp",
+    emoji: "👛",
+    stock: 10,
+    stockMax: 10,
+    description: "Carteira feminina compacta de 20x10cm com dois zíperes — separa notas, moedas e cartões."
+  },
+  {
+    id: "p317",
+    name: "Bolsa de Mão Peluciada 20x11cm",
+    category: "joias",
+    categoryLabel: "Joias e Acessórios",
+    price: 22.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1770149765698257854b99b.webp",
+    emoji: "👜",
+    stock: 10,
+    stockMax: 10,
+    description: "Bolsinha de mão peluciada de 20x11cm em cores sortidas, para o essencial do dia."
+  },
+  {
+    id: "p318",
+    name: "Chapéu Belli Boiadeira",
+    category: "joias",
+    categoryLabel: "Joias e Acessórios",
+    price: 94.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1768909796696f6be4b2326.jpg",
+    emoji: "🤠",
+    stock: 229,
+    stockMax: 229,
+    description: "Chapéu modelo boiadeira Belli — peça em alta no country e nas festas de rodeio."
+  },
+  {
+    id: "p319",
+    name: "Chapéu Belli Marrom",
+    category: "joias",
+    categoryLabel: "Joias e Acessórios",
+    price: 94.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1748525484683861ac38cae.jpg",
+    emoji: "🎩",
+    stock: 29,
+    stockMax: 29,
+    description: "Chapéu Belli na cor marrom, aba estruturada e acabamento firme."
+  },
+  {
+    id: "p320",
+    name: "Mochila de Costas Homem-Aranha",
+    category: "infantil",
+    categoryLabel: "Infantil e Brinquedos",
+    price: 117.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17379390406796d860da775.jpg",
+    emoji: "🕷️",
+    stock: 13,
+    stockMax: 13,
+    description: "Mochila escolar de costas licenciada do Homem-Aranha, com alças acolchoadas."
+  },
+  {
+    id: "p321",
+    name: "Mochila de Rodinhas Barbie Sereia",
+    category: "infantil",
+    categoryLabel: "Infantil e Brinquedos",
+    price: 137.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-175819639868cbf2ae7f014.jpg",
+    emoji: "🧜",
+    stock: 4,
+    stockMax: 4,
+    description: "Mochila escolar de rodinhas Barbie Sereia — puxa em vez de carregar, alivia as costas."
+  },
+  {
+    id: "p322",
+    name: "Kit Escolar Barbie — Mochila de Rodinhas, Lancheira e Estojo",
+    category: "infantil",
+    categoryLabel: "Infantil e Brinquedos",
+    price: 284.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-175865037568d2e007cda9d.jpg",
+    emoji: "🎒",
+    stock: 8,
+    stockMax: 8,
+    description: "Kit escolar completo da Barbie: mochila de rodinhas, lancheira e estojo no mesmo tema."
+  },
+  {
+    id: "p323",
+    name: "Kit Escolar A Pequena Sereia — Mochila de Rodinhas, Lancheira e Estojo",
+    category: "infantil",
+    categoryLabel: "Infantil e Brinquedos",
+    price: 284.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-175865044968d2e0511e2a5.jpg",
+    emoji: "🐚",
+    stock: 8,
+    stockMax: 8,
+    description: "Kit escolar A Pequena Sereia com mochila de rodinhas, lancheira e estojo combinando."
+  },
+  {
+    id: "p324",
+    name: "Kit 5 Brinquedos Educativos em Madeira e EVA",
+    category: "infantil",
+    categoryLabel: "Infantil e Brinquedos",
+    price: 166.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1770760830698baa7eb5975.jpg",
+    emoji: "🎁",
+    stock: 1000,
+    stockMax: 1000,
+    description: "Combo com cinco brinquedos pedagógicos em madeira e EVA — meio-termo entre o kit de 3 e o de 10."
+  },
+  {
+    id: "p325",
+    name: "Tabuleiro Numerais em Madeira e EVA — 10 Números",
+    category: "infantil",
+    categoryLabel: "Infantil e Brinquedos",
+    price: 29.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1770760848698baa90e20d3.jpg",
+    emoji: "🔢",
+    stock: 1000,
+    stockMax: 1000,
+    description: "Tabuleiro com base e 10 números móveis em madeira e EVA, para aprender a contar brincando."
+  },
+  {
+    id: "p326",
+    name: "Tabuleiro Vogais em Madeira e EVA — 5 Letras",
+    category: "infantil",
+    categoryLabel: "Infantil e Brinquedos",
+    price: 25.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1770760866698baaa20cc22.jpg",
+    emoji: "🅰️",
+    stock: 1000,
+    stockMax: 1000,
+    description: "Tabuleiro com base e as 5 vogais em madeira e EVA — primeiro passo da alfabetização."
+  },
+  {
+    id: "p327",
+    name: "Torre de Londres — Jogo Educativo em Madeira",
+    category: "infantil",
+    categoryLabel: "Infantil e Brinquedos",
+    price: 19.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1770760886698baab682e4d.jpg",
+    emoji: "🏰",
+    stock: 1000,
+    stockMax: 1000,
+    description: "Jogo de planejamento e raciocínio em madeira, usado em avaliação cognitiva e ótimo como desafio."
   }
 ];
 
