@@ -1,3 +1,4 @@
+// ACRESCIMOS 30/08/2026 (parte 7): +9 produtos campeoes de avaliacao na Dropi (p348-p356)
 // LIMPEZA 30/08/2026 (2a etapa): removidos 24 produtos sem fornecedor ativo na Dropi. Catalogo: 190 -> 166, todos vendaveis.
 // LIMPEZA 30/08/2026: removidos p29 e p208 (anuncios duplicados); p212 marcado esgotado (sem fornecedor); imagem do p30 atualizada
 // ACRESCIMOS 30/08/2026 (parte 6): +20 produtos Pet Shop (p328-p347) - reforco da categoria Pet
@@ -2273,6 +2274,123 @@ const PRODUCTS = [
     stock: 993,
     stockMax: 993,
     description: "Kit de transporte com bolsa e colchonete impermeável, 2 em 1: leva o pet e vira caminha na chegada."
+  },
+  {
+    id: "p348",
+    name: "Cortina Blackout Cortaluz 2 Metros",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 148.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-171889336366743b332592e.jpg",
+    emoji: "🪟",
+    stock: 1998,
+    stockMax: 1998,
+    description: "Cortina blackout de 2 metros em poliéster: corta a luz de fora e ajuda a segurar a temperatura do cômodo. Um dos itens mais bem avaliados do fornecedor."
+  },
+  {
+    id: "p349",
+    name: "Kit Coberdrom Soft 05 Peças Queen",
+    category: "casa",
+    categoryLabel: "Casa e Decoração",
+    price: 310.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-174480995967ffafe7c2d3b.png",
+    emoji: "🛏️",
+    stock: 3996,
+    stockMax: 3996,
+    description: "Kit completo de cama Queen com 5 peças em tecido soft: coberdrom, lençol e fronhas. Nota máxima entre os clientes do fornecedor."
+  },
+  {
+    id: "p350",
+    name: "Adesivos Antirrugas para o Rosto — 16 Peças",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 39.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1770526661698817c5bcca0.webp",
+    emoji: "✨",
+    stock: 10769,
+    stockMax: 10769,
+    description: "Cartela com 16 adesivos de silicone para aplicar à noite nas linhas de expressão. Campeão de avaliações na categoria de beleza."
+  },
+  {
+    id: "p351",
+    name: "Adesivos Antirrugas para o Rosto — 9 Peças",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 65.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17327269396747509bb6704.jpg",
+    emoji: "💆",
+    stock: 3880,
+    stockMax: 3880,
+    description: "Cartela com 9 adesivos antirrugas reutilizáveis, formatos variados para testa, olhos e boca. Lavável e reaproveitável."
+  },
+  {
+    id: "p352",
+    name: "Kit Truss Nutri Infusion — Shampoo e Condicionador 300ml",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 240.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17526735946877ad3a7c44d.webp",
+    emoji: "🧴",
+    stock: 20,
+    stockMax: 20,
+    description: "Kit profissional Truss Nutri Infusion com shampoo e condicionador de 300ml. Linha de nutrição para cabelos ressecados e quimicamente tratados."
+  },
+  {
+    id: "p353",
+    name: "Truss Shampoo Nutri Infusion 300ml",
+    category: "beleza",
+    categoryLabel: "Saúde e Beleza",
+    price: 117.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-17526737766877adf08e86c.webp",
+    emoji: "🚿",
+    stock: 20,
+    stockMax: 20,
+    description: "Shampoo profissional Truss Nutri Infusion 300ml, para quem quer entrar na linha sem levar o kit inteiro."
+  },
+  {
+    id: "p354",
+    name: "Tigela para Pet 26cm",
+    category: "pet",
+    categoryLabel: "Pet Shop",
+    price: 8.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-177262453869a81a9a41b9b.webp",
+    emoji: "🥣",
+    stock: 10,
+    stockMax: 10,
+    description: "Tigela de 26cm em cores sortidas, serve para ração ou água. Leve, fácil de lavar e um dos itens mais vendidos do fornecedor."
+  },
+  {
+    id: "p355",
+    name: "Tampa Rolha a Vácuo para Vinho e Champanhe",
+    category: "utensilios",
+    categoryLabel: "Utensílios",
+    price: 39.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-172377459266beb680342e0.jpg",
+    emoji: "🍴",
+    stock: 3,
+    stockMax: 3,
+    description: "Rolha com sistema de vácuo que veda a garrafa aberta e segura o gás do espumante por vários dias."
+  },
+  {
+    id: "p356",
+    name: "Película 3D de Vidro com Borda Preta para Apple Watch 49mm",
+    category: "eletronicos",
+    categoryLabel: "Eletrônicos",
+    price: 28.9,
+    oldPrice: null,
+    image: "https://empreender.nyc3.digitaloceanspaces.com/dropi/fornecedor/produto-1737494714679010ba7e640.jpg",
+    emoji: "⌚",
+    stock: 31,
+    stockMax: 31,
+    description: "Película 3D de vidro temperado com borda preta para Apple Watch de 49mm. Cobre a tela inteira e disfarça as bordas."
   }
 ];
 
