@@ -4,11 +4,22 @@
 const CART_KEY = "achadinhos_cart";
 
 function getCart() {
+  let cart;
   try {
-    return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+    cart = JSON.parse(localStorage.getItem(CART_KEY)) || [];
   } catch (e) {
     return [];
   }
+  if (!Array.isArray(cart)) return [];
+  // Descarta itens de produtos que saíram do catálogo (fornecedor removido).
+  // Sem isso o contador do carrinho conta um item que não aparece na lista
+  // nem entra no total — o cliente vê "3" e só encontra 2 produtos.
+  if (typeof getProductById !== "function") return cart;
+  const validos = cart.filter((i) => i && getProductById(i.id));
+  if (validos.length !== cart.length) {
+    try { localStorage.setItem(CART_KEY, JSON.stringify(validos)); } catch (e) {}
+  }
+  return validos;
 }
 
 function saveCart(cart) {
