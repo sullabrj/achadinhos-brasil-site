@@ -36,7 +36,13 @@ gtag('config', 'G-69ZP5SYLYC');
   <a class="btn" href="../index.html">Voltar pra loja</a>
 </main>
 
+<script src="../assets/js/catalog.js"></script>
+<script src="../assets/js/cart.js"></script>
+<script src="../assets/js/analytics.js"></script>
 <script>
+  // Registra a venda no GA4 (so conta como purchase se o Mercado Pago
+  // devolveu o pagamento aprovado — PIX e boleto voltam como pendente).
+  if (typeof trackPurchase === "function") trackPurchase();
   // Carrinho já foi usado nesse pedido — limpa pra não duplicar na próxima visita.
   try { localStorage.removeItem("achadinhos_cart"); } catch (e) {}
 </script>

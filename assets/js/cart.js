@@ -36,6 +36,7 @@ function addToCart(productId, qty = 1) {
     cart.push({ id: productId, qty });
   }
   saveCart(cart);
+  if (typeof trackAddToCart === "function") trackAddToCart(productId, qty);
 }
 
 function updateCartQty(productId, qty) {

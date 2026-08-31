@@ -142,9 +142,17 @@ gtag('config', 'G-69ZP5SYLYC');
 
 <script src="assets/js/catalog.js"></script>
 <script src="assets/js/cart.js"></script>
+<script src="assets/js/analytics.js"></script>
 <script src="assets/js/checkout.js"></script>
 <script>
+  // view_cart uma vez por visita ao carrinho (o renderCart roda de novo a
+  // cada mudanca de quantidade, e nao vale contar visita repetida).
+  let __viewCartEnviado = false;
   function renderCart() {
+    if (!__viewCartEnviado && typeof trackViewCart === "function") {
+      __viewCartEnviado = true;
+      trackViewCart();
+    }
     const cart = getCart();
     const itemsEl = document.getElementById("cart-items");
     const deliveryForm = document.getElementById("delivery-form");

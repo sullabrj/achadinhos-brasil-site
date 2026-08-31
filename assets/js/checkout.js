@@ -202,6 +202,11 @@ async function iniciarCheckout() {
     btn.textContent = "Redirecionando pro pagamento...";
   }
 
+  // Sinal de "comecou a pagar" pro GA4/Google Ads, e guarda o resumo do
+  // pedido pra conseguir registrar a venda quando o cliente voltar do
+  // Mercado Pago (o site nao tem banco de dados).
+  if (typeof trackBeginCheckout === "function") trackBeginCheckout(frete && frete.preco);
+
   try {
     const resp = await fetch(CHECKOUT_WORKER_URL, {
       method: "POST",

@@ -76,6 +76,7 @@ gtag('config', 'G-69ZP5SYLYC');
 
 <script src="assets/js/catalog.js"></script>
 <script src="assets/js/cart.js"></script>
+<script src="assets/js/analytics.js"></script>
 <script>
   const params = new URLSearchParams(location.search);
   const id = params.get("id");
@@ -85,6 +86,7 @@ gtag('config', 'G-69ZP5SYLYC');
   if (!p) {
     container.innerHTML = `<div class="empty-state">Produto não encontrado. <a href="index.html" style="color:var(--accent);font-weight:700;">Voltar pra home</a></div>`;
   } else {
+    if (typeof trackViewItem === "function") trackViewItem(p);
     document.getElementById("page-title").textContent = p.name + " — Achadinhos Brasil";
     document.getElementById("meta-description").setAttribute("content", p.description.slice(0, 160));
     document.getElementById("og-title").setAttribute("content", p.name + " — Achadinhos Brasil");
