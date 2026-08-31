@@ -93,28 +93,41 @@ gtag('config', 'G-69ZP5SYLYC');
     return (t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
   }
 
-  // Tira barras, codigo do fim do slug (ex.: -1vv3d) e palavras curtas.
-  var IGNORAR = ["produtos", "produto", "categoria", "html", "index", "pages", "com", "para", "de", "da", "do", "e", "em"];
+  // Palavras genericas de anuncio nao dizem nada sobre o produto - se
+  // "confortavel" valesse ponto, um chinelo casaria com um mouse.
+  var IGNORAR = ["produtos","produto","categoria","html","index","pages","com","para","por",
+    "leve","confortavel","confortaveis","feminino","feminina","masculino","masculina",
+    "adulto","adulta","infantil","unissex","original","premium","novo","nova","kit",
+    "cores","sortidas","sortido","tamanho","tamanhos","cor","pecas","peca","und",
+    "promocao","oferta","ofertas","frete","gratis","barato","qualidade","top","teste"];
+
   var termos = semAcento(caminho)
     .replace(/[^a-z0-9]+/g, " ")
     .split(" ")
     .filter(function (t) {
-      return t.length > 2 && IGNORAR.indexOf(t) === -1 && !/^\d+$/.test(t);
+      return t.length > 3 && IGNORAR.indexOf(t) === -1 && !/^\d+$/.test(t);
     });
 
   if (!termos.length) return;
 
-  // Pontua cada produto pelo numero de palavras do endereco que aparecem
-  // no nome, na categoria ou na descricao.
+  // O nome do produto vale muito mais que a descricao: bater no nome quer
+  // dizer que e provavelmente o produto certo; bater so na descricao pode
+  // ser coincidencia de palavra solta.
   var achados = PRODUCTS.map(function (p) {
-    var texto = semAcento(p.name + " " + (p.categoryLabel || "") + " " + (p.description || ""));
+    var nome = semAcento(p.name);
+    var cat = semAcento(p.categoryLabel || "");
+    var desc = semAcento(p.description || "");
     var pontos = 0;
     for (var i = 0; i < termos.length; i++) {
-      if (texto.indexOf(termos[i]) !== -1) pontos++;
+      if (nome.indexOf(termos[i]) !== -1) pontos += 3;
+      else if (cat.indexOf(termos[i]) !== -1) pontos += 2;
+      else if (desc.indexOf(termos[i]) !== -1) pontos += 1;
     }
     return { p: p, pontos: pontos };
   })
-    .filter(function (x) { return x.pontos > 0; })
+    // Exige pelo menos uma batida no nome ou na categoria. Sem isso a
+    // pagina mostra sugestao aleatoria, que e pior que nao sugerir nada.
+    .filter(function (x) { return x.pontos >= 3; })
     .sort(function (a, b) { return b.pontos - a.pontos; })
     .slice(0, 8)
     .map(function (x) { return x.p; });
