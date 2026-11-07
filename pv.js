@@ -85,7 +85,8 @@
     var n = this.name.value.trim(), m = this.email.value.trim(), p = tel.value.replace(/\D/g, ""), er = sh.querySelector(".pv-err");
     if (n.length < 3) { er.textContent = "Digite seu nome."; return; }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(m)) { er.textContent = "Confira o e-mail: é por ele que chega o acesso."; return; }
-    if (p.length < 10) { er.textContent = "Digite o WhatsApp com DDD."; return; }
+    var ddds = "11 12 13 14 15 16 17 18 19 21 22 24 27 28 31 32 33 34 35 37 38 41 42 43 44 45 46 47 48 49 51 53 54 55 61 62 63 64 65 66 67 68 69 71 73 74 75 77 79 81 82 83 84 85 86 87 88 89 91 92 93 94 95 96 97 98 99";
+    if (p.length !== 11 || p.charAt(2) !== "9" || ddds.indexOf(p.slice(0, 2)) < 0 || /^(\d)\1+$/.test(p.slice(2))) { er.textContent = "Confira o WhatsApp: DDD + 9 + número (11 dígitos). O suporte fala com você por ele."; return; }
     er.textContent = "";
     fb("track", "Lead", { content_name: P.produto });
     cl("preencheu_dados");
