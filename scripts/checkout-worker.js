@@ -167,6 +167,27 @@ async function avisarKiwify(b, env) {
   await fetch(u);
 }
 
+async function avisarLeadGuia(b, env) {
+  if (!env.CALLMEBOT_PHONE || !env.CALLMEBOT_APIKEY || !b) return;
+  const limpa = (s, n) => String(s || "").replace(/[\r\n]+/g, " ").trim().slice(0, n);
+  const nome = limpa(b.nome, 60);
+  let fone = String(b.fone || "").replace(/\D/g, "").slice(0, 13);
+  if (fone.length < 10) return;
+  if (!fone.startsWith("55")) fone = "55" + fone;
+  const perfil = { barbeiro: "Sou barbeiro ✂️", aprendendo: "Estou aprendendo", nao: "Não corta cabelo" }[b.perfil] || "Não informou";
+  const linhas = [
+    "📥 Novo cadastro (mini-guia grátis de cortes)",
+    "Nome: " + nome,
+    "Perfil: " + perfil,
+    "WhatsApp: https://wa.me/" + fone
+  ];
+  const origem = limpa(b.origem, 80);
+  if (origem) linhas.push("Origem: " + origem);
+  const texto = linhas.join("\n");
+  const u = `https://api.callmebot.com/whatsapp.php?phone=${encodeURIComponent(env.CALLMEBOT_PHONE)}&text=${encodeURIComponent(texto)}&apikey=${encodeURIComponent(env.CALLMEBOT_APIKEY)}`;
+  await fetch(u);
+}
+
 async function notificarPedidoAprovado(payment, env) {
   if (!env.CALLMEBOT_PHONE || !env.CALLMEBOT_APIKEY) return;
 
@@ -366,6 +387,16 @@ export default {
         await avisarKiwify(b, env);
       } catch (e) {}
       return new Response("ok");
+    }
+
+    // Cadastro do mini-guia grátis (página /guia-de-cortes/gratis/):
+    // avisa no WhatsApp do Eduardo com nome, número e se a pessoa corta cabelo.
+    if (url.pathname === "/lead-guia" && request.method === "POST") {
+      try {
+        const b = JSON.parse(await request.text());
+        await avisarLeadGuia(b, env);
+      } catch (e) {}
+      return new Response("ok", { headers: corsHeaders(origin) });
     }
 
     if (url.pathname === "/mp-webhook") {
