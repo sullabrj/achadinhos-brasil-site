@@ -74,10 +74,10 @@ def page(p):
 <header class="hero"><img class="bg" src="img/hero.jpg" alt="{e(p['hero_alt'])}">
 <div class="tx"><div class="kick">{p['kick']}</div><h1>{p['h1']}</h1><p>{p['sub']}</p>
 <div class="pills">{''.join(f'<b>{x}</b>' for x in p['pills'])}</div>
-<a class="btn" href="{p['url']}">{p['cta']}</a><div class="note">Pagamento único · acesso na hora · garantia de 7 dias</div></div></header>
+{p.get('hero_extra','')}<a class="btn" href="{p['url']}">{p['cta']}</a><div class="note">Pagamento único · acesso na hora · garantia de 7 dias</div></div></header>
 
 <section class="vid"><div class="w" style="text-align:center"><div class="kick" style="color:var(--acc2)">Veja em {p['vid_s']} segundos</div><h2>{p['vid_h']}</h2>
-<video src="img/video.mp4" poster="img/video.jpg" controls playsinline preload="metadata"></video></div></section>
+<video src="img/video.mp4" poster="img/video.jpg" controls playsinline preload="metadata"></video>{p.get('after_vid','')}</div></section>
 
 <section class="alt"><div class="w"><div class="kick" style="color:var(--acc2)">{p['pain_k']}</div><h2>{p['pain_h']}</h2>{li(p['pain'],'x')}</div></section>
 
@@ -118,8 +118,10 @@ GUIA = dict(
     kick="Guia visual · cortes na máquina",
     h1="Teu degradê fica com <span>linha marcada?</span>",
     sub="20 cortes na máquina, pente por pente: foto real, desenho da cabeça e quantas passadas dar em cada região. Do jeito que o cliente pede na cadeira.",
-    pills=["20 cortes", "45 páginas", "+ Kit Marketing editável grátis"],
-    cta="Quero o guia por R$ 29,90", price="R$ 29,90", old="R$ 49,90",
+    pills=["20 cortes", "45 páginas", "Abre no celular"],
+    cta="Quero o guia + bônus por R$ 29,90", price="R$ 29,90", old="R$ 49,90",
+    hero_extra='<div style="background:rgba(242,163,58,.12);border:1.5px solid #F2A33A;border-radius:12px;padding:10px 12px;margin:0 0 14px;font-size:15px;line-height:1.35"><b style="color:#F2A33A">+ Bônus grátis:</b> Kit Marketing da Barbearia, editável no Canva<div style="margin-top:4px"><s style="color:#bdb8b0">R$ 49,90</s> <b style="font-size:19px">R$ 29,90</b> · Pix libera na hora</div></div>',
+    after_vid='<a class="btn" style="max-width:340px;margin:18px auto 0" href="https://pay.kiwify.com.br/fzBVsk8">Quero o guia + bônus por R$ 29,90</a>',
     vid_s="22", vid_h="O passo a passo que você vai ter na mão",
     pain_k="Acontece contigo?", pain_h="Errar o degradê custa cliente.",
     pain=["Fica aquela linha entre uma faixa e outra e você não sabe sumir com ela.",
