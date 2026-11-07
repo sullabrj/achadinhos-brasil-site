@@ -64,9 +64,9 @@ def page(p):
 <meta name="robots" content="noindex">
 <title>{e(p['title'])}</title>
 <meta name="description" content="{e(p['desc'])}">
-<link rel="canonical" href="https://lojaachadinhosbrasil.com.br/{p['slug']}/">
+<link rel="canonical" href="https://www.lojaachadinhosbrasil.com.br/{p['slug']}/">
 <meta property="og:title" content="{e(p['title'])}"><meta property="og:description" content="{e(p['desc'])}">
-<meta property="og:image" content="https://lojaachadinhosbrasil.com.br/{p['slug']}/img/capa.jpg">
+<meta property="og:image" content="https://www.lojaachadinhosbrasil.com.br/{p['slug']}/img/capa.jpg">
 <link rel="preload" as="image" href="img/hero.jpg">
 <style>:root{{{p['vars']}}}{CSS}{p.get('css','')}</style>
 <script>!function(f,b,e,v,n,t,s){{if(f.fbq)return;n=f.fbq=function(){{n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)}};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','{PIXEL}');fbq('track','PageView');</script>
