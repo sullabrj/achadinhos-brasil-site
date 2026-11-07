@@ -118,7 +118,7 @@ GUIA = dict(
     kick="Guia visual · cortes na máquina",
     h1="Teu degradê fica com <span>linha marcada?</span>",
     sub="20 cortes na máquina, pente por pente: foto real, desenho da cabeça e quantas passadas dar em cada região. Do jeito que o cliente pede na cadeira.",
-    pills=["20 cortes", "45 páginas", "Abre no celular"],
+    pills=["20 cortes", "45 páginas", "+ Kit Marketing grátis"],
     cta="Quero o guia por R$ 29,90", price="R$ 29,90", old="R$ 49,90",
     vid_s="22", vid_h="O passo a passo que você vai ter na mão",
     pain_k="Acontece contigo?", pain_h="Errar o degradê custa cliente.",
@@ -132,7 +132,13 @@ GUIA = dict(
     extra="""<section style="padding-top:0"><div class="w"><div class="kick" style="color:var(--acc2)">Os 20 cortes</div><h2>Os mais pedidos na cadeira</h2>
 <div class="grid3"><img loading="lazy" src="img/c1.jpg" alt="Degradê baixo"><img loading="lazy" src="img/c2.jpg" alt="Corte social com degradê"><img loading="lazy" src="img/c3.jpg" alt="Corte com degradê"></div>
 <div class="chips"><span>Degradê baixo</span><span>Degradê médio</span><span>Degradê alto</span><span>Navalhado</span><span>Social</span><span>Americano</span><span>Disfarçado</span><span>Militar</span><span>Um pente só</span><span>Raspado</span><span>Risquinho</span><span>Pezinho</span><span>Flat top</span><span>Moicano</span><span>Burst fade</span><span>Undercut</span><span>Infantil</span><span>Barba degradê</span><span>Afro baixo</span><span>Nudred</span></div>
-<p style="font-size:14px;color:var(--mut)">Mostra no celular para o cliente escolher o corte antes de sentar.</p></div></section>""",
+<p style="font-size:14px;color:var(--mut)">Mostra no celular para o cliente escolher o corte antes de sentar.</p></div></section>
+
+<section id="bonus" style="background:var(--dark);color:#fff"><div class="w"><div class="kick">Bônus grátis</div><h2>Bônus grátis: <span>Kit Marketing da Barbearia</span></h2>
+<p style="color:#d9d4cc;margin-top:0">Comprou o guia, leva junto o kit para divulgar tua barbearia e encher a agenda. Tudo editável no Canva grátis: troca nome, telefone, fotos e preços em poucos minutos.</p>
+<div class="shot" style="margin:18px 0 22px"><img loading="lazy" src="img/bonus-kit.jpg" alt="Kit Marketing da Barbearia: tabela de preços, posts, stories e cartão fidelidade"></div>
+<ul class="ok"><li><b>Tabela de preços</b> com os 20 cortes: versão A3 para a parede e versão para o Instagram.</li><li><b>30 posts de feed</b>: antes e depois, corte da semana, promoção do dia fraco, agenda aberta e dicas.</li><li><b>15 stories</b>: horários livres hoje, última vaga, feriado e Pix.</li><li><b>Cartão fidelidade</b> (10 cortes = 1 grátis) e <b>cartão de visita</b> prontos para a gráfica.</li><li><b>Placas</b>: Aceitamos Pix, horário de funcionamento e Agende pelo WhatsApp.</li><li><b>Guia de 2 páginas</b>: como importar no Canva e editar pelo celular.</li></ul>
+<p style="font-size:14px;color:#bdb8b0;margin:6px 0 0">Vem na área de membros junto com o guia, sem custo a mais.</p></div></section>""",
     get_h="45 páginas, direto ao ponto",
     get=["Catálogo com os 20 cortes mais pedidos para mostrar ao cliente.",
          "Para cada corte: foto real, desenho da cabeça com as faixas de cada pente e o sentido da passada.",
@@ -142,9 +148,10 @@ GUIA = dict(
     who=["Quem está começando e quer acertar o degradê.",
          "Quem corta em casa e quer cobrar como profissional.",
          "Quem já corta e quer parar de errar na transição."],
-    box=["Guia em PDF com 45 páginas", "Os 20 cortes, pente por pente", "Acesso na hora, no seu e-mail", "Garantia de 7 dias: não gostou, devolvemos"],
+    box=["Guia em PDF com 45 páginas", "Os 20 cortes, pente por pente", "Bônus grátis: Kit Marketing da Barbearia (editável no Canva)", "Acesso na hora, no seu e-mail", "Garantia de 7 dias: não gostou, devolvemos"],
     faq=[("Como recebo?", "Logo depois do pagamento chega no seu e-mail o acesso ao guia em PDF. Pagou no Pix, libera na hora."),
          ("Abre no celular?", "Sim. É um PDF que abre em qualquer celular, sem instalar nada."),
+         ("Como recebo o bônus?", "O Kit Marketing da Barbearia fica na área de membros, junto com o guia. Os arquivos abrem no Canva grátis, pelo celular ou computador."),
          ("Serve para quem está começando?", "Sim. Cada corte tem nível de dificuldade e começa pelo básico: qual pente, onde passar e quantas vezes."),
          ("Precisa de máquina específica?", "Não. Funciona com qualquer máquina que tenha o jogo de pentes. O guia mostra o tamanho em milímetros de cada pente."),
          ("Tem mensalidade?", "Não. É pagamento único de R$ 29,90."),
