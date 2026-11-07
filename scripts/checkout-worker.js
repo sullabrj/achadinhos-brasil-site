@@ -131,6 +131,40 @@ function buildOrderRef(customer, items, frete) {
   return JSON.stringify(ref);
 }
 
+async function avisarKiwify(b, env) {
+  if (!env.CALLMEBOT_PHONE || !env.CALLMEBOT_APIKEY || !b) return;
+  const ev = String(b.webhook_event_type || b.order_status || b.status || "").toLowerCase();
+  const rotulos = {
+    pix_created: "Pix gerado (ainda não pago)",
+    billet_created: "Boleto gerado (ainda não pago)",
+    waiting_payment: "Aguardando pagamento",
+    order_approved: "VENDA APROVADA",
+    paid: "VENDA APROVADA",
+    abandoned_cart: "Carrinho abandonado",
+    abandoned: "Carrinho abandonado",
+    order_refunded: "Reembolso",
+    chargeback: "Chargeback"
+  };
+  const rot = rotulos[ev] || ev || "evento";
+  const c = b.Customer || b.customer || {};
+  const nome = c.full_name || c.name || b.name || "";
+  let fone = String(c.mobile || c.phone || b.phone || "").replace(/\D/g, "");
+  if (fone && !fone.startsWith("55")) fone = "55" + fone;
+  const prod = (b.Product && (b.Product.product_name || b.Product.name)) || b.product_name || (b.products && b.products[0] && b.products[0].name) || "";
+  let valor = "";
+  const cents = b.Commissions && (b.Commissions.charge_amount || b.Commissions.product_base_price);
+  if (cents) valor = "R$ " + (Number(cents) / 100).toFixed(2).replace(".", ",");
+  else if (b.total || b.amount) valor = "R$ " + String(b.total || b.amount);
+  const linhas = ["🔔 Produtos digitais: " + rot];
+  if (prod) linhas.push("Produto: " + prod);
+  if (valor) linhas.push("Valor: " + valor);
+  if (nome) linhas.push("Cliente: " + nome);
+  if (fone) linhas.push("WhatsApp: https://wa.me/" + fone);
+  const texto = linhas.join("\n");
+  const u = `https://api.callmebot.com/whatsapp.php?phone=${encodeURIComponent(env.CALLMEBOT_PHONE)}&text=${encodeURIComponent(texto)}&apikey=${encodeURIComponent(env.CALLMEBOT_APIKEY)}`;
+  await fetch(u);
+}
+
 async function notificarPedidoAprovado(payment, env) {
   if (!env.CALLMEBOT_PHONE || !env.CALLMEBOT_APIKEY) return;
 
@@ -321,6 +355,17 @@ export default {
     // deles e, se estiver aprovado, manda o WhatsApp de aviso com os dados do
     // pedido. Sempre responde 200 rápido — mesmo se o aviso falhar — pra não
     // entrar num loop de reenvio do Mercado Pago.
+    // Webhook da Kiwify (produtos digitais): avisa no WhatsApp do Eduardo,
+    // via CallMeBot, quando alguém gera Pix/boleto, abandona o carrinho ou
+    // compra. Responde 200 sempre, para a Kiwify não ficar reenviando.
+    if (url.pathname === "/kiwify-aviso-7q3m" && request.method === "POST") {
+      try {
+        const b = await request.json();
+        await avisarKiwify(b, env);
+      } catch (e) {}
+      return new Response("ok");
+    }
+
     if (url.pathname === "/mp-webhook") {
       let paymentId = url.searchParams.get("data.id") || url.searchParams.get("id");
 
