@@ -160,6 +160,8 @@ async function avisarKiwify(b, env) {
   if (valor) linhas.push("Valor: " + valor);
   if (nome) linhas.push("Cliente: " + nome);
   if (fone) linhas.push("WhatsApp: https://wa.me/" + fone);
+  const email = c.email || b.email || "";
+  if (email) linhas.push("E-mail: " + email);
   const texto = linhas.join("\n");
   const u = `https://api.callmebot.com/whatsapp.php?phone=${encodeURIComponent(env.CALLMEBOT_PHONE)}&text=${encodeURIComponent(texto)}&apikey=${encodeURIComponent(env.CALLMEBOT_APIKEY)}`;
   await fetch(u);
