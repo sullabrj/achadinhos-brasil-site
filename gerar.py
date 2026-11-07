@@ -118,7 +118,7 @@ GUIA = dict(
     kick="Guia visual · cortes na máquina",
     h1="Teu degradê fica com <span>linha marcada?</span>",
     sub="20 cortes na máquina, pente por pente: foto real, desenho da cabeça e quantas passadas dar em cada região. Do jeito que o cliente pede na cadeira.",
-    pills=["20 cortes", "45 páginas", "+ Kit Marketing grátis"],
+    pills=["20 cortes", "45 páginas", "+ Kit Marketing editável grátis"],
     cta="Quero o guia por R$ 29,90", price="R$ 29,90", old="R$ 49,90",
     vid_s="22", vid_h="O passo a passo que você vai ter na mão",
     pain_k="Acontece contigo?", pain_h="Errar o degradê custa cliente.",
@@ -135,10 +135,15 @@ GUIA = dict(
 <p style="font-size:14px;color:var(--mut)">Mostra no celular para o cliente escolher o corte antes de sentar.</p></div></section>
 
 <section id="bonus" style="background:var(--dark);color:#fff"><div class="w"><div class="kick">Bônus grátis</div><h2>Bônus grátis: <span>Kit Marketing da Barbearia</span></h2>
-<p style="color:#d9d4cc;margin-top:0">Comprou o guia, leva junto o kit para divulgar tua barbearia e encher a agenda. Tudo editável no Canva grátis: troca nome, telefone, fotos e preços em poucos minutos.</p>
+<p style="color:#d9d4cc;margin-top:0">Comprou o guia, leva junto o kit para divulgar tua barbearia e encher a agenda. <b style="color:#fff">Tudo é editável no Canva grátis</b>: tu coloca o nome da tua barbearia, os teus preços, os teus horários, o teu WhatsApp e as fotos dos teus cortes.</p>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:18px 0 6px;text-align:center">
+<div style="background:#1A1D23;border:1px solid #343A45;border-radius:12px;padding:12px 8px"><div style="color:#F2A33A;font-weight:900;font-size:22px">1</div><div style="font-size:14px;line-height:1.3">Abre no Canva grátis, até pelo celular</div></div>
+<div style="background:#1A1D23;border:1px solid #343A45;border-radius:12px;padding:12px 8px"><div style="color:#F2A33A;font-weight:900;font-size:22px">2</div><div style="font-size:14px;line-height:1.3">Troca nome, preços, horários, WhatsApp e fotos</div></div>
+<div style="background:#1A1D23;border:1px solid #343A45;border-radius:12px;padding:12px 8px"><div style="color:#F2A33A;font-weight:900;font-size:22px">3</div><div style="font-size:14px;line-height:1.3">Baixa e posta no Instagram ou manda imprimir</div></div>
+</div>
 <div class="shot" style="margin:18px 0 22px"><img loading="lazy" src="img/bonus-kit.jpg" alt="Kit Marketing da Barbearia: tabela de preços, posts, stories e cartão fidelidade"></div>
-<ul class="ok"><li><b>Tabela de preços</b> com os 20 cortes: versão A3 para a parede e versão para o Instagram.</li><li><b>30 posts de feed</b>: antes e depois, corte da semana, promoção do dia fraco, agenda aberta e dicas.</li><li><b>15 stories</b>: horários livres hoje, última vaga, feriado e Pix.</li><li><b>Cartão fidelidade</b> (10 cortes = 1 grátis) e <b>cartão de visita</b> prontos para a gráfica.</li><li><b>Placas</b>: Aceitamos Pix, horário de funcionamento e Agende pelo WhatsApp.</li><li><b>Guia de 2 páginas</b>: como importar no Canva e editar pelo celular.</li></ul>
-<p style="font-size:14px;color:#bdb8b0;margin:6px 0 0">Vem na área de membros junto com o guia, sem custo a mais.</p></div></section>""",
+<ul class="ok"><li><b>Tabela de preços</b> com os 20 cortes, com os teus valores: versão A3 para a parede e versão para o Instagram.</li><li><b>30 posts de feed</b>: antes e depois, corte da semana, promoção do dia fraco, agenda aberta e dicas.</li><li><b>15 stories</b>: horários livres hoje, última vaga, feriado e Pix, com os teus horários e a tua chave.</li><li><b>Cartão fidelidade</b> (10 cortes = 1 grátis) e <b>cartão de visita</b> com os teus dados, prontos para a gráfica.</li><li><b>Placas</b>: Aceitamos Pix, horário de funcionamento e Agende pelo WhatsApp, com o teu QR Code.</li><li><b>Guia de 2 páginas</b>: passo a passo para importar no Canva e editar pelo celular.</li></ul>
+<p style="font-size:14px;color:#bdb8b0;margin:6px 0 0">Os modelos já vêm com textos de exemplo para tu trocar. Vem na área de membros junto com o guia, sem custo a mais.</p></div></section>""",
     get_h="45 páginas, direto ao ponto",
     get=["Catálogo com os 20 cortes mais pedidos para mostrar ao cliente.",
          "Para cada corte: foto real, desenho da cabeça com as faixas de cada pente e o sentido da passada.",
@@ -148,10 +153,11 @@ GUIA = dict(
     who=["Quem está começando e quer acertar o degradê.",
          "Quem corta em casa e quer cobrar como profissional.",
          "Quem já corta e quer parar de errar na transição."],
-    box=["Guia em PDF com 45 páginas", "Os 20 cortes, pente por pente", "Bônus grátis: Kit Marketing da Barbearia (editável no Canva)", "Acesso na hora, no seu e-mail", "Garantia de 7 dias: não gostou, devolvemos"],
+    box=["Guia em PDF com 45 páginas", "Os 20 cortes, pente por pente", "Bônus grátis: Kit Marketing da Barbearia, editável no Canva com teus preços e horários", "Acesso na hora, no seu e-mail", "Garantia de 7 dias: não gostou, devolvemos"],
     faq=[("Como recebo?", "Logo depois do pagamento chega no seu e-mail o acesso ao guia em PDF. Pagou no Pix, libera na hora."),
          ("Abre no celular?", "Sim. É um PDF que abre em qualquer celular, sem instalar nada."),
          ("Como recebo o bônus?", "O Kit Marketing da Barbearia fica na área de membros, junto com o guia. Os arquivos abrem no Canva grátis, pelo celular ou computador."),
+         ("Dá para colocar meus preços e horários no kit?", "Dá. Tudo é editável no Canva: nome da barbearia, preços, horários, WhatsApp, chave Pix e fotos. Os modelos vêm com textos de exemplo para tu trocar."),
          ("Serve para quem está começando?", "Sim. Cada corte tem nível de dificuldade e começa pelo básico: qual pente, onde passar e quantas vezes."),
          ("Precisa de máquina específica?", "Não. Funciona com qualquer máquina que tenha o jogo de pentes. O guia mostra o tamanho em milímetros de cada pente."),
          ("Tem mensalidade?", "Não. É pagamento único de R$ 29,90."),
