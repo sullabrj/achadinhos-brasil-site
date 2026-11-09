@@ -66,7 +66,7 @@ footer a{color:inherit}
 .pop .new{font-size:44px;font-weight:900;color:var(--verde);margin:2px 0 6px}
 .pop p{margin:0 0 14px;color:var(--ink)}
 .pop .nao{display:block;margin-top:12px;color:var(--mut);font-size:14px;text-decoration:underline;background:none;border:0;width:100%;cursor:pointer;font-family:inherit}
-</style>
+.vid{background:#fff}.vid .w{padding-top:26px;padding-bottom:26px}.vid video{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:14px;background:#1F3A26;box-shadow:0 8px 22px rgba(0,0,0,.18)}.vid h2{margin-bottom:12px}</style>
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','30156663417254394');fbq('track','PageView');</script>
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","z9zzqjrn35");clarity('set','pagina','manha-sem-pao');</script>
 </head><body>
@@ -75,6 +75,7 @@ footer a{color:inherit}
 <img src="img/capa.jpg" alt="Livro digital Manhã Sem Pão: 80 receitas, cardápio de 30 dias, lista de compras, lanches e vitaminas" width="1080" height="1080">
 <div class="tx bot"><div class="pills"><b>80 receitas</b><b>Até 15 min</b><b>A partir de R$ 9,90</b></div>
 <a class="btn" href="#planos">Quero ver as opções</a><div class="note">Pagamento único · acesso na hora · garantia de 7 dias</div></div></header>
+<section class="vid" id="video"><div class="w"><div class="kick k2">Em 1 minuto</div><h2>Veja o que tem dentro do livro</h2><video id="vidMsp" controls playsinline preload="none" poster="img/por-dentro-poster.jpg" width="1280" height="720"><source src="img/por-dentro.mp4" type="video/mp4">Seu navegador não abre este vídeo.</video></div></section>
 
 <section class="alt"><div class="w"><div class="kick k2">Parece com você?</div><h2>Todo dia a mesma coisa de manhã.</h2><ul class="x"><li>Pão com manteiga e café, de segunda a segunda.</li><li>Quer variar, mas não sabe o que fazer em 10 minutos.</li><li>Procura receita na internet e cada uma pede um ingrediente diferente.</li><li>Acaba saindo de casa sem comer ou beliscando qualquer coisa.</li></ul></div></section>
 
@@ -129,7 +130,7 @@ try{fbq('track','ViewContent',{content_name:'Manhã Sem Pão',value:19.9,currenc
 var q=location.search.slice(1);
 document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(function(a){if(q)a.href+=(a.href.indexOf('?')<0?'?':'&')+q;a.addEventListener('click',function(){try{fbq('trackCustom','CliqueComprar',{produto:a.getAttribute('data-produto')||'Manhã Sem Pão'});clarity('event','clique_'+(a.getAttribute('data-produto')||'').replace(/\W+/g,'_'))}catch(e){}})});
 var pop=document.getElementById('pop');
-document.getElementById('btnBasico').addEventListener('click',function(){pop.classList.add('on');try{clarity('event','popup_aberto')}catch(e){}});
+var vm=document.getElementById('vidMsp');if(vm){vm.addEventListener('play',function(){try{fbq('trackCustom','VideoPlay',{produto:'Manhã Sem Pão'});clarity('event','video_play')}catch(e){}},{once:true})}document.getElementById('btnBasico').addEventListener('click',function(){pop.classList.add('on');try{clarity('event','popup_aberto')}catch(e){}});
 pop.addEventListener('click',function(e){if(e.target===pop)pop.classList.remove('on')});
 })();
 </script>
