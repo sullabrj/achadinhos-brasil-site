@@ -60,7 +60,7 @@
     '<a class="pv-skip" href="#">Prefiro preencher direto no pagamento</a>';
   document.body.appendChild(ov); document.body.appendChild(sh);
 
-  function abrir(e) { if (e) e.preventDefault(); ov.classList.add("on"); sh.classList.add("on"); cl("abriu_checkout"); fb("trackCustom", "CliqueComprar", { produto: P.produto }); setTimeout(function () { try { sh.querySelector("#pv-n").focus({ preventScroll: true }); } catch (e) {} }, 320); }
+  function abrir(e) { if (e) e.preventDefault(); ov.classList.add("on"); sh.classList.add("on"); cl("abriu_checkout"); fb("track", "InitiateCheckout", { content_name: P.produto, value: parseFloat(String(P.preco||"").replace(/[^\d,]/g,"").replace(",",".")) || 0, currency: "BRL" }); fb("trackCustom", "CliqueComprar", { produto: P.produto }); setTimeout(function () { try { sh.querySelector("#pv-n").focus({ preventScroll: true }); } catch (e) {} }, 320); }
   function fechar() { ov.classList.remove("on"); sh.classList.remove("on"); }
   ov.onclick = fechar; sh.querySelector(".pv-x").onclick = fechar;
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") fechar(); });

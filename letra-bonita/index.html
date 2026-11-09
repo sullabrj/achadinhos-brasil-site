@@ -172,7 +172,7 @@ footer a{color:inherit}
 <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. Pede o reembolso e devolvemos o valor inteiro.</p></details>
 <a class="btn" href="#ofertas" style="margin-top:16px">Escolher meu kit</a></div></section>
 
-<footer>Letra Bonita · Suporte: <a href="https://wa.me/5524999593100">WhatsApp (24) 99959-3100</a> · <a href="mailto:achadinhosbrasilloja@gmail.com">achadinhosbrasilloja@gmail.com</a><br>Material digital em PDF. Fotos ilustrativas.</footer>
+<footer>Letra Bonita · Suporte: <a href="https://wa.me/5524999593100">WhatsApp (24) 99959-3100</a> · <a href="mailto:achadinhosbrasilloja@gmail.com">achadinhosbrasilloja@gmail.com</a><br>Material digital em PDF. Fotos ilustrativas.<br><a href="/privacidade/">Privacidade</a> · <a href="/termos/">Termos de uso</a> · <a href="/troca-devolucao/">Troca e devolução</a></footer>
 <div class="sticky"><a class="btn" href="#ofertas">Ver ofertas a partir de R$ 9,90</a></div>
 
 <div class="modal" id="pop" role="dialog" aria-modal="true" aria-labelledby="popt"><div class="box">
@@ -195,7 +195,7 @@ fbq('track','ViewContent',{content_name:'Letra Bonita',value:17.9,currency:'BRL'
  tick();setInterval(tick,1000);
  var q=location.search.slice(1);
  document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(function(a){if(q)a.href+=(a.href.indexOf('?')<0?'?':'&')+q;
-  a.addEventListener('click',function(){try{fbq('trackCustom','CliqueComprar',{produto:a.getAttribute('data-p')||''});clarity('event','clique_'+(a.getAttribute('data-p')||'').replace(/\W+/g,'_'))}catch(e){}})});
+  a.addEventListener('click',function(){try{fbq('track','InitiateCheckout',{content_name:a.getAttribute('data-p')||'',currency:'BRL'});fbq('trackCustom','CliqueComprar',{produto:a.getAttribute('data-p')||''});clarity('event','clique_'+(a.getAttribute('data-p')||'').replace(/\W+/g,'_'))}catch(e){}})});
  var pop=document.getElementById('pop');
  document.getElementById('bBasico').addEventListener('click',function(){pop.classList.add('on');try{fbq('trackCustom','PopupUpgrade');clarity('event','popup_upgrade')}catch(e){}});
  pop.addEventListener('click',function(e){if(e.target===pop)pop.classList.remove('on')});

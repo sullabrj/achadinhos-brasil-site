@@ -191,11 +191,11 @@ footer a{color:inherit}
 <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. Pede o reembolso pela Kiwify e recebe o valor de volta.</p></details>
 </div></section>
 
-<footer>Tráfego do Zero · Suporte: <a href="https://wa.me/5524999593100">WhatsApp (24) 99959-3100</a><br>Resultados de anúncios variam conforme produto, oferta e investimento.</footer>
+<footer>Tráfego do Zero · Suporte: <a href="https://wa.me/5524999593100">WhatsApp (24) 99959-3100</a><br>Resultados de anúncios variam conforme produto, oferta e investimento.<br><a href="/privacidade/">Privacidade</a> · <a href="/termos/">Termos de uso</a> · <a href="/troca-devolucao/">Troca e devolução</a></footer>
 <div class="sticky" id="stk"><a class="btn" href="https://pay.kiwify.com.br/1M7dvvR">Quero começar por R$ 47</a></div>
 <script>
 fbq('track','ViewContent',{content_name:'Tráfego do Zero',value:47,currency:'BRL'});
-(function(){var q=location.search.slice(1);document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(function(a){if(q)a.href+=(a.href.indexOf('?')<0?'?':'&')+q;a.addEventListener('click',function(){try{fbq('trackCustom','CliqueComprar',{produto:'Trafego do Zero'})}catch(e){}try{clarity('event','clique_comprar')}catch(e){}})});
+(function(){var q=location.search.slice(1);document.querySelectorAll('a[href*="pay.kiwify.com.br"]').forEach(function(a){if(q)a.href+=(a.href.indexOf('?')<0?'?':'&')+q;a.addEventListener('click',function(){try{fbq('track','InitiateCheckout',{content_name:'Trafego do Zero',currency:'BRL'});fbq('trackCustom','CliqueComprar',{produto:'Trafego do Zero'})}catch(e){}try{clarity('event','clique_comprar')}catch(e){}})});
 var s=document.getElementById('stk'),h=document.querySelector('.hero .btn'),p=document.getElementById('comprar');function u(){var a=h.getBoundingClientRect().bottom<0,b=p.getBoundingClientRect();s.classList.toggle('on',a&&!(b.top<innerHeight&&b.bottom>0))}addEventListener('scroll',u,{passive:true});u();
 var v=document.querySelector('video');v&&v.addEventListener('play',function(){try{clarity('event','video_play')}catch(e){}},{once:true});})();
 </script>
