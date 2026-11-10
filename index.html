@@ -26,9 +26,9 @@ h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:700;letter-spac
 .nav .lk::-webkit-scrollbar{display:none}
 .nav .lk a{color:#F1E9DA;text-decoration:none;padding:6px 10px;border-radius:99px;white-space:nowrap}
 .nav .lk a:hover{background:rgba(255,255,255,.1)}
-.hero{position:relative;background:var(--chumbo) url(/guia-de-vinhos/img/hero.jpg) center/cover no-repeat;color:#fff}
-.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,30,33,.6),rgba(28,30,33,.88))}
-.hero .w{position:relative;padding-top:52px;padding-bottom:56px;max-width:860px}
+.hero{background:var(--chumbo);color:#fff}.hero .hf{display:block;width:100%;height:clamp(180px,32vw,340px);object-fit:cover}
+
+.hero .w{padding-top:26px;padding-bottom:40px;max-width:860px}
 .kick{font-size:12px;font-weight:800;letter-spacing:2.2px;text-transform:uppercase;color:var(--ouro)}
 .hero h1{font-size:34px;line-height:1.12;margin:12px 0 14px}
 .hero p{color:#EDE6D8;margin:0 0 22px;max-width:660px}
@@ -104,7 +104,7 @@ footer p{margin:0 0 10px}
 footer a{color:#fff}
 .hide{display:none!important}
 @media(min-width:720px){.hero h1{font-size:48px}.grid,.uvas,.tipos,.rules,.txt{grid-template-columns:repeat(2,1fr)}h2{font-size:34px}.res{grid-template-columns:1.2fr 1fr 1fr}.scale{grid-template-columns:repeat(4,1fr)}}
-@media(min-width:1100px){.grid,.uvas,.tipos,.rules,.txt{grid-template-columns:repeat(3,1fr)}.hero .w{padding-top:92px;padding-bottom:100px}}
+@media(min-width:1100px){.grid,.uvas,.tipos,.rules,.txt{grid-template-columns:repeat(3,1fr)}.hero .w{padding-top:40px;padding-bottom:56px}}
 @media(max-width:719px){.tbl thead{display:none}.tbl,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%}.tbl tr{border-bottom:1px solid var(--line);padding:10px 0}.tbl td{border:0;padding:3px 14px}.tbl td:first-child{color:var(--vinho);font-size:16px}.tbl td[data-l]:before{content:attr(data-l) ": ";font-weight:700;font-size:13px;color:var(--mut)}}
 .qb a.gc{background:#B8935A;color:#fff;border-color:#B8935A;font-weight:800}.nav .lk a.gcn{color:#B8935A;font-weight:800}.gcb{background:#2C2F34;color:#EDE6D8;padding:40px 0}.gcbx{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between}.gcbx>div{flex:1 1 320px}.gcb h2{color:#F7F1E6;margin:6px 0 8px}.gcb p{margin:0;color:#D8D2C6}.gcbtn{display:inline-block;background:#B8935A;color:#fff;font-weight:800;padding:15px 22px;border-radius:12px;text-decoration:none;font-size:17px;white-space:nowrap}@media(max-width:600px){.gcbtn{display:block;text-align:center;width:100%}}</style>
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','30156663417254394');fbq('track','PageView');</script>
@@ -112,7 +112,7 @@ footer a{color:#fff}
 </head><body>
 <nav class="nav"><div class="w"><b>Guia de Vinhos</b><div class="lk"><a href="#prato">Por prato</a><a href="#vinhos">Vinhos</a><a href="#uvas">Uvas</a><a href="#harmonizacao">Harmonização</a><a href="#tipos">Tipos</a><a href="#dicas">Dicas</a><a class="gcn" href="/guia-de-vinhos/oferta/">Guia completo</a></div></div></nav>
 
-<header class="hero"><div class="w">
+<header class="hero"><img class="hf" src="/guia-de-vinhos/img/hero.jpg" alt="Tábua de queijos, uvas e taças sobre a mesa" width="1440" height="708"><div class="w">
 <div class="kick">Para quem está começando</div>
 <h1>Guia de Vinhos — escolha o vinho certo para cada prato e ocasião</h1>
 <p>Vinho não precisa ser complicado. Aqui você escolhe o que vai comer e descobre o vinho que combina, conhece as principais uvas, entende a diferença entre leve e encorpado, seco e suave, e aprende a servir em casa.</p>
