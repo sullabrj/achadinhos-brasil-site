@@ -90,11 +90,10 @@ details.cat-d{background:none;border:0;padding:0;margin:0}details.cat-d summary{
 .hero .hi{margin-top:0}</style>
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','30156663417254394');fbq('track','PageView');</script>
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","z9zzqjrn35");try{clarity("set","idioma","pt")}catch(e){}</script>
-<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
-</head><body>
+<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script></head><body>
 <div class="urg">Livro digital em PDF · 3 opções · desde US$ 4,99</div>
 <header class="hero"><div class="tx top"><div class="kick">Guia de receitas práticas e rápidas</div><h1>Sempre a cozinhar <span>o mesmo?</span></h1><p class="lead">Até <b>160 receitas simples</b> para variar o almoço, o jantar, a marmita, a sobremesa e o lanche. Todas com foto e passo a passo.</p></div>
-<div class="vw"><img class="hi" src="img/hero.jpg" alt="Catálogo de Receitas: níveis Básico, Intermédio e Premium" width="1080" height="700" style="-webkit-mask-image:none;mask-image:none;border-radius:0;margin:0 -18px;width:calc(100% + 36px);max-width:none"></div>
+<div class="vw"><div class="yt" id="yt" role="button" tabindex="0" aria-label="Ver o vídeo"><img src="https://i.ytimg.com/vi/KIn7d4tiGS8/hqdefault.jpg" alt="Vídeo: veja o que vem em cada nível do Catálogo de Receitas" width="480" height="360" onerror="this.onerror=null;this.src='img/hero.jpg'"><span class="play" aria-hidden="true"></span><span class="ytl">Veja por dentro em 1 minuto</span></div></div>
 <div class="tx bot"><div class="pills"><b>Até 160 receitas</b><b>Foto em cada receita</b><b>Desde US$ 4,99</b></div>
 <a class="btn" href="#planos">Ver as 3 opções</a><div class="note">Pagamento único · acesso imediato · garantia de 7 dias</div></div></header>
 
@@ -156,7 +155,7 @@ details.cat-d{background:none;border:0;padding:0;margin:0}details.cat-d summary{
 var CUR='USD';
 try{fbq('track','ViewContent',{content_name:'Catálogo de Receitas',value:4.99,currency:CUR})}catch(e){}
 function cl(ev){try{clarity('event',ev)}catch(e){}}
-
+var yt=document.getElementById('yt');function abreYT(){if(yt.querySelector('iframe'))return;yt.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/KIn7d4tiGS8?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="Catálogo de Receitas" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';cl('video_play')}yt.addEventListener('click',abreYT);yt.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();abreYT()}});
 try{var st=document.querySelector('.sticky'),pl=document.getElementById('planos');new IntersectionObserver(function(e){st.classList.toggle('off',e[0].isIntersecting)},{rootMargin:'0px 0px -20% 0px'}).observe(pl)}catch(e){}
 var pop=document.getElementById('pop');
 /* repassa UTMs/fbclid do anúncio para o checkout (atribuição por criativo) */
