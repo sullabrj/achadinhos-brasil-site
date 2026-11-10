@@ -6,7 +6,7 @@
 <meta name="description" content="Cansado da mesmice? Aprenda pratos simples e fáceis, impressione dentro de casa e varie o cardápio com até 160 receitas rápidas, com foto e passo a passo. Livro digital em PDF.">
 <link rel="canonical" href="https://lojaachadinhosbrasil.com.br/manha-sem-pao/">
 <meta property="og:title" content="Cansado da mesmice na cozinha? 160 receitas práticas e rápidas"><meta property="og:description" content="Pratos simples e fáceis para impressionar dentro de casa. PDF com foto em cada receita, a partir de R$ 19,90.">
-<meta property="og:image" content="https://lojaachadinhosbrasil.com.br/manha-sem-pao/img/capa.jpg">
+<meta property="og:image" content="https://www.lojaachadinhosbrasil.com.br/manha-sem-pao-novo/img/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:type" content="website"><meta property="og:url" content="https://www.lojaachadinhosbrasil.com.br/manha-sem-pao-novo/">
 <link rel="preload" as="image" href="img/capa.jpg">
 <style>:root{--dark:#1F3A26;--verde:#2F5D3A;--verde2:#5E8C61;--bg:#F7F1E3;--alt:#EFE5CC;--ink:#2A2A26;--mut:#6B6A61;--acc:#C9973A;--card:#fff;--line:#E3D8BD}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
@@ -162,10 +162,15 @@ table.cat tr.tt td{background:var(--alt);font-weight:900;color:var(--verde)}
 (function(){
 try{fbq('track','ViewContent',{content_name:'Catálogo de Receitas',value:19.9,currency:'BRL'})}catch(e){}
 var OF={'Básico':['Catálogo de Receitas Básico','R$ 19,90','img/capa-basico.jpg'],'Intermediário':['Catálogo de Receitas Intermediário','R$ 39,90','img/capa-intermediario.jpg'],'Premium':['Catálogo de Receitas Premium','R$ 49,90','img/capa-premium.jpg'],'Premium pop-up':['Catálogo de Receitas Premium','R$ 49,90','img/capa-premium.jpg']};
-window.PV={produto:'Catálogo de Receitas Premium',preco:'R$ 49,90',url:'https://pay.cakto.com.br/37y7q73',capa:'img/capa-premium.jpg',cor:'#2F5D3A',corTexto:'#ffffff'};
+window.PV={produto:'Catálogo de Receitas Premium',preco:'R$ 49,90',url:'https://pay.cakto.com.br/37y7q73',capa:'img/capa-premium.jpg',cor:'#2F5D3A',corTexto:'#ffffff',gateway:'Cakto'};
 var pop=document.getElementById('pop');
+/* Repassa UTMs/fbclid do anúncio para o checkout da Cakto (atribuição por criativo) */
+var QS=location.search.slice(1);
+function comQS(h){var b=h.split('?')[0],ps=[];if(QS)ps.push(QS);return b+(ps.length?'?'+ps.join('&'):'');}
+document.querySelectorAll('a[href*="pay.cakto.com.br"]').forEach(function(a){a.setAttribute('href',comQS(a.getAttribute('href')));});
 document.querySelectorAll('a[href*="pay.cakto.com.br"]').forEach(function(a){a.addEventListener('click',function(){
   var k=a.getAttribute('data-produto')||'Premium',o=OF[k]||OF['Premium'];
+  try{fbq('track','InitiateCheckout',{content_name:o[0],value:parseFloat(o[1].replace(/[^\d,]/g,'').replace(',','.')),currency:'BRL'})}catch(e){}
   PV.url=a.getAttribute('href').split('?')[0];PV.produto=o[0];PV.preco=o[1];PV.capa=o[2];
   var sm=document.querySelector('.pv-sum');if(sm){sm.querySelector('strong').textContent=o[0];sm.querySelector('em').textContent=o[1];sm.querySelector('img').src=o[2];}
   pop.classList.remove('on');try{clarity('event','clique_'+k.replace(/\W+/g,'_'))}catch(e){}

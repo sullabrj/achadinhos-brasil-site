@@ -56,7 +56,7 @@
     '<label for="pv-e">E-mail (o acesso chega aqui)</label><input id="pv-e" name="email" type="email" inputmode="email" autocomplete="email" required>' +
     '<label for="pv-p">WhatsApp</label><input id="pv-p" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(21) 99999-9999" required>' +
     '<div class="pv-err" aria-live="polite"></div><button class="pv-go" type="submit">Ir para o pagamento →</button></form>' +
-    '<div class="pv-trust"><span>🔒 Pagamento seguro Kiwify</span><span>Pix ou cartão</span><span>Garantia de 7 dias</span></div>' +
+    '<div class="pv-trust"><span>🔒 Pagamento seguro ' + (P.gateway || "Kiwify") + '</span><span>Pix ou cartão</span><span>Garantia de 7 dias</span></div>' +
     '<a class="pv-skip" href="#">Prefiro preencher direto no pagamento</a>';
   document.body.appendChild(ov); document.body.appendChild(sh);
 
