@@ -3,141 +3,336 @@
 <html lang="pt-BR"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="awin" content="awin">
-<title>Guia de Vinhos: escolha o vinho certo para cada prato e ocasião</title>
-<meta name="description" content="Guia de Vinhos para quem está começando: fichas de rótulos fáceis de achar no Brasil, harmonização com pratos brasileiros, ocasiões e como servir.">
+<title>Guia de Vinhos: uvas, harmonização e o vinho certo para cada prato</title>
+<meta name="description" content="Guia de vinhos para quem está começando: o que combina com churrasco, feijoada, pizza, peixe e sushi; as principais uvas explicadas; tipos de vinho e como servir.">
 <link rel="canonical" href="https://lojaachadinhosbrasil.com.br/guia-de-vinhos/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Guia de Vinhos: escolha o vinho certo para cada prato e ocasião">
-<meta property="og:description" content="Fichas de vinhos fáceis de achar no Brasil, harmonizações e dicas de como servir.">
+<meta property="og:title" content="Guia de Vinhos: uvas, harmonização e o vinho certo para cada prato">
+<meta property="og:description" content="Escolha o prato e veja o vinho que combina. Uvas, tipos de vinho, fichas e dicas de como servir.">
 <meta property="og:image" content="https://lojaachadinhosbrasil.com.br/guia-de-vinhos/img/hero.jpg">
-<link rel="preload" as="image" href="img/hero.jpg">
+<link rel="preload" as="image" href="/guia-de-vinhos/img/hero.jpg">
 <style>
-:root{--vinho:#5A1A2A;--vinho2:#7A2538;--creme:#F7F1E6;--creme2:#EFE6D6;--chumbo:#2C2F34;--mut:#656A72;--card:#FFFCF6;--line:#E2D8C6}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
+:root{--vinho:#5A1A2A;--vinho2:#7A2538;--creme:#F7F1E6;--creme2:#EFE6D6;--chumbo:#2C2F34;--mut:#656A72;--card:#FFFCF6;--line:#E2D8C6;--ouro:#B8935A}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:58px}
 body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--creme);color:var(--chumbo);line-height:1.6;font-size:17px;overflow-x:hidden}
 img{display:block;max-width:100%}
 a{color:var(--vinho)}
-.w{max-width:1080px;margin:0 auto;padding:0 18px}
+.w{max-width:1120px;margin:0 auto;padding:0 18px}
 h1,h2,h3{font-family:Georgia,"Times New Roman",serif;font-weight:700;letter-spacing:-.2px}
-.nav{background:var(--chumbo);color:#F1E9DA;font-size:14px}
-.nav .w{display:flex;gap:18px;align-items:center;justify-content:space-between;padding-top:12px;padding-bottom:12px}
-.nav b{font-family:Georgia,serif;font-size:17px;letter-spacing:.3px}
-.nav a{color:#F1E9DA;text-decoration:none;margin-left:14px}
-.hero{position:relative;background:var(--chumbo) url(img/hero.jpg) center/cover no-repeat;color:#fff}
-.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(32,34,38,.62),rgba(32,34,38,.86))}
-.hero .w{position:relative;padding-top:56px;padding-bottom:60px;max-width:820px}
-.kick{font-size:12px;font-weight:800;letter-spacing:2.2px;text-transform:uppercase;color:#D9C5A0}
+.nav{position:sticky;top:0;z-index:20;background:rgba(44,47,52,.97);color:#F1E9DA;font-size:14px}
+.nav .w{display:flex;align-items:center;gap:14px;height:52px}
+.nav b{font-family:Georgia,serif;font-size:17px;white-space:nowrap}
+.nav .lk{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-left:auto}
+.nav .lk::-webkit-scrollbar{display:none}
+.nav .lk a{color:#F1E9DA;text-decoration:none;padding:6px 10px;border-radius:99px;white-space:nowrap}
+.nav .lk a:hover{background:rgba(255,255,255,.1)}
+.hero{position:relative;background:var(--chumbo) url(/guia-de-vinhos/img/hero.jpg) center/cover no-repeat;color:#fff}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,30,33,.6),rgba(28,30,33,.88))}
+.hero .w{position:relative;padding-top:52px;padding-bottom:56px;max-width:860px}
+.kick{font-size:12px;font-weight:800;letter-spacing:2.2px;text-transform:uppercase;color:var(--ouro)}
 .hero h1{font-size:34px;line-height:1.12;margin:12px 0 14px}
-.hero p{color:#EDE6D8;margin:0 0 20px;max-width:640px}
-.btn{display:inline-block;background:var(--creme);color:var(--vinho);font-weight:800;padding:13px 22px;border-radius:10px;text-decoration:none}
-section{padding:46px 0}
+.hero p{color:#EDE6D8;margin:0 0 22px;max-width:660px}
+.qb{display:flex;flex-wrap:wrap;gap:8px}
+.qb a{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff;text-decoration:none;padding:9px 14px;border-radius:99px;font-size:15px;font-weight:600}
+.qb a.p{background:var(--creme);color:var(--vinho);border-color:var(--creme)}
+section{padding:48px 0}
 section.alt{background:var(--creme2)}
+section.dk{background:var(--chumbo);color:#EDE6D8}
+section.dk h2{color:#fff}
 h2{font-size:28px;line-height:1.15;margin:6px 0 10px;color:var(--vinho)}
-.lead{color:var(--mut);margin:0 0 24px;max-width:680px}
+.lead{color:var(--mut);margin:0 0 24px;max-width:700px}
+.dk .lead{color:#C9C2B5}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chip{border:1.5px solid #555a61;background:transparent;color:#EDE6D8;border-radius:99px;padding:8px 14px;font:inherit;font-size:15px;cursor:pointer}
+.chip.on{background:var(--creme);color:var(--vinho);border-color:var(--creme);font-weight:700}
+.res{background:#363a40;border-radius:16px;padding:20px;display:grid;gap:14px}
+.res h3{margin:0;font-size:22px;color:#fff}
+.res .row{display:grid;gap:4px;align-content:start}
+.res .lb{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--ouro)}
+.res .why{color:#C9C2B5;font-size:15px}
+.res .sug{display:flex;flex-wrap:wrap;gap:8px}
+.res .sug a{background:#2C2F34;color:#F1E9DA;text-decoration:none;border:1px solid #4a4f56;border-radius:10px;padding:7px 11px;font-size:14px}
+.flt{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.flt button{border:1.5px solid var(--line);background:var(--card);color:var(--chumbo);border-radius:99px;padding:7px 14px;font:inherit;font-size:15px;cursor:pointer}
+.flt button.on{background:var(--vinho);border-color:var(--vinho);color:#fff;font-weight:700}
 .grid{display:grid;gap:16px;grid-template-columns:1fr}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-.card .ph{height:150px;background:var(--chumbo) center/cover no-repeat}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:outline .2s}
+.card img{width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--chumbo)}
 .card .bd{padding:18px 18px 20px}
 .tag{display:inline-block;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--vinho);background:#EFE0D4;border-radius:99px;padding:3px 10px;margin-bottom:8px}
 .card h3{font-size:20px;line-height:1.2;margin:0 0 2px}
-.card .pr{color:var(--mut);font-size:14px;margin:0 0 12px}
+.card .pr{color:var(--mut);font-size:14px;margin:0 0 10px}
 dl{margin:0;font-size:15px}
-dt{font-weight:800;color:var(--chumbo);margin-top:9px;font-size:13px;letter-spacing:.4px;text-transform:uppercase}
+dt{font-weight:800;margin-top:9px;font-size:12.5px;letter-spacing:.5px;text-transform:uppercase}
 dd{margin:1px 0 0;color:#3d4148}
-.card .ph-tinto{background-image:url(img/tinto.jpg)}.card .ph-branco{background-image:url(img/branco.jpg)}.card .ph-esp{background-image:url(img/espumante.jpg)}
-.txt{display:grid;gap:18px;grid-template-columns:1fr}
+.uvas{display:grid;gap:14px;grid-template-columns:1fr}
+.uva{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;border-top:4px solid var(--vinho)}
+.uva.b{border-top-color:var(--ouro)}
+.uva h3{margin:0 0 4px;font-size:20px}
+.uva .mt{font-size:13px;color:var(--mut);margin:0 0 8px}
+.uva p{margin:6px 0 0;font-size:15px}
+.bar{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mut);margin:2px 0}
+.bar i{flex:0 0 90px;height:6px;border-radius:9px;background:#e6dccb;position:relative;overflow:hidden}
+.bar i:after{content:"";position:absolute;inset:0;width:var(--v);background:var(--vinho2);border-radius:9px}
+.uva.b .bar i:after{background:var(--ouro)}
+.sub{font-family:Georgia,serif;font-size:22px;color:var(--chumbo);margin:28px 0 12px}
+.rules{display:grid;gap:12px;grid-template-columns:1fr;counter-reset:r}
+.rule{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 16px 16px 58px;position:relative}
+.rule:before{counter-increment:r;content:counter(r);position:absolute;left:16px;top:16px;width:28px;height:28px;border-radius:50%;background:var(--vinho);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
+.rule b{display:block;margin-bottom:2px}
+.rule span{color:#3d4148;font-size:15px}
+.tbl{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:15px}
+.tbl th,.tbl td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl th{background:var(--vinho);color:#fff;font-size:13px;letter-spacing:.5px;text-transform:uppercase}
+.tbl td:first-child{font-weight:700}
+.tipos{display:grid;gap:14px;grid-template-columns:1fr}
+.tipo{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.tipo h3{margin:0 0 6px;font-size:20px;color:var(--vinho)}
+.tipo p{margin:0 0 6px;font-size:15px}
+.scale{display:grid;gap:12px;grid-template-columns:1fr}
+.scale div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;font-size:15px}
+.scale b{display:block;color:var(--vinho);font-family:Georgia,serif;font-size:18px;margin-bottom:4px}
+.txt{display:grid;gap:16px;grid-template-columns:1fr}
 .art{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
-.art h3{font-size:22px;color:var(--vinho);margin:0 0 8px}
-.art p{margin:0 0 10px}
-.art ul{margin:0;padding-left:20px}
+.art h3{font-size:21px;color:var(--vinho);margin:0 0 8px}
+.art p{margin:0 0 10px;font-size:16px}
+.art ul{margin:0;padding-left:20px;font-size:16px}
+.art li{margin-bottom:4px}
 .note{font-size:14px;color:var(--mut);margin-top:22px}
 footer{background:var(--chumbo);color:#D8D2C6;padding:34px 0 40px;font-size:14px}
 footer p{margin:0 0 10px}
 footer a{color:#fff}
-@media(min-width:720px){.hero h1{font-size:46px}.grid{grid-template-columns:repeat(2,1fr)}.txt{grid-template-columns:repeat(3,1fr)}h2{font-size:34px}}
-@media(min-width:1100px){.grid{grid-template-columns:repeat(3,1fr)}.hero .w{padding-top:96px;padding-bottom:104px}}
+.hide{display:none!important}
+@media(min-width:720px){.hero h1{font-size:48px}.grid,.uvas,.tipos,.rules,.txt{grid-template-columns:repeat(2,1fr)}h2{font-size:34px}.res{grid-template-columns:1.2fr 1fr 1fr}.scale{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:1100px){.grid,.uvas,.tipos,.rules,.txt{grid-template-columns:repeat(3,1fr)}.hero .w{padding-top:92px;padding-bottom:100px}}
+@media(max-width:719px){.tbl thead{display:none}.tbl,.tbl tbody,.tbl tr,.tbl td{display:block;width:100%}.tbl tr{border-bottom:1px solid var(--line);padding:10px 0}.tbl td{border:0;padding:3px 14px}.tbl td:first-child{color:var(--vinho);font-size:16px}.tbl td[data-l]:before{content:attr(data-l) ": ";font-weight:700;font-size:13px;color:var(--mut)}}
 </style>
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','30156663417254394');fbq('track','PageView');</script>
 <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","z9zzqjrn35");clarity('set','pagina','guia-de-vinhos');</script>
 </head><body>
-<div class="nav"><div class="w"><b>Guia de Vinhos</b><span><a href="#vinhos">Vinhos</a><a href="#dicas">Dicas</a></span></div></div>
+<nav class="nav"><div class="w"><b>Guia de Vinhos</b><div class="lk"><a href="#prato">Por prato</a><a href="#vinhos">Vinhos</a><a href="#uvas">Uvas</a><a href="#harmonizacao">Harmonização</a><a href="#tipos">Tipos</a><a href="#dicas">Dicas</a></div></div></nav>
 
 <header class="hero"><div class="w">
 <div class="kick">Para quem está começando</div>
 <h1>Guia de Vinhos — escolha o vinho certo para cada prato e ocasião</h1>
-<p>Um guia simples para quem quer entender de vinho sem complicação. Reunimos fichas de rótulos fáceis de achar no Brasil, com uva, estilo, pratos que combinam, ocasiões e como servir. Comece pelas fichas e use as dicas para escolher com segurança.</p>
-<a class="btn" href="#vinhos">Ver as fichas</a>
+<p>Vinho não precisa ser complicado. Aqui você escolhe o que vai comer e descobre o vinho que combina, conhece as principais uvas, entende a diferença entre leve e encorpado, seco e suave, e aprende a servir em casa.</p>
+<div class="qb"><a class="p" href="#prato">O que vou comer hoje?</a><a href="#uvas">Conhecer as uvas</a><a href="#vinhos">Ver vinhos</a></div>
 </div></header>
 
-<section id="vinhos"><div class="w">
-<div class="kick" style="color:var(--vinho2)">Fichas de amostra</div>
-<h2>10 vinhos para começar</h2>
-<p class="lead">Dados de uva, região e estilo conferidos nos sites dos produtores. As sugestões de pratos brasileiros e de ocasião são do guia.</p>
-<div class="grid">
-
-<article class="card"><div class="ph ph-tinto" role="img" aria-label="Taça de vinho tinto sobre mesa de madeira"></div><div class="bd"><span class="tag">Tinto</span>
-<h3>Casillero del Diablo Reserva Cabernet Sauvignon</h3><p class="pr">Casillero del Diablo (Concha y Toro)</p>
-<dl><dt>País / região</dt><dd>Chile, Vale Central</dd><dt>Uva</dt><dd>Cabernet Sauvignon</dd><dt>Estilo</dt><dd>Tinto de corpo médio, taninos marcados; notas de cereja, cassis e leve baunilha</dd><dt>Harmoniza com</dt><dd>Picanha e fraldinha na brasa, queijo meia-cura</dd><dt>Ocasiões</dt><dd>Churrasco de fim de semana, jantar entre amigos</dd><dt>Como servir</dt><dd>De 18 a 20 °C</dd></dl></div></article>
-
-<article class="card"><div class="ph ph-tinto" role="img" aria-label="Taça de vinho tinto sobre mesa de madeira"></div><div class="bd"><span class="tag">Tinto</span>
-<h3>Casillero del Diablo Reserva Carmenere</h3><p class="pr">Casillero del Diablo (Concha y Toro)</p>
-<dl><dt>País / região</dt><dd>Chile, Vale Central</dd><dt>Uva</dt><dd>Carmenere</dd><dt>Estilo</dt><dd>Tinto frutado de corpo médio, com acidez natural e taninos polidos; notas de frutas vermelhas, ameixa, café e especiarias</dd><dt>Harmoniza com</dt><dd>Feijão tropeiro, legumes assados, carnes de caça</dd><dt>Ocasiões</dt><dd>Almoço de domingo, noite fria em casa</dd><dt>Como servir</dt><dd>De 16 a 18 °C</dd></dl></div></article>
-
-<article class="card"><div class="ph ph-tinto" role="img" aria-label="Taça de vinho tinto sobre mesa de madeira"></div><div class="bd"><span class="tag">Tinto</span>
-<h3>Marqués de Cáceres Crianza</h3><p class="pr">Bodegas Marqués de Cáceres</p>
-<dl><dt>País / região</dt><dd>Espanha, D.O.Ca. Rioja</dd><dt>Uva</dt><dd>Tempranillo e outras variedades</dd><dt>Estilo</dt><dd>Tinto equilibrado, com taninos sedosos e passagem por carvalho; frutas negras e especiarias; 13,5% de álcool</dd><dt>Harmoniza com</dt><dd>Costela assada, carne de panela, queijos curados</dd><dt>Ocasiões</dt><dd>Jantar de comemoração, reunião de família</dd><dt>Como servir</dt><dd>A 16 °C</dd></dl></div></article>
-
-<article class="card"><div class="ph ph-tinto" role="img" aria-label="Taça de vinho tinto sobre mesa de madeira"></div><div class="bd"><span class="tag">Tinto</span>
-<h3>Ruffino Chianti DOCG</h3><p class="pr">Ruffino</p>
-<dl><dt>País / região</dt><dd>Itália, Chianti</dd><dt>Uva</dt><dd>70% Sangiovese; o restante com Merlot, Cabernet Sauvignon e outras variedades</dd><dt>Estilo</dt><dd>Tinto envelhecido em tanques de aço inox e de concreto</dd><dt>Harmoniza com</dt><dd>Massas com molho de tomate, lasanha, pizza</dd><dt>Ocasiões</dt><dd>Noite de massa, jantar descomplicado</dd><dt>Como servir</dt><dd>De 16 a 18 °C</dd></dl></div></article>
-
-<article class="card"><div class="ph ph-tinto" role="img" aria-label="Taça de vinho tinto sobre mesa de madeira"></div><div class="bd"><span class="tag">Tinto nacional</span>
-<h3>Salton Intenso Cabernet Sauvignon</h3><p class="pr">Vinícola Salton</p>
-<dl><dt>País / região</dt><dd>Brasil, Campanha Gaúcha</dd><dt>Uva</dt><dd>Cabernet Sauvignon</dd><dt>Estilo</dt><dd>Tinto seco de corpo médio, taninos aveludados e final persistente; amora, mirtilo, canela e pimenta-preta; 13,5% de álcool</dd><dt>Harmoniza com</dt><dd>Risoto, carnes vermelhas, queijos de maturação média</dd><dt>Ocasiões</dt><dd>Jantar em casa, presente para quem gosta de vinho nacional</dd><dt>Como servir</dt><dd>De 16 a 18 °C</dd></dl></div></article>
-
-<article class="card"><div class="ph ph-branco" role="img" aria-label="Taça de vinho branco gelado"></div><div class="bd"><span class="tag">Branco</span>
-<h3>Casillero del Diablo Reserva Chardonnay</h3><p class="pr">Casillero del Diablo (Concha y Toro)</p>
-<dl><dt>País / região</dt><dd>Chile</dd><dt>Uva</dt><dd>Chardonnay</dd><dt>Estilo</dt><dd>Branco de corpo médio, fresco e estruturado; abacaxi, pêssego, cítricos e toque de avelã da passagem por barrica</dd><dt>Harmoniza com</dt><dd>Peixe grelhado, camarão, massas cremosas</dd><dt>Ocasiões</dt><dd>Almoço de sábado, jantar de peixe</dd><dt>Como servir</dt><dd>De 10 a 12 °C</dd></dl></div></article>
-
-<article class="card"><div class="ph ph-branco" role="img" aria-label="Taça de vinho branco gelado"></div><div class="bd"><span class="tag">Branco</span>
-<h3>Cono Sur Bicicleta Sauvignon Blanc</h3><p class="pr">Viña Cono Sur</p>
-<dl><dt>País / região</dt><dd>Chile</dd><dt>Uva</dt><dd>Sauvignon Blanc</dd><dt>Estilo</dt><dd>Branco fresco e equilibrado; toranja, maçã verde e toques herbáceos, com final mineral</dd><dt>Harmoniza com</dt><dd>Ceviche, saladas, frango grelhado, queijos frescos</dd><dt>Ocasiões</dt><dd>Aperitivo, almoço leve, tarde de calor</dd><dt>Como servir</dt><dd>Bem gelado</dd></dl></div></article>
-
-<article class="card"><div class="ph ph-branco" role="img" aria-label="Taça de vinho branco gelado"></div><div class="bd"><span class="tag">Branco</span>
-<h3>Casal Garcia Branco</h3><p class="pr">Aveleda</p>
-<dl><dt>País / região</dt><dd>Portugal, Vinhos Verdes DOC</dd><dt>Uva</dt><dd>Trajadura, Loureiro, Arinto e Fernão Pires</dd><dt>Estilo</dt><dd>Branco jovem, leve e meio-seco, com leve efervescência; frutos tropicais e cítricos; 9,5% de álcool</dd><dt>Harmoniza com</dt><dd>Sushi, peixes, frango grelhado, saladas</dd><dt>Ocasiões</dt><dd>Aperitivo, almoço de verão</dd><dt>Como servir</dt><dd>De 8 a 10 °C</dd></dl></div></article>
-
-<article class="card"><div class="ph ph-branco" role="img" aria-label="Taça de vinho gelado"></div><div class="bd"><span class="tag">Rosé</span>
-<h3>Cono Sur Bicicleta Pinot Noir Rosé</h3><p class="pr">Viña Cono Sur</p>
-<dl><dt>País / região</dt><dd>Chile</dd><dt>Uva</dt><dd>Pinot Noir</dd><dt>Estilo</dt><dd>Rosé fresco e suculento, boa acidez; cereja, morango e frutas vermelhas</dd><dt>Harmoniza com</dt><dd>Aperitivo, petiscos, sobremesas de frutas e bolos</dd><dt>Ocasiões</dt><dd>Happy hour, tarde na varanda</dd><dt>Como servir</dt><dd>Bem gelado</dd></dl></div></article>
-
-<article class="card"><div class="ph ph-esp" role="img" aria-label="Taças de espumante"></div><div class="bd"><span class="tag">Espumante nacional</span>
-<h3>Salton Brut</h3><p class="pr">Vinícola Salton</p>
-<dl><dt>País / região</dt><dd>Brasil, Serra Gaúcha</dd><dt>Uva</dt><dd>Chardonnay, Trebbiano e Prosecco</dd><dt>Estilo</dt><dd>Espumante brut (14 g/L de açúcar), fresco, cremoso e delicado; segunda fermentação em autoclave; 12% de álcool</dd><dt>Harmoniza com</dt><dd>Canapés, massas com molhos leves, carnes brancas</dd><dt>Ocasiões</dt><dd>Brinde, aniversário, Réveillon</dd><dt>Como servir</dt><dd>Bem gelado</dd></dl></div></article>
-
-</div>
-<p class="note">Fontes dos dados: sites e fichas técnicas dos produtores (Concha y Toro / Casillero del Diablo, Cono Sur, Aveleda / Casal Garcia, Marqués de Cáceres, Ruffino e Salton). Safras e rótulos podem mudar.</p>
+<section id="prato" class="dk"><div class="w">
+<div class="kick">Harmonização rápida</div>
+<h2>O que você vai comer?</h2>
+<p class="lead">Toque no prato e veja o estilo de vinho, as uvas que costumam funcionar e exemplos deste guia.</p>
+<div class="chips" id="chips"></div>
+<div class="res" id="res" aria-live="polite"></div>
 </div></section>
 
-<section id="dicas" class="alt"><div class="w">
-<div class="kick" style="color:var(--vinho2)">Dicas rápidas</div>
-<h2>Três guias curtos</h2>
+<section id="vinhos"><div class="w">
+<div class="kick" style="color:var(--vinho2)">Fichas de vinhos</div>
+<h2>10 vinhos fáceis de achar no Brasil</h2>
+<p class="lead">Uva, região, estilo e temperatura conferidos nos sites dos produtores. Os pratos e as ocasiões são sugestões do guia.</p>
+<div class="flt" id="flt"><button class="on" data-f="todos">Todos</button><button data-f="tinto">Tintos</button><button data-f="branco">Brancos</button><button data-f="rose">Rosé</button><button data-f="espumante">Espumante</button></div>
+<div class="grid" id="fichas">
+
+<article class="card" data-t="tinto" id="v-cabernet"><img loading="lazy" src="/guia-de-vinhos/img/w01.jpg" alt="Garrafa de vinho tinto com picanha na tábua"><div class="bd"><span class="tag">Tinto</span>
+<h3>Casillero del Diablo Reserva Cabernet Sauvignon</h3><p class="pr">Casillero del Diablo (Concha y Toro)</p>
+<dl><dt>País / região</dt><dd>Chile, Vale Central</dd><dt>Uva</dt><dd>Cabernet Sauvignon</dd><dt>Estilo</dt><dd>Tinto seco, corpo médio, taninos marcados; cereja, cassis e leve baunilha</dd><dt>Harmoniza com</dt><dd>Picanha e fraldinha na brasa, queijo meia-cura</dd><dt>Ocasiões</dt><dd>Churrasco de fim de semana, jantar entre amigos</dd><dt>Como servir</dt><dd>De 18 a 20 °C</dd></dl></div></article>
+
+<article class="card" data-t="tinto" id="v-carmenere"><img loading="lazy" src="/guia-de-vinhos/img/w02.jpg" alt="Garrafa de vinho tinto com feijão tropeiro"><div class="bd"><span class="tag">Tinto</span>
+<h3>Casillero del Diablo Reserva Carmenere</h3><p class="pr">Casillero del Diablo (Concha y Toro)</p>
+<dl><dt>País / região</dt><dd>Chile, Vale Central</dd><dt>Uva</dt><dd>Carménère</dd><dt>Estilo</dt><dd>Tinto seco, frutado, corpo médio, taninos polidos; ameixa, frutas vermelhas, café e especiarias</dd><dt>Harmoniza com</dt><dd>Feijão tropeiro, legumes assados, carnes de caça</dd><dt>Ocasiões</dt><dd>Almoço de domingo, noite fria em casa</dd><dt>Como servir</dt><dd>De 16 a 18 °C</dd></dl></div></article>
+
+<article class="card" data-t="tinto" id="v-rioja"><img loading="lazy" src="/guia-de-vinhos/img/w03.jpg" alt="Garrafa de vinho tinto com costela assada"><div class="bd"><span class="tag">Tinto</span>
+<h3>Marqués de Cáceres Crianza</h3><p class="pr">Bodegas Marqués de Cáceres</p>
+<dl><dt>País / região</dt><dd>Espanha, D.O.Ca. Rioja</dd><dt>Uva</dt><dd>Tempranillo e outras variedades</dd><dt>Estilo</dt><dd>Tinto seco equilibrado, taninos sedosos, passagem por carvalho; frutas negras e especiarias; 13,5% de álcool</dd><dt>Harmoniza com</dt><dd>Costela assada, carne de panela, queijos curados</dd><dt>Ocasiões</dt><dd>Jantar de comemoração, reunião de família</dd><dt>Como servir</dt><dd>A 16 °C</dd></dl></div></article>
+
+<article class="card" data-t="tinto" id="v-chianti"><img loading="lazy" src="/guia-de-vinhos/img/w04.jpg" alt="Garrafa de vinho tinto com lasanha"><div class="bd"><span class="tag">Tinto</span>
+<h3>Ruffino Chianti DOCG</h3><p class="pr">Ruffino</p>
+<dl><dt>País / região</dt><dd>Itália, Chianti (Toscana)</dd><dt>Uva</dt><dd>70% Sangiovese; o restante com Merlot, Cabernet Sauvignon e outras</dd><dt>Estilo</dt><dd>Tinto seco, envelhecido em tanques de aço inox e de concreto</dd><dt>Harmoniza com</dt><dd>Lasanha, macarrão ao sugo, pizza</dd><dt>Ocasiões</dt><dd>Noite de massa, jantar descomplicado</dd><dt>Como servir</dt><dd>De 16 a 18 °C</dd></dl></div></article>
+
+<article class="card" data-t="tinto" id="v-salton"><img loading="lazy" src="/guia-de-vinhos/img/w05.jpg" alt="Garrafa de vinho tinto com risoto de cogumelos"><div class="bd"><span class="tag">Tinto nacional</span>
+<h3>Salton Intenso Cabernet Sauvignon</h3><p class="pr">Vinícola Salton</p>
+<dl><dt>País / região</dt><dd>Brasil, Campanha Gaúcha</dd><dt>Uva</dt><dd>Cabernet Sauvignon</dd><dt>Estilo</dt><dd>Tinto seco, corpo médio, taninos aveludados; amora, mirtilo, canela e pimenta-preta; 13,5% de álcool</dd><dt>Harmoniza com</dt><dd>Risoto, carnes vermelhas, queijos de maturação média</dd><dt>Ocasiões</dt><dd>Jantar em casa, presente para quem gosta de vinho nacional</dd><dt>Como servir</dt><dd>De 16 a 18 °C</dd></dl></div></article>
+
+<article class="card" data-t="branco" id="v-chardonnay"><img loading="lazy" src="/guia-de-vinhos/img/w06.jpg" alt="Garrafa de vinho branco com peixe grelhado"><div class="bd"><span class="tag">Branco</span>
+<h3>Casillero del Diablo Reserva Chardonnay</h3><p class="pr">Casillero del Diablo (Concha y Toro)</p>
+<dl><dt>País / região</dt><dd>Chile</dd><dt>Uva</dt><dd>Chardonnay</dd><dt>Estilo</dt><dd>Branco seco, corpo médio, fresco e estruturado; abacaxi, pêssego, cítricos e toque de avelã da barrica</dd><dt>Harmoniza com</dt><dd>Peixe grelhado, camarão, massas cremosas</dd><dt>Ocasiões</dt><dd>Almoço de sábado, jantar de peixe</dd><dt>Como servir</dt><dd>De 10 a 12 °C</dd></dl></div></article>
+
+<article class="card" data-t="branco" id="v-sauvignon"><img loading="lazy" src="/guia-de-vinhos/img/w07.jpg" alt="Garrafa de vinho branco com ceviche"><div class="bd"><span class="tag">Branco</span>
+<h3>Cono Sur Bicicleta Sauvignon Blanc</h3><p class="pr">Viña Cono Sur</p>
+<dl><dt>País / região</dt><dd>Chile</dd><dt>Uva</dt><dd>Sauvignon Blanc</dd><dt>Estilo</dt><dd>Branco seco, leve, fresco e equilibrado; toranja, maçã verde, toque herbáceo e final mineral</dd><dt>Harmoniza com</dt><dd>Ceviche, saladas, frango grelhado, queijos frescos</dd><dt>Ocasiões</dt><dd>Aperitivo, almoço leve, tarde de calor</dd><dt>Como servir</dt><dd>Bem gelado</dd></dl></div></article>
+
+<article class="card" data-t="branco" id="v-casalgarcia"><img loading="lazy" src="/guia-de-vinhos/img/w08.jpg" alt="Garrafa de vinho verde com sushi"><div class="bd"><span class="tag">Branco</span>
+<h3>Casal Garcia Branco</h3><p class="pr">Aveleda</p>
+<dl><dt>País / região</dt><dd>Portugal, Vinhos Verdes DOC</dd><dt>Uva</dt><dd>Trajadura, Loureiro, Arinto e Fernão Pires</dd><dt>Estilo</dt><dd>Branco leve e meio-seco, com leve efervescência; frutos tropicais e cítricos; 9,5% de álcool</dd><dt>Harmoniza com</dt><dd>Sushi, peixes, frango grelhado, saladas</dd><dt>Ocasiões</dt><dd>Aperitivo, almoço de verão</dd><dt>Como servir</dt><dd>De 8 a 10 °C</dd></dl></div></article>
+
+<article class="card" data-t="rose" id="v-rose"><img loading="lazy" src="/guia-de-vinhos/img/w09.jpg" alt="Garrafa de vinho rosé com tábua de frios"><div class="bd"><span class="tag">Rosé</span>
+<h3>Cono Sur Bicicleta Pinot Noir Rosé</h3><p class="pr">Viña Cono Sur</p>
+<dl><dt>País / região</dt><dd>Chile</dd><dt>Uva</dt><dd>Pinot Noir</dd><dt>Estilo</dt><dd>Rosé fresco e suculento, boa acidez; cereja, morango e frutas vermelhas</dd><dt>Harmoniza com</dt><dd>Petiscos, tábua de frios, sobremesas de frutas</dd><dt>Ocasiões</dt><dd>Happy hour, tarde na varanda</dd><dt>Como servir</dt><dd>Bem gelado</dd></dl></div></article>
+
+<article class="card" data-t="espumante" id="v-brut"><img loading="lazy" src="/guia-de-vinhos/img/w10.jpg" alt="Garrafa de espumante no balde de gelo com canapés"><div class="bd"><span class="tag">Espumante nacional</span>
+<h3>Salton Brut</h3><p class="pr">Vinícola Salton</p>
+<dl><dt>País / região</dt><dd>Brasil, Serra Gaúcha</dd><dt>Uva</dt><dd>Chardonnay, Trebbiano e Prosecco</dd><dt>Estilo</dt><dd>Espumante brut (14 g/L de açúcar), fresco, cremoso e delicado; 12% de álcool</dd><dt>Harmoniza com</dt><dd>Canapés, massas com molhos leves, carnes brancas</dd><dt>Ocasiões</dt><dd>Brinde, aniversário, Réveillon</dd><dt>Como servir</dt><dd>Bem gelado</dd></dl></div></article>
+
+</div>
+<p class="note">Fontes dos dados: sites e fichas técnicas dos produtores (Concha y Toro / Casillero del Diablo, Cono Sur, Aveleda / Casal Garcia, Marqués de Cáceres, Ruffino e Salton). Safras e rótulos podem mudar. Fotos ilustrativas.</p>
+</div></section>
+
+<section id="uvas" class="alt"><div class="w">
+<div class="kick" style="color:var(--vinho2)">Vinhos por uva</div>
+<h2>As uvas que você mais vai encontrar</h2>
+<p class="lead">A uva diz muito sobre o sabor do vinho. Conhecendo estas, você já se vira bem em qualquer prateleira. As barrinhas mostram o perfil típico; cada produtor dá o seu toque.</p>
+
+<h3 class="sub">Uvas tintas</h3>
+<div class="uvas">
+<div class="uva"><h3>Cabernet Sauvignon</h3><p class="mt">Chile, Argentina, Brasil, França (Bordeaux), EUA</p>
+<div class="bar"><i style="--v:80%"></i>Corpo</div><div class="bar"><i style="--v:80%"></i>Tanino</div><div class="bar"><i style="--v:60%"></i>Acidez</div>
+<p><b>Aromas:</b> cassis, amora, pimentão, cedro.</p><p><b>Combina com:</b> churrasco, carnes vermelhas, queijos curados.</p></div>
+<div class="uva"><h3>Merlot</h3><p class="mt">Chile, Brasil (Serra Gaúcha), França, Itália</p>
+<div class="bar"><i style="--v:60%"></i>Corpo</div><div class="bar"><i style="--v:45%"></i>Tanino</div><div class="bar"><i style="--v:50%"></i>Acidez</div>
+<p><b>Aromas:</b> ameixa, cereja madura, chocolate.</p><p><b>Combina com:</b> massas, frango assado, carne de panela, pizza.</p></div>
+<div class="uva"><h3>Malbec</h3><p class="mt">Argentina (Mendoza), França (Cahors)</p>
+<div class="bar"><i style="--v:80%"></i>Corpo</div><div class="bar"><i style="--v:65%"></i>Tanino</div><div class="bar"><i style="--v:50%"></i>Acidez</div>
+<p><b>Aromas:</b> amora, ameixa, violeta, chocolate.</p><p><b>Combina com:</b> picanha, cordeiro, hambúrguer.</p></div>
+<div class="uva"><h3>Carménère</h3><p class="mt">Chile</p>
+<div class="bar"><i style="--v:65%"></i>Corpo</div><div class="bar"><i style="--v:50%"></i>Tanino</div><div class="bar"><i style="--v:50%"></i>Acidez</div>
+<p><b>Aromas:</b> frutas vermelhas, pimentão, especiarias, café.</p><p><b>Combina com:</b> feijão tropeiro, carnes temperadas, legumes assados.</p></div>
+<div class="uva"><h3>Pinot Noir</h3><p class="mt">França (Borgonha), Chile, Nova Zelândia, Brasil</p>
+<div class="bar"><i style="--v:35%"></i>Corpo</div><div class="bar"><i style="--v:30%"></i>Tanino</div><div class="bar"><i style="--v:75%"></i>Acidez</div>
+<p><b>Aromas:</b> cereja, morango, cogumelo.</p><p><b>Combina com:</b> salmão, frango, cogumelos. Bom tinto para dias quentes.</p></div>
+<div class="uva"><h3>Syrah / Shiraz</h3><p class="mt">França (Rhône), Austrália, Chile, África do Sul</p>
+<div class="bar"><i style="--v:80%"></i>Corpo</div><div class="bar"><i style="--v:65%"></i>Tanino</div><div class="bar"><i style="--v:55%"></i>Acidez</div>
+<p><b>Aromas:</b> amora, pimenta-preta, defumado.</p><p><b>Combina com:</b> costelinha, linguiça, carnes com molho barbecue.</p></div>
+<div class="uva"><h3>Tempranillo</h3><p class="mt">Espanha (Rioja, Ribera del Duero), Portugal (Tinta Roriz)</p>
+<div class="bar"><i style="--v:65%"></i>Corpo</div><div class="bar"><i style="--v:60%"></i>Tanino</div><div class="bar"><i style="--v:55%"></i>Acidez</div>
+<p><b>Aromas:</b> cereja, tabaco, couro, baunilha do carvalho.</p><p><b>Combina com:</b> costela assada, cordeiro, presunto cru.</p></div>
+<div class="uva"><h3>Sangiovese</h3><p class="mt">Itália (Toscana: Chianti, Brunello)</p>
+<div class="bar"><i style="--v:55%"></i>Corpo</div><div class="bar"><i style="--v:65%"></i>Tanino</div><div class="bar"><i style="--v:80%"></i>Acidez</div>
+<p><b>Aromas:</b> cereja ácida, tomate seco, ervas.</p><p><b>Combina com:</b> molho de tomate, lasanha, pizza, parmesão.</p></div>
+<div class="uva"><h3>Tannat</h3><p class="mt">Uruguai, Brasil (Campanha Gaúcha), França</p>
+<div class="bar"><i style="--v:90%"></i>Corpo</div><div class="bar"><i style="--v:95%"></i>Tanino</div><div class="bar"><i style="--v:65%"></i>Acidez</div>
+<p><b>Aromas:</b> amora, ameixa, cacau.</p><p><b>Combina com:</b> carnes gordas na brasa, costela fogo de chão, feijoada.</p></div>
+<div class="uva"><h3>Touriga Nacional</h3><p class="mt">Portugal (Douro, Dão)</p>
+<div class="bar"><i style="--v:80%"></i>Corpo</div><div class="bar"><i style="--v:75%"></i>Tanino</div><div class="bar"><i style="--v:60%"></i>Acidez</div>
+<p><b>Aromas:</b> frutas escuras, violeta, especiarias.</p><p><b>Combina com:</b> bacalhau, cabrito, carnes assadas.</p></div>
+</div>
+
+<h3 class="sub">Uvas brancas</h3>
+<div class="uvas">
+<div class="uva b"><h3>Chardonnay</h3><p class="mt">França (Borgonha, Champagne), Chile, Brasil, EUA</p>
+<div class="bar"><i style="--v:65%"></i>Corpo</div><div class="bar"><i style="--v:55%"></i>Acidez</div>
+<p><b>Aromas:</b> maçã, abacaxi, pêssego; manteiga e baunilha quando passa por barrica.</p><p><b>Combina com:</b> peixes com molho, frango, massas cremosas, camarão.</p></div>
+<div class="uva b"><h3>Sauvignon Blanc</h3><p class="mt">Chile, Nova Zelândia, França (Loire)</p>
+<div class="bar"><i style="--v:40%"></i>Corpo</div><div class="bar"><i style="--v:85%"></i>Acidez</div>
+<p><b>Aromas:</b> limão, maracujá, grama cortada.</p><p><b>Combina com:</b> ceviche, saladas, queijo de cabra, frutos do mar.</p></div>
+<div class="uva b"><h3>Alvarinho / Albariño</h3><p class="mt">Portugal (Vinho Verde), Espanha (Rías Baixas)</p>
+<div class="bar"><i style="--v:45%"></i>Corpo</div><div class="bar"><i style="--v:80%"></i>Acidez</div>
+<p><b>Aromas:</b> pêssego, cítricos, flores, toque salino.</p><p><b>Combina com:</b> moqueca, peixes, frutos do mar, sushi.</p></div>
+<div class="uva b"><h3>Riesling</h3><p class="mt">Alemanha, França (Alsácia), Austrália</p>
+<div class="bar"><i style="--v:35%"></i>Corpo</div><div class="bar"><i style="--v:90%"></i>Acidez</div>
+<p><b>Aromas:</b> limão, maçã verde, mel. Pode ser seco ou doce.</p><p><b>Combina com:</b> comida japonesa e tailandesa, pratos levemente picantes.</p></div>
+<div class="uva b"><h3>Moscatel / Moscato</h3><p class="mt">Itália (Asti), Brasil (Serra Gaúcha), Portugal</p>
+<div class="bar"><i style="--v:35%"></i>Corpo</div><div class="bar"><i style="--v:55%"></i>Acidez</div>
+<p><b>Aromas:</b> uva fresca, flores, pêssego. Muito usada em espumantes doces.</p><p><b>Combina com:</b> sobremesas de frutas, bolos, panetone.</p></div>
+<div class="uva b"><h3>Viognier</h3><p class="mt">França (Rhône), Chile, Argentina</p>
+<div class="bar"><i style="--v:70%"></i>Corpo</div><div class="bar"><i style="--v:40%"></i>Acidez</div>
+<p><b>Aromas:</b> damasco, pêssego, flores brancas.</p><p><b>Combina com:</b> frango ao curry, peixe com leite de coco.</p></div>
+</div>
+</div></section>
+
+<section id="harmonizacao"><div class="w">
+<div class="kick" style="color:var(--vinho2)">Harmonização com alimentos</div>
+<h2>6 regras que resolvem quase tudo</h2>
+<p class="lead">Não existe combinação proibida, mas estas regras ajudam a acertar na maioria das vezes.</p>
+<div class="rules">
+<div class="rule"><b>Peso com peso</b><span>Prato leve pede vinho leve; prato pesado pede vinho encorpado. Salada com Sauvignon Blanc, costela com Tannat.</span></div>
+<div class="rule"><b>Gordura pede tanino ou acidez</b><span>Carne gorda vai bem com tinto tânico; fritura e queijo combinam com branco ácido ou espumante.</span></div>
+<div class="rule"><b>O molho manda mais que a carne</b><span>Frango ao molho de tomate vai de tinto leve; frango com creme vai de Chardonnay.</span></div>
+<div class="rule"><b>Doce com vinho mais doce</b><span>Na sobremesa, o vinho precisa ser tão doce quanto o prato, senão fica amargo. Moscatel e Porto são os coringas.</span></div>
+<div class="rule"><b>Picante pede pouco álcool</b><span>Pimenta realça o álcool e o tanino. Prefira brancos aromáticos, rosés ou tintos leves.</span></div>
+<div class="rule"><b>Na dúvida, espumante</b><span>O brut vai do aperitivo ao prato principal: frituras, peixes, petiscos e até feijoada.</span></div>
+</div>
+
+<h3 class="sub">Pratos brasileiros e o vinho que combina</h3>
+<table class="tbl"><thead><tr><th>Prato</th><th>Estilo de vinho</th><th>Uvas que funcionam</th></tr></thead><tbody id="tbody"></tbody></table>
+</div></section>
+
+<section id="tipos" class="alt"><div class="w">
+<div class="kick" style="color:var(--vinho2)">Tipos de vinho</div>
+<h2>Tinto, branco, rosé, espumante e mais</h2>
+<p class="lead">A cor vem da casca da uva. Tintos fermentam com a casca; brancos, sem ela; rosés ficam pouco tempo em contato. O resto é estilo.</p>
+<div class="tipos">
+<div class="tipo"><h3>Tinto</h3><p>Uvas tintas fermentadas com a casca, que dá cor e tanino (aquela sensação de boca seca).</p><p><b>Quando:</b> carnes, massas com molho vermelho, queijos curados, noites frias.</p></div>
+<div class="tipo"><h3>Branco</h3><p>Normalmente de uvas brancas, sem contato com a casca. Mais fresco, com acidez marcada e quase sem tanino.</p><p><b>Quando:</b> peixes, frutos do mar, saladas, frango, dias quentes.</p></div>
+<div class="tipo"><h3>Rosé</h3><p>Uvas tintas com contato curto com a casca. Frescor de branco com fruta de tinto.</p><p><b>Quando:</b> aperitivo, petiscos, comida leve, pratos levemente picantes.</p></div>
+<div class="tipo"><h3>Espumante</h3><p>Vinho com uma segunda fermentação que forma as bolhas. Do mais seco ao mais doce: nature, extra brut, brut, demi-sec e doce. O moscatel espumante é doce e aromático.</p><p><b>Quando:</b> brindes, aperitivo, frituras; demi-sec e moscatel na sobremesa.</p></div>
+<div class="tipo"><h3>Fortificado</h3><p>Recebe aguardente vínica durante a produção, o que aumenta o álcool e preserva o açúcar. Exemplos: Porto, Madeira, Jerez.</p><p><b>Quando:</b> sobremesas, chocolate, queijos azuis, depois do jantar.</p></div>
+<div class="tipo"><h3>Laranja</h3><p>Uvas brancas vinificadas como tinto, com contato com a casca. Cor âmbar, textura e leve tanino.</p><p><b>Quando:</b> comida árabe, indiana, queijos e pratos com especiarias.</p></div>
+</div>
+<h3 class="sub">Como entender o estilo</h3>
+<div class="scale">
+<div><b>Leve</b>Pouco corpo, mais fresco e fácil de beber. Ex.: Pinot Noir, Vinho Verde, Sauvignon Blanc.</div>
+<div><b>Encorpado</b>Mais intenso, com mais álcool e textura. Ex.: Cabernet Sauvignon, Malbec, Tannat.</div>
+<div><b>Seco</b>Quase sem açúcar. É o padrão dos vinhos finos, tintos e brancos.</div>
+<div><b>Suave / doce</b>Com açúcar perceptível. Agrada quem está começando e vai bem com sobremesa.</div>
+</div>
+</div></section>
+
+<section id="dicas"><div class="w">
+<div class="kick" style="color:var(--vinho2)">Dicas de vinho</div>
+<h2>O básico para acertar em casa</h2>
 <div class="txt">
 <div class="art"><h3>Que vinho levar para um churrasco</h3>
-<p>Carne na brasa pede tinto com corpo e alguma tanino, que "limpa" a gordura. Cabernet Sauvignon e vinhos de corpo médio a encorpado costumam ir bem com picanha, fraldinha e costela.</p>
-<p>Para a linguiça e o frango, um branco fresco ou um rosé gelado funciona. Leve também uma opção mais leve para quem prefere, e deixe o tinto fora do sol.</p></div>
+<p>Carne na brasa pede tinto com corpo e algum tanino, que "limpa" a gordura. Cabernet Sauvignon, Malbec e Tannat vão bem com picanha, fraldinha e costela.</p>
+<p>Para a linguiça, o frango e o queijo coalho, um branco fresco, um rosé ou um espumante brut funcionam. Deixe o tinto à sombra e tenha um balde com gelo para os brancos.</p></div>
 <div class="art"><h3>Tinto, branco ou rosé: como escolher</h3>
-<p>Comece pelo prato e pela hora do dia. Pratos de carne e molhos fortes combinam com tintos; peixes, saladas e frutos do mar, com brancos; petiscos e dias quentes, com rosé.</p>
+<p>Comece pelo prato e pela hora do dia. Carnes e molhos fortes combinam com tintos; peixes, saladas e frutos do mar, com brancos; petiscos e dias quentes, com rosé.</p>
 <ul><li>Leve: mais fácil de beber, bom para aperitivo.</li><li>Encorpado: mais intenso, bom com comida forte.</li><li>Seco: pouco açúcar. Suave: mais doce.</li></ul></div>
-<div class="art"><h3>Como servir vinho em casa</h3>
-<p>Temperatura faz diferença: tintos entre 16 e 18 °C, brancos e rosés bem gelados e espumantes gelados. Se o tinto estiver quente, uns 20 minutos na geladeira ajudam.</p>
-<p>Use taças limpas, encha até um terço e abra o espumante com cuidado, segurando a rolha. Sobrou? Feche e guarde na geladeira por até três dias.</p></div>
+<div class="art"><h3>Temperatura certa de cada vinho</h3>
+<ul><li>Espumantes: de 6 a 8 °C.</li><li>Brancos e rosés leves: de 8 a 10 °C.</li><li>Brancos encorpados: de 10 a 12 °C.</li><li>Tintos leves: de 14 a 16 °C.</li><li>Tintos encorpados: de 16 a 18 °C.</li></ul>
+<p style="margin-top:10px">No calor brasileiro, "temperatura ambiente" é quente demais: 20 minutos de geladeira ajudam o tinto. Sirva até um terço da taça.</p></div>
+<div class="art"><h3>Taças, sobras e quanto comprar</h3>
+<ul><li>Uma taça de bojo médio serve para tudo; para espumante, a flûte mantém as bolhas.</li><li>Sobrou? Tampe e guarde na geladeira: brancos e rosés duram cerca de 3 dias; tintos, de 3 a 5.</li><li>Para festa, conte em média meia garrafa por adulto que bebe vinho, e tenha água e opções sem álcool.</li></ul></div>
+<div class="art"><h3>Como ler o rótulo</h3>
+<ul><li><b>Uva:</b> vinhos varietais trazem o nome da uva; cortes podem não trazer.</li><li><b>Região:</b> siglas como DOC, DOCG e D.O.Ca. indicam origem controlada.</li><li><b>Reserva, Crianza:</b> costumam indicar mais tempo de envelhecimento, mas a regra muda de país para país.</li><li><b>Safra:</b> o ano da colheita. Brancos e rosés costumam ser melhores jovens.</li></ul></div>
+<div class="art"><h3>Erros comuns de quem está começando</h3>
+<ul><li>Servir tinto quente e branco quase congelado.</li><li>Achar que vinho caro sempre combina mais: o que importa é o prato.</li><li>Guardar garrafa com rolha em pé por meses: deite.</li><li>Abrir espumante de uma vez: segure a rolha e gire a garrafa devagar.</li></ul></div>
 </div></div></section>
 
 <footer><div class="w">
-<p><b>Conteúdo para maiores de 18 anos. Aprecie com moderação.</b></p>
+<p><b>Conteúdo para maiores de 18 anos. Aprecie com moderação.</b> Se beber, não dirija.</p>
 <p>Este site pode receber comissão por compras feitas pelos links, sem custo adicional para você.</p>
 <p>Contato: <a href="mailto:achadinhosbrasilloja@gmail.com">achadinhosbrasilloja@gmail.com</a></p>
 </div></footer>
-<script>fbq('track','ViewContent',{content_name:'Guia de Vinhos'});</script>
+
+<script>
+var P=[
+{n:'Churrasco',e:'Tinto encorpado e com tanino',u:'Cabernet Sauvignon, Malbec, Tannat, Syrah',w:'O tanino e o corpo seguram a gordura e o sal da carne na brasa.',v:['v-cabernet','v-salton']},
+{n:'Feijoada',e:'Tinto de corpo médio com boa acidez, ou espumante brut',u:'Tannat, Carménère, Merlot; espumante brut',w:'A acidez corta a gordura do porco; as bolhas do espumante limpam a boca.',v:['v-carmenere','v-brut']},
+{n:'Pizza e massas ao sugo',e:'Tinto com acidez alta',u:'Sangiovese, Merlot, Tempranillo',w:'O molho de tomate é ácido: o vinho precisa ter acidez igual ou maior.',v:['v-chianti','v-rioja']},
+{n:'Massas com creme',e:'Branco com corpo',u:'Chardonnay, Viognier',w:'A cremosidade do molho pede um branco com textura.',v:['v-chardonnay']},
+{n:'Carne de panela e costela',e:'Tinto de corpo médio a encorpado',u:'Tempranillo, Merlot, Cabernet Sauvignon',w:'Pratos de cozimento longo combinam com tintos macios e especiados.',v:['v-rioja','v-salton']},
+{n:'Frango assado',e:'Branco com corpo ou tinto leve',u:'Chardonnay, Pinot Noir, Merlot',w:'Carne branca e leve: vinho sem tanino forte.',v:['v-chardonnay','v-rose']},
+{n:'Peixe grelhado',e:'Branco seco e fresco',u:'Sauvignon Blanc, Alvarinho, Chardonnay sem barrica',w:'A acidez do vinho faz o papel do limão no peixe.',v:['v-sauvignon','v-chardonnay']},
+{n:'Moqueca',e:'Branco aromático ou rosé seco',u:'Alvarinho, Viognier, rosé',w:'O leite de coco e o dendê pedem branco com corpo e aroma.',v:['v-casalgarcia','v-rose']},
+{n:'Comida japonesa',e:'Branco leve e ácido ou espumante',u:'Vinho Verde, Riesling, Sauvignon Blanc, brut',w:'Peixe cru e shoyu combinam com frescor e pouco tanino.',v:['v-casalgarcia','v-brut']},
+{n:'Frutos do mar e frituras',e:'Espumante brut ou branco fresco',u:'Espumante brut, Sauvignon Blanc, Alvarinho',w:'Bolhas e acidez limpam a gordura da fritura.',v:['v-brut','v-sauvignon']},
+{n:'Tábua de queijos',e:'Depende do queijo',u:'Frescos: Sauvignon Blanc · Meia-cura: Merlot · Curados: Cabernet · Azuis: Porto',w:'Queijo suave com vinho leve; queijo intenso com vinho intenso.',v:['v-rose','v-cabernet']},
+{n:'Hambúrguer',e:'Tinto frutado e encorpado',u:'Malbec, Syrah, Cabernet Sauvignon',w:'Carne, queijo e bacon pedem fruta e corpo.',v:['v-cabernet']},
+{n:'Sobremesa e chocolate',e:'Vinho doce ou fortificado',u:'Moscatel, espumante demi-sec, Porto',w:'O vinho precisa ser pelo menos tão doce quanto a sobremesa.',v:[]}
+];
+var N={};document.querySelectorAll('#fichas .card').forEach(function(c){N[c.id]=c.querySelector('h3').textContent});
+var chips=document.getElementById('chips'),res=document.getElementById('res');
+function show(i){var p=P[i];chips.querySelectorAll('.chip').forEach(function(b,j){b.classList.toggle('on',j===i)});
+var s=p.v.length?p.v.map(function(id){return '<a href="#'+id+'">'+N[id]+'</a>'}).join(''):'<span class="why">Procure um moscatel espumante ou um vinho do Porto.</span>';
+res.innerHTML='<div class="row"><span class="lb">Prato</span><h3>'+p.n+'</h3><span class="why">'+p.w+'</span></div><div class="row"><span class="lb">Estilo</span><span>'+p.e+'</span><span class="lb" style="margin-top:8px">Uvas</span><span>'+p.u+'</span></div><div class="row"><span class="lb">Exemplos do guia</span><div class="sug">'+s+'</div></div>';
+try{clarity('event','prato_'+i)}catch(e){}}
+P.forEach(function(p,i){var b=document.createElement('button');b.className='chip';b.type='button';b.textContent=p.n;b.onclick=function(){show(i)};chips.appendChild(b)});
+show(0);
+document.getElementById('tbody').innerHTML=P.map(function(p){return '<tr><td>'+p.n+'</td><td data-l="Estilo">'+p.e+'</td><td data-l="Uvas">'+p.u+'</td></tr>'}).join('');
+var flt=document.getElementById('flt');
+flt.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var f=b.getAttribute('data-f');flt.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});document.querySelectorAll('#fichas .card').forEach(function(c){c.classList.toggle('hide',f!=='todos'&&c.getAttribute('data-t')!==f)})});
+document.addEventListener('click',function(e){var a=e.target.closest('.sug a');if(!a)return;flt.querySelector('[data-f=todos]').click();var c=document.querySelector(a.getAttribute('href'));if(c){c.style.outline='3px solid #B8935A';setTimeout(function(){c.style.outline=''},2200)}});
+fbq('track','ViewContent',{content_name:'Guia de Vinhos'});
+</script>
 </body></html>
