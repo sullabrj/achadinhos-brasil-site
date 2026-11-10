@@ -1,3 +1,15 @@
 User-agent: *
-Allow: /guia-de-vinhos/
-Disallow: /
+Disallow: /agenda-e-caixa/
+Disallow: /catalogo-de-receitas-pt/
+Disallow: /catalogo-de-recetas/
+Disallow: /catalogo-de-servicos/
+Disallow: /guia-de-cortes/
+Disallow: /letra-bonita/
+Disallow: /manha-sem-pao
+Disallow: /trafego-
+Disallow: /privacidade/
+Disallow: /termos/
+Disallow: /troca-devolucao/
+Disallow: /404.html
+Disallow: /gerar.py
+Disallow: /pv.js
