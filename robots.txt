@@ -1,6 +1,6 @@
 User-agent: *
 Disallow: /agenda-e-caixa/
-Disallow: /catalogo-de-receitas-pt/
+Disallow: /catalogo-de-receitas
 Disallow: /catalogo-de-recetas/
 Disallow: /catalogo-de-servicos/
 Disallow: /guia-de-cortes/
