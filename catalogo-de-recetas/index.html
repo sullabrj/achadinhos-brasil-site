@@ -80,7 +80,7 @@ table.cat tr.tt td{background:var(--alt);font-weight:900;color:var(--verde)}
 .pas div:before{content:attr(data-n);position:absolute;left:14px;top:12px;width:36px;height:36px;border-radius:50%;background:var(--verde);color:#fff;font-weight:900;display:flex;align-items:center;justify-content:center;font-size:18px}.pas b{display:block}
 .vw{max-width:620px;margin:0 auto;padding:0 18px}
 .yt{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000;cursor:pointer;box-shadow:0 12px 30px rgba(0,0,0,.35)}
-.yt img{width:100%;height:100%;object-fit:cover;opacity:.9}.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.9}.yt video{width:100%;height:100%;object-fit:cover;display:block}.yt.on{cursor:auto}.yt.on .play,.yt.on .ytl{display:none}
 .yt .play{position:absolute;left:50%;top:50%;width:72px;height:72px;margin:-36px 0 0 -36px;border-radius:50%;background:var(--acc);box-shadow:0 8px 24px rgba(0,0,0,.4)}
 .yt .play:after{content:"";position:absolute;left:29px;top:22px;border-style:solid;border-width:14px 0 14px 22px;border-color:transparent transparent transparent #fff}
 .yt .ytl{position:absolute;left:12px;bottom:10px;background:rgba(0,0,0,.6);color:#fff;font-size:13px;font-weight:700;padding:5px 10px;border-radius:99px}
@@ -93,7 +93,7 @@ details.cat-d{background:none;border:0;padding:0;margin:0}details.cat-d summary{
 <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script></head><body>
 <div class="urg">Libro digital en PDF · 3 opciones · desde US$ 4,99</div>
 <header class="hero"><div class="tx top"><div class="kick">Guía de recetas prácticas y rápidas</div><h1>¿Siempre cocinas <span>lo mismo?</span></h1><p class="lead">Hasta <b>160 recetas sencillas</b> para variar el almuerzo, la cena, el táper, el postre y la merienda. Todas con foto y paso a paso.</p></div>
-<div class="vw"><div class="yt" id="yt" role="button" tabindex="0" aria-label="Ver el video"><img src="https://i.ytimg.com/vi/j6PCxviYobA/hqdefault.jpg" alt="Video: mira qué trae cada nivel del Catálogo de Recetas" width="480" height="360" onerror="this.onerror=null;this.src='img/hero.jpg'"><span class="play" aria-hidden="true"></span><span class="ytl">Míralo por dentro en 1 minuto</span></div></div>
+<div class="vw"><div class="yt" id="yt" role="button" tabindex="0" aria-label="Ver el video"><video id="vd" poster="vid/poster.jpg" preload="none" playsinline src="vid/video.mp4" aria-label="Video: mira qué trae cada nivel del Catálogo de Recetas"></video><span class="play" aria-hidden="true"></span><span class="ytl">Míralo por dentro en 1 minuto</span></div></div>
 <div class="tx bot"><div class="pills"><b>Hasta 160 recetas</b><b>Foto en cada receta</b><b>Desde US$ 4,99</b></div>
 <a class="btn" href="#planos">Ver las 3 opciones</a><div class="note">Pago único · acceso inmediato · garantía de 7 días</div></div></header>
 
@@ -155,7 +155,7 @@ details.cat-d{background:none;border:0;padding:0;margin:0}details.cat-d summary{
 var CUR='USD';
 try{fbq('track','ViewContent',{content_name:'Catálogo de Recetas',value:4.99,currency:CUR})}catch(e){}
 function cl(ev){try{clarity('event',ev)}catch(e){}}
-var yt=document.getElementById('yt');function abreYT(){if(yt.querySelector('iframe'))return;yt.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/j6PCxviYobA?autoplay=1&rel=0&modestbranding=1&playsinline=1" title="Catálogo de Recetas" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';cl('video_play')}yt.addEventListener('click',abreYT);yt.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();abreYT()}});
+var yt=document.getElementById('yt');function abreYT(){if(yt.classList.contains('on'))return;yt.classList.add('on');var v=document.getElementById('vd');v.controls=true;var r=v.play();if(r&&r.catch)r.catch(function(){});cl('video_play')}yt.addEventListener('click',abreYT);yt.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();abreYT()}});
 try{var st=document.querySelector('.sticky'),pl=document.getElementById('planos');new IntersectionObserver(function(e){st.classList.toggle('off',e[0].isIntersecting)},{rootMargin:'0px 0px -20% 0px'}).observe(pl)}catch(e){}
 var pop=document.getElementById('pop');
 /* repassa UTMs/fbclid do anúncio para o checkout (atribuição por criativo) */
