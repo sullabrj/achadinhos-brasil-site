@@ -36,7 +36,7 @@ ul.x li,ul.ok li{position:relative;padding:0 0 12px 34px}
 ul.x li:before{content:"✕";position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;background:#E6DCC4;color:#7a7268;font-size:12px;display:flex;align-items:center;justify-content:center}
 ul.ok li:before{content:"✓";position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;background:var(--verde);color:#fff;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center}
 .shot{border-radius:16px;overflow:hidden;box-shadow:0 14px 34px rgba(0,0,0,.14)}
-.planos{display:grid;gap:18px}
+.planos{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:18px 18px 10px;margin:0 -18px;scrollbar-width:none;scroll-padding:0 18px}.planos::-webkit-scrollbar{display:none}.planos>.plano{flex:0 0 84%;max-width:340px;scroll-snap-align:center;display:flex;flex-direction:column}.planos>.plano ul{flex:1}.pl-nav{display:flex;align-items:center;justify-content:center;gap:10px;margin:6px 0 2px}.pl-nav button{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--verde);font-size:18px;font-weight:900;cursor:pointer;line-height:1}.pl-dots{display:flex;gap:7px}.pl-dots i{width:9px;height:9px;border-radius:50%;background:var(--line);transition:.2s}.pl-dots i.on{background:var(--verde);width:22px;border-radius:99px}.pl-dica{text-align:center;color:var(--mut);font-size:13px;margin:4px 0 0}
 .plano{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 20px;text-align:center;position:relative}
 .plano.top{border:2.5px solid var(--verde);box-shadow:0 14px 34px rgba(47,93,58,.18)}
 .plano .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--verde);color:#fff;font-size:12px;font-weight:800;letter-spacing:1px;padding:5px 14px;border-radius:99px;white-space:nowrap}
@@ -110,7 +110,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 <a class="btn" href="#planos">Ver as 3 opções</a><div class="note">Pagamento único · acesso na hora · garantia de 7 dias</div></div></header>
 
 <section class="alt" id="planos"><div class="w"><div class="kick k2">Escolha o seu</div><h2>Três opções, <span>pagamento único</span></h2><p class="mut">Cada nível inclui todas as receitas do nível anterior.</p>
-<div class="planos">
+<div class="planos" id="plTrack">
 <div class="plano"><h3>Básico</h3><div class="qtd">60 receitas</div><div class="val" style="font-size:38px">R$ 19,90</div><div class="sm">Pagamento único · R$ 0,33 por receita</div>
 <ul class="ok"><li>60 receitas com foto</li><li>Receitas de várias categorias</li><li>Acesso na hora</li><li class="no">Sem cardápio e lista de compras</li><li class="no">Sem lanches e vitaminas</li></ul>
 <button class="btn sec" type="button" id="btnBasico">Quero o Básico</button></div>
@@ -121,6 +121,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 <ul class="ok"><li>160 receitas com foto</li><li>Cardápio de 30 dias</li><li>Lista de compras semanal</li><li>20 lanches da tarde</li><li>12 vitaminas e sucos</li><li>Acesso na hora</li></ul>
 <a class="btn" href="https://pay.cakto.com.br/37y7q73" data-produto="Premium">Quero o Premium</a></div>
 </div>
+<div class="pl-nav"><button type="button" id="plPrev" aria-label="Plano anterior">‹</button><div class="pl-dots" id="plDots"><i></i><i></i><i class="on"></i></div><button type="button" id="plNext" aria-label="Próximo plano">›</button></div><div class="pl-dica">Arraste para o lado para ver as 3 opções</div>
 <div class="gar"><div class="selo">7<small>DIAS</small></div><div><b>Garantia de 7 dias</b><span style="color:var(--mut);font-size:15px">Não gostou? Peça o reembolso em até 7 dias e devolvemos o valor inteiro.</span></div></div>
 <div class="note" style="color:var(--mut)">Compra segura pela Cakto · Pix ou cartão · a Cakto acrescenta R$ 0,99 de taxa de serviço no pagamento</div></div></section>
 
@@ -203,4 +204,12 @@ pop.addEventListener('click',function(e){if(e.target===pop)pop.classList.remove(
 try{document.querySelectorAll(sel).forEach(function(el){if(!el.closest('#planos,.pop,a,button,summary'))el.classList.add('tap')})}catch(_){}
 document.addEventListener('click',function(e){var t=e.target;if(!t.closest||t.closest('a,button,details,summary,video,.yt,#planos,.pop,.sticky,.pv-sh,.pv-ov,input,label'))return;if(!t.closest(sel))return;p.scrollIntoView({behavior:'smooth',block:'start'});try{clarity('event','toque_leva_planos')}catch(_){}});})();</script>
 <script src="/pv.js" defer></script>
+<script>(function(){var t=document.getElementById('plTrack');if(!t)return;var c=[].slice.call(t.children),d=[].slice.call(document.querySelectorAll('#plDots i'));
+function go(i,sm){i=Math.max(0,Math.min(c.length-1,i));var el=c[i];t.scrollTo({left:el.offsetLeft-(t.clientWidth-el.offsetWidth)/2,behavior:sm?'smooth':'auto'})}
+function cur(){var m=t.scrollLeft+t.clientWidth/2,b=0,bd=1e9;c.forEach(function(el,i){var x=Math.abs(el.offsetLeft+el.offsetWidth/2-m);if(x<bd){bd=x;b=i}});return b}
+function upd(){var i=cur();d.forEach(function(x,j){x.classList.toggle('on',j===i)})}
+t.addEventListener('scroll',function(){clearTimeout(t._u);t._u=setTimeout(upd,60)},{passive:true});
+document.getElementById('plPrev').onclick=function(){go(cur()-1,1)};document.getElementById('plNext').onclick=function(){go(cur()+1,1)};
+d.forEach(function(x,j){x.onclick=function(){go(j,1)}});
+function ini(){go(c.length-1,0);upd()}if(document.readyState==='complete')ini();else window.addEventListener('load',ini);requestAnimationFrame(ini);})();</script>
 </body></html>
