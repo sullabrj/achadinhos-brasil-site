@@ -7,7 +7,7 @@
 <link rel="canonical" href="https://www.lojaachadinhosbrasil.com.br/guia-de-cortes/">
 <meta property="og:title" content="Guia Visual de Cortes na Máquina: pente por pente"><meta property="og:description" content="Fotos de frente, lado e nuca, pentes em mm e passo a passo. A partir de R$ 19,90.">
 <meta property="og:image" content="https://www.lojaachadinhosbrasil.com.br/guia-de-cortes/img/capa.jpg"><meta property="og:type" content="website"><meta property="og:url" content="https://www.lojaachadinhosbrasil.com.br/guia-de-cortes/">
-<link rel="preload" as="image" href="img/hero.jpg">
+<link rel="preload" as="image" href="img/hero.jpg" fetchpriority="high">
 <style>:root{--dark:#0F1115;--dark2:#1A1D23;--bg:#F6F3EE;--alt:#ECE7DF;--ink:#16181d;--mut:#5f646d;--acc:#F2A33A;--acc2:#C8761C;--btxt:#1c1300;--card:#fff;--line:#e2ddd4}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;font-size:17px;padding-bottom:78px}
@@ -72,9 +72,10 @@ footer{padding:28px 18px 40px;text-align:center;font-size:14px;color:var(--mut)}
 @media(min-width:900px){.planos{grid-template-columns:repeat(3,1fr);align-items:start}.fichas{grid-template-columns:repeat(3,1fr)}.hero img.bg{max-height:none}}
 </style>
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','30156663417254394');fbq('track','PageView');</script>
+<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
 </head><body>
 
-<header class="hero"><img class="bg" src="img/hero.jpg" alt="O mesmo cliente de frente, de lado e de costas em barbearia moderna: as 3 fotos de cada ficha do guia" width="1200" height="670">
+<header class="hero"><img class="bg" src="img/hero.jpg" fetchpriority="high" alt="O mesmo cliente de frente, de lado e de costas em barbearia moderna: as 3 fotos de cada ficha do guia" width="1200" height="670">
 <div class="tx"><div class="kick">Guia visual · cortes na máquina</div>
 <h1>Degradê sem <span>linha marcada</span>, corte por corte.</h1>
 <p>Cada corte em uma tela de celular, com fotos de frente, lado e nuca, o pente em mm e o passo a passo.</p></div></header>
@@ -83,17 +84,7 @@ footer{padding:28px 18px 40px;text-align:center;font-size:14px;color:var(--mut)}
 <video src="img/video-55s.mp4" poster="img/video-55s.jpg" controls playsinline preload="metadata"></video>
 <a class="btn" style="max-width:380px;margin:18px auto 0" href="#planos">Ver as 3 opções</a></div></section>
 
-<section><div class="w"><div class="kick k2">Veja por dentro</div><h2>Telas reais do guia</h2><p class="mut">Deslize para o lado. Cada tela é do tamanho do celular: é só abrir e seguir.</p></div>
-<div class="roll">
-<figure><img loading="lazy" src="img/f-ficha.jpg" alt="Ficha do degradê baixo: fotos de frente, lado e nuca, pentes, passo a passo e erro comum" width="540" height="960"><figcaption><b>Ficha de cada corte</b>Fotos, pentes em mm, passo a passo e o erro mais comum.</figcaption></figure>
-<figure><img loading="lazy" src="img/f-tabela.jpg" alt="Tabela de pentes: o número de cada pente e quantos milímetros ele corta" width="540" height="960"><figcaption><b>Tabela de pentes</b>O número do pente e quantos mm ele deixa.</figcaption></figure>
-<figure><img loading="lazy" src="img/f-catalogo.jpg" alt="Catálogo do cliente com 4 cortes por tela" width="540" height="960"><figcaption><b>Catálogo do cliente</b>Ele aponta o corte antes de sentar.</figcaption></figure>
-<figure><img loading="lazy" src="img/f-crespo.jpg" alt="Ficha de degradê para cabelo crespo" width="540" height="960"><figcaption><b>Crespo e cacheado</b>Fotos próprias e o que muda neste cabelo.</figcaption></figure>
-<figure><img loading="lazy" src="img/f-erros.jpg" alt="Tela Deu errado? Conserta assim" width="540" height="960"><figcaption><b>Deu errado? Conserta assim</b>O motivo e o conserto de cada problema.</figcaption></figure>
-</div>
-<div class="w"><a class="btn" style="margin-top:6px" href="#planos">Escolher minha opção</a></div></section>
-
-<section class="alt" id="planos" style="scroll-margin-top:8px"><div class="w wide"><div class="kick k2">Escolha o seu</div><h2>Três opções, <span>pagamento único</span></h2><p class="mut">Cada nível inclui tudo do nível anterior.</p>
+<section id="planos" style="scroll-margin-top:8px"><div class="w wide"><div class="kick k2">Escolha o seu</div><h2>Três opções, <span>pagamento único</span></h2><p class="mut">Cada nível inclui tudo do nível anterior.</p>
 <div class="planos">
 
 <div class="plano"><h3>Básico</h3><div class="qtd">10 cortes · 14 telas</div><div class="val">R$ 19,90</div><div class="sm">Pagamento único</div>
@@ -111,6 +102,19 @@ footer{padding:28px 18px 40px;text-align:center;font-size:14px;color:var(--mut)}
 </div>
 <div class="gar"><div class="selo">7<small>DIAS</small></div><div><b>Garantia de 7 dias</b><span style="color:var(--mut);font-size:15px">Não gostou? Peça o reembolso em até 7 dias e devolvemos o valor inteiro.</span></div></div>
 <div class="note" style="color:var(--mut)">Compra segura pela Cakto · Pix ou cartão</div></div></section>
+
+
+<section class="alt"><div class="w"><div class="kick k2">Veja por dentro</div><h2>Telas reais do guia</h2><p class="mut">Deslize para o lado. Cada tela é do tamanho do celular: é só abrir e seguir.</p></div>
+<div class="roll">
+<figure><img loading="lazy" src="img/f-ficha.jpg" alt="Ficha do degradê baixo: fotos de frente, lado e nuca, pentes, passo a passo e erro comum" width="540" height="960"><figcaption><b>Ficha de cada corte</b>Fotos, pentes em mm, passo a passo e o erro mais comum.</figcaption></figure>
+<figure><img loading="lazy" src="img/f-tabela.jpg" alt="Tabela de pentes: o número de cada pente e quantos milímetros ele corta" width="540" height="960"><figcaption><b>Tabela de pentes</b>O número do pente e quantos mm ele deixa.</figcaption></figure>
+<figure><img loading="lazy" src="img/f-catalogo.jpg" alt="Catálogo do cliente com 4 cortes por tela" width="540" height="960"><figcaption><b>Catálogo do cliente</b>Ele aponta o corte antes de sentar.</figcaption></figure>
+<figure><img loading="lazy" src="img/f-crespo.jpg" alt="Ficha de degradê para cabelo crespo" width="540" height="960"><figcaption><b>Crespo e cacheado</b>Fotos próprias e o que muda neste cabelo.</figcaption></figure>
+<figure><img loading="lazy" src="img/f-erros.jpg" alt="Tela Deu errado? Conserta assim" width="540" height="960"><figcaption><b>Deu errado? Conserta assim</b>O motivo e o conserto de cada problema.</figcaption></figure>
+</div>
+<div class="w"><a class="btn" style="margin-top:6px" href="#planos">Escolher minha opção</a></div></section>
+
+
 
 <section><div class="w"><div class="kick k2">Acontece contigo?</div><h2>Errar o degradê custa cliente.</h2><ul class="x"><li>Fica aquela linha entre uma faixa e outra e você não sabe sumir com ela.</li><li>Não tem certeza de qual pente usar em cada altura.</li><li>O cliente pede o corte pelo nome e você trava.</li><li>Refaz o acabamento, perde tempo e o cliente percebe.</li></ul></div></section>
 
@@ -164,5 +168,9 @@ document.querySelectorAll('a[href*="pay.cakto.com.br"]').forEach(function(a){
 try{var st=document.getElementById('st'),pl=document.getElementById('planos');new IntersectionObserver(function(e){st.classList.toggle('off',e[0].isIntersecting)},{rootMargin:'0px 0px -20% 0px'}).observe(pl)}catch(e){}
 })();
 </script>
+<style>.tap{cursor:pointer}</style>
+<script>(function(){var p=document.getElementById('planos');if(!p)return;var sel='.hero img,.hero h1,.hero .lead,.hero p,.hero .pills,section h2,.shot img,ul.x li,ul.ok li,.kick';
+try{document.querySelectorAll(sel).forEach(function(el){if(!el.closest('#planos,.pop,a,button,summary'))el.classList.add('tap')})}catch(_){}
+document.addEventListener('click',function(e){var t=e.target;if(!t.closest||t.closest('a,button,details,summary,video,.yt,#planos,.pop,.sticky,.pv-sh,.pv-ov,input,label'))return;if(!t.closest(sel))return;p.scrollIntoView({behavior:'smooth',block:'start'});try{clarity('event','toque_leva_planos')}catch(_){}});})();</script>
 <script src="/pv.js" defer></script>
 </body></html>
