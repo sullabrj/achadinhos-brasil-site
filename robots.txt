@@ -11,5 +11,4 @@ Disallow: /privacidade/
 Disallow: /termos/
 Disallow: /troca-devolucao/
 Disallow: /404.html
-Disallow: /gerar.py
 Disallow: /pv.js
