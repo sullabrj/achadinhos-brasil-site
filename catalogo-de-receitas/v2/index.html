@@ -30,6 +30,10 @@ h1 span,h2 span{color:var(--acc)}
 .selos .cart{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
 .selos .cart i{font-style:normal;font-size:13px;font-weight:800;border:1.5px solid var(--dark);border-radius:6px;padding:2px 7px;color:var(--dark)}
 @media(max-width:640px){.selos{grid-template-columns:1fr}}
+body{overflow-x:clip}.livreto{position:relative;left:50%;width:100vw;margin:6px 0 4px -50vw;height:250px;overflow:hidden;display:flex;justify-content:center;align-items:flex-start;padding-top:14px}
+.livreto img{flex:0 0 auto;width:170px;height:170px;object-fit:cover;margin:0 -40px;border:5px solid #fff;border-radius:6px;box-shadow:0 6px 14px rgba(31,58,38,.35);transform:translateY(var(--y)) rotate(var(--r))}
+.livreto:after{content:"";position:absolute;left:0;right:0;bottom:0;height:0}
+@media(min-width:640px){.livreto{height:290px}.livreto img{width:190px;height:190px;margin:0 -30px}}
 .note{font-size:13px;color:#C9C0A8;text-align:center;margin-top:10px}
 section{padding:40px 0}section.alt{background:var(--alt)}
 h2{font-family:Georgia,'Times New Roman',serif;color:var(--verde);font-size:28px;line-height:1.12;margin:8px 0 14px}
@@ -245,6 +249,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 <div class="pixrow"><span class="pixb">Pix: acesso liberado na hora</span></div></div></header>
 
 <section class="alt"><div class="w"><div class="kick k2">Veja por dentro</div><h2>Receitas <em>de verdade</em>, com foto</h2>
+<div class="livreto" aria-hidden="true"><img src="../img/r/cafe-007.jpg" alt="Shakshuka" width="520" height="520" style="--r:-14deg;--y:34px;z-index:7" loading="lazy"><img src="../img/r/023.jpg" alt="Panqueca de banana" width="520" height="520" style="--r:-9deg;--y:16px;z-index:8" loading="lazy"><img src="../img/r/082.jpg" alt="Macarrão" width="520" height="520" style="--r:-4deg;--y:5px;z-index:9" loading="lazy"><img src="../img/r/090.jpg" alt="Escondidinho gratinado" width="520" height="520" style="--r:0deg;--y:0px;z-index:10" loading="lazy"><img src="../img/r/118.jpg" alt="Sobremesa na taça" width="520" height="520" style="--r:4deg;--y:5px;z-index:9" loading="lazy"><img src="../img/r/140.jpg" alt="Cupcakes" width="520" height="520" style="--r:9deg;--y:16px;z-index:8" loading="lazy"><img src="../img/r/153.jpg" alt="Limonada" width="520" height="520" style="--r:14deg;--y:34px;z-index:7" loading="lazy"></div>
 <div class="car"><div class="car-tr" id="recTr">
 <figure class="car-sl"><img src="img6/escondidinho.jpg" alt="Escondidinho de batata-doce" width="480" height="600"><figcaption>Escondidinho de batata-doce<small>Almoço · 25 min</small></figcaption></figure>
 <figure class="car-sl"><img loading="lazy" src="img6/torta.jpg" alt="Torta de limão na taça" width="480" height="600"><figcaption>Torta de limão na taça<small>Sobremesa · 15 min, sem forno</small></figcaption></figure>
@@ -270,6 +275,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 <div class="gar"><div class="selo">7<small>DIAS</small></div><div><b>Garantia de 7 dias</b><span>Não gostou? Peça o reembolso em até 7 dias e devolvemos o valor inteiro.</span></div></div>
 <h2 style="margin-top:34px;font-size:28px">Como chega até você</h2>
 <div class="pas3" style="margin-top:14px"><div><i>1</i><span><b>Paga</b> com Pix ou cartão</span></div><div><i>2</i><span><b>Recebe</b> o acesso no seu e-mail</span></div><div><i>3</i><span><b>Cozinha</b> abrindo o PDF no celular</span></div></div>
+<img src="img/entrega.jpg" alt="Tela de pagamento aprovado e e-mail com o acesso ao Catálogo de Receitas" width="1200" height="900" loading="lazy" style="width:100%;height:auto;display:block;margin-top:16px;border:2px solid var(--dark);box-shadow:4px 4px 0 var(--dark);border-radius:14px">
 </div></section>
 
 <section><div class="w faq2"><h2>Dúvidas comuns</h2>
