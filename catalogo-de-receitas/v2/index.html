@@ -32,16 +32,6 @@ ul.x li,ul.ok li{position:relative;padding:0 0 12px 34px}
 ul.x li:before{content:"✕";position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;background:#E6DCC4;color:#7a7268;font-size:12px;display:flex;align-items:center;justify-content:center}
 ul.ok li:before{content:"✓";position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;background:var(--verde);color:#fff;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center}
 .shot{border-radius:16px;overflow:hidden;box-shadow:0 14px 34px rgba(0,0,0,.14)}
-.planos{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:18px 18px 10px;margin:0 -18px;scrollbar-width:none;scroll-padding:0 18px}.planos::-webkit-scrollbar{display:none}.planos>.plano{flex:0 0 84%;max-width:340px;scroll-snap-align:center;display:flex;flex-direction:column}.planos>.plano ul{flex:1}.pl-nav{display:flex;align-items:center;justify-content:center;gap:10px;margin:6px 0 2px}.pl-nav button{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--verde);font-size:18px;font-weight:900;cursor:pointer;line-height:1}.pl-dots{display:flex;gap:7px}.pl-dots i{width:9px;height:9px;border-radius:50%;background:var(--line);transition:.2s}.pl-dots i.on{background:var(--verde);width:22px;border-radius:99px}.pl-dica{text-align:center;color:var(--mut);font-size:13px;margin:4px 0 0}
-.plano{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 20px;text-align:center;position:relative}
-.plano.top{border:2.5px solid var(--verde);box-shadow:0 14px 34px rgba(47,93,58,.18)}
-.plano .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--verde);color:#fff;font-size:12px;font-weight:800;letter-spacing:1px;padding:5px 14px;border-radius:99px;white-space:nowrap}
-.plano h3{margin:4px 0 2px;font-size:21px}
-.plano .qtd{font-weight:800;color:var(--acc);font-size:17px}
-.plano .val{font-size:44px;font-weight:900;color:var(--verde);line-height:1.05;margin:6px 0}
-.plano .sm{color:var(--mut);font-size:14px;margin-bottom:14px}
-.plano ul{text-align:left;margin:0 0 18px}
-.plano li.no{color:#9a9384}.plano li.no:before{content:"–";background:#E6DCC4;color:#7a7268}
 .gar{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:18px}
 .gar b{display:block}
 .gar .selo{flex:0 0 64px;height:64px;border-radius:50%;background:var(--verde);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:900;font-size:22px;line-height:1}
@@ -81,10 +71,9 @@ table.cat tr.tt td{background:var(--alt);font-weight:900;color:var(--verde)}
 .yt .play:after{content:"";position:absolute;left:29px;top:22px;border-style:solid;border-width:14px 0 14px 22px;border-color:transparent transparent transparent #fff}
 .yt .ytl{position:absolute;left:12px;bottom:10px;background:rgba(0,0,0,.6);color:#fff;font-size:13px;font-weight:700;padding:5px 10px;border-radius:99px}
 details.cat-d{background:none;border:0;padding:0;margin:0}details.cat-d summary{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:12px;color:var(--verde)}
-#planos{scroll-margin-top:8px}
 
 .urg{background:var(--dark)}
-.plano,.amostra,.gar,details,.mom,.pgx,.idc,.lv,.st3 div{border:2px solid var(--dark)!important;box-shadow:4px 4px 0 var(--dark)!important;border-radius:14px}
+.opc,.amostra,.gar,details,.mom,.pgx,.idc,.lv,.st3 div{border:2px solid var(--dark)!important;box-shadow:4px 4px 0 var(--dark)!important;border-radius:14px}
 .grade details{box-shadow:3px 3px 0 var(--dark)!important;border:2px solid var(--dark)!important}
 h1 em,h2 em{font-style:italic;color:var(--acc);font-weight:700}
 .heroimg{border:2px solid #0f2416;border-radius:16px;overflow:hidden;box-shadow:5px 5px 0 #0f2416;background:#fff}.heroimg img{width:100%;height:auto;display:block}
@@ -107,12 +96,6 @@ section{padding:34px 0}
 .moms{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.mom{background:var(--card);overflow:hidden}.mom img{width:100%;aspect-ratio:1;object-fit:cover}.mom div{padding:6px 7px 8px;font-size:12px;line-height:1.25}.mom b{display:block;color:var(--verde);font-size:12.5px}
 .lv{background:var(--card);padding:12px;font-size:14px;line-height:1.3}.lv b{display:block;color:var(--verde);font-size:15px;margin-bottom:2px}.lv.pr{background:#FFF7E3}
 .lv .tg{display:inline-block;background:var(--acc);color:#fff;font-size:10.5px;font-weight:800;border-radius:99px;padding:2px 8px;margin-bottom:5px}
-.planos3{display:grid;grid-template-columns:1.15fr 1fr;gap:8px;align-items:end;margin-top:26px}
-.plano{padding:14px 8px!important;text-align:center}.plano h3{font-size:15px!important;margin:2px 0}.plano .qtd{font-size:12.5px!important;line-height:1.2}.plano .val{font-size:19px!important;margin:6px 0 2px!important;white-space:nowrap;letter-spacing:-.5px}.plano .sm{font-size:11px!important;margin-bottom:8px!important}
-.plano ul{margin:0 0 10px!important}.plano ul.ok li{font-size:11.5px;padding:0 0 6px 18px;line-height:1.25}.plano ul.ok li:before{width:14px;height:14px;font-size:9px;top:1px}
-.plano .btn{font-size:13px;padding:11px 4px;border-radius:10px}
-.plano.top{padding:20px 8px 14px!important;background:#FFF7E3}.plano.top .val{font-size:25px!important}.plano.top .tag{font-size:10px!important;padding:4px 9px!important}
-.plano .qtd{margin-bottom:8px}.plano .eco{font-size:11px;color:var(--verde);font-weight:800;margin:-2px 0 8px;line-height:1.2}
 .porq{background:var(--card);border:2px dashed var(--acc);border-radius:14px;padding:12px 14px;margin-top:16px;font-size:14.5px}.porq b{color:var(--verde)}
 .cmp{width:100%;border-collapse:collapse;background:var(--card);border:2px solid var(--dark);border-radius:14px;overflow:hidden;font-size:13px;margin-top:18px}
 .cmp th{background:var(--verde);color:#fff;font-size:12px;padding:8px 4px}.cmp td{padding:8px 5px;border-bottom:1px solid var(--line);text-align:center}.cmp td:first-child{text-align:left}.cmp .p{background:#FFF7E3;font-weight:900;color:var(--verde)}.cmp .n{color:#a59d8c}
@@ -134,6 +117,74 @@ section{padding:34px 0}
 .vbox .play:after{content:"";position:absolute;left:30px;top:23px;border-style:solid;border-width:15px 0 15px 23px;border-color:transparent transparent transparent #fff}
 .vbox .ytl{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.65);color:#fff;font-size:13px;font-weight:700;padding:5px 10px;border-radius:99px}
 .vbox.on .play,.vbox.on .ytl{display:none}
+
+/* ===== v3: leitura 55+ ===== */
+body{font-size:19px;line-height:1.6;padding-bottom:96px}
+.w,.vw{max-width:640px}
+h1{font-size:40px;line-height:1.1}
+h2{font-size:32px;line-height:1.15}
+.hero .lead{font-size:21px;line-height:1.5;color:#fff}
+.kick{font-size:14px}
+.btn{font-size:21px;padding:20px 18px;min-height:64px;border-radius:16px}
+.btn.sec{background:#fff}
+.urg{font-size:16px;padding:11px 12px}
+section{padding:40px 0}
+.mut{font-size:18px}
+.pixb{display:inline-flex;align-items:center;gap:8px;background:#fff;color:#14532d;border:2px solid #14532d;border-radius:99px;font-weight:800;font-size:17px;padding:8px 16px}
+.pixb:before{content:"";width:12px;height:12px;border-radius:3px;background:#1aa66b;transform:rotate(45deg)}
+.hero .pixrow{text-align:center;margin:14px 0 0}
+.hero .pixb{background:#fff}
+.phone{width:232px;height:470px;margin:6px auto 22px;background:#111;border-radius:34px;padding:9px;box-shadow:0 20px 44px rgba(0,0,0,.45);position:relative}
+.phone:before{content:"";position:absolute;top:13px;left:50%;width:56px;height:12px;margin-left:-28px;background:#111;border-radius:8px;z-index:2}
+.phone .tela{width:100%;height:100%;border-radius:26px;overflow:hidden;background:#fff}
+.phone .tela img{width:100%;display:block;animation:rola2 26s ease-in-out infinite}
+@keyframes rola2{0%,8%{transform:translateY(0)}20%,28%{transform:translateY(-20%)}40%,48%{transform:translateY(-40%)}60%,68%{transform:translateY(-60%)}80%,92%{transform:translateY(calc(-100% + 452px))}100%{transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.phone .tela img{animation:none}}
+.dish{display:flex;gap:14px;align-items:center;background:var(--card);margin:0 0 14px;overflow:hidden}
+.dish img{flex:0 0 40%;width:40%;aspect-ratio:1;object-fit:cover}
+.dish div{padding:10px 14px 10px 0;font-size:19px;line-height:1.3}.dish b{display:block;color:var(--verde);font-size:21px;margin-bottom:3px}
+.pgreal{max-width:300px;margin:18px auto 0;background:#fff;overflow:hidden}
+.pgreal img{width:100%;aspect-ratio:760/1077;object-fit:cover}
+.pgreal figcaption{padding:10px 12px;font-size:17px;font-weight:700;color:var(--verde);border-top:2px solid var(--dark);text-align:center}
+.opc{background:var(--card);padding:24px 20px 22px;text-align:center;position:relative;margin:0 0 26px}
+.opc.top{background:#FFF7E3;border-color:var(--verde)!important}
+.opc .tag{position:absolute;top:-16px;left:50%;transform:translateX(-50%);background:var(--verde);color:#fff;font-size:14px;font-weight:800;letter-spacing:1px;padding:6px 16px;border-radius:99px;white-space:nowrap}
+.opc h3{font-size:27px;margin:6px 0 2px;color:var(--ink)}
+.opc .qtd{font-weight:800;color:#8a5f10;font-size:19px}
+.opc .val{font-size:52px;font-weight:900;color:var(--verde);line-height:1.1;margin:6px 0 0}
+.opc .sm{font-size:17px;color:var(--ink);font-weight:700;margin-bottom:14px}
+.opc ul.ok{text-align:left;margin:0 0 18px}.opc ul.ok li{font-size:19px;padding:0 0 10px 38px}
+.opc ul.ok li:before{width:26px;height:26px;font-size:15px}
+.opc li.no{color:#6b6a61}.opc li.no:before{content:"–";background:#E6DCC4;color:#5c564b}
+.opc .pu{font-size:16px;color:var(--ink);margin-top:10px}
+.opc .pixb{margin:0 0 14px}
+.bon{display:grid;gap:14px}
+.bon .lv{font-size:19px;padding:16px;display:flex;gap:14px;align-items:center}
+.bon .lv img{flex:0 0 28%;width:28%;border:2px solid var(--dark);border-radius:8px}
+.bon .lv b{font-size:21px;margin-bottom:4px}
+.bon .lv.pr.big{background:#FFF7E3;border-color:var(--verde)!important}
+.bon .lv .tg{font-size:13px;padding:3px 10px}
+.gar{padding:18px}.gar b{font-size:21px}.gar span{font-size:18px!important;color:var(--ink)!important}
+.gar .selo{flex:0 0 72px;height:72px;font-size:26px}
+.pas3{grid-template-columns:1fr;gap:12px;margin-top:20px}
+.pas3 div{font-size:19px;text-align:left;display:flex;gap:14px;align-items:center;padding:14px 16px}
+.pas3 i{margin:0;flex:0 0 40px;height:40px;width:40px;font-size:20px}.pas3 b{font-size:21px;display:inline}
+.grade{grid-template-columns:1fr!important}
+.grade .cap{font-size:18px!important;padding:12px 14px!important}.grade .cap .ver{font-size:17px!important;font-weight:700;color:var(--verde)}
+.grade summary img{aspect-ratio:4/3!important}
+.grade .corpo{font-size:18px}.grade .corpo h4{font-size:15px}.grade .dica{font-size:17px}
+.faq2 details{padding:15px 16px}.faq2 summary{font-size:19px}.faq2 details p{font-size:18px;color:var(--ink)}
+.cmp{font-size:17px}.cmp th{font-size:16px;padding:10px 4px}.cmp td{padding:11px 6px}
+.porq{font-size:18px}
+table.cat{font-size:17px}table.cat th{font-size:14px}table.cat small{font-size:14px}
+.sticky .btn{font-size:19px;min-height:58px}
+.note{font-size:16px}
+.fim .btn{margin-top:10px}.fim .pixb{margin:0 0 16px}
+.pop h3{font-size:28px}.pop .ul li{font-size:18px}.pop .nao{font-size:17px;padding:10px 0}
+.pop .btn{font-size:19px}
+footer{font-size:16px}
+.dish,.pgreal{border:2px solid var(--dark)!important;box-shadow:4px 4px 0 var(--dark)!important;border-radius:14px}
+.hero .phone img{margin-top:0;-webkit-mask-image:none;mask-image:none}
 </style>
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','30156663417254394');fbq('track','PageView');</script>
 <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
@@ -151,96 +202,50 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 </script>
 <!-- TikTok Pixel Code End -->
 </head><body>
-<div class="urg">Livro digital em PDF · acesso na hora · garantia de 7 dias</div>
+<div class="urg">Livro digital em PDF · pagamento único · garantia de 7 dias</div>
 
 <header class="hero"><div class="tx top"><div class="kick">Guia de receitas práticas e rápidas</div>
 <h1>Sem ideia do que fazer de <em>almoço</em> hoje?</h1>
-<p class="lead">Receitas simples para variar o cardápio da família: almoço, janta, marmita e sobremesa. <b>Escolha entre 60 ou 160 receitas, todas com foto e modo de preparo</b>, com ingrediente de qualquer mercado.</p></div>
-<div class="vw"><div class="heroimg vbox" id="yt" role="button" tabindex="0" aria-label="Assistir ao vídeo"><video id="vd" poster="vid/poster.jpg?v=9" preload="metadata" playsinline src="vid/video.mp4?v=11" width="1080" height="1350"></video><span class="play" aria-hidden="true"></span><span class="ytl">Veja tudo o que vem no Catálogo · 1 min</span></div></div>
-<div class="tx bot"><div class="stats"><div><b>60 ou 160</b><span>receitas com foto</span></div><div><b>19</b><span>categorias</span></div><div><b>30 min</b><span>a maioria fica pronta</span></div></div>
-<a class="btn" href="#amostra">Quero ver as receitas</a>
-</div></header>
+<p class="lead">Escolha entre <b>60 ou 160 receitas</b>, todas com foto e modo de preparo, com ingredientes de qualquer mercado.</p></div>
+<div class="phone" aria-label="Catálogo de Receitas aberto no celular"><div class="tela"><img src="pg/rolagem.jpg" alt="Páginas do Catálogo de Receitas rolando no celular" width="420" height="3620" fetchpriority="high"></div></div>
+<div class="tx bot"><a class="btn" href="#comprar">Quero ver as opções</a>
+<div class="pixrow"><span class="pixb">Pix: acesso liberado na hora</span></div></div></header>
 
-<section class="alt"><div class="w"><div class="kick k2">Receitas que você viu no vídeo</div><h2>Todas estão no Catálogo, <em>com foto e modo de preparo</em></h2>
-<div class="v6">
-<figure><img loading="lazy" src="img6/waffle.jpg" alt="Waffle de banana na sanduicheira" width="480" height="600"><figcaption><b>Waffle de banana na sanduicheira</b>Café da manhã · 10 min</figcaption></figure>
-<figure><img loading="lazy" src="img6/escondidinho.jpg" alt="Escondidinho de batata-doce" width="480" height="600"><figcaption><b>Escondidinho de batata-doce</b>Almoço · 25 min</figcaption></figure>
-<figure><img loading="lazy" src="img6/wrap.jpg" alt="Wrap de ovo com recheio" width="480" height="600"><figcaption><b>Wrap de ovo com recheio</b>Jantar · 8 min</figcaption></figure>
-<figure><img loading="lazy" src="img6/esfiha.jpg" alt="Esfiha aberta de pão sírio" width="480" height="600"><figcaption><b>Esfiha aberta de pão sírio</b>Lanche da tarde · 20 min</figcaption></figure>
-<figure><img loading="lazy" src="img6/torta.jpg" alt="Torta de limão na taça" width="480" height="600"><figcaption><b>Torta de limão na taça</b>Sobremesa · 15 min, sem forno</figcaption></figure>
-<figure><img loading="lazy" src="img6/cupcake.jpg" alt="Cupcake de baunilha" width="480" height="600"><figcaption><b>Cupcake de baunilha</b>Festa · rende 12 unidades</figcaption></figure>
-</div>
-<p class="mut" style="margin:12px 0 0;font-size:14px">Estas 6 receitas estão no Catálogo Completo, junto com outras 154.</p></div></section>
+<section class="alt"><div class="w"><div class="kick k2">Veja por dentro</div><h2>Receitas <em>de verdade</em>, com foto</h2>
+<div class="heroimg vbox" id="yt" role="button" tabindex="0" aria-label="Assistir ao vídeo" style="margin-bottom:20px"><video id="vd" poster="vid/poster.jpg?v=9" preload="metadata" playsinline src="vid/video.mp4?v=11" width="1080" height="1350"></video><span class="play" aria-hidden="true"></span><span class="ytl">Veja o Catálogo · 1 min</span></div>
+<figure class="dish opc0"><img loading="lazy" src="img6/escondidinho.jpg" alt="Escondidinho de batata-doce" width="480" height="600"><div><b>Escondidinho de batata-doce</b>Almoço · 25 min</div></figure>
+<figure class="dish opc0"><img loading="lazy" src="img6/torta.jpg" alt="Torta de limão na taça" width="480" height="600"><div><b>Torta de limão na taça</b>Sobremesa · 15 min, sem forno</div></figure>
+<figure class="dish opc0"><img loading="lazy" src="img6/waffle.jpg" alt="Waffle de banana na sanduicheira" width="480" height="600"><div><b>Waffle de banana</b>Café da manhã · 10 min</div></figure>
+<figure class="pgreal opc0"><img loading="lazy" src="pg/escondidinho.jpg" alt="Página real do PDF: Escondidinho de batata-doce" width="760" height="1077"><figcaption>Página real do PDF</figcaption></figure>
+<p class="mut" style="text-align:center;margin:14px 0 0">Abre no celular, no tablet ou imprime.</p></div></section>
 
-<section><div class="w"><div class="kick k2">Parece com você?</div><h2>Todo dia a <em>mesma coisa</em> na mesa.</h2>
-<div class="g2">
-<div class="idc">Abre a geladeira às 19h e não faz ideia do que preparar.</div>
-<div class="idc">A marmita da semana é sempre arroz, feijão e a mesma carne.</div>
-<div class="idc">As crianças só querem nugget de pacote.</div>
-<div class="idc">Quer caprichar numa visita, mas só conhece o básico.</div>
-</div>
-<p style="margin:16px 0 0;font-weight:700;color:var(--verde)">O Catálogo resolve com receitas simples, com foto e modo de preparo, organizadas por ocasião.</p></div></section>
-
-<section class="alt" id="amostra"><div class="w"><div class="kick k2">Toque e veja</div><h2>6 receitas liberadas <em>de graça</em></h2><p class="mut">Toque em qualquer uma e veja completa, do jeito que está no Catálogo.</p>
-<div class="grade"><details><summary><img loading="lazy" src="../img/r/cafe-007.jpg" alt="Shakshuka rápida de frigideira" width="520" height="520"><div class="cap"><b>Shakshuka rápida de frigideira</b><span>15 min</span><span class="ver">Ver a receita completa</span></div></summary><div class="corpo"><p class="rende">Rende 2 porções</p><h4>Ingredientes</h4><ul><li>4 ovos</li><li>1 xícara de molho de tomate</li><li>½ cebola picada</li><li>½ pimentão picado</li><li>Sal, cominho e páprica</li><li>1 fio de azeite</li></ul><h4>Modo de preparo</h4><ol><li>Refogue a cebola e o pimentão no azeite.</li><li>Junte o molho e os temperos e deixe ferver 3 minutos.</li><li>Abra quatro espaços e quebre um ovo em cada.</li><li>Tampe e cozinhe até a clara firmar.</li></ol><div class="dica"><b>Dica:</b> Sirva direto na frigideira, com queijo branco por cima.</div></div></details><details><summary><img loading="lazy" src="../img/r/085.jpg" alt="Risoto de frigideira com queijo" width="520" height="520"><div class="cap"><b>Risoto de frigideira com queijo</b><span>20 min</span><span class="ver">Ver a receita completa</span></div></summary><div class="corpo"><p class="rende">Rende 2 porções</p><h4>Ingredientes</h4><ul><li>1 xícara de arroz cozido</li><li>½ xícara de leite</li><li>½ xícara de queijo ralado</li><li>1 colher (sopa) de manteiga</li><li>Sal e pimenta a gosto</li></ul><h4>Modo de preparo</h4><ol><li>Aqueça o arroz com o leite.</li><li>Mexa até ficar cremoso.</li><li>Junte a manteiga e o queijo.</li><li>Acerte o sal e sirva.</li></ol><div class="dica"><b>Dica:</b> Mexa sem parar no final para ficar bem cremoso.</div></div></details><details><summary><img loading="lazy" src="../img/r/135.jpg" alt="Marmita de peixe com batata" width="520" height="520"><div class="cap"><b>Marmita de peixe com batata</b><span>25 min</span><span class="ver">Ver a receita completa</span></div></summary><div class="corpo"><p class="rende">Rende 2 marmitas</p><h4>Ingredientes</h4><ul><li>2 filés de peixe</li><li>2 batatas em rodelas</li><li>Limão e sal</li><li>1 colher (sopa) de azeite</li></ul><h4>Modo de preparo</h4><ol><li>Tempere o peixe com limão e sal.</li><li>Asse com as batatas por 20 minutos.</li><li>Distribua nas marmitas.</li><li>Regue com azeite.</li></ol><div class="dica"><b>Dica:</b> O peixe fica melhor aquecido em fogo baixo ou no micro-ondas por pouco tempo.</div></div></details><details><summary><img loading="lazy" src="../img/r/cafe-043.jpg" alt="Overnight oats de banana e cacau" width="520" height="520"><div class="cap"><b>Overnight oats de banana e cacau</b><span>5 min + 1 noite</span><span class="ver">Ver a receita completa</span></div></summary><div class="corpo"><p class="rende">Rende 1 porção</p><h4>Ingredientes</h4><ul><li>4 colheres (sopa) de aveia</li><li>½ xícara de leite</li><li>1 colher (chá) de cacau</li><li>½ banana amassada</li><li>Rodelas de banana para cobrir</li></ul><h4>Modo de preparo</h4><ol><li>Misture a aveia, o leite, o cacau e a banana amassada.</li><li>Coloque no pote e cubra com as rodelas.</li><li>Geladeira por pelo menos 6 horas.</li><li>Sirva gelado.</li></ol><div class="dica"><b>Dica:</b> Deixe pronto à noite: de manhã é só tirar da geladeira.</div></div></details><details><summary><img loading="lazy" src="../img/r/118.jpg" alt="Torta de limão na taça" width="520" height="520"><div class="cap"><b>Torta de limão na taça</b><span>15 min + 2 h</span><span class="ver">Ver a receita completa</span></div></summary><div class="corpo"><p class="rende">Rende 4 porções</p><h4>Ingredientes</h4><ul><li>1 pacote de biscoito maisena</li><li>1 lata de leite condensado</li><li>½ xícara de suco de limão</li><li>1 lata de creme de leite</li></ul><h4>Modo de preparo</h4><ol><li>Triture o biscoito e coloque no fundo.</li><li>Bata o leite condensado, o limão e o creme de leite.</li><li>Despeje sobre o biscoito.</li><li>Leve à geladeira por 2 horas.</li></ol><div class="dica"><b>Dica:</b> Adicione o limão devagar: ele engrossa o creme.</div></div></details><details><summary><img loading="lazy" src="../img/r/140.jpg" alt="Cupcake de baunilha" width="520" height="520"><div class="cap"><b>Cupcake de baunilha</b><span>35 min</span><span class="ver">Ver a receita completa</span></div></summary><div class="corpo"><p class="rende">Rende 12 unidades</p><h4>Ingredientes</h4><ul><li>2 xícaras de farinha de trigo</li><li>1 xícara de açúcar</li><li>3 ovos</li><li>½ xícara de óleo</li><li>1 xícara de leite</li><li>1 colher (sopa) de fermento</li></ul><h4>Modo de preparo</h4><ol><li>Bata os ovos, o açúcar, o óleo e o leite.</li><li>Misture a farinha e o fermento.</li><li>Distribua em forminhas.</li><li>Asse a 180 °C por 25 minutos.</li></ol><div class="dica"><b>Dica:</b> Preencha as forminhas só até a metade.</div></div></details></div></div></section>
-
-<section><div class="w"><div class="kick k2">Páginas reais</div><h2>É assim que chega <em>no seu celular</em></h2><p class="mut">Arraste para o lado. São páginas de verdade do PDF.</p>
-<div class="pgwrap"><div class="pgs">
-<figure class="pgx"><img loading="lazy" src="pg/sumario.jpg" alt="Sumário" width="760" height="1077"><figcaption>Sumário por categoria</figcaption></figure>
-<figure class="pgx"><img loading="lazy" src="pg/escondidinho.jpg" alt="Escondidinho de batata-doce" width="760" height="1077"><figcaption>Escondidinho de batata-doce</figcaption></figure>
-<figure class="pgx"><img loading="lazy" src="pg/nuggets.jpg" alt="Nuggets caseiros de frango" width="760" height="1077"><figcaption>Nuggets caseiros</figcaption></figure>
-<figure class="pgx"><img loading="lazy" src="pg/torta.jpg" alt="Torta de limão na taça" width="760" height="1077"><figcaption>Torta de limão na taça</figcaption></figure>
-<figure class="pgx"><img loading="lazy" src="pg/cardapio.jpg" alt="Cardápio de 30 dias" width="760" height="1077"><figcaption>Cardápio de 30 dias</figcaption></figure>
-<figure class="pgx"><img loading="lazy" src="pg/lista.jpg" alt="Lista de compras semanal" width="760" height="1077"><figcaption>Lista de compras</figcaption></figure>
-</div>
-<div class="fone" aria-label="Exemplo de página aberta no celular"><small>Abre no celular, no tablet ou imprime</small><div class="tela"><img loading="lazy" src="pg/rolagem.jpg" alt="Páginas do Catálogo rolando no celular" width="420" height="3620"></div></div>
-</div>
-<div class="pas3" style="margin-top:44px"><div><i>1</i><b>Paga</b>Pix ou cartão, pagamento único</div><div><i>2</i><b>Recebe</b>Acesso no e-mail na hora</div><div><i>3</i><b>Cozinha</b>Abre o PDF e escolhe a receita</div></div>
+<section id="comprar"><div class="w"><div class="kick k2">Escolha o seu</div><h2>Pagamento único, <em>acesso vitalício</em></h2><p class="mut">Você paga uma vez só e o acesso é para sempre. <b>Não tem mensalidade.</b></p>
+<div class="opc top" style="margin-top:30px"><div class="tag">★ O MAIS ESCOLHIDO</div><h3>Completo</h3><div class="val">R$ 29,90</div><div class="sm">pagamento único · acesso vitalício</div><div class="qtd" style="margin-bottom:12px">160 receitas + 4 bônus</div>
+<span class="pixb">Pix: libera na hora</span>
+<ul class="ok"><li>160 receitas com foto</li><li><b>Cardápio de 30 dias</b></li><li><b>Lista de compras</b></li><li>20 lanches da tarde</li><li>12 vitaminas e sucos</li></ul>
+<a class="btn" href="https://pay.cakto.com.br/37y7q73" data-produto="Completo">Quero o Completo</a><div class="pu">Pagamento único · sem mensalidade</div></div>
+<div class="opc"><h3>Básico</h3><div class="val">R$ 9,90</div><div class="sm">pagamento único · acesso vitalício</div><div class="qtd" style="margin-bottom:12px">60 receitas</div>
+<ul class="ok"><li>60 receitas com foto</li><li class="no">Sem cardápio de 30 dias</li><li class="no">Sem lista de compras</li><li class="no">Sem bônus</li></ul>
+<button class="btn sec btn-basico" type="button">Quero o Básico</button><div class="pu">Pagamento único · sem mensalidade</div></div>
 </div></section>
 
-<section><div class="w"><div class="kick k2">Fora da tela</div><h2>Use do jeito que <em>preferir</em></h2><p class="mut">No celular enquanto cozinha, no tablet na bancada ou impresso na mesa. É o mesmo Catálogo, com as mesmas páginas.</p>
-<div class="car"><div class="car-tr" id="fdtTr"><figure class="car-sl"><img loading="lazy" src="img/fdt-celular.jpg" alt="No celular, enquanto cozinha" width="900" height="1125"><figcaption>No celular, enquanto cozinha</figcaption></figure><figure class="car-sl"><img loading="lazy" src="img/fdt-tablet.jpg" alt="No tablet, na bancada" width="900" height="1125"><figcaption>No tablet, na bancada</figcaption></figure><figure class="car-sl"><img loading="lazy" src="img/fdt-livro.jpg?v=3" alt="Impresso, na mesa" width="900" height="1125"><figcaption>Impresso, na mesa</figcaption></figure></div><button class="car-bt car-pv" type="button" aria-label="Anterior">‹</button><button class="car-bt car-nx" type="button" aria-label="Próxima">›</button></div><div class="car-dots" id="fdtDots"><span class="on"></span><span></span><span></span></div><p class="mut" style="text-align:center;margin:6px 0 0;font-size:13px">Arraste para o lado →</p></div></section>
-
-<section class="alt"><div class="w"><div class="kick k2">Para cada momento</div><h2>Uma receita certa <em>para cada hora</em></h2>
-<div class="moms">
-<div class="mom"><img loading="lazy" src="../img/r/089.jpg" alt="Almoço"><div><b>Almoço</b>Sair do arroz com feijão</div></div>
-<div class="mom"><img loading="lazy" src="../img/r/135.jpg" alt="Marmita"><div><b>Marmita</b>Resolva a semana</div></div>
-<div class="mom"><img loading="lazy" src="pg/criancas.jpg" alt="Nuggets caseiros"><div><b>Crianças</b>Caseiro que eles comem</div></div>
-<div class="mom"><img loading="lazy" src="../img/r/140.jpg" alt="Cupcakes"><div><b>Festinha</b>Capriche gastando pouco</div></div>
-</div></div></section>
-
-<section><div class="w"><div class="kick k2">Tudo o que você leva no Completo</div><h2>160 receitas e <em>4 bônus</em></h2>
-<div class="g2">
-<div class="lv"><b>160 receitas com foto <s>R$ 47</s></b>Café, almoço, janta, marmita, crianças, festinha, sobremesa e bebidas.</div>
-<div class="lv"><b>19 categorias</b>Ache a receita pelo momento: marmita, air fryer, festinha, crianças.</div>
-<div class="lv pr"><span class="tg">BÔNUS 1</span><b>Cardápio de 30 dias <s>R$ 27</s><span class="gr">GRÁTIS</span></b>Café, almoço, lanche, jantar e ceia para o mês.</div>
-<div class="lv pr"><span class="tg">BÔNUS 2</span><b>Lista de compras semanal <s>R$ 17</s><span class="gr">GRÁTIS</span></b>Separada por setor do mercado.</div>
-<div class="lv pr"><span class="tg">BÔNUS 3</span><b>20 lanches da tarde <s>R$ 17</s><span class="gr">GRÁTIS</span></b>Ideias rápidas com ingrediente simples.</div>
-<div class="lv pr"><span class="tg">BÔNUS 4</span><b>12 vitaminas e sucos <s>R$ 12</s><span class="gr">GRÁTIS</span></b>Para acompanhar qualquer receita.</div>
+<section class="alt"><div class="w"><div class="kick k2">Só no Completo</div><h2>160 receitas e <em>4 bônus</em></h2>
+<div class="bon">
+<div class="lv pr big"><img loading="lazy" src="pg/cardapio.jpg" alt="Cardápio de 30 dias" width="760" height="1077"><div><span class="tg">BÔNUS 1 · DESTAQUE</span><b>Cardápio de 30 dias</b>Café, almoço, lanche, jantar e ceia para o mês inteiro. Você não precisa mais pensar no que fazer.</div></div>
+<div class="lv pr big"><img loading="lazy" src="pg/lista.jpg" alt="Lista de compras semanal" width="760" height="1077"><div><span class="tg">BÔNUS 2 · DESTAQUE</span><b>Lista de compras</b>Separada por setor do mercado. É só levar e marcar.</div></div>
+<div class="lv pr"><div><span class="tg">BÔNUS 3</span><b>20 lanches da tarde</b>Ideias rápidas com ingrediente simples.</div></div>
+<div class="lv pr"><div><span class="tg">BÔNUS 4</span><b>12 vitaminas e sucos</b>Para acompanhar qualquer receita.</div></div>
 </div>
-<div class="ancora">Se fosse comprar tudo separado: <s>R$ 120</s><b>Hoje no Completo: R$ 29,90</b><span class="eco2">Você economiza R$ 90,10 (≈ 75%)</span></div>
-<details class="cat-d" style="margin-top:16px"><summary>Ver quantas receitas vêm em cada categoria</summary><table class="cat"><tr><th>Categoria</th><th>Básico</th><th>Completo</th></tr><tr><td><b>Ovos de todo jeito</b><small>Proteína rápida na frigideira, em 5 a 10 minutos.</small></td><td>4</td><td>12</td></tr><tr><td><b>Tapiocas e crepiocas</b><small>Massa pronta em segundos, recheio que você tiver em casa.</small></td><td>4</td><td>10</td></tr><tr><td><b>Panquecas e waffles</b><small>Massa batida no liquidificador ou no garfo, sem farinha de trigo.</small></td><td>4</td><td>10</td></tr><tr><td><b>Cuscuz e milho</b><small>O clássico brasileiro de cada manhã, com variações.</small></td><td>3</td><td>8</td></tr><tr><td><b>Bowls, iogurtes e aveia</b><small>Monte em 3 minutos ou deixe pronto na noite anterior.</small></td><td>3</td><td>10</td></tr><tr><td><b>Bolos de caneca e assados</b><small>Doce rápido no micro-ondas ou forno.</small></td><td>3</td><td>8</td></tr><tr><td><b>Salgados rápidos</b><small>Para quem prefere salgado logo cedo.</small></td><td>3</td><td>7</td></tr><tr><td><b>Batata-doce, mandioca e inhame</b><small>Raízes que já fazem parte da nossa mesa.</small></td><td>3</td><td>6</td></tr><tr><td><b>Para levar e deixar pronto</b><small>Prepare na véspera ou leve na bolsa.</small></td><td>3</td><td>6</td></tr><tr><td><b>Massas e arroz</b><small>Almoço e jantar resolvidos com o que tem na panela.</small></td><td>3</td><td>7</td></tr><tr><td><b>Carnes e frango</b><small>Pratos principais simples, sem complicação.</small></td><td>3</td><td>7</td></tr><tr><td><b>Sopas, wraps e pizzas</b><small>Refeições leves e rápidas para qualquer hora.</small></td><td>3</td><td>8</td></tr><tr><td><b>Lanches da tarde</b><small>Para o meio da tarde, em poucos minutos.</small></td><td>3</td><td>11</td></tr><tr><td><b>Sobremesas rápidas</b><small>Doce pronto sem sofrer.</small></td><td>3</td><td>12</td></tr><tr><td><b>Air fryer</b><small>Crocância com pouco óleo e pouco tempo.</small></td><td>3</td><td>8</td></tr><tr><td><b>Marmitas da semana</b><small>Cozinhe uma vez, coma a semana toda.</small></td><td>3</td><td>8</td></tr><tr><td><b>Festinha e aniversário</b><small>Para encher a mesa sem gastar muito.</small></td><td>3</td><td>8</td></tr><tr><td><b>Receitas para crianças</b><small>Bom para a criançada, fácil para quem cozinha.</small></td><td>3</td><td>6</td></tr><tr><td><b>Bebidas sem álcool</b><small>Refrescantes para qualquer ocasião.</small></td><td>3</td><td>8</td></tr><tr class="tt"><td>Total de receitas</td><td>60</td><td>160</td></tr></table></details></div></section>
-<!-- PROVA SOCIAL: entra aqui quando chegarem os depoimentos reais (áudio + frase, fotos dos pratos, prints autorizados). -->
+<p style="margin:18px 0 12px;font-weight:700;color:var(--verde)">Tudo isso por R$ 29,90, pagamento único.</p>
+<a class="btn" href="https://pay.cakto.com.br/37y7q73" data-produto="Completo">Quero o Completo</a></div></section>
 
-<section class="alt" id="opcoes"><div class="w"><div class="kick k2">Escolha o seu</div><h2>Duas opções, <em>pagamento único</em></h2><p class="mut" style="margin-bottom:0">Você paga uma vez só e o acesso é para sempre. <b>Não tem mensalidade.</b></p>
-<div class="planos3">
-<div class="plano top"><div class="tag">★ MELHOR CUSTO-BENEFÍCIO</div><h3>Completo</h3><div class="val">R$ 29,90</div><div class="sm">compra única</div><div class="qtd">160 receitas + 4 bônus</div>
-<ul class="ok"><li>160 receitas</li><li>Cardápio de 30 dias</li><li>Lista de compras</li><li>20 lanches da tarde</li><li>12 vitaminas e sucos</li><li>Acesso vitalício</li></ul>
-<a class="btn" href="https://pay.cakto.com.br/37y7q73" data-produto="Completo">Quero o Completo</a><div class="pu">Pagamento único · sem mensalidade</div></div>
-<div class="plano"><div class="ent">OPÇÃO DE ENTRADA</div><h3>Básico</h3><div class="val">R$ 9,90</div><div class="sm">compra única</div><div class="qtd">60 receitas</div>
-<ul class="ok"><li>60 receitas</li><li class="no">Sem cardápio</li><li class="no">Sem lista de compras</li><li class="no">Sem bônus</li><li>Acesso vitalício</li></ul>
-<button class="btn sec" type="button" id="btnBasico">Quero o Básico</button><div class="pu">Pagamento único · sem mensalidade</div></div>
-</div>
-<div class="porq"><b>Por que o Completo vale mais a pena?</b> Por R$ 20 a mais você leva <b>100 receitas a mais</b>, o <b>cardápio de 30 dias</b>, a <b>lista de compras</b>, <b>20 lanches da tarde</b> e <b>12 vitaminas e sucos</b>.</div>
-<table class="cmp"><tr><th></th><th>Básico</th><th>Completo</th></tr>
-<tr><td>Receitas com foto</td><td>60</td><td class="p">160</td></tr>
-<tr><td>Cardápio de 30 dias</td><td class="n">–</td><td class="p">✓</td></tr>
-<tr><td>Lista de compras</td><td class="n">–</td><td class="p">✓</td></tr>
-<tr><td>20 lanches da tarde</td><td class="n">–</td><td class="p">✓</td></tr>
-<tr><td>12 vitaminas e sucos</td><td class="n">–</td><td class="p">✓</td></tr>
-<tr><td>Preço</td><td>R$ 9,90</td><td class="p">R$ 29,90</td></tr></table>
-<div class="gar"><div class="selo">7<small>DIAS</small></div><div><b>Garantia de 7 dias</b><span style="color:var(--mut);font-size:15px">Não gostou? Peça o reembolso em até 7 dias e devolvemos o valor inteiro.</span></div></div>
-<div class="note" style="color:var(--mut)">Compra segura pela Cakto · Pix ou cartão · o valor exibido no checkout já é o total, com a taxa de serviço incluída</div></div></section>
+<section><div class="w"><div class="kick k2">Confira antes de comprar</div><h2>3 receitas <em>liberadas de graça</em></h2><p class="mut">Toque e veja a receita completa, do jeito que está no Catálogo.</p>
+<div class="grade"><details><summary><img loading="lazy" src="../img/r/cafe-007.jpg" alt="Shakshuka rápida de frigideira" width="520" height="520"><div class="cap"><b>Shakshuka rápida de frigideira</b><span>15 min</span><span class="ver">Ver a receita completa</span></div></summary><div class="corpo"><p class="rende">Rende 2 porções</p><h4>Ingredientes</h4><ul><li>4 ovos</li><li>1 xícara de molho de tomate</li><li>½ cebola picada</li><li>½ pimentão picado</li><li>Sal, cominho e páprica</li><li>1 fio de azeite</li></ul><h4>Modo de preparo</h4><ol><li>Refogue a cebola e o pimentão no azeite.</li><li>Junte o molho e os temperos e deixe ferver 3 minutos.</li><li>Abra quatro espaços e quebre um ovo em cada.</li><li>Tampe e cozinhe até a clara firmar.</li></ol><div class="dica"><b>Dica:</b> Sirva direto na frigideira, com queijo branco por cima.</div></div></details><details><summary><img loading="lazy" src="../img/r/085.jpg" alt="Risoto de frigideira com queijo" width="520" height="520"><div class="cap"><b>Risoto de frigideira com queijo</b><span>20 min</span><span class="ver">Ver a receita completa</span></div></summary><div class="corpo"><p class="rende">Rende 2 porções</p><h4>Ingredientes</h4><ul><li>1 xícara de arroz cozido</li><li>½ xícara de leite</li><li>½ xícara de queijo ralado</li><li>1 colher (sopa) de manteiga</li><li>Sal e pimenta a gosto</li></ul><h4>Modo de preparo</h4><ol><li>Aqueça o arroz com o leite.</li><li>Mexa até ficar cremoso.</li><li>Junte a manteiga e o queijo.</li><li>Acerte o sal e sirva.</li></ol><div class="dica"><b>Dica:</b> Mexa sem parar no final para ficar bem cremoso.</div></div></details><details><summary><img loading="lazy" src="../img/r/135.jpg" alt="Marmita de peixe com batata" width="520" height="520"><div class="cap"><b>Marmita de peixe com batata</b><span>25 min</span><span class="ver">Ver a receita completa</span></div></summary><div class="corpo"><p class="rende">Rende 2 marmitas</p><h4>Ingredientes</h4><ul><li>2 filés de peixe</li><li>2 batatas em rodelas</li><li>Limão e sal</li><li>1 colher (sopa) de azeite</li></ul><h4>Modo de preparo</h4><ol><li>Tempere o peixe com limão e sal.</li><li>Asse com as batatas por 20 minutos.</li><li>Distribua nas marmitas.</li><li>Regue com azeite.</li></ol><div class="dica"><b>Dica:</b> O peixe fica melhor aquecido em fogo baixo ou no micro-ondas por pouco tempo.</div></div></details></div>
+<!-- PROVA SOCIAL: entra aqui quando chegarem os depoimentos reais (áudio + frase, fotos dos pratos, prints autorizados). Não inventar. -->
+<div class="gar"><div class="selo">7<small>DIAS</small></div><div><b>Garantia de 7 dias</b><span>Não gostou? Peça o reembolso em até 7 dias e devolvemos o valor inteiro.</span></div></div>
+<h2 style="margin-top:34px;font-size:28px">Como chega até você</h2>
+<div class="pas3" style="margin-top:14px"><div><i>1</i><span><b>Paga</b> com Pix ou cartão, pagamento único</span></div><div><i>2</i><span><b>Recebe</b> o acesso no e-mail na hora</span></div><div><i>3</i><span><b>Cozinha</b> abrindo o PDF no celular</span></div></div>
+</div></section>
 
 <section><div class="w faq2"><h2>Dúvidas comuns</h2>
 <details><summary>Qual a diferença entre os dois?</summary><p>O Básico tem 60 receitas. O Completo tem as 160 receitas e os 4 bônus: cardápio de 30 dias, lista de compras, 20 lanches da tarde e 12 vitaminas e sucos.</p></details>
@@ -251,10 +256,29 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. Pede o reembolso e devolvemos o valor inteiro.</p></details>
 </div></section>
 
-<section class="fim"><div class="w"><div class="kick">Hoje pode ser diferente</div><h2>O almoço de amanhã <em>já pode ser outro</em>.</h2><p>Comece hoje e varie a semana sem complicar.</p><a class="btn" href="#opcoes">Quero o Completo</a></div></section>
+
+<section class="alt" id="opcoes"><div class="w"><div class="kick k2">Escolha o seu</div><h2>Duas opções, <em>pagamento único</em></h2><p class="mut" style="margin-bottom:0">Você paga uma vez só e o acesso é para sempre. <b>Não tem mensalidade.</b></p>
+<div class="opc top" style="margin-top:30px"><div class="tag">★ MELHOR CUSTO-BENEFÍCIO</div><h3>Completo</h3><div class="val">R$ 29,90</div><div class="sm">pagamento único · acesso vitalício</div><span class="pixb">Pix: libera na hora</span>
+<ul class="ok"><li>160 receitas</li><li>Cardápio de 30 dias</li><li>Lista de compras</li><li>20 lanches da tarde</li><li>12 vitaminas e sucos</li></ul>
+<a class="btn" href="https://pay.cakto.com.br/37y7q73" data-produto="Completo">Quero o Completo</a><div class="pu">Pagamento único · sem mensalidade</div></div>
+<div class="opc"><h3>Básico</h3><div class="val">R$ 9,90</div><div class="sm">pagamento único · acesso vitalício</div>
+<ul class="ok"><li>60 receitas</li><li class="no">Sem cardápio</li><li class="no">Sem lista de compras</li><li class="no">Sem bônus</li></ul>
+<button class="btn sec btn-basico" type="button">Quero o Básico</button><div class="pu">Pagamento único · sem mensalidade</div></div>
+<div class="porq"><b>Por que o Completo vale mais a pena?</b> Por R$ 20 a mais você leva <b>100 receitas a mais</b>, o <b>cardápio de 30 dias</b>, a <b>lista de compras</b>, <b>20 lanches da tarde</b> e <b>12 vitaminas e sucos</b>.</div>
+<table class="cmp"><tr><th></th><th>Básico</th><th>Completo</th></tr>
+<tr><td>Receitas com foto</td><td>60</td><td class="p">160</td></tr>
+<tr><td>Cardápio de 30 dias</td><td class="n">–</td><td class="p">✓</td></tr>
+<tr><td>Lista de compras</td><td class="n">–</td><td class="p">✓</td></tr>
+<tr><td>20 lanches da tarde</td><td class="n">–</td><td class="p">✓</td></tr>
+<tr><td>12 vitaminas e sucos</td><td class="n">–</td><td class="p">✓</td></tr>
+<tr><td>Preço</td><td>R$ 9,90</td><td class="p">R$ 29,90</td></tr></table>
+<details class="cat-d" style="margin-top:16px"><summary>Ver quantas receitas vêm em cada categoria</summary><table class="cat"><tr><th>Categoria</th><th>Básico</th><th>Completo</th></tr><tr><td><b>Ovos de todo jeito</b><small>Proteína rápida na frigideira, em 5 a 10 minutos.</small></td><td>4</td><td>12</td></tr><tr><td><b>Tapiocas e crepiocas</b><small>Massa pronta em segundos, recheio que você tiver em casa.</small></td><td>4</td><td>10</td></tr><tr><td><b>Panquecas e waffles</b><small>Massa batida no liquidificador ou no garfo, sem farinha de trigo.</small></td><td>4</td><td>10</td></tr><tr><td><b>Cuscuz e milho</b><small>O clássico brasileiro de cada manhã, com variações.</small></td><td>3</td><td>8</td></tr><tr><td><b>Bowls, iogurtes e aveia</b><small>Monte em 3 minutos ou deixe pronto na noite anterior.</small></td><td>3</td><td>10</td></tr><tr><td><b>Bolos de caneca e assados</b><small>Doce rápido no micro-ondas ou forno.</small></td><td>3</td><td>8</td></tr><tr><td><b>Salgados rápidos</b><small>Para quem prefere salgado logo cedo.</small></td><td>3</td><td>7</td></tr><tr><td><b>Batata-doce, mandioca e inhame</b><small>Raízes que já fazem parte da nossa mesa.</small></td><td>3</td><td>6</td></tr><tr><td><b>Para levar e deixar pronto</b><small>Prepare na véspera ou leve na bolsa.</small></td><td>3</td><td>6</td></tr><tr><td><b>Massas e arroz</b><small>Almoço e jantar resolvidos com o que tem na panela.</small></td><td>3</td><td>7</td></tr><tr><td><b>Carnes e frango</b><small>Pratos principais simples, sem complicação.</small></td><td>3</td><td>7</td></tr><tr><td><b>Sopas, wraps e pizzas</b><small>Refeições leves e rápidas para qualquer hora.</small></td><td>3</td><td>8</td></tr><tr><td><b>Lanches da tarde</b><small>Para o meio da tarde, em poucos minutos.</small></td><td>3</td><td>11</td></tr><tr><td><b>Sobremesas rápidas</b><small>Doce pronto sem sofrer.</small></td><td>3</td><td>12</td></tr><tr><td><b>Air fryer</b><small>Crocância com pouco óleo e pouco tempo.</small></td><td>3</td><td>8</td></tr><tr><td><b>Marmitas da semana</b><small>Cozinhe uma vez, coma a semana toda.</small></td><td>3</td><td>8</td></tr><tr><td><b>Festinha e aniversário</b><small>Para encher a mesa sem gastar muito.</small></td><td>3</td><td>8</td></tr><tr><td><b>Receitas para crianças</b><small>Bom para a criançada, fácil para quem cozinha.</small></td><td>3</td><td>6</td></tr><tr><td><b>Bebidas sem álcool</b><small>Refrescantes para qualquer ocasião.</small></td><td>3</td><td>8</td></tr><tr class="tt"><td>Total de receitas</td><td>60</td><td>160</td></tr></table></details>
+<div class="note" style="color:var(--mut);margin-top:16px">Compra segura pela Cakto · Pix ou cartão · o valor exibido no checkout já é o total, com a taxa de serviço incluída</div></div></section>
+
+<section class="fim" id="fim"><div class="w"><div class="kick">Hoje pode ser diferente</div><h2>O almoço de amanhã <em>já pode ser outro</em>.</h2><p>Pagamento único, acesso vitalício e garantia de 7 dias.</p><span class="pixb">Pix: libera na hora</span><a class="btn" href="#comprar">Quero minhas receitas</a></div></section>
 
 <footer>Catálogo de Receitas · Suporte: <a href="https://wa.me/5524999593100">WhatsApp (24) 99959-3100</a> · <a href="mailto:achadinhosbrasilloja@gmail.com">achadinhosbrasilloja@gmail.com</a><br>Receitas caseiras e práticas. Não substituem orientação de nutricionista ou médico.</footer>
-<div class="sticky off" id="stk"><a class="btn" href="#opcoes">Quero minhas receitas</a></div>
+<div class="sticky off" id="stk"><a class="btn" href="#comprar">Quero minhas receitas</a></div>
 
 <div class="pop" id="popB" role="dialog" aria-modal="true" aria-labelledby="popBT"><div class="box">
 <div class="kick k2">Espera! Oferta única</div><h3 id="popBT">Leve o Completo por só R$ 19,90</h3>
@@ -270,7 +294,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 try{fbq('track','ViewContent',{content_name:'Catálogo de Receitas',value:29.9,currency:'BRL'})}catch(e){}
 var OF={'Básico':['Catálogo de Receitas Básico','R$ 9,90','../img/capa-basico.jpg'],'Completo':['Catálogo de Receitas Completo','R$ 29,90','../img/capa-completo.jpg'],'CompletoOferta':['Catálogo de Receitas Completo','R$ 19,90','../img/capa-completo.jpg']};
 window.PV={produto:'Catálogo de Receitas Completo',preco:'R$ 29,90',url:'https://pay.cakto.com.br/37y7q73',capa:'../img/capa-completo.jpg',cor:'#2F5D3A',corTexto:'#ffffff',gateway:'Cakto'};
-try{var st=document.getElementById('stk'),pl=document.getElementById("opcoes"),inP=false;new IntersectionObserver(function(e){inP=e[0].isIntersecting;up()},{rootMargin:'0px 0px -20% 0px'}).observe(pl);function up(){st.classList.toggle('off',inP||scrollY<700)}addEventListener('scroll',up,{passive:true})}catch(e){}
+try{var st=document.getElementById('stk'),inP=false;var vis={};var io=new IntersectionObserver(function(es){es.forEach(function(e){vis[e.target.id]=e.isIntersecting});inP=!!(vis.comprar||vis.opcoes||vis.fim);up()},{rootMargin:'0px 0px -20% 0px'});io.observe(document.getElementById("comprar"));io.observe(document.getElementById("opcoes"));io.observe(document.getElementById("fim"));function up(){st.classList.toggle('off',inP||scrollY<700)}addEventListener('scroll',up,{passive:true})}catch(e){}
 var tr=document.getElementById('fdtTr');if(tr){var ds=document.querySelectorAll('#fdtDots span');function go(d){tr.scrollBy({left:d*tr.clientWidth,behavior:'smooth'})}document.querySelector('.car-pv').onclick=function(){go(-1)};document.querySelector('.car-nx').onclick=function(){go(1)};tr.addEventListener('scroll',function(){var i=Math.round(tr.scrollLeft/tr.clientWidth);ds.forEach(function(d,k){d.classList.toggle('on',k===i)})},{passive:true});}
 var yt=document.getElementById('yt');if(yt){yt.addEventListener('click',function(){if(yt.classList.contains('on'))return;yt.classList.add('on');var v=document.getElementById('vd');v.controls=true;var r=v.play();if(r&&r.catch)r.catch(function(){});try{fbq('trackCustom','VideoPlay');clarity('event','video_play')}catch(e){}})}
 var pB=document.getElementById('popB');
@@ -282,7 +306,7 @@ document.querySelectorAll('a[href*="pay.cakto.com.br"]').forEach(function(a){a.s
  var sm=document.querySelector('.pv-sum');if(sm){sm.querySelector('strong').textContent=o[0];sm.querySelector('em').textContent=o[1];sm.querySelector('img').src=o[2];}
  pB.classList.remove('on');try{clarity('event','clique_'+k)}catch(e){}
 })});
-document.getElementById('btnBasico').addEventListener('click',function(){pB.classList.add('on');try{clarity('event','popup_basico')}catch(e){}});
+document.querySelectorAll('.btn-basico').forEach(function(b){b.addEventListener('click',function(){pB.classList.add('on');try{clarity('event','popup_basico')}catch(e){}})});
 [pB].forEach(function(p){p.addEventListener('click',function(e){if(e.target===p)p.classList.remove('on')})});
 })();
 </script>
