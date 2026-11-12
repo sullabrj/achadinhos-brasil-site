@@ -121,6 +121,11 @@ section{padding:34px 0}
 .fim{background:var(--dark);color:#fff;text-align:center}.fim h2{color:#fff}.fim p{color:#ECE3CC}.fim .kick{color:#B9D4A8}
 .pop .ul{text-align:left;margin:0 0 14px}.pop .old{color:var(--mut);text-decoration:line-through;font-size:16px;margin:0}
 @media(min-width:700px){.fone{width:170px;height:345px;right:-60px}.fone small{left:-130px;width:120px}}
+.vbox{position:relative;cursor:pointer;aspect-ratio:4/5;background:#000}.vbox video{width:100%;height:100%;object-fit:cover;display:block}
+.vbox .play{position:absolute;left:50%;top:50%;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;background:var(--acc);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.vbox .play:after{content:"";position:absolute;left:30px;top:23px;border-style:solid;border-width:15px 0 15px 23px;border-color:transparent transparent transparent #fff}
+.vbox .ytl{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.65);color:#fff;font-size:13px;font-weight:700;padding:5px 10px;border-radius:99px}
+.vbox.on .play,.vbox.on .ytl{display:none}
 </style>
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','30156663417254394');fbq('track','PageView');</script>
 <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
@@ -143,10 +148,10 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 <header class="hero"><div class="tx top"><div class="kick">Guia de receitas práticas e rápidas</div>
 <h1>Cansado da <em>mesmice</em> na cozinha?</h1>
 <p class="lead">Receitas simples para variar o almoço, a janta, a marmita e a sobremesa. <b>Todas com foto e passo a passo</b>, com ingrediente de qualquer mercado.</p></div>
-<div class="vw"><div class="heroimg"><img src="../img/por-dentro.jpg" alt="Páginas reais do Catálogo de Receitas" width="1080" height="820" fetchpriority="high"></div></div>
+<div class="vw"><div class="heroimg vbox" id="yt" role="button" tabindex="0" aria-label="Assistir ao vídeo"><video id="vd" poster="vid/poster.jpg" preload="metadata" playsinline src="vid/video.mp4" width="1080" height="1350"></video><span class="play" aria-hidden="true"></span><span class="ytl">Veja por dentro em 50 segundos</span></div></div>
 <div class="tx bot"><div class="stats"><div><b>até 160</b><span>receitas com foto</span></div><div><b>19</b><span>categorias</span></div><div><b>30 min</b><span>a maioria fica pronta</span></div></div>
 <a class="btn" href="#amostra">Quero ver as receitas</a>
-<p class="preco1">A partir de <b>R$ 19,90</b> · pagamento único</p><div class="trust"><span>✓ Pix ou cartão</span><span>✓ Acesso na hora</span><span>✓ Garantia de 7 dias</span></div></div></header>
+</div></header>
 
 <section><div class="w"><div class="kick k2">Parece com você?</div><h2>Todo dia a <em>mesma coisa</em> na mesa.</h2>
 <div class="g2">
@@ -226,7 +231,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 <details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. Pede o reembolso e devolvemos o valor inteiro.</p></details>
 </div></section>
 
-<section class="fim"><div class="w"><div class="kick">Hoje pode ser diferente</div><h2>O almoço de amanhã <em>já pode ser outro</em>.</h2><p>160 receitas simples, com foto e passo a passo, e 4 bônus para organizar a semana.</p><a class="btn" href="#planos">Quero o Premium</a><p class="preco1" style="margin-top:12px">A partir de <b>R$ 19,90</b> · acesso na hora · garantia de 7 dias</p></div></section>
+<section class="fim"><div class="w"><div class="kick">Hoje pode ser diferente</div><h2>O almoço de amanhã <em>já pode ser outro</em>.</h2><p>Comece hoje e varie a semana sem complicar.</p><a class="btn" href="#planos">Quero o Premium</a></div></section>
 
 <footer>Catálogo de Receitas · Suporte: <a href="https://wa.me/5524999593100">WhatsApp (24) 99959-3100</a> · <a href="mailto:achadinhosbrasilloja@gmail.com">achadinhosbrasilloja@gmail.com</a><br>Receitas caseiras e práticas. Não substituem orientação de nutricionista ou médico.</footer>
 <div class="sticky off" id="stk"><a class="btn" href="#planos">Quero minhas receitas</a></div>
@@ -254,6 +259,7 @@ try{fbq('track','ViewContent',{content_name:'Catálogo de Receitas',value:49.9,c
 var OF={'Básico':['Catálogo de Receitas Básico','R$ 19,90','../img/capa-basico.jpg'],'Intermediário':['Catálogo de Receitas Intermediário','R$ 39,90','../img/capa-intermediario.jpg'],'Premium':['Catálogo de Receitas Premium','R$ 49,90','../img/capa-premium.jpg']};
 window.PV={produto:'Catálogo de Receitas Premium',preco:'R$ 49,90',url:'https://pay.cakto.com.br/37y7q73',capa:'../img/capa-premium.jpg',cor:'#2F5D3A',corTexto:'#ffffff',gateway:'Cakto'};
 try{var st=document.getElementById('stk'),pl=document.getElementById('planos'),inP=false;new IntersectionObserver(function(e){inP=e[0].isIntersecting;up()},{rootMargin:'0px 0px -20% 0px'}).observe(pl);function up(){st.classList.toggle('off',inP||scrollY<700)}addEventListener('scroll',up,{passive:true})}catch(e){}
+var yt=document.getElementById('yt');if(yt){yt.addEventListener('click',function(){if(yt.classList.contains('on'))return;yt.classList.add('on');var v=document.getElementById('vd');v.controls=true;var r=v.play();if(r&&r.catch)r.catch(function(){});try{fbq('trackCustom','VideoPlay');clarity('event','video_play')}catch(e){}})}
 var pB=document.getElementById('popB'),pP=document.getElementById('popP');
 var QS=location.search.slice(1);function comQS(h){var b=h.split('?')[0];return b+(QS?'?'+QS:'')}
 document.querySelectorAll('a[href*="pay.cakto.com.br"]').forEach(function(a){a.setAttribute('href',comQS(a.getAttribute('href')));a.addEventListener('click',function(){
