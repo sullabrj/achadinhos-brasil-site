@@ -101,8 +101,8 @@ section{padding:34px 0}
 .fone{position:absolute;right:-4px;bottom:-26px;width:132px;height:270px;background:#111;border-radius:26px;padding:7px;box-shadow:0 18px 40px rgba(0,0,0,.35);z-index:3}
 .fone:before{content:"";position:absolute;top:11px;left:50%;width:44px;height:10px;margin-left:-22px;background:#111;border-radius:8px;z-index:2}
 .fone .tela{width:100%;height:100%;border-radius:20px;overflow:hidden;background:#fff;position:relative}
-.fone .tela img{width:100%;display:block;animation:rola 9s ease-in-out infinite alternate}
-@keyframes rola{0%,15%{transform:translateY(0)}85%,100%{transform:translateY(calc(-100% + 256px))}}
+.fone .tela img{width:100%;display:block;animation:rola 24s ease-in-out infinite}
+@keyframes rola{0%,10%{transform:translateY(0)}16%,26%{transform:translateY(-16.6%)}32%,42%{transform:translateY(-33.3%)}48%,58%{transform:translateY(-50%)}64%,74%{transform:translateY(-66.6%)}80%,92%{transform:translateY(calc(-100% + 256px))}100%{transform:translateY(0)}}
 .fone small{position:absolute;left:-118px;bottom:16px;width:112px;font-size:12px;line-height:1.25;color:var(--verde);font-weight:800;text-align:right}
 .moms{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.mom{background:var(--card);overflow:hidden}.mom img{width:100%;aspect-ratio:1;object-fit:cover}.mom div{padding:6px 7px 8px;font-size:12px;line-height:1.25}.mom b{display:block;color:var(--verde);font-size:12.5px}
 .lv{background:var(--card);padding:12px;font-size:14px;line-height:1.3}.lv b{display:block;color:var(--verde);font-size:15px;margin-bottom:2px}.lv.pr{background:#FFF7E3}
@@ -127,6 +127,7 @@ section{padding:34px 0}
 .lv s{color:var(--mut);font-weight:600;font-size:13px;margin-left:4px}.ancora{margin-top:14px;background:var(--dark);color:#fff;border-radius:14px;padding:14px 16px;text-align:center;font-size:15px}.ancora s{opacity:.7}.ancora b{color:#F2C14E;font-size:24px;display:block;margin-top:2px}
 .ent{font-size:10px;font-weight:800;letter-spacing:.5px;color:var(--mut);margin-bottom:2px}.eco2{display:block;font-size:13px;color:#B9D4A8;margin-top:4px;font-weight:700}.lv .gr{display:inline-block;background:#2F5D3A;color:#fff;font-size:10px;font-weight:800;border-radius:99px;padding:2px 7px;margin-left:6px;vertical-align:2px}
 .fdt{border:2px solid var(--dark);box-shadow:4px 4px 0 var(--dark);border-radius:16px;overflow:hidden;background:#000;aspect-ratio:4/5}.fdt video{width:100%;height:100%;object-fit:cover;display:block}
+.car{position:relative;border:2px solid var(--dark);box-shadow:4px 4px 0 var(--dark);border-radius:16px;overflow:hidden;background:#000}.car-tr{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.car-tr::-webkit-scrollbar{display:none}.car-sl{flex:0 0 100%;scroll-snap-align:center;margin:0;position:relative}.car-sl img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}.car-sl figcaption{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);background:#1F3A26;color:#fff;font-weight:800;font-size:14px;padding:8px 16px;border-radius:99px;white-space:nowrap}.car-bt{position:absolute;top:50%;margin-top:-22px;width:44px;height:44px;border-radius:50%;border:2px solid var(--dark);background:#fff;color:var(--dark);font-size:26px;line-height:38px;font-weight:900;cursor:pointer;padding:0}.car-pv{left:10px}.car-nx{right:10px}.car-dots{display:flex;justify-content:center;gap:8px;margin-top:12px}.car-dots span{width:10px;height:10px;border-radius:50%;background:#cfc6b0}.car-dots span.on{background:var(--verde);width:24px;border-radius:99px}
 .pu{font-size:10.5px;color:var(--mut);margin-top:6px;line-height:1.25}
 .vbox{position:relative;cursor:pointer;aspect-ratio:4/5;background:#000}.vbox video{width:100%;height:100%;object-fit:cover;display:block}
 .vbox .play{position:absolute;left:50%;top:50%;width:76px;height:76px;margin:-38px 0 0 -38px;border-radius:50%;background:var(--acc);box-shadow:0 8px 24px rgba(0,0,0,.4)}
@@ -192,13 +193,13 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 <figure class="pgx"><img loading="lazy" src="pg/cardapio.jpg" alt="Cardápio de 30 dias" width="760" height="1077"><figcaption>Cardápio de 30 dias</figcaption></figure>
 <figure class="pgx"><img loading="lazy" src="pg/lista.jpg" alt="Lista de compras semanal" width="760" height="1077"><figcaption>Lista de compras</figcaption></figure>
 </div>
-<div class="fone" aria-label="Exemplo de página aberta no celular"><small>Abre no celular, no tablet ou imprime</small><div class="tela"><img src="pg/nuggets.jpg" alt="Página de receita aberta no celular" width="760" height="1077"></div></div>
+<div class="fone" aria-label="Exemplo de página aberta no celular"><small>Abre no celular, no tablet ou imprime</small><div class="tela"><img src="pg/rolagem.jpg" alt="Páginas do Catálogo rolando no celular" width="420" height="3620"></div></div>
 </div>
 <div class="pas3" style="margin-top:44px"><div><i>1</i><b>Paga</b>Pix ou cartão, pagamento único</div><div><i>2</i><b>Recebe</b>Acesso no e-mail na hora</div><div><i>3</i><b>Cozinha</b>Abre o PDF e escolhe a receita</div></div>
 </div></section>
 
 <section><div class="w"><div class="kick k2">Fora da tela</div><h2>Use do jeito que <em>preferir</em></h2><p class="mut">No celular enquanto cozinha, no tablet na bancada ou impresso na mesa. É o mesmo Catálogo, com as mesmas páginas.</p>
-<div class="fdt"><video src="vid/foradatela.mp4?v=3" poster="vid/foradatela.jpg" autoplay muted loop playsinline preload="metadata" width="1080" height="1350"></video></div></div></section>
+<div class="car"><div class="car-tr" id="fdtTr"><figure class="car-sl"><img loading="lazy" src="img/fdt-celular.jpg" alt="No celular, enquanto cozinha" width="900" height="1125"><figcaption>No celular, enquanto cozinha</figcaption></figure><figure class="car-sl"><img loading="lazy" src="img/fdt-tablet.jpg" alt="No tablet, na bancada" width="900" height="1125"><figcaption>No tablet, na bancada</figcaption></figure><figure class="car-sl"><img loading="lazy" src="img/fdt-livro.jpg" alt="Impresso, na mesa" width="900" height="1125"><figcaption>Impresso, na mesa</figcaption></figure></div><button class="car-bt car-pv" type="button" aria-label="Anterior">‹</button><button class="car-bt car-nx" type="button" aria-label="Próxima">›</button></div><div class="car-dots" id="fdtDots"><span class="on"></span><span></span><span></span></div><p class="mut" style="text-align:center;margin:6px 0 0;font-size:13px">Arraste para o lado →</p></div></section>
 
 <section class="alt"><div class="w"><div class="kick k2">Para cada momento</div><h2>Uma receita certa <em>para cada hora</em></h2>
 <div class="moms">
@@ -270,6 +271,7 @@ try{fbq('track','ViewContent',{content_name:'Catálogo de Receitas',value:29.9,c
 var OF={'Básico':['Catálogo de Receitas Básico','R$ 9,90','../img/capa-basico.jpg'],'Completo':['Catálogo de Receitas Completo','R$ 29,90','../img/capa-completo.jpg'],'CompletoOferta':['Catálogo de Receitas Completo','R$ 19,90','../img/capa-completo.jpg']};
 window.PV={produto:'Catálogo de Receitas Completo',preco:'R$ 29,90',url:'https://pay.cakto.com.br/37y7q73',capa:'../img/capa-completo.jpg',cor:'#2F5D3A',corTexto:'#ffffff',gateway:'Cakto'};
 try{var st=document.getElementById('stk'),pl=document.getElementById('planos'),inP=false;new IntersectionObserver(function(e){inP=e[0].isIntersecting;up()},{rootMargin:'0px 0px -20% 0px'}).observe(pl);function up(){st.classList.toggle('off',inP||scrollY<700)}addEventListener('scroll',up,{passive:true})}catch(e){}
+var tr=document.getElementById('fdtTr');if(tr){var ds=document.querySelectorAll('#fdtDots span');function go(d){tr.scrollBy({left:d*tr.clientWidth,behavior:'smooth'})}document.querySelector('.car-pv').onclick=function(){go(-1)};document.querySelector('.car-nx').onclick=function(){go(1)};tr.addEventListener('scroll',function(){var i=Math.round(tr.scrollLeft/tr.clientWidth);ds.forEach(function(d,k){d.classList.toggle('on',k===i)})},{passive:true});}
 var yt=document.getElementById('yt');if(yt){yt.addEventListener('click',function(){if(yt.classList.contains('on'))return;yt.classList.add('on');var v=document.getElementById('vd');v.controls=true;var r=v.play();if(r&&r.catch)r.catch(function(){});try{fbq('trackCustom','VideoPlay');clarity('event','video_play')}catch(e){}})}
 var pB=document.getElementById('popB');
 var QS=location.search.slice(1);function comQS(h){var b=h.split('?')[0];return b+(QS?'?'+QS:'')}
