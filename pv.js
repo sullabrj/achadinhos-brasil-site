@@ -6,7 +6,7 @@
   // Microsoft Clarity
   (function (c, l, a, r, i, t, y) {
     c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
-    t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+    t = l.createElement(r); t.async = 1; t.src=(function(){try{var q=location.search;if(/[?&]interno=1/.test(q))localStorage.setItem("cr_interno","1");if(/[?&]interno=0/.test(q))localStorage.removeItem("cr_interno");if(localStorage.getItem("cr_interno"))return "about:blank"}catch(e){}return "https://www.clarity.ms/tag/"+i})();
     y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
   })(window, document, "clarity", "script", "z9zzqjrn35");
   try { clarity("set", "produto", P.produto || ""); } catch (e) {}
