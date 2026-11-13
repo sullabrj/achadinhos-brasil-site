@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Saudade que Acolhe: um app de apoio para atravessar a saudade</title>
+<meta name="description" content="Uma mensagem por dia em texto e áudio, diário e cartas protegidos por senha, respiração guiada e telefones de apoio. Pagamento único, acesso para sempre.">
+<link rel="canonical" href="https://lojaachadinhosbrasil.com.br/saudade-que-acolhe/">
+<meta property="og:title" content="Saudade que Acolhe"><meta property="og:description" content="Um app de apoio para atravessar a saudade, um dia de cada vez.">
+<meta property="og:image" content="https://lojaachadinhosbrasil.com.br/saudade-que-acolhe/img/capa.jpg">
+<link rel="preload" as="image" href="img/manha.jpg">
+<style>:root{--bg:#F7F3EC;--alt:#EEE8DC;--ink:#1c2a2e;--mut:#5b676b;--pet:#1F5A66;--pet2:#164650;--mos:#C99A2E;--card:#fff;--line:#e3dccf}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:17px;padding-bottom:84px}
+img,video{display:block;max-width:100%}
+.w{max-width:620px;margin:0 auto;padding:0 18px}
+.hero img{width:100%;height:300px;object-fit:cover;object-position:50% 45%}
+.hero .tx{background:var(--pet);color:#fff;padding:26px 18px 30px}
+.hero .in{max-width:620px;margin:0 auto}
+.kick{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--mos)}
+.hero .kick{color:#F1D58A}
+h1{font-size:33px;line-height:1.1;margin:10px 0 12px;letter-spacing:-.4px}
+.hero p{color:#e8f0f1;margin:0 0 16px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 20px}
+.pills b{border:1.5px solid #F1D58A;border-radius:99px;padding:6px 12px;font-size:14px}
+.btn{display:block;text-align:center;background:var(--mos);color:#1b1405;font-weight:800;font-size:18px;padding:17px 18px;border-radius:14px;text-decoration:none;border:0;width:100%;cursor:pointer;font-family:inherit}
+.btn.pet{background:var(--pet);color:#fff}
+.btn.sec{background:transparent;color:var(--pet);border:2px solid var(--pet)}
+.note{font-size:13px;color:#cfe0e3;text-align:center;margin-top:10px}
+section{padding:40px 0}
+section.alt{background:var(--alt)}
+h2{font-size:27px;line-height:1.15;margin:8px 0 14px;letter-spacing:-.3px}
+h2 span{color:var(--pet)}
+.vid video{width:100%;max-width:340px;margin:0 auto;border-radius:18px;background:#000;box-shadow:0 16px 36px rgba(0,0,0,.2)}
+ul.ok{list-style:none;padding:0;margin:0}
+ul.ok li{position:relative;padding:0 0 12px 34px}
+ul.ok li:before{content:"✓";position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;background:var(--pet);color:#fff;font-size:13px;font-weight:900;display:flex;align-items:center;justify-content:center}
+.feat{display:grid;gap:14px}
+.fcard{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.fcard img{width:100%;height:190px;object-fit:cover}
+.fcard div{padding:16px}
+.fcard b{display:block;font-size:19px;margin-bottom:4px}
+.fcard p{margin:0;color:var(--mut);font-size:16px}
+.cards{display:grid;gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px}
+.card b{display:block;margin-bottom:3px}
+.card small{color:var(--mut);font-size:15px}
+.apoio{background:var(--pet2);color:#fff;border-radius:16px;padding:22px 20px}
+.apoio h2{color:#fff;margin-top:0;font-size:23px}
+.apoio p{color:#dbe8ea;margin:0 0 10px}
+.apoio a{color:#F1D58A;font-weight:700}
+.opt{background:var(--card);border:2px solid var(--line);border-radius:18px;padding:24px 20px;text-align:center;margin-bottom:16px}
+.opt.dest{border-color:var(--pet)}
+.opt .nm{font-size:13px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--pet)}
+.opt h3{margin:4px 0 2px;font-size:24px}
+.opt .pr{font-size:48px;font-weight:900;color:var(--pet);line-height:1.1;margin:8px 0 2px}
+.opt .sm{color:var(--mut);font-size:15px;margin-bottom:16px}
+.opt ul{text-align:left;margin:0 0 20px}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+summary{font-weight:700;cursor:pointer}
+details p{margin:10px 0 0;color:var(--mut)}
+footer{padding:28px 18px 40px;text-align:center;font-size:14px;color:var(--mut)}
+footer a{color:inherit}
+.sticky{position:fixed;left:0;right:0;bottom:0;padding:10px 14px calc(10px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line);z-index:9}
+.sticky .btn{max-width:560px;margin:0 auto;padding:14px;font-size:17px}
+.pop{display:none;position:fixed;inset:0;background:rgba(20,30,32,.62);z-index:20;align-items:center;justify-content:center;padding:18px}
+.pop.on{display:flex}
+.pop .bx{background:#fff;border-radius:18px;max-width:420px;width:100%;padding:26px 20px;text-align:center}
+.pop h3{margin:0 0 8px;font-size:23px;line-height:1.2}
+.pop .pr{font-size:44px;font-weight:900;color:var(--pet);margin:6px 0}
+.pop p{color:var(--mut);margin:0 0 16px}
+.pop .btn{margin-bottom:10px}
+</style>
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','30156663417254394');fbq('track','PageView');</script>
+<script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","z9zzqjrn35");clarity('set','pagina','saudade-que-acolhe');</script>
+</head><body>
+<header class="hero"><img src="img/manha.jpg" alt="Quarto claro com luz da manhã entrando pela janela">
+<div class="tx"><div class="in"><div class="kick">App de apoio · um dia de cada vez</div><h1>Saudade que Acolhe</h1><p>Um app para atravessar a saudade de quem partiu, com uma mensagem por dia em texto e em áudio, espaço para escrever e um botão para os momentos mais difíceis.</p>
+<div class="pills"><b>Texto e áudio</b><b>Diário com senha</b><b>Abre no celular</b></div>
+<a class="btn" href="#opcoes">Ver as opções</a><div class="note">Pagamento único · acesso para sempre · garantia de 7 dias</div></div></div></header>
+
+<section class="vid"><div class="w" style="text-align:center"><div class="kick" style="color:var(--pet)">Veja em 22 segundos</div><h2>O que o app entrega</h2>
+<video src="img/video.mp4" poster="img/video.jpg" controls playsinline preload="metadata"></video></div></section>
+
+<section class="alt"><div class="w"><div class="kick" style="color:var(--pet)">Por dentro do app</div><h2>Tudo no celular, <span>sem pressa</span></h2>
+<div class="feat">
+<div class="fcard"><img loading="lazy" src="img/maos_xicara.jpg" alt="Mãos segurando uma xícara de chá"><div><b>Uma mensagem por dia</b><p>Cada dia traz um texto curto, o áudio com a mesma mensagem narrada em voz calma e uma prática pequena para fazer sem esforço.</p></div></div>
+<div class="fcard"><img loading="lazy" src="img/janela.jpg" alt="Janela com luz suave"><div><b>Diário e cartas com senha</b><p>Escreva o que não dá para falar. Tudo fica protegido por senha, guardado só no seu aparelho. Nem nós temos acesso.</p></div></div>
+<div class="fcard"><img loading="lazy" src="img/vela.jpg" alt="Vela acesa em ambiente tranquilo"><div><b>Botão para os momentos difíceis</b><p>Uma frase de acolhimento, respiração guiada de 1 minuto em áudio e os telefones 188 (CVV) e 192 (SAMU) a um toque.</p></div></div>
+<div class="fcard"><img loading="lazy" src="img/jardim.jpg" alt="Jardim com luz da tarde"><div><b>Memórias e datas importantes</b><p>Guarde fotos e lembranças, receba aviso na véspera de aniversários e datas difíceis e gere um livro de memórias em PDF.</p></div></div>
+</div></div></section>
+
+<section><div class="w"><div class="kick" style="color:var(--pet)">O que você recebe</div><h2>Dois tamanhos, o mesmo cuidado</h2>
+<div class="cards">
+<div class="card"><b>O Primeiro Mês</b><small>30 dias de mensagens, com áudio, prática do dia e pergunta para o diário. Caminhos de acolhimento para cada tipo de perda, diário, cartas, memórias, datas importantes e o botão para os momentos difíceis.</small></div>
+<div class="card"><b>O Primeiro Ano</b><small>Tudo do Primeiro Mês e mensagens até o dia 365, com áudios nos marcos de 60, 90, 180, 270 e 365 dias, caminhos por tipo de perda e as datas mais difíceis do ano.</small></div>
+</div>
+<h2 style="margin-top:30px;font-size:23px">Guias extras, quando quiser</h2>
+<ul class="ok"><li>O que fazer depois da partida: organização de papéis e providências.</li><li>Natal e fim de ano sem quem partiu.</li><li>Como falar com crianças sobre a perda.</li><li>Despedida e homenagens, conforto na fé, saudade do meu pet, os pertences de quem partiu, viuvez, noites difíceis e para quem quer ajudar.</li></ul>
+<p style="font-size:14px;color:var(--mut)">Os guias extras são opcionais e aparecem dentro do app, no valor de cada um.</p></div></section>
+
+<section class="alt"><div class="w"><div class="apoio"><h2>Um apoio, não um tratamento</h2><p>O app acompanha e acolhe, mas não substitui o acompanhamento de um profissional de saúde.</p><p>Em momentos de muita dor, o <a href="tel:188">CVV atende pelo 188</a>, 24 horas e de graça. Em emergência, <a href="tel:192">SAMU 192</a>.</p></div></div></section>
+
+<section id="opcoes"><div class="w"><div class="kick" style="color:var(--pet)">As opções</div><h2>Pagamento único, <span>acesso para sempre</span></h2>
+<div class="opt"><div class="nm">Para começar</div><h3>O Primeiro Mês</h3><div class="pr">R$ 19,90</div><div class="sm">Pagamento único, sem mensalidade</div>
+<ul class="ok"><li>30 dias de mensagens com texto e áudio</li><li>Diário e cartas protegidos por senha</li><li>Respiração guiada e telefones de apoio</li><li>Garantia de 7 dias</li></ul>
+<button class="btn sec" id="bBasico" type="button">Quero o Primeiro Mês</button></div>
+<div class="opt dest"><div class="nm">O mais completo</div><h3>O Primeiro Ano</h3><div class="pr">R$ 39,90</div><div class="sm">Pagamento único, sem mensalidade</div>
+<ul class="ok"><li>Tudo do Primeiro Mês</li><li>Mensagens até o dia 365, com áudios nos marcos</li><li>Datas difíceis do ano e caminhos por tipo de perda</li><li>Garantia de 7 dias</li></ul>
+<a class="btn pet" data-p="Completo" href="https://pay.cakto.com.br/35pjr7x_1318383">Quero o Primeiro Ano</a></div>
+<div style="text-align:center;font-size:14px;color:var(--mut)">Compra segura pela Cakto · Pix ou cartão</div></div></section>
+
+<section style="padding-top:0"><div class="w"><h2>Dúvidas comuns</h2>
+<details><summary>Como recebo o acesso?</summary><p>Logo após o pagamento você entra no app com o e-mail usado na compra. Pagou no Pix, libera na hora.</p></details>
+<details><summary>Precisa instalar alguma coisa?</summary><p>Não. O app abre no navegador do celular. Se quiser, adicione à tela inicial para abrir como um aplicativo.</p></details>
+<details><summary>Meu diário fica seguro?</summary><p>O diário e as cartas ficam protegidos por senha e guardados apenas no seu aparelho. Atenção: se a senha for perdida, não há como recuperar.</p></details>
+<details><summary>Tem mensalidade?</summary><p>Não. É pagamento único e o acesso é para sempre.</p></details>
+<details><summary>Isso substitui terapia?</summary><p>Não. O app é um apoio no dia a dia e não substitui acompanhamento profissional. Se precisar conversar com alguém agora, o CVV atende pelo 188.</p></details>
+<details><summary>E se eu não gostar?</summary><p>Você tem 7 dias de garantia. Pede o reembolso e devolvemos o valor inteiro.</p></details></div></section>
+
+<footer>Saudade que Acolhe · Achadinhos Brasil<br>Suporte ao Cliente: <a href="https://wa.me/5524999593100">WhatsApp (24) 99959-3100</a> · <a href="mailto:achadinhosbrasilloja@gmail.com">achadinhosbrasilloja@gmail.com</a><br><a href="app/">Já comprou? Entrar no app</a></footer>
+<div class="sticky"><a class="btn pet" href="#opcoes">Ver as opções</a></div>
+
+<div class="pop" id="pop"><div class="bx"><h3>Leve o primeiro ano inteiro por R$ 29,90</h3><div class="pr">R$ 29,90</div><p>Mensagens até o dia 365, áudios nos marcos e as datas difíceis do ano. Pagamento único.</p>
+<a class="btn pet" data-p="Completo-oferta" href="https://pay.cakto.com.br/xi892i6">Quero o Primeiro Ano por R$ 29,90</a>
+<a class="btn sec" data-p="Basico" href="https://pay.cakto.com.br/9bwzgmn_1318373">Continuar só com o Primeiro Mês</a></div></div>
+
+<script>
+fbq('track','ViewContent',{content_name:'Saudade que Acolhe',value:19.9,currency:'BRL'});
+(function(){var q=location.search.slice(1);
+document.querySelectorAll('a[href*="pay.cakto.com.br"]').forEach(function(a){if(q)a.href+=(a.href.indexOf('?')<0?'?':'&')+q;a.addEventListener('click',function(){try{fbq('trackCustom','CliqueComprar',{produto:a.getAttribute('data-p')||'Saudade que Acolhe'})}catch(e){}})});
+var pop=document.getElementById('pop');
+document.getElementById('bBasico').addEventListener('click',function(){pop.classList.add('on')});
+pop.addEventListener('click',function(e){if(e.target===pop)pop.classList.remove('on')});
+})();
+</script>
+</body></html>
