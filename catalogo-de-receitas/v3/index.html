@@ -256,6 +256,17 @@ ul.ok li.no:before{content:"";background:url("data:image/svg+xml,%3Csvg xmlns='h
 .pop .nao{display:block;margin-top:14px;font-size:16px;font-weight:700;min-height:48px;line-height:1.35;padding:10px 0;color:var(--mut)}
 .pop .x{position:absolute;top:8px;right:8px;width:48px;height:48px;border:0;border-radius:50%;background:#e8e2d2;font-size:22px;line-height:48px;cursor:pointer;color:#222}
 .pop .obs{font-size:16px;color:var(--mut);margin:10px 0 0}
+/* ===== ajustes 14/11 (leitura do Clarity) ===== */
+.cta1{margin:0 0 20px}
+.hero .lead{margin:14px 0 16px}
+button.iph{display:block;border:0;font:inherit;color:inherit;cursor:zoom-in;-webkit-tap-highlight-color:transparent}
+.iph .toque{position:absolute;left:50%;bottom:9%;transform:translateX(-50%);white-space:nowrap;background:rgba(25,59,43,.92);color:#fff;font-size:10px;font-weight:800;line-height:1;padding:5px 8px;border-radius:99px;z-index:3}
+.bandas{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:0 20px 12px;-webkit-overflow-scrolling:touch}
+.bandas .banda{flex:0 0 88%;margin:0;scroll-snap-align:center}
+.rc{cursor:zoom-in}
+.lb img{max-height:calc(100vh - 220px)}
+.lb .btn{max-width:340px;margin:14px auto 0}
+@media(min-width:900px){.bandas{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;overflow:visible;margin:0;padding:0 0 12px}.bandas .banda{flex:none}#vitrine .dica-g{display:none}}
 </style>
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','30156663417254394');fbq('track','PageView');</script>
 <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids async defer></script>
@@ -270,38 +281,16 @@ ul.ok li.no:before{content:"";background:url("data:image/svg+xml,%3Csvg xmlns='h
 <div class="kick">Catálogo de Receitas</div>
 <h1>Todo dia a mesma dúvida: o que eu faço de comer hoje?</h1>
 <p class="lead">Almoço, jantar, marmita, lanche e sobremesa. Ideias simples para variar o que vai à mesa, com foto, ingredientes e passo a passo.</p>
+<a class="btn cta1" href="#edicoes" data-cta="topo">Quero minhas receitas</a>
 <div class="hv">
 <img class="foto" src="assets/equipe_personagens.webp" alt="Equipe de cozinha com toucas e aventais, ao fundo" width="1280" height="563" fetchpriority="high">
-<div class="iph" role="img" aria-label="Página real do catálogo aberta em um celular"><i class="bt1"></i><i class="bt2"></i><i class="bt3"></i><i class="bt4"></i><div class="tela"><span class="ilha"></span><img src="assets/pagina_110.webp" alt="" width="900" height="1275"><span class="barra-h"></span></div></div>
+<button type="button" class="iph zoom" data-src="assets/pagina_110.webp" data-cap="Página real do Catálogo de Receitas" data-ev="celular_topo" aria-label="Ampliar a página real do catálogo"><i class="bt1"></i><i class="bt2"></i><i class="bt3"></i><i class="bt4"></i><div class="tela"><span class="ilha"></span><img src="assets/pagina_110.webp" alt="" width="900" height="1275"><span class="barra-h"></span></div><span class="toque">Toque para ampliar</span></button>
 <div class="hvx">
 <div class="selo3"><span>Pagamento único</span><span>Acesso vitalício</span><b><small>a partir de</small> R$ 9,90</b></div>
 <a class="vp" href="#paginas">Ver páginas reais →</a>
 </div>
 </div>
 </div></header>
-
-<!-- 02 SITUAÇÕES -->
-<section class="alt"><div class="w">
-<h2>O mais difícil às vezes é decidir o que fazer.</h2>
-<div class="dores2">
-<div class="d2"><img loading="lazy" src="assets/v107.webp" alt="" width="500" height="400"><p class="dr">Sem ideia para o almoço?</p><p class="sl">Abra, escolha e faça.</p></div>
-<div class="d2"><img loading="lazy" src="assets/v109.webp" alt="" width="500" height="400"><p class="dr">Todo dia o mesmo prato?</p><p class="sl">160 receitas para variar.</p></div>
-</div>
-</div></section>
-
-<!-- 03 VITRINE POR CATEGORIA -->
-<section id="vitrine"><div class="ww">
-<div class="w" style="padding:0"><h2 class="c">Veja o que pode ir para a sua mesa</h2>
-<p class="c lead" style="margin-bottom:26px">Algumas das receitas do catálogo, com as fotos que estão no próprio PDF.</p></div>
-<div class="banda"><div class="bt" style="background:#9A6B0B"><b>Café da manhã</b><span>Para variar além do pão com manteiga</span></div><div class="rcs"><figure class="rc"><img loading="lazy" decoding="async" src="assets/v17.webp" alt="Shakshuka rápida de frigideira" width="500" height="400"><figcaption>Shakshuka rápida de frigideira</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v11.webp" alt="Omelete de queijo e tomate" width="500" height="400"><figcaption>Omelete de queijo e tomate</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v14.webp" alt="Fritada de abobrinha" width="500" height="400"><figcaption>Fritada de abobrinha</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v18.webp" alt="Omelete de forno em forminhas" width="500" height="400"><figcaption>Omelete de forno em forminhas</figcaption></figure></div></div>
-<div class="banda"><div class="bt" style="background:#2F5D3A"><b>Almoço e jantar</b><span>Comida de verdade, sem complicar</span></div><div class="rcs"><figure class="rc"><img loading="lazy" decoding="async" src="assets/v103.webp" alt="Risoto de frigideira com queijo" width="500" height="400"><figcaption>Risoto de frigideira com queijo</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v101.webp" alt="Arroz de forno rápido" width="500" height="400"><figcaption>Arroz de forno rápido</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v99.webp" alt="Arroz de frigideira com ovo" width="500" height="400"><figcaption>Arroz de frigideira com ovo</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v104.webp" alt="Macarrão colorido" width="500" height="400"><figcaption>Macarrão colorido</figcaption></figure></div></div>
-<div class="banda"><div class="bt" style="background:#1F3A5F"><b>Marmitas da semana</b><span>Cozinhe uma vez e resolva vários dias</span></div><div class="rcs"><figure class="rc"><img loading="lazy" decoding="async" src="assets/v124.webp" alt="Marmita de carne moída com purê" width="500" height="400"><figcaption>Marmita de carne moída com purê</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v126.webp" alt="Marmita de strogonoff e arroz" width="500" height="400"><figcaption>Marmita de strogonoff e arroz</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v127.webp" alt="Marmita de omelete e salada" width="500" height="400"><figcaption>Marmita de omelete e salada</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v129.webp" alt="Marmita de peixe com batata" width="500" height="400"><figcaption>Marmita de peixe com batata</figcaption></figure></div></div>
-<div class="banda"><div class="bt" style="background:#9C4221"><b>Air fryer</b><span>Crocante, com pouco óleo</span></div><div class="rcs"><figure class="rc"><img loading="lazy" decoding="async" src="assets/v132.webp" alt="Coxinha de frango na air fryer" width="500" height="400"><figcaption>Coxinha de frango na air fryer</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v133.webp" alt="Frango empanado crocante" width="500" height="400"><figcaption>Frango empanado crocante</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v134.webp" alt="Batata rústica com alecrim" width="500" height="400"><figcaption>Batata rústica com alecrim</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v137.webp" alt="Mandioca frita sequinha" width="500" height="400"><figcaption>Mandioca frita sequinha</figcaption></figure></div></div>
-<div class="banda"><div class="bt" style="background:#B45309"><b>Lanches da tarde</b><span>Para o café das quatro</span></div><div class="rcs"><figure class="rc"><img loading="lazy" decoding="async" src="assets/v145.webp" alt="Esfiha aberta de pão sírio" width="500" height="400"><figcaption>Esfiha aberta de pão sírio</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v143.webp" alt="Pão de queijo de liquidificador" width="500" height="400"><figcaption>Pão de queijo de liquidificador</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v147.webp" alt="Rabanada de frigideira" width="500" height="400"><figcaption>Rabanada de frigideira</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v148.webp" alt="Sanduíche natural de atum" width="500" height="400"><figcaption>Sanduíche natural de atum</figcaption></figure></div></div>
-<div class="banda"><div class="bt" style="background:#7C2D22"><b>Sobremesas</b><span>Doce pronto sem sofrer</span></div><div class="rcs"><figure class="rc"><img loading="lazy" decoding="async" src="assets/v163.webp" alt="Mousse de maracujá de liquidificador" width="500" height="400"><figcaption>Mousse de maracujá de liquidificador</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v164.webp" alt="Pudim de leite condensado" width="500" height="400"><figcaption>Pudim de leite condensado</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v166.webp" alt="Gelatina cremosa de morango" width="500" height="400"><figcaption>Gelatina cremosa de morango</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v165.webp" alt="Banana caramelizada" width="500" height="400"><figcaption>Banana caramelizada</figcaption></figure></div></div>
-<div class="banda"><div class="bt" style="background:#4D5A22"><b>Festinha e aniversário</b><span>Para encher a mesa gastando pouco</span></div><div class="rcs"><figure class="rc"><img loading="lazy" decoding="async" src="assets/v177.webp" alt="Mini pizza de festa" width="500" height="400"><figcaption>Mini pizza de festa</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v178.webp" alt="Cupcake de baunilha" width="500" height="400"><figcaption>Cupcake de baunilha</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v176.webp" alt="Cachorro-quente de forno" width="500" height="400"><figcaption>Cachorro-quente de forno</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v179.webp" alt="Beijinho de coco" width="500" height="400"><figcaption>Beijinho de coco</figcaption></figure></div></div>
-<div class="nums"><div><b>160</b><span>receitas</span></div><div><b>19</b><span>categorias</span></div><p>Do café da manhã à festinha, todas com foto e passo a passo.<br><small>Versão Completa. A Básica traz 60 receitas.</small></p></div>
-</div></section>
 
 <!-- 04 CARROSSEL DE REELS -->
 <section class="alt" id="reels"><div class="ww">
@@ -316,6 +305,32 @@ ul.ok li.no:before{content:"";background:url("data:image/svg+xml,%3Csvg xmlns='h
 <li class="rli"><div class="rlb"><video poster="vid/p_6.jpg" preload="none" playsinline src="vid/b3_6.mp4" width="540" height="960"></video><button class="play" type="button" aria-label="Assistir vídeo 6"></button></div></li>
 </ul>
 <p class="dica-g mut">Deslize para o lado para ver todos</p>
+</div></section>
+
+<!-- 02 SITUAÇÕES -->
+<section><div class="w">
+<h2>O mais difícil às vezes é decidir o que fazer.</h2>
+<div class="dores2">
+<div class="d2"><img loading="lazy" src="assets/v107.webp" alt="" width="500" height="400"><p class="dr">Sem ideia para o almoço?</p><p class="sl">Abra, escolha e faça.</p></div>
+<div class="d2"><img loading="lazy" src="assets/v109.webp" alt="" width="500" height="400"><p class="dr">Todo dia o mesmo prato?</p><p class="sl">160 receitas para variar.</p></div>
+</div>
+</div></section>
+
+<!-- 03 VITRINE POR CATEGORIA -->
+<section class="alt" id="vitrine"><div class="ww">
+<div class="w" style="padding:0"><h2 class="c">Veja o que pode ir para a sua mesa</h2>
+<p class="c lead" style="margin-bottom:18px">Algumas das receitas do catálogo, com as fotos que estão no próprio PDF.</p></div>
+<div class="bandas" aria-label="Receitas por categoria">
+<div class="banda"><div class="bt" style="background:#9A6B0B"><b>Café da manhã</b><span>Para variar além do pão com manteiga</span></div><div class="rcs"><figure class="rc"><img loading="lazy" decoding="async" src="assets/v17.webp" alt="Shakshuka rápida de frigideira" width="500" height="400"><figcaption>Shakshuka rápida de frigideira</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v11.webp" alt="Omelete de queijo e tomate" width="500" height="400"><figcaption>Omelete de queijo e tomate</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v14.webp" alt="Fritada de abobrinha" width="500" height="400"><figcaption>Fritada de abobrinha</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v18.webp" alt="Omelete de forno em forminhas" width="500" height="400"><figcaption>Omelete de forno em forminhas</figcaption></figure></div></div>
+<div class="banda"><div class="bt" style="background:#2F5D3A"><b>Almoço e jantar</b><span>Comida de verdade, sem complicar</span></div><div class="rcs"><figure class="rc"><img loading="lazy" decoding="async" src="assets/v103.webp" alt="Risoto de frigideira com queijo" width="500" height="400"><figcaption>Risoto de frigideira com queijo</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v101.webp" alt="Arroz de forno rápido" width="500" height="400"><figcaption>Arroz de forno rápido</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v99.webp" alt="Arroz de frigideira com ovo" width="500" height="400"><figcaption>Arroz de frigideira com ovo</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v104.webp" alt="Macarrão colorido" width="500" height="400"><figcaption>Macarrão colorido</figcaption></figure></div></div>
+<div class="banda"><div class="bt" style="background:#1F3A5F"><b>Marmitas da semana</b><span>Cozinhe uma vez e resolva vários dias</span></div><div class="rcs"><figure class="rc"><img loading="lazy" decoding="async" src="assets/v124.webp" alt="Marmita de carne moída com purê" width="500" height="400"><figcaption>Marmita de carne moída com purê</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v126.webp" alt="Marmita de strogonoff e arroz" width="500" height="400"><figcaption>Marmita de strogonoff e arroz</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v127.webp" alt="Marmita de omelete e salada" width="500" height="400"><figcaption>Marmita de omelete e salada</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v129.webp" alt="Marmita de peixe com batata" width="500" height="400"><figcaption>Marmita de peixe com batata</figcaption></figure></div></div>
+<div class="banda"><div class="bt" style="background:#9C4221"><b>Air fryer</b><span>Crocante, com pouco óleo</span></div><div class="rcs"><figure class="rc"><img loading="lazy" decoding="async" src="assets/v132.webp" alt="Coxinha de frango na air fryer" width="500" height="400"><figcaption>Coxinha de frango na air fryer</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v133.webp" alt="Frango empanado crocante" width="500" height="400"><figcaption>Frango empanado crocante</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v134.webp" alt="Batata rústica com alecrim" width="500" height="400"><figcaption>Batata rústica com alecrim</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v137.webp" alt="Mandioca frita sequinha" width="500" height="400"><figcaption>Mandioca frita sequinha</figcaption></figure></div></div>
+<div class="banda"><div class="bt" style="background:#B45309"><b>Lanches da tarde</b><span>Para o café das quatro</span></div><div class="rcs"><figure class="rc"><img loading="lazy" decoding="async" src="assets/v145.webp" alt="Esfiha aberta de pão sírio" width="500" height="400"><figcaption>Esfiha aberta de pão sírio</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v143.webp" alt="Pão de queijo de liquidificador" width="500" height="400"><figcaption>Pão de queijo de liquidificador</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v147.webp" alt="Rabanada de frigideira" width="500" height="400"><figcaption>Rabanada de frigideira</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v148.webp" alt="Sanduíche natural de atum" width="500" height="400"><figcaption>Sanduíche natural de atum</figcaption></figure></div></div>
+<div class="banda"><div class="bt" style="background:#7C2D22"><b>Sobremesas</b><span>Doce pronto sem sofrer</span></div><div class="rcs"><figure class="rc"><img loading="lazy" decoding="async" src="assets/v163.webp" alt="Mousse de maracujá de liquidificador" width="500" height="400"><figcaption>Mousse de maracujá de liquidificador</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v164.webp" alt="Pudim de leite condensado" width="500" height="400"><figcaption>Pudim de leite condensado</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v166.webp" alt="Gelatina cremosa de morango" width="500" height="400"><figcaption>Gelatina cremosa de morango</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v165.webp" alt="Banana caramelizada" width="500" height="400"><figcaption>Banana caramelizada</figcaption></figure></div></div>
+<div class="banda"><div class="bt" style="background:#4D5A22"><b>Festinha e aniversário</b><span>Para encher a mesa gastando pouco</span></div><div class="rcs"><figure class="rc"><img loading="lazy" decoding="async" src="assets/v177.webp" alt="Mini pizza de festa" width="500" height="400"><figcaption>Mini pizza de festa</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v178.webp" alt="Cupcake de baunilha" width="500" height="400"><figcaption>Cupcake de baunilha</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v176.webp" alt="Cachorro-quente de forno" width="500" height="400"><figcaption>Cachorro-quente de forno</figcaption></figure><figure class="rc"><img loading="lazy" decoding="async" src="assets/v179.webp" alt="Beijinho de coco" width="500" height="400"><figcaption>Beijinho de coco</figcaption></figure></div></div>
+</div>
+<p class="dica-g mut" style="margin:2px 0 20px">Deslize para o lado para ver as 7 categorias</p>
+<div class="nums"><div><b>160</b><span>receitas</span></div><div><b>19</b><span>categorias</span></div><p>Do café da manhã à festinha, todas com foto e passo a passo.<br><small>Versão Completa. A Básica traz 60 receitas.</small></p></div>
 </div></section>
 
 <!-- 05 PÁGINAS REAIS -->
@@ -336,7 +351,7 @@ ul.ok li.no:before{content:"";background:url("data:image/svg+xml,%3Csvg xmlns='h
 </section>
 
 <!-- 07 ORGANIZAÇÃO (só Completo) -->
-<section><div class="w">
+<section class="alt"><div class="w">
 <div class="c"><span class="selo-c">Só na versão Completa</span></div>
 <h2 class="c">Além das receitas, a semana já vem organizada</h2>
 <ul class="q4" aria-label="Bônus da versão Completa">
@@ -348,7 +363,7 @@ ul.ok li.no:before{content:"";background:url("data:image/svg+xml,%3Csvg xmlns='h
 </div></section>
 
 <!-- 10 VERSÕES -->
-<section class="alt" id="edicoes"><div class="ww">
+<section id="edicoes"><div class="ww">
 <div class="w" style="padding:0"><h2 class="c">Escolha a versão do seu catálogo.</h2>
 <p class="c lead" style="margin:0">Você paga uma vez e o acesso é para sempre.</p></div>
 <div class="vs">
@@ -382,7 +397,7 @@ ul.ok li.no:before{content:"";background:url("data:image/svg+xml,%3Csvg xmlns='h
 </div></section>
 
 <!-- 11 GARANTIA E ENTREGA -->
-<section><div class="w">
+<section class="alt"><div class="w">
 <div class="gar"><div class="s">7<small>DIAS</small></div><div><b>Garantia de 7 dias</b><p>Se não gostar, peça o reembolso em até 7 dias da compra.</p></div></div>
 <h2 style="margin-top:40px">Como você recebe</h2>
 <ol class="passos"><li>Escolha a versão</li><li>Finalize o pagamento com Pix ou cartão</li><li>Receba o acesso no e-mail e abra o PDF</li></ol>
@@ -391,7 +406,7 @@ ul.ok li.no:before{content:"";background:url("data:image/svg+xml,%3Csvg xmlns='h
 </div></section>
 
 <!-- 12 FAQ -->
-<section class="alt"><div class="w faq">
+<section><div class="w faq">
 <h2>Dúvidas comuns</h2>
 <details><summary>Qual é a diferença entre o Básico e o Completo?</summary><p>O Básico tem 60 receitas. O Completo tem 160 receitas em 19 categorias e vem também com o cardápio de 30 dias, a lista de compras semanal, 20 lanches da tarde e 12 vitaminas e sucos.</p></details>
 <details><summary>É um livro físico ou digital?</summary><p>É digital, em PDF. Você lê no celular, no tablet ou no computador. Se preferir, pode imprimir as páginas que quiser.</p></details>
@@ -414,7 +429,7 @@ Suporte: <a href="https://wa.me/5524999593100">WhatsApp (24) 99959-3100</a> · <
 Receitas caseiras e práticas. Não substituem orientação de nutricionista ou médico.
 </footer>
 
-<div class="sticky off" id="stk"><a class="btn" href="#edicoes">Quero minhas receitas</a></div>
+<div class="sticky off" id="stk"><a class="btn" href="#edicoes" data-cta="fixo">Quero minhas receitas</a></div>
 
 <div class="pop" id="popB" role="dialog" aria-modal="true" aria-labelledby="popBT"><div class="box">
 <button class="x" type="button" aria-label="Fechar">×</button>
@@ -427,7 +442,7 @@ Receitas caseiras e práticas. Não substituem orientação de nutricionista ou 
 <p class="obs">É uma compra só, da versão que você escolher.</p>
 </div></div>
 
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Página ampliada"><button class="x" type="button" aria-label="Fechar">×</button><figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure></div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Página ampliada"><button class="x" type="button" aria-label="Fechar">×</button><figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption><a class="btn" id="lbCta" href="#edicoes" data-cta="ampliada">Quero minhas receitas</a></figure></div>
 
 <script>
 (function(){
@@ -436,7 +451,7 @@ var OF={'Básico':['Catálogo de Receitas Básico','R$ 9,90','assets/capa_basico
 window.PV={produto:'Catálogo de Receitas Completo',preco:'R$ 29,90',url:'https://pay.cakto.com.br/37y7q73',capa:'assets/capa_completo.webp',cor:'#193b2b',corTexto:'#ffffff',gateway:'Cakto'};
 function ck(n){try{clarity('event',n)}catch(e){}}
 /* barra fixa: some na área das versões e no final */
-try{var st=document.getElementById('stk'),vis={};var io=new IntersectionObserver(function(es){es.forEach(function(e){vis[e.target.id||e.target.className]=e.isIntersecting});up()},{rootMargin:'0px 0px -15% 0px'});io.observe(document.getElementById('edicoes'));io.observe(document.querySelector('.fim'));function up(){st.classList.toggle('off',scrollY<600||vis.edicoes||vis.fim)}addEventListener('scroll',up,{passive:true});up()}catch(e){}
+try{var st=document.getElementById('stk'),vis={};var io=new IntersectionObserver(function(es){es.forEach(function(e){vis[e.target.id||e.target.className]=e.isIntersecting});up()},{rootMargin:'0px 0px -15% 0px'});io.observe(document.getElementById('edicoes'));io.observe(document.querySelector('.fim'));function up(){st.classList.toggle('off',scrollY<260||vis.edicoes||vis.fim)}addEventListener('scroll',up,{passive:true});up()}catch(e){}
 /* reels: só tocam quando a pessoa toca; um de cada vez */
 var vids=document.querySelectorAll('#reels video');
 document.querySelectorAll('#reels .rlb').forEach(function(box){var v=box.querySelector('video'),b=box.querySelector('.play');
@@ -451,7 +466,12 @@ var pB=document.getElementById('popB'),lb=document.getElementById('lb');
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){[pB,lb].forEach(function(m){if(m.classList.contains('on'))fechar(m)})}
  if(e.key==='Tab'){var m=pB.classList.contains('on')?pB:lb.classList.contains('on')?lb:null;if(!m)return;var fs=m.querySelectorAll('a,button');var a=fs[0],z=fs[fs.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
 document.querySelectorAll('.btn-basico').forEach(function(b){b.addEventListener('click',function(){abrir(pB);ck('popup_basico')})});
-document.querySelectorAll('.pg').forEach(function(b){b.addEventListener('click',function(){var i=document.getElementById('lbImg');i.src=b.dataset.src;i.alt=b.querySelector('img').alt;document.getElementById('lbCap').textContent=b.dataset.cap;abrir(lb);ck('pagina_ampliada')})});
+function amp(src,alt,cap,ev){var i=document.getElementById('lbImg');i.src=src;i.alt=alt;document.getElementById('lbCap').textContent=cap;abrir(lb);ck(ev)}
+document.querySelectorAll('.pg,.zoom').forEach(function(b){b.addEventListener('click',function(){amp(b.dataset.src,b.querySelector('img').alt||b.dataset.cap,b.dataset.cap,b.dataset.ev||'pagina_ampliada')})});
+/* pratos da vitrine: toque amplia a foto */
+document.querySelectorAll('#vitrine .rc').forEach(function(f){f.addEventListener('click',function(){var im=f.querySelector('img');amp(im.getAttribute('src'),im.alt,im.alt+' · receita do catálogo','prato_ampliado')})});
+/* botões que levam às versões */
+document.querySelectorAll('a[href="#edicoes"]').forEach(function(a){a.addEventListener('click',function(e){ck('cta_'+(a.getAttribute('data-cta')||'x'));if(a.id==='lbCta'){e.preventDefault();lb.classList.remove('on');document.body.style.overflow='';document.getElementById('edicoes').scrollIntoView()}})});
 /* checkout: mantém UTMs e eventos */
 var QS=location.search.slice(1);function comQS(h){var b=h.split('?')[0];return b+(QS?'?'+QS:'')}
 document.querySelectorAll('a[href*="pay.cakto.com.br"]').forEach(function(a){a.setAttribute('href',comQS(a.getAttribute('href')));a.addEventListener('click',function(){
