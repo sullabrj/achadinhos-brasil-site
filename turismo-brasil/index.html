@@ -117,7 +117,10 @@ details p{padding:0 0 14px;font-size:.95rem}
 .sticky a{max-width:560px;margin:0 auto}
 .sticky .st{display:block;font-size:1.05rem}
 .sticky .sp{display:block;font-size:.82rem;font-weight:700}
-body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+.sticky .sg{display:block;font-size:.72rem;font-weight:400}
+.hero .cue{margin-top:14px;font-size:.85rem;opacity:.92}
+.guar{margin:12px 0 0;font-size:.95rem;font-weight:700;text-align:center;color:var(--navy)}
+body{padding-bottom:calc(92px + env(safe-area-inset-bottom))}
 @media(min-width:760px){
  body{font-size:17px}
  h2{font-size:1.8rem}
@@ -142,14 +145,15 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 <body>
 
 <header class="hero">
-<figure class="ph "><img src="img/foto-01-ilha-grande.webp" width="1000" height="562" fetchpriority="high" alt="イーリャ・グランデの写真"><figcaption>イーリャ・グランデ</figcaption></figure>
+<figure class="ph "><a href="#contents" style="display:contents"><img src="img/foto-01-ilha-grande.webp" width="1000" height="562" fetchpriority="high" alt="イーリャ・グランデの写真"></a><figcaption>イーリャ・グランデ</figcaption></figure>
 <div class="hblock">
 <p class="tag">日本語のデジタルガイド（PDF）</p>
 <h1>14日間で巡るブラジル</h1>
 <p class="sub">ガイドブックに載らないブラジル</p>
 <p class="hook">リオもカーニバルも出てこない。<br>ブラジル人が休みに選ぶブラジルへ。</p>
-<p class="meta">14日間のモデルコース／100件以上のおすすめ／Googleマップ2つ／書き込める準備シート</p>
+<p class="meta">全291ページ／14日間のモデルコース／100件以上のおすすめ／Googleマップ2つ／書き込める準備シート</p>
 <p><a class="btn" href="#contents">ガイドの中身を見る</a></p>
+<p class="cue">▼ このすぐ下で、実際のページを約70秒でご覧いただけます</p>
 </div>
 </header>
 
@@ -339,6 +343,7 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 <li>書き込める旅程表・予算シート・持ち物チェックリスト</li>
 </ul>
 <a class="btn" href="https://pay.cakto.com.br/35cwszd_1318496">購入する</a>
+<p class="guar">購入日から7日以内なら、返金を申請できます</p>
 <p class="note">お支払いは1回のみです。決済が終わると、すぐにダウンロードの案内がメールで届きます。購入日から7日以内であれば、返金を申請できます。掲載情報は2026年11月時点のものです。このガイドは旅行情報の提供のみを行い、予約や手配は行っていません。</p>
 </div>
 </div>
@@ -361,7 +366,7 @@ body{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
 </div>
 </footer>
 
-<div class="sticky" id="sticky"><a href="https://pay.cakto.com.br/35cwszd_1318496"><span class="st">旅行ガイドを手に入れる</span><span class="sp">US$9.90（約1,799円）・買い切り</span></a></div>
+<div class="sticky" id="sticky"><a href="https://pay.cakto.com.br/35cwszd_1318496"><span class="st">旅行ガイドを手に入れる</span><span class="sp">US$9.90（約1,799円）・買い切り</span><span class="sg">購入日から7日以内なら返金を申請できます</span></a></div>
 <script>
 try{fbq('track','ViewContent',{content_name:'Guia Brasil JP',value:4.9,currency:'USD'})}catch(e){}
 document.querySelectorAll('a[href*="pay.cakto.com.br"]').forEach(function(a){
